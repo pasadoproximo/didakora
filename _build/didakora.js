@@ -58,7 +58,8 @@ function cajaListado(){
 
  const P=new URLSearchParams(location.search);
  const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||'',nuevas:P.get('nuevas')==='1'};
- const qEl=$('lq'),nEl=$('lnv');qEl.value=st.q;nEl.value=st.nivel;
+ const qEl=$('lq'),nEl=$('lnv');qEl.value=st.q;
+ const setNv=v=>{(nEl.querySelector(`input[value="${v}"]`)||nEl.querySelector('input')).checked=true;};setNv(st.nivel);
  const NV={I:'Infantil',P:'Primaria',S:'Secundaria y Bachillerato'};
  function render(){
   const qs=query(st.q);
@@ -71,9 +72,9 @@ function cajaListado(){
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
  }
  qEl.addEventListener('input',()=>{st.q=qEl.value;render();});
- nEl.addEventListener('change',()=>{st.nivel=nEl.value;render();});
+ nEl.addEventListener('change',()=>{st.nivel=nEl.querySelector('input:checked').value;render();});
  $('lcats').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.cat=b.dataset.cat;render();});
- document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:'',nuevas:false});qEl.value='';nEl.value='';render();qEl.focus();}});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:'',nuevas:false});qEl.value='';setNv('');render();qEl.focus();}});
  render();
 }
 

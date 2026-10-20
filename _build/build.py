@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "4"  # versión de didakora.css / didakora.js
+V = "5"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -196,8 +196,11 @@ def catcard(c):
     return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><span class="cc-i {tone(c)}">{icon(c[3])}</span><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
             f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a>')
 
-NIVEL = ('<label class="sr" for="nv">Etapa</label><select id="nv" name="nivel"><option value="">Todas las etapas</option>'
-         '<option value="I">Infantil</option><option value="P">Primaria</option><option value="S">Secundaria y Bachillerato</option></select>')
+def etapas_html(fid, cls=""):
+    """filtro de etapa: botones en píldora (radios), como el resto de la web; name=nivel para el listado"""
+    ops = [("", "Todas"), ("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")]
+    radios = "".join(f'<label><input class="sr" type="radio" name="nivel" value="{v}"{" checked" if not v else ""}><span>{t}</span></label>' for v, t in ops)
+    return f'<fieldset class="et{cls}" id="{fid}"><legend>Etapa</legend>{radios}</fieldset>'
 
 # ---------------------------------------------------------------- portada
 def portada():
@@ -211,9 +214,9 @@ def portada():
    <p class="hero-d">Una selección de herramientas revisadas una a una para usar en clase. Búscala por su nombre o por lo que quieres hacer y elige tu etapa. Cada ficha la explica con un ejemplo, te dice qué necesita y te ofrece videotutoriales.</p>
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
-   <div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-   <div class="hs-n">{NIVEL}</div>
-   <button type="submit">Buscar {ICO["arrow"]}</button>
+   <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
+   <button type="submit">Buscar {ICO["arrow"]}</button></div>
+   {etapas_html("nv")}
   </form>
  </section>
 
@@ -250,7 +253,7 @@ def todas():
  <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
   <div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-  <div class="hs-n">{NIVEL.replace('id="nv"', 'id="lnv"').replace('for="nv"', 'for="lnv"')}</div>
+  {etapas_html("lnv", " l")}
  </form>
  <div class="chips" id="lcats" role="group" aria-label="Categoría">{chips}</div>
  <p class="count" id="lcount" aria-live="polite"></p>

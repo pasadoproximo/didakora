@@ -49,9 +49,19 @@ a.tag:hover{background:var(--coral3)}
 .hero::after{width:170px;height:170px;right:210px;bottom:-80px;border:22px solid rgba(255,255,255,.55)}
 .hero .lab{color:var(--navy)}
 .hero h1{font:800 clamp(38px,5vw,66px)/1 var(--f-disp);letter-spacing:-.035em;margin-top:14px;max-width:15ch}
-.hero h1 span{background:linear-gradient(transparent 60%,var(--coral) 60%);padding:0 .08em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero h1 span{background:linear-gradient(transparent 60%,var(--coral) 60%) no-repeat 0 0/100% 100%;padding:0 .08em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* animación de la cabecera: el subrayado coral se dibuja al entrar y los círculos flotan despacio */
+@media (prefers-reduced-motion:no-preference){
+ .hero h1 span{background-size:0% 100%;animation:dk-sub .9s .35s cubic-bezier(.2,.7,.2,1) forwards}
+ .hero::before{animation:dk-float 14s ease-in-out infinite}
+ .hero::after{animation:dk-drift 18s ease-in-out infinite}
+}
+@keyframes dk-sub{to{background-size:100% 100%}}
+@keyframes dk-float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-26px,22px) scale(1.06)}}
+@keyframes dk-drift{0%,100%{transform:translate(0,0)}33%{transform:translate(26px,-18px)}66%{transform:translate(-14px,-30px)}}
 .hero-d{font-size:clamp(16.5px,1.5vw,18.5px);color:var(--navy3);margin-top:18px;max-width:60ch}
-.hs,.ls{grid-column:1/-1;display:flex;gap:10px;margin-top:30px}
+.hs,.ls{grid-column:1/-1;display:grid;gap:14px;margin-top:30px}
+.hs-r{display:flex;gap:10px}
 .hs-q{flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid transparent;border-radius:999px;padding:0 18px;height:56px;min-width:0}
 .hs-q:focus-within{box-shadow:0 0 0 3px var(--navy)}
 .ls .hs-q{border-color:#CDD5E5}
@@ -59,13 +69,23 @@ a.tag:hover{background:var(--coral3)}
 .hs-q svg{width:20px;height:20px;stroke:var(--mut);fill:none;stroke-width:2.2;stroke-linecap:round}
 .hs-q input{flex:1;border:0;outline:0;font:500 17px var(--f-body);color:var(--txt);background:transparent;min-width:0;height:100%}
 .hs-q input::placeholder{color:#6B7591}
-.hs-n select{height:56px;border-radius:999px;border:1px solid #CDD5E5;background:#fff;color:var(--txt);font:600 16px var(--f-body);padding:0 40px 0 18px;appearance:none;cursor:pointer;
- background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23061033' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:14px}
+/* etapa: botones en píldora; en la cabecera, translúcidos sobre el cielo */
+.et{border:0;padding:0;margin:0;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.et legend{float:left;font:700 12.5px var(--f-body);letter-spacing:.14em;text-transform:uppercase;margin-right:6px}
+.et label{cursor:pointer}
+.et span{display:inline-flex;align-items:center;min-height:38px;padding:7px 15px;border-radius:999px;font:600 15px var(--f-body);color:var(--navy);background:rgba(255,255,255,.5);transition:background .2s,color .2s}
+.et label:hover span{background:rgba(255,255,255,.85)}
+.et input:checked+span{background:var(--navy);color:#fff}
+.et input:focus-visible+span{outline:3px solid var(--navy);outline-offset:2px}
+.et.l span{background:#fff;border:1px solid var(--line2)}
+.et.l label:hover span{border-color:var(--navy);background:#fff}
+.et.l input:checked+span{background:var(--navy);border-color:var(--navy)}
+.et.l legend{color:var(--mut)}
 .hs button{display:inline-flex;align-items:center;gap:8px;height:56px;border:0;border-radius:999px;background:var(--navy);color:#fff;font:800 16.5px var(--f-body);padding:0 24px;cursor:pointer}
 .hs button:hover{background:var(--navy3)}
 .hs button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:860px){.hero{padding:40px 22px 40px}.hero::before{width:170px;height:170px;right:-60px;top:-70px}.hero::after{display:none}.hero .lab{padding-right:90px}
- .hs{flex-wrap:wrap}.hs-q{flex-basis:100%}.hs-n{flex:1}.hs-n select{width:100%}}
+ .hs-r{flex-wrap:wrap}.hs-q{flex-basis:100%}.hs button{flex:1;justify-content:center}.et legend{flex-basis:100%;margin-bottom:2px}}
 
 /* secciones */
 .sec{margin-top:96px}
@@ -155,7 +175,7 @@ a.tag:hover{background:var(--coral3)}
 .badge svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .pg-h h1{margin-top:14px}
 .ls{margin:0 0 16px}
-.ls .hs-q,.ls .hs-n select{height:52px}
+.ls .hs-q{height:52px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{font:700 14.5px var(--f-body);color:var(--navy);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer}
 .chips button:hover{border-color:var(--navy)}
