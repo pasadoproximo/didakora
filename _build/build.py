@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "38"  # versión de didakora.css / didakora.js
+V = "39"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -348,7 +348,7 @@ def ficha(t):
     if uses_ai(t): notas.append("Usa la cuenta del centro y no introduzcas datos personales.")
     if t.get("datos"): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
-    rows = [("Categoría", f'<a href="{B}/categorias/{c[0]}/">{esc(c[1])}</a>'),
+    rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
             ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and not t["c"].startswith("Toda la etapa") else "")),
             ("Dispositivos", esc(disp)),
             ("Cuenta", esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]

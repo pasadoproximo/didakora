@@ -215,6 +215,7 @@ a.tag:hover{background:var(--coral3)}
 .fa dt{font:700 12.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
 .fa dd{margin:2px 0 0;color:var(--txt)}
 .fa dd a{font-weight:700;color:var(--navy3)}
+.fa dd .tag{color:var(--navy);margin-top:4px}
 .fa dd small{display:block;color:var(--mut);font-size:14px;margin-top:3px}
 .fu{margin-top:18px}
 .fu ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
