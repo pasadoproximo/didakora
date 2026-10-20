@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "22"  # versión de didakora.css / didakora.js
+V = "25"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -117,13 +117,17 @@ def card_dest(t):
             f'<div class="tc-f"><a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'
             f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a></div></article>')
 
-def card(t):
-    """tarjeta de herramienta: logo y nombre, frase de uso, categoría a la izquierda y flecha (abre la herramienta)"""
+def card(t, cat=True):
+    """tarjeta de herramienta: logo y nombre, frase de uso, categoría a la izquierda y flecha (abre la herramienta).
+    En la página de una categoría no hace falta repetirla: cat=False."""
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]
-    return (f'<article class="tc td"><div class="tc-h"><span class="lg">{logo(t)}</span><h3><a class="tc-a" href="{B}/{t["id"]}/">{esc(nm)}</a>'
-            f'{f"<small>{esc(alias)}</small>" if alias else ""}</h3></div><p>{esc(lead(t))}</p>'
-            f'<div class="tc-f"><a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'
-            f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a></div></article>')
+    go = f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a>'
+    head = (f'<div class="tc-h"><span class="lg">{logo(t)}</span><h3><a class="tc-a" href="{B}/{t["id"]}/">{esc(nm)}</a>'
+            f'{f"<small>{esc(alias)}</small>" if alias else ""}</h3>{"" if cat else go}</div><p>{esc(lead(t))}</p>')
+    if not cat:  # sin categoría: la flecha sube junto al nombre y la tarjeta no lleva pie
+        return f'<article class="tc td nc">{head}</article>'
+    return (f'<article class="tc td">{head}'
+            f'<div class="tc-f"><a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>{go}</div></article>')
 
 def _svg_inline(name, cls):
     """mete en la página un SVG de marca/ (sin el <title>, que ya da el aria-label del enlace)"""
@@ -314,7 +318,7 @@ def categorias():
         for t in ts:
             if t["sub"] not in subs: subs.append(t["sub"])
         nav = "".join(f'<a href="#{slug(s)}">{esc(s)} <span>{sum(1 for t in ts if t["sub"] == s)}</span></a>' for s in subs) if len(subs) > 1 else ""
-        blocks = "".join(f'<section class="sub" aria-labelledby="{slug(s)}"><h2 id="{slug(s)}">{esc(s)} <span>{sum(1 for t in ts if t["sub"] == s)}</span></h2><div class="tcg">{"".join(card(t) for t in ts if t["sub"] == s)}</div></section>' for s in subs)
+        blocks = "".join(f'<section class="sub" aria-labelledby="{slug(s)}"><h2 id="{slug(s)}">{esc(s)} <span>{sum(1 for t in ts if t["sub"] == s)}</span></h2><div class="tcg">{"".join(card(t, False) for t in ts if t["sub"] == s)}</div></section>' for s in subs)
         others = "".join(f'<a href="{B}/categorias/{o[0]}/">{icon(o[3])}{esc(o[1])}</a>' for o in CATS if o[0] != c[0])
         body = f'''
 <main class="pg">

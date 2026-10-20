@@ -130,7 +130,7 @@ a.tag:hover{background:var(--coral3)}
 .tc-a{text-decoration:none}
 .tc-a::after{content:"";position:absolute;inset:0;z-index:0}
 .tc p{font-size:15.5px;line-height:1.45;color:var(--body)}
-.tc-f{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tc-f{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .tcg.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
 /* destacadas: categoría a la izquierda y flecha redonda a la derecha */
 .td .tc-f{flex-wrap:nowrap}
@@ -138,6 +138,9 @@ a.tag:hover{background:var(--coral3)}
 .cc-x,.td-x{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--navy);transition:transform .3s,background .3s,color .3s}
 .cc-x{grid-column:3;grid-row:1/3;width:36px;height:36px}
 .td-x,.tc .tag{position:relative;z-index:1}
+.td-x{margin-left:auto}
+.nc .tc-h{grid-template-columns:42px minmax(0,1fr) auto}
+.nc:hover .td-x{transform:rotate(45deg);background:var(--navy);color:#fff}
 .cc-x svg,.td-x svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .cc:hover .cc-x,.td:hover .td-x,.td-x:focus-visible{transform:rotate(45deg);background:var(--navy);color:#fff}
 @media (prefers-reduced-motion:reduce){.cc-x,.td-x{transition:none}.cc:hover .cc-x,.td:hover .td-x{transform:none}}
