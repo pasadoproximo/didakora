@@ -281,7 +281,10 @@ a.tag:hover{background:var(--coral3)}
 .ft-n a{color:#fff;font-weight:700;text-decoration:none}
 .ft-n a:hover{text-decoration:underline;text-underline-offset:3px}
 .ft-n+p{flex-basis:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
+.ft-n+p{justify-content:space-between;font-weight:400}
+.ft p a{color:#fff;font-weight:700;text-underline-offset:3px}
 .ft p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-weight:700;font-size:16px}
 .ft span{color:#DCE3F7;font-weight:400;font-size:15.5px}
 @media (max-width:900px){.ft{padding:28px 22px}}
+@media (max-width:560px){.ft-n{margin-left:0;flex-basis:100%}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
