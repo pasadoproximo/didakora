@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "46"  # versión de didakora.css / didakora.js
+V = "47"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -416,9 +416,11 @@ def extras():
           + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
 
 def datos():
-    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"]] for t in TOOLS}
+    from fichas import F
+    # también van los textos de la ficha («Qué es» y usos) para que el buscador los encuentre
+    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"], " ".join(F[t["id"]]["usos"]) + " " + F[t["id"]]["q"]] for t in TOOLS}
     cats = {c[0]: [c[1], IC[c[3]]] for c in CATS}
-    write("didakora-datos.js", "// Generado por _build/build.py: categoría, etapas, logo y apartado de cada herramienta\nconst CAJA=" + json.dumps({"cats": cats, "t": m}, ensure_ascii=False) + ";\n")
+    write("didakora-datos.js", "// Generado por _build/build.py: categoría, etapas, logo, apartado y textos de la ficha de cada herramienta\nconst CAJA=" + json.dumps({"cats": cats, "t": m}, ensure_ascii=False) + ";\n")
 
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))

@@ -39,7 +39,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
 
 // ---------- motor de búsqueda (lo usa el listado; se puede probar fuera del navegador)
 // Puntúa cada herramienta según dónde aparece cada palabra: en el nombre (lo que más cuenta), en la descripción,
-// la categoría, el apartado o la materia, y en las ideas de uso. Entiende plurales, términos relacionados, el
+// la categoría, el apartado o la materia, y en las ideas de uso y los textos de su ficha. Entiende plurales, términos relacionados, el
 // principio de una palabra («pres» → presentaciones) y una errata por palabra («kahot» → Kahoot!).
 function dkMotor(TOOLS,SECTIONS,CAJA){
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -54,6 +54,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
   gamificacion:['juego','jugar','concurso','gamificado'],juego:['jugar','concurso','gamificado'],
   dislexia:['lectura en voz alta','dificultades de lectura','dificultades de escritura','accesibilidad'],accesibilidad:['lectura en voz alta','dictado','dificultades'],familia:['familias'],mural:['muro','tablon'],muro:['mural','tablon'],
   gamificar:['juego','concurso','puntos','jugar','gamificado','gamificacion'],interactivo:['preguntas','interactiva','responde'],
+  cooperativo:['cooperativa','cooperativas','equipo','colaborar'],cooperativa:['cooperativo','equipo','colaborar'],trabajo:['trabajar'],
   diversidad:['dislexia','lectura en voz alta','dictado','accesibilidad','dificultades','inclusion'],inclusion:['diversidad','accesibilidad','dislexia','dificultades'],
   planificar:['programacion','planificacion','preparar'],traducir:['traduccion','idiomas']};
  const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica']];
@@ -71,7 +72,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  const ETN={I:'infantil',P:'primaria',S:'secundaria bachillerato eso'};
  TOOLS.forEach(t=>{const k=t.s+':'+t.cat,c=CAJA.t[t.id];
   const core=norm([t.d,t.a,t.p,SECTIONS[t.s].n,k in CATKW?CATKW[k]:SECTIONS[t.s].cats[t.cat],CAJA.cats[c[0]][0],c[3],SUBJ[t.id],c[1].map(e=>ETN[e]).join(' '),t.c,t.nota,t.coste,t.cta,t.s==='aula'&&/^no necesita/i.test(t.cta)?'nocuenta':''].filter(Boolean).join(' '));
-  const ideas=joinPh(norm((t.i||[]).join(' '))),coreJ=joinPh(core),name=joinPh(norm(t.n));
+  const ideas=joinPh(norm((t.i||[]).join(' ')+' '+(c[4]||''))),coreJ=joinPh(core),name=joinPh(norm(t.n));
   IDX[t.id]={nc:norm(t.n.replace(/\s*\(.*\)/,'')).replace(/[^a-z0-9ñ]/g,''),nt:flat(name),ct:flat(coreJ),it:flat(ideas),nw:words(name),cwl:words(coreJ),cw:new Set(words(coreJ).map(stem)),iw:new Set(words(ideas).map(stem))};});
  const forms=w=>[w,...(SYNS[stem(w)]||[])];
  // ¿se parecen con una sola letra de diferencia (sobra, falta o cambia)?
