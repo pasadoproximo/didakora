@@ -261,8 +261,8 @@ a.tag:hover{background:var(--coral3)}
 .fin p{margin-top:6px;color:var(--navy3)}
 .fin-c{display:flex;justify-content:center;gap:14px;margin-top:16px}
 .fin-c a{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:var(--navy);transition:color .2s,transform .2s}
-.fin-c a:hover,.fin-c a:focus-visible{color:#fff;transform:translateY(-2px)}
-.fin-c svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.fin-c a:hover,.fin-c a:focus-visible{color:var(--coral);transform:translateY(-2px)}
+.fin-c svg{display:block;width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:760px){.fin{padding:30px 22px}.fin::after{right:-80px;bottom:-115px}}
 /* debajo del bloque final, sobre el fondo: nombre a la izquierda y licencia a la derecha */
 .ft{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:18px 8px 28px;font-size:15px;color:var(--mut)}
