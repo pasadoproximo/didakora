@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "18"  # versión de didakora.css / didakora.js
+V = "21"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -182,10 +182,10 @@ def write(rel, content):
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8", newline="\n").write(content)
 def crumbs(items):
-    """arriba de cada página interior solo va el botón de volver (sin la ruta)"""
+    """botón de volver que va junto al título de cada página interior (sin ruta)"""
     up = [h for _, h in items if h][-1]  # página de la que cuelga: destino del botón si no hay historial
     back = f'<a class="back" href="{up}" data-back><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="sr">Atrás</span></a>'
-    return f'<div class="pnav">{back}</div>'
+    return back
 def secth(lab, title, desc="", hid=""):
     return f'<div class="sh">{f'<span class="lab">{esc(lab)}</span>' if lab else ""}<h2{f" id={chr(34)}{hid}{chr(34)}" if hid else ""}>{esc(title)}</h2>{f"<p>{esc(desc)}</p>" if desc else ""}</div>'
 def catcard(c):
@@ -244,8 +244,7 @@ def todas():
     chips = '<button type="button" data-cat="" aria-pressed="true">Todas</button>' + "".join(f'<button type="button" data-cat="{c[0]}" aria-pressed="false">{esc(c[1])}</button>' for c in CATS)
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Todas las herramientas", "")])}
- <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Todas las herramientas", "")])}<h1>Todas las herramientas</h1></div><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
   <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
   {etapas_html("lnv", " l")}</div>
@@ -273,11 +272,10 @@ def sobremi():
                    f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a></li>' for k, t, d, u in CONTACTO)
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}
  <section class="me">
   <img src="{B}/img/jorge.jpg" alt="Jorge Delgado Aguilera en un aula, con una estantería de libros y un mapamundi al fondo" width="720" height="734">
   <div>
-   <h1>Sobre mí</h1>
+   <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
    <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
    <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
    <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didakora {ICO["ext"]}</a></p>
@@ -294,8 +292,7 @@ def sobremi():
 def destacadas():
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Herramientas destacadas", "")])}
- <div class="pg-h"><h1>Herramientas destacadas</h1><p>Las {len(DESTACADAS)} más versátiles para empezar a usar en clase.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Herramientas destacadas", "")])}<h1>Herramientas destacadas</h1></div><p>Las {len(DESTACADAS)} más versátiles para empezar a usar en clase.</p></div>
  <div class="tcg c4">{"".join(card_dest(BYID[i]) for i in DESTACADAS)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
@@ -306,8 +303,7 @@ def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans
 def categorias():
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Categorías", "")])}
- <div class="pg-h"><span class="badge">Categorías</span><h1>Categorías</h1><p>Diez categorías según para qué sirve cada herramienta.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", "")])}<h1>Categorías</h1></div><p>Diez categorías según para qué sirve cada herramienta.</p></div>
  <div class="ccg">{"".join(catcard(c) for c in CATS)}</div>
 </main>'''
     write("categorias/index.html", head("Categorías · Didakora", "Las diez categorías de Didakora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
@@ -321,8 +317,7 @@ def categorias():
         others = "".join(f'<a href="{B}/categorias/{o[0]}/">{icon(o[3])}{esc(o[1])}</a>' for o in CATS if o[0] != c[0])
         body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Categorías", f"{B}/categorias/"), (c[1], "")])}
- <div class="pg-h"><span class="badge">{icon(c[3])}Categoría</span><h1>{esc(c[1])}</h1><p>{esc(c[2])} {len(ts)} herramientas.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", f"{B}/categorias/"), (c[1], "")])}<h1>{esc(c[1])}</h1></div><p>{esc(c[2])} {len(ts)} herramientas.</p></div>
  {f'<nav class="subnav" aria-label="Apartados">{nav}</nav>' if nav else ""}
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
@@ -360,10 +355,9 @@ def ficha(t):
     que = ("Qué hace el alumnado" if aula else "Para qué te sirve" if not rec else "Qué encontrarás")
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), (c[1], f"{B}/categorias/{c[0]}/"), (nm, "")])}
  <section class="fh">
   <span class="lg xl">{logo(t, 44)}</span>
-  <div class="fh-t"><h1>{esc(nm)}{f" <small>{esc(alias)}</small>" if alias else ""}</h1><p>{esc(lead(t))}</p><div class="tags">{tags}</div></div>
+  <div class="fh-t"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), (c[1], f"{B}/categorias/{c[0]}/"), (nm, "")])}<h1>{esc(nm)}{f" <small>{esc(alias)}</small>" if alias else ""}</h1></div><p>{esc(lead(t))}</p><div class="tags">{tags}</div></div>
   <div class="fh-b"><a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Abrir {esc(nm)} {ICO["ext"]}</a><button type="button" class="btn line" data-share>{ICO["share"]}Compartir</button></div>
  </section>
  <div class="fg">
@@ -391,8 +385,7 @@ def alternativas():
     last = CHANGES[-1]
     body = f'''
 <main class="pg">
- {crumbs([("Inicio", f"{B}/"), ("Qué ha cambiado", "")])}
- <div class="pg-h"><span class="badge">De 2024 a 2026</span><h1>Qué ha cambiado y qué usar ahora</h1><p>Herramientas del repositorio de 2024 que han cerrado o cambiado de nombre, con la alternativa que se puede usar hoy.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Qué ha cambiado", "")])}<h1>Qué ha cambiado y qué usar ahora</h1></div><p>Herramientas del repositorio de 2024 que han cerrado o cambiado de nombre, con la alternativa que se puede usar hoy.</p></div>
  <div class="chl">{"".join(rowsh)}</div>
  <section class="sec chn"><span class="lab">Novedad</span><h2>{esc(last["n"])}</h2><p>{esc(last["what"])}</p><p><b>Qué hacer:</b> {esc(last["alt"])}</p></section>
 </main>'''

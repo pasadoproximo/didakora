@@ -20,6 +20,10 @@ document.querySelectorAll('.dd').forEach(dd=>{
   else if(e.key==='Escape'||e.key==='Tab'){close(e.key==='Escape');}});
  document.addEventListener('click',e=>{if(!dd.contains(e.target)&&!list.hidden)close(false);});
 });
+// botón de volver: vuelve a la página anterior si se llegó desde esta web; si no, sube a la página de la que cuelga
+document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(!b||e.metaKey||e.ctrlKey||e.shiftKey)return;
+ try{if(document.referrer&&new URL(document.referrer).origin===location.origin&&history.length>1){e.preventDefault();history.back();}}catch(err){}
+});
 // compartir la ficha: menú del sistema si existe; si no, se copia el enlace
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;
  const data={title:document.title,url:location.href};

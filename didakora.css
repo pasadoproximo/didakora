@@ -178,14 +178,15 @@ a.tag:hover{background:var(--coral3)}
 
 /* páginas interiores */
 .pg{padding-top:8px}
-.pnav{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin-top:28px}
-.back{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ice);color:var(--navy);display:grid;place-items:center;text-decoration:none;transition:background .2s,color .2s}
+/* título de las páginas interiores con el botón de volver al lado */
+.pg-t{display:flex;align-items:center;gap:16px}
+.pg-t h1{margin:0!important;min-width:0}
+.back{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ice);color:var(--navy);display:grid;place-items:center;text-decoration:none;transition:background .2s,color .2s}
 .back:hover,.back:focus-visible{background:var(--navy);color:#fff}
-.back svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:560px){.pnav{flex-wrap:nowrap;align-items:flex-start}.pnav .back{margin-top:-8px}}
-.pg-h{margin:28px 0 30px}
-.badge{display:inline-flex;align-items:center;gap:6px;font:700 13px var(--f-body);color:var(--navy3);background:var(--ice);border-radius:999px;padding:5px 12px}
-.badge svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.back svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fh .pg-t{gap:12px}.fh .back{width:38px;height:38px}
+@media (max-width:520px){.pg-t{gap:12px}.back{width:38px;height:38px}}
+.pg-h{margin:44px 0 30px}
 .pg-h h1{margin-top:14px}
 .ls{margin:0 0 16px}
 .ls .hs-q{height:52px}
