@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "45"  # versión de didakora.css / didakora.js
+V = "46"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -72,13 +72,15 @@ def place(t):
             ("recursos","sa"):("bancos-de-recursos","Situaciones de aprendizaje"), ("recursos","form"):("bancos-de-recursos","Formación e inspiración"),
             ("recursos","img"):("bancos-de-recursos","Imágenes y multimedia")}[(s, c)]
 # etapas: Didakora es de Secundaria; Infantil y Primaria cuando el repositorio de 2024 las recogía también ahí
-REPO_P = {"chatterpix","stopmotion","suno","canva","genially","padlet","stormboard","vocaroo","bookcreator","codeorg","blockly","classdojo",
+REPO_P = {"chatterpix","stopmotion","suno","canva","genially","padlet","vocaroo","bookcreator","codeorg","blockly","classdojo",
           "nearpod","badge","educaplay","exelearning","kahoot","plickers","edpuzzle","loom","scratch","phet","gizmos","geogebra","classroomscreen","fastboard"}
 REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
-def etapas(i): return [e for e, ok in (("I", i in REPO_I), ("P", i in REPO_P), ("S", True)) if ok]
+def etapas(t):
+    if t["s"] != "aula": return ["I", "P", "S"]  # herramientas del docente y recursos: para el profesorado de cualquier etapa
+    i = t["id"]; return [e for e, ok in (("I", i in REPO_I), ("P", i in REPO_P), ("S", True)) if ok]
 ETN = {"I": "Infantil", "P": "Primaria", "S": "Secundaria y Bachillerato"}
 for t in TOOLS:
-    t["cs"], t["sub"] = place(t); t["et"] = etapas(t["id"])
+    t["cs"], t["sub"] = place(t); t["et"] = etapas(t)
 BYID = {t["id"]: t for t in TOOLS}
 NUEVAS = [t for t in TOOLS if t["st"] == "nueva"]
 # destacadas de la portada: cuatro, elegidas por versátiles (NotebookLM primero)
@@ -290,7 +292,7 @@ def sobremi():
   <div>
    <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
    <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
-   <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
+   <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
    <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didakora {ICO["ext"]}</a></p>
   </div>
  </section>
@@ -340,7 +342,8 @@ assert not faltan, f"Faltan fichas en _build/fichas.py: {faltan}"
 OWN = re.compile(r"^no necesita|código|codigo|del docente|del centro|enlace del docente|integrado|extensión|solo para guardar|clase del docente", re.I)
 def uses_ai(t):
     a = (t.get("a") or "").lower(); a = a.translate(str.maketrans("áéíóú", "aeiou"))
-    return t["s"] == "aula" and re.search(r"(^|[^a-z])ia([^a-z]|$)", a) is not None
+    # Code.org solo habla de la IA en sus cursos: el alumnado no conversa con una IA
+    return t["s"] == "aula" and t["id"] != "codeorg" and re.search(r"(^|[^a-z])ia([^a-z]|$)", a) is not None
 def ficha(t):
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; f = F[t["id"]]
     disp = t["disp"] if aula else f["disp"]; cta = t["cta"] if aula else f["cta"]
@@ -348,11 +351,11 @@ def ficha(t):
     notas = []
     if t.get("edad"): notas.append(f'Edad mínima: {esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>')
     elif aula and not OWN.search(t["cta"]): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
-    if uses_ai(t): notas.append("Usa la cuenta del centro y no introduzcas datos personales.")
-    if t.get("datos"): notas.append(esc(t["datos"]) + ".")
+    if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
+    if t.get("datos") and not re.match(r"(con|trabaja con|usa) la cuenta del centro", t["datos"], re.I): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
-            ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and not t["c"].startswith("Toda la etapa") else "")),
+            ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and t["c"] != "Toda la etapa" else "")),
             ("Dispositivos", esc(disp)),
             ("Cuenta", esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
@@ -398,6 +401,20 @@ def alternativas():
     write("alternativas/index.html", head("Qué ha cambiado · Didakora", "Herramientas que han cerrado o cambiado de nombre desde 2024 y qué usar ahora.", "/alternativas/", "alternativas") + body + foot())
 
 # ---------------------------------------------------------------- datos para el listado
+def extras():
+    """página de error 404 (GitHub Pages la sirve sola) y mapa del sitio (robots.txt solo cuenta en la raíz del dominio)"""
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Página no encontrada", "")])}<h1>Esta página no existe</h1></div><p>Puede que el enlace esté mal escrito o que la herramienta haya cambiado de dirección. Búscala desde aquí.</p></div>
+ <form class="ls" action="{B}/todas/" method="get" role="search"><div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="eq">Busca una herramienta</label><input id="eq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div></div></form>
+ <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
+</main>'''
+    write("404.html", head("Página no encontrada · Didakora", "Esta página no existe en Didakora.", "/404.html") + body + foot())
+    urls = ["/", "/todas/", "/destacadas/", "/categorias/", "/alternativas/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
+    NL = "\n"
+    write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
+          + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
+
 def datos():
     m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"]] for t in TOOLS}
     cats = {c[0]: [c[1], IC[c[3]]] for c in CATS}
@@ -406,6 +423,6 @@ def datos():
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); categorias(); alternativas(); sobremi()
+    datos(); portada(); todas(); destacadas(); categorias(); alternativas(); sobremi(); extras()
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")
