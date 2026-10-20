@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "29"  # versión de didakora.css / didakora.js
+V = "30"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -176,6 +176,10 @@ def foot(scripts=""):
  <div><h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p></div>
  <a class="btn solid" href="{B}/sobre-mi/#contacto">Proponer una herramienta {ICO["arrow"]}</a>
 </aside>
+<footer class="ft">
+ <p>Jorge Delgado Aguilera</p>
+ <a class="ft-cc" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
+</footer>
 </div>
 <script>window.DK_BASE="{B}"</script>
 <script src="{B}/didakora.js?v={V}"></script>{scripts}
