@@ -10,7 +10,12 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   para un dominio propio: `DK_BASE= python _build/build.py`.
 - `tools.js` → los datos de las herramientas (`SECTIONS`, `TOOLS`, `CHANGES`). `logos/` → logos de cada herramienta.
 - `_build/didakora.css` y `_build/didakora.js` → se copian a la raíz al generar. Si cambian, subir `V` en `build.py`.
-- `didakora-datos.js` → generado (categoría, etapas y logo de cada herramienta para el listado).
+- `didakora-datos.js` → generado (categoría, etapas, logo y apartado de cada herramienta para el listado).
+- Buscador: `dkMotor` en `didakora.js` puntúa por nombre, descripción, categoría, apartado, materia, etapa e ideas;
+  entiende plurales, sinónimos (`SYN`), frases (`PHRASES`), principio de palabra y una errata; ordena por relevancia y, si
+  nada tiene todas las palabras, enseña las parecidas. **Tras tocar datos o buscador: `node _build/probar_buscador.js`**
+  (busca cada herramienta por nombre, palabras, principio, nombre anterior y con errata, más búsquedas habituales de clase).
+- Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).

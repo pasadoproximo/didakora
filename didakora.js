@@ -27,12 +27,12 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
 });
 })();
 
-// ---------- listado completo
-function cajaListado(){
- const $=id=>document.getElementById(id);
- const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
- // búsqueda: palabras completas, plurales, términos relacionados y frases (la misma que tenía la caja)
+// ---------- motor de búsqueda (lo usa el listado; se puede probar fuera del navegador)
+// Puntúa cada herramienta según dónde aparece cada palabra: en el nombre (lo que más cuenta), en la descripción,
+// la categoría, el apartado o la materia, y en las ideas de uso. Entiende plurales, términos relacionados, el
+// principio de una palabra («pres» → presentaciones) y una errata por palabra («kahot» → Kahoot!).
+function dkMotor(TOOLS,SECTIONS,CAJA){
+ const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const stem=w=>w.length>4&&w.endsWith('es')?w.slice(0,-2):w.length>3&&w.endsWith('s')?w.slice(0,-1):w;
  const STOP=new Set('de la el los las un una unos unas y o a en con para por del al que se su sus mi me lo como'.split(' '));
  const SYN={evaluacion:['evaluar','rubrica','calificar','corregir'],evaluar:['evaluacion','rubrica','calificar','corregir'],rubrica:['evaluacion','evaluar'],
@@ -42,8 +42,11 @@ function cajaListado(){
   equipo:['colaborar','colaborativo','cooperativo'],colaborar:['equipo','colaborativo','cooperativo'],programar:['informatica'],
   gratis:['gratuito','gratuita','sin coste','libre'],gratuito:['gratis','gratuita','sin coste','libre'],
   gamificacion:['juego','jugar','concurso','gamificado'],juego:['jugar','concurso','gamificado'],
-  dislexia:['lectura en voz alta','dificultades de lectura','dificultades de escritura','accesibilidad'],accesibilidad:['lectura en voz alta','dictado','dificultades'],familia:['familias']};
- const PHRASES=[['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica']];
+  dislexia:['lectura en voz alta','dificultades de lectura','dificultades de escritura','accesibilidad'],accesibilidad:['lectura en voz alta','dictado','dificultades'],familia:['familias'],mural:['muro','tablon'],muro:['mural','tablon'],
+  gamificar:['juego','concurso','puntos','jugar','gamificado','gamificacion'],interactivo:['preguntas','interactiva','responde'],
+  diversidad:['dislexia','lectura en voz alta','dictado','accesibilidad','dificultades','inclusion'],inclusion:['diversidad','accesibilidad','dislexia','dificultades'],
+  planificar:['programacion','planificacion','preparar'],traducir:['traduccion','idiomas']};
+ const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica']];
  const SYNS=Object.fromEntries(Object.entries(SYN).map(([k,v])=>[stem(k),v]));
  const words=s=>norm(s).split(/[^a-z0-9ñ]+/).filter(Boolean);
  const CATKW={'aula:ia':'apoyo al aprendizaje','aula:cienc':'','aula:arte':''};
@@ -55,16 +58,44 @@ function cajaListado(){
  const IDX={};
  const flat=s=>' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';
  const joinPh=s=>{let r=' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return r.trim();};
- TOOLS.forEach(t=>{const k=t.s+':'+t.cat;
-  const core=norm([t.n,t.a,t.p,t.d,SECTIONS[t.s].n,k in CATKW?CATKW[k]:SECTIONS[t.s].cats[t.cat],CAJA.cats[CAJA.t[t.id][0]][0],SUBJ[t.id],t.c,t.nota,t.coste,t.cta,t.s==='aula'&&/^no necesita/i.test(t.cta)?'nocuenta':''].filter(Boolean).join(' '));
-  const ideas=joinPh(norm((t.i||[]).join(' '))),coreJ=joinPh(core);
-  IDX[t.id]={ct:flat(coreJ),it:flat(ideas),nw:words(t.n),cw:new Set(words(coreJ).map(stem)),iw:new Set(words(ideas).map(stem))};});
+ const ETN={I:'infantil',P:'primaria',S:'secundaria bachillerato eso'};
+ TOOLS.forEach(t=>{const k=t.s+':'+t.cat,c=CAJA.t[t.id];
+  const core=norm([t.d,t.a,t.p,SECTIONS[t.s].n,k in CATKW?CATKW[k]:SECTIONS[t.s].cats[t.cat],CAJA.cats[c[0]][0],c[3],SUBJ[t.id],c[1].map(e=>ETN[e]).join(' '),t.c,t.nota,t.coste,t.cta,t.s==='aula'&&/^no necesita/i.test(t.cta)?'nocuenta':''].filter(Boolean).join(' '));
+  const ideas=joinPh(norm((t.i||[]).join(' '))),coreJ=joinPh(core),name=joinPh(norm(t.n));
+  IDX[t.id]={nc:norm(t.n.replace(/\s*\(.*\)/,'')).replace(/[^a-z0-9ñ]/g,''),nt:flat(name),ct:flat(coreJ),it:flat(ideas),nw:words(name),cwl:words(coreJ),cw:new Set(words(coreJ).map(stem)),iw:new Set(words(ideas).map(stem))};});
  const forms=w=>[w,...(SYNS[stem(w)]||[])];
- const hit=(id,w,last)=>{const X=IDX[id];
-  if(last&&w.length>=2&&X.nw.some(x=>x.startsWith(w)))return true;
-  return forms(w).some(f=>{if(f.includes(' '))return X.ct.includes(' '+f+' ')||X.it.includes(' '+f+' ');const sf=stem(f);return X.cw.has(sf)||(sf.length>3&&X.iw.has(sf));});};
+ // ¿se parecen con una sola letra de diferencia (sobra, falta o cambia)?
+ const near=(a,b)=>{if(Math.abs(a.length-b.length)>1||a===b)return a===b;let i=0,j=0,e=0;
+  while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;continue;}if(++e>1)return false;
+   if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}}
+  return e+(a.length-i)+(b.length-j)<=1;};
+ const wordScore=(X,w)=>{let best=0;const sw=stem(w);
+  if(X.nw.some(x=>x===w||stem(x)===sw))best=10;
+  else if(X.nw.some(x=>x.startsWith(w))||(w.length>=3&&X.nc.startsWith(w)))best=8;
+  if(best<10&&w.length>=4&&w===X.nc)best=10;
+  if(best<5){const fs=forms(w);for(let k=0;k<fs.length;k++){const f=fs[k],ok=f.includes(' ')?(X.nt.includes(' '+f+' ')||X.ct.includes(' '+f+' ')):X.cw.has(stem(f));
+   if(ok){best=Math.max(best,k===0?5:Math.max(3,4-k*.15));break;}}}
+  if(best<4.5&&w.length>=4&&(X.nw.some(x=>x.length>=4&&near(x,w))||near(X.nc,w)))best=4.5;
+  if(best<3&&w.length>=3&&X.cwl.some(x=>x.startsWith(w)))best=3;
+  if(best<2&&forms(w).some(f=>f.includes(' ')?X.it.includes(' '+f+' '):(stem(f).length>3&&X.iw.has(stem(f)))))best=2;
+  if(best<1&&w.length>=5&&X.cwl.some(x=>x.length>=5&&near(x,w)))best=1;
+  return best;};
  const query=raw=>{let r=' '+norm(raw).replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return words(r).filter(w=>!STOP.has(w));};
- const match=(t,qs)=>!qs.length||qs.every((w,i)=>hit(t.id,w,i===qs.length-1));
+ // devuelve {exactas, parecidas}: exactas = tienen todas las palabras; parecidas = alguna (solo si no hay exactas)
+ const buscar=(raw,pool)=>{const qs=query(raw);pool=pool||TOOLS;if(!qs.length)return {qs,exactas:pool,parecidas:[]};
+  const sc=pool.map(t=>{const X=IDX[t.id],v=qs.map(w=>wordScore(X,w));return {t,hits:v.filter(Boolean).length,sum:v.reduce((a,b)=>a+b,0)};});
+  const by=(a,b)=>b.sum-a.sum;
+  const exactas=sc.filter(x=>x.hits===qs.length).sort(by).map(x=>x.t);
+  const parecidas=exactas.length?[]:sc.filter(x=>x.hits>0).sort((a,b)=>b.hits-a.hits||by(a,b)).map(x=>x.t);
+  return {qs,exactas,parecidas};};
+ return {buscar,query};
+}
+
+// ---------- listado completo
+function cajaListado(){
+ const $=id=>document.getElementById(id);
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const M=dkMotor(TOOLS,SECTIONS,CAJA);
 
  // tarjeta: la misma que generan las páginas estáticas
  const B=window.DK_BASE||'';
@@ -82,12 +113,13 @@ function cajaListado(){
  const setNv=v=>nEl.dkSet(v);setNv(st.nivel);
  const NV={I:'Infantil',P:'Primaria',S:'Secundaria y Bachillerato'};
  function render(){
-  const qs=query(st.q);
-  const list=TOOLS.filter(t=>match(t,qs)&&(!st.nivel||CAJA.t[t.id][1].includes(st.nivel))&&(!st.cat||CAJA.t[t.id][0]===st.cat)&&(!st.nuevas||t.st==='nueva'));
-  $('lgrid').innerHTML=list.map(card).join('')||`<div class="empty"><p>No hay resultados${st.q?` para «${esc(st.q)}»`:''}.</p><p>Prueba con otra palabra o con lo que quieres hacer, por ejemplo «evaluar» o «vídeo».</p><button type="button" class="btn solid" data-reset>Ver todas</button></div>`;
+  const pool=TOOLS.filter(t=>(!st.nivel||CAJA.t[t.id][1].includes(st.nivel))&&(!st.cat||CAJA.t[t.id][0]===st.cat)&&(!st.nuevas||t.st==='nueva'));
+  const r=M.buscar(st.q,pool),list=r.exactas.length?r.exactas:r.parecidas,aprox=!r.exactas.length&&r.parecidas.length>0;
+  const note=aprox?`<p class="aprox">Ninguna herramienta tiene todas las palabras de «${esc(st.q)}». Estas tienen alguna:</p>`:'';
+  $('lgrid').innerHTML=list.length?note+list.map(card).join(''):`<div class="empty"><p>No hay resultados${st.q?` para «${esc(st.q)}»`:''}.</p><p>Prueba con otra palabra o con lo que quieres hacer, por ejemplo «evaluar» o «vídeo»${st.nivel||st.cat?', o quita los filtros':''}.</p><button type="button" class="btn solid" data-reset>Ver todas</button></div>`;
   document.querySelectorAll('#lcats button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.cat===st.cat));
   const extra=[st.nuevas?'nuevas en 2026':'',st.nivel?NV[st.nivel]:''].filter(Boolean).join(' · ');
-  $('lcount').textContent=`${list.length} ${list.length===1?'herramienta':'herramientas'}${extra?' · '+extra:''}`;
+  $('lcount').textContent=`${list.length} ${list.length===1?'herramienta':'herramientas'}${aprox?' parecidas':''}${extra?' · '+extra:''}`;
   const u=new URLSearchParams();if(st.q)u.set('q',st.q);if(st.nivel)u.set('nivel',st.nivel);if(st.cat)u.set('cat',st.cat);if(st.nuevas)u.set('nuevas','1');
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
  }

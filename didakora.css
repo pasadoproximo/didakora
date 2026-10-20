@@ -104,23 +104,18 @@ a.tag:hover{background:var(--coral3)}
 .sh p,.pg-h p{color:var(--mut);margin-top:12px;max-width:64ch}
 
 /* categorías: tarjetas compactas */
-.ccg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.cc{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;text-decoration:none;transition:border-color .2s}
+.ccg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+/* tarjeta de categoría compacta: icono, nombre y texto corto en una franja, y la flecha a la derecha */
+.cc{position:relative;display:grid;grid-template-columns:42px minmax(0,1fr) 36px;grid-template-rows:auto auto;column-gap:14px;row-gap:2px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px 14px 14px 16px;text-decoration:none;transition:border-color .2s}
 .cc:hover{border-color:var(--navy)}
-.cc-i{width:40px;height:40px;border-radius:12px;background:var(--sky);display:grid;place-items:center}
-.cc-i{transition:background .25s}
-.cc:hover .cc-i,.cc:focus-visible .cc-i{background:var(--coral)}
+.cc-i{grid-row:1/3;width:42px;height:42px;border-radius:12px;background:var(--coral);display:grid;place-items:center;transition:background .25s}
+.cc:hover .cc-i,.cc:focus-visible .cc-i{background:var(--sky)}
 .cc-i svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cc b{font:800 18px/1.15 var(--f-disp);letter-spacing:-.01em;margin-top:4px}
-.cc-d{font-size:14.5px;line-height:1.4;color:var(--mut)}
-.cc-f{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 13px var(--f-body)}
-.cc-f>span:first-child{color:var(--navy3);letter-spacing:.04em;text-transform:uppercase;font-size:12px}
-@media (max-width:1100px){.ccg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cc b{grid-column:2;align-self:end;font:800 17px/1.15 var(--f-disp);letter-spacing:-.01em}
+.cc-d{grid-column:2;align-self:start;font-size:14.5px;line-height:1.35;color:var(--mut)}
 .ccg.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:1000px){.ccg.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:460px){.ccg.c4{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:760px){.ccg{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:460px){.ccg{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1100px){.ccg,.ccg.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.ccg,.ccg.c4{grid-template-columns:minmax(0,1fr)}}
 
 /* tarjetas de herramienta */
 .tcg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -145,7 +140,7 @@ a.tag:hover{background:var(--coral3)}
 .td .tc-f{flex-wrap:nowrap}
 /* flechas de las tarjetas: las mismas que en la portada del portfolio (giran al pasar por la tarjeta) */
 .cc-x,.td-x{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--navy);transition:transform .3s,background .3s,color .3s}
-.cc-x{margin-top:auto;align-self:flex-end}
+.cc-x{grid-column:3;grid-row:1/3;width:36px;height:36px}
 .td-x{position:relative;z-index:1}
 .cc-x svg,.td-x svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .cc:hover .cc-x,.td:hover .td-x,.td-x:focus-visible{transform:rotate(45deg);background:var(--navy);color:#fff}
@@ -188,13 +183,6 @@ a.tag:hover{background:var(--coral3)}
 .back:hover,.back:focus-visible{background:var(--navy);color:#fff}
 .back svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:560px){.pnav{flex-wrap:nowrap;align-items:flex-start}.pnav .back{margin-top:-8px}}
-.crumbs ol{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px;margin:0;font-size:15px;color:var(--mut)}
-.crumbs li{display:inline-flex;align-items:center;gap:6px}
-.crumbs li+li::before{content:"›";color:var(--pale)}
-.crumbs a{text-decoration:none;display:inline-flex;align-items:center;gap:5px}
-.crumbs a:hover{color:var(--navy);text-decoration:underline}
-.crumbs svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linejoin:round}
-.crumbs [aria-current]{color:var(--navy);font-weight:700}
 .pg-h{margin:28px 0 30px}
 .badge{display:inline-flex;align-items:center;gap:6px;font:700 13px var(--f-body);color:var(--navy3);background:var(--ice);border-radius:999px;padding:5px 12px}
 .badge svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -277,14 +265,10 @@ a.tag:hover{background:var(--coral3)}
 /* pie: logotipo en blanco, autor y fecha de revisión */
 .ft{margin-top:110px;background:var(--navy);color:#fff;border-radius:28px 28px 0 0;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px}
 .ft-l{display:block}.ft .lockup{height:26px}
-.ft-n{display:flex;gap:6px 22px;flex-wrap:wrap;margin-left:auto}
-.ft-n a{color:#fff;font-weight:700;text-decoration:none}
-.ft-n a:hover{text-decoration:underline;text-underline-offset:3px}
-.ft-n+p{flex-basis:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
-.ft-n+p{justify-content:space-between;font-weight:400}
-.ft p a{color:#fff;font-weight:700;text-underline-offset:3px}
+.ft-cc{color:#fff;font-weight:700;font-size:15px;text-decoration:none;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 14px}
+.ft-cc:hover{background:rgba(255,255,255,.1)}
 .ft p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-weight:700;font-size:16px}
 .ft span{color:#DCE3F7;font-weight:400;font-size:15.5px}
 @media (max-width:900px){.ft{padding:28px 22px}}
-@media (max-width:560px){.ft-n{margin-left:0;flex-basis:100%}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.aprox{grid-column:1/-1;color:var(--mut);font-weight:700;margin-bottom:-2px}

@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "14"  # versión de didakora.css / didakora.js
+V = "17"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -170,8 +170,7 @@ def foot(scripts=""):
     return f'''
 <footer class="ft">
  <a class="ft-l" href="{B}/" aria-label="Didakora · inicio">{LOGO_W}</a>
- <nav class="ft-n" aria-label="Pie"><a href="{B}/sobre-mi/#contacto">Contacta conmigo</a></nav>
- <p><span>Textos con licencia <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">CC BY-NC-SA 4.0</a> · Los logos de cada herramienta son de sus marcas</span><span>Revisada en octubre de 2026</span></p>
+ <a class="ft-cc" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
 </footer>
 </div>
 <script>window.DK_BASE="{B}"</script>
@@ -183,13 +182,10 @@ def write(rel, content):
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8", newline="\n").write(content)
 def crumbs(items):
-    li = []
-    for i, (txt, href) in enumerate(items):
-        first = ICO["home"] if i == 0 else ""
-        li.append(f'<li><a href="{href}">{first}{esc(txt)}</a></li>' if href else f'<li aria-current="page">{esc(txt)}</li>')
+    """arriba de cada página interior solo va el botón de volver (sin la ruta)"""
     up = [h for _, h in items if h][-1]  # página de la que cuelga: destino del botón si no hay historial
     back = f'<a class="back" href="{up}" data-back><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="sr">Atrás</span></a>'
-    return f'<div class="pnav">{back}<nav class="crumbs" aria-label="Ruta"><ol>{"".join(li)}</ol></nav></div>'
+    return f'<div class="pnav">{back}</div>'
 def secth(lab, title, desc="", hid=""):
     return f'<div class="sh">{f'<span class="lab">{esc(lab)}</span>' if lab else ""}<h2{f" id={chr(34)}{hid}{chr(34)}" if hid else ""}>{esc(title)}</h2>{f"<p>{esc(desc)}</p>" if desc else ""}</div>'
 def catcard(c):
@@ -355,8 +351,12 @@ def ficha(t):
     ideas = t.get("i") or []
     sec_ideas = (f'<section class="fb"><h2>{"Ideas para clase" if aula else "Ideas de uso"}</h2><ul class="ok">{"".join(f"<li>{ICO[chr(99)+chr(104)+chr(101)+chr(99)+chr(107)]}{esc(x)}</li>" for x in ideas)}</ul></section>' if ideas else "")
     sec_warn = (f'<section class="fb warnb"><h2>Antes de usarla</h2>{"".join(f"<p>{ICO[chr(119)+chr(97)+chr(114)+chr(110)]}<span>{esc(w)}</span></p>" for w in warn)}</section>' if warn else "")
-    same = [o for o in TOOLS if o["sub"] == t["sub"] and o["cs"] == t["cs"] and o["id"] != t["id"]]
-    alts = (same + [o for o in TOOLS if o["cs"] == t["cs"] and o["id"] != t["id"] and o not in same])[:3]
+    # alternativas en rueda: las siguientes del mismo apartado (y luego de la categoría), así toda herramienta
+    # aparece como alternativa en alguna ficha y no salen siempre las mismas tres
+    def ring(group):
+        i = group.index(t); return [group[(i + k) % len(group)] for k in range(1, len(group))]
+    same = ring([o for o in TOOLS if o["sub"] == t["sub"] and o["cs"] == t["cs"]])
+    alts = (same + [o for o in ring([o for o in TOOLS if o["cs"] == t["cs"]]) if o not in same])[:3]
     que = ("Qué hace el alumnado" if aula else "Para qué te sirve" if not rec else "Qué encontrarás")
     body = f'''
 <main class="pg">
@@ -400,9 +400,9 @@ def alternativas():
 
 # ---------------------------------------------------------------- datos para el listado
 def datos():
-    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0] for t in TOOLS}
+    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"]] for t in TOOLS}
     cats = {c[0]: [c[1], IC[c[3]]] for c in CATS}
-    write("didakora-datos.js", "// Generado por _build/build.py: categoría, etapas y logo de cada herramienta\nconst CAJA=" + json.dumps({"cats": cats, "t": m}, ensure_ascii=False) + ";\n")
+    write("didakora-datos.js", "// Generado por _build/build.py: categoría, etapas, logo y apartado de cada herramienta\nconst CAJA=" + json.dumps({"cats": cats, "t": m}, ensure_ascii=False) + ";\n")
 
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
