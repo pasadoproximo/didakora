@@ -34,12 +34,13 @@ svg{flex:none}
 @keyframes dk-sol-i{0%,100%{transform:none}50%{transform:rotate(-28deg)}}
 @keyframes dk-sol-d{0%,100%{transform:none}50%{transform:rotate(28deg)}}
 .bar nav{display:flex;align-items:center;gap:2px}
-.bar nav a{text-decoration:none;font:600 16.5px var(--f-body);color:var(--navy);padding:9px 15px;border-radius:999px}
+.bar nav a{text-decoration:none;font:600 16.5px var(--f-body);color:var(--navy);padding:9px 15px;border-radius:999px;white-space:nowrap}
 .bar nav a:hover{background:var(--bg)}
 .bar nav a[aria-current="page"]{background:var(--bg);font-weight:700}
-@media (max-width:640px){.bar nav a:nth-child(3),.bar nav a:nth-child(4){display:none}.bar nav a{padding:9px 11px;font-size:15.5px}}
-@media (max-width:440px){.bar{padding:6px 10px 6px 22px}.lockup{height:18px}}
-@media (max-width:360px){.bar nav a:nth-child(2){display:none}}
+/* móvil: Todas, Categorías y Sobre mí (Destacadas se queda en la portada); por debajo de 400 px, Todas y Sobre mí */
+@media (max-width:640px){.bar nav a:nth-child(3){display:none}.bar nav a{padding:8px 9px;font-size:15px}}
+@media (max-width:440px){.bar{padding:6px 8px 6px 18px}.lockup{height:16px}.bar nav{gap:0}.bar nav a{padding:8px 7px;font-size:14.5px}}
+@media (max-width:400px){.bar nav a:nth-child(2){display:none}}
 
 /* botones y etiquetas */
 .btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px var(--f-body);padding:11px 20px;min-height:44px;border-radius:999px;text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;background:none;color:var(--navy)}
