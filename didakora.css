@@ -208,7 +208,8 @@ a.tag:hover{background:var(--coral3)}
 .fh h1 small{display:block;font:600 15px var(--f-body);color:var(--mut);letter-spacing:0;margin-top:4px}
 /* a la izquierda «Qué es» y los usos; a la derecha, más estrecha, la ficha rápida a toda la altura */
 .fg{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-areas:"q a" "u a";gap:18px;margin-top:18px;align-items:stretch}
-.fq{grid-area:q}.fa{grid-area:a}.fu{grid-area:u}
+.fq{grid-area:q}.fa{grid-area:a}.fu{grid-area:u;display:flex;align-items:center}
+.fu ul{flex:1}
 .fb{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
 .fb h2{font:800 21px/1.15 var(--f-disp);letter-spacing:-.01em;margin-bottom:12px}
 .fb p{color:var(--body);font-size:17.5px;line-height:1.6}
@@ -221,7 +222,7 @@ a.tag:hover{background:var(--coral3)}
 .fa dd small{display:block;color:var(--mut);font-size:14px;margin-top:3px}
 .fu ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
 .fu li{display:flex;align-items:center;gap:10px;font:700 16px/1.3 var(--f-body);color:var(--navy)}
-.fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--coral2);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--sky);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
 @media (max-width:900px){.fh{grid-template-columns:auto auto minmax(0,1fr)}.fh .btn{grid-column:1/-1;justify-content:center}.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
 @media (max-width:520px){.fh{padding:18px;gap:12px}.lg.xl{width:52px;height:52px}.lg.xl img{width:32px;height:32px}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
