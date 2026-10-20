@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "39"  # versión de didakora.css / didakora.js
+V = "40"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -369,10 +369,10 @@ def ficha(t):
   <a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Ir a {esc(nm)} {ICO["ext"]}</a>
  </section>
  <div class="fg">
-  <section class="fb"><h2>Qué es {esc(nm)}</h2><p>{esc(f["q"])}</p></section>
+  <section class="fb fq"><h2>Qué es {esc(nm)}</h2><p>{esc(f["q"])}</p></section>
   <aside class="fb fa"><h2>Ficha rápida</h2><dl>{dl}</dl></aside>
+  <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  </div>
- <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn line" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
