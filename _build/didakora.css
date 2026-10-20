@@ -52,7 +52,8 @@ svg{flex:none}
 .tag svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 a.tag:hover{background:var(--coral3)}
 .tag.et{background:#fff;border:1px solid var(--line2);color:var(--navy)}
-.more{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.more{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;justify-content:center}
+.me .more{justify-content:flex-start}  /* en Sobre mí, los botones siguen al texto */
 
 /* cabecera de la portada: bloque azul cielo con texto navy, círculo coral y aro blanco */
 .hero{margin-top:40px;position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--navy);border-radius:28px;padding:68px 44px 68px;display:grid;grid-template-columns:minmax(0,1fr)}
@@ -176,7 +177,8 @@ a.tag:hover{background:var(--coral3)}
 /* páginas interiores */
 .pg{padding-top:8px}
 /* título de las páginas interiores con el botón de volver al lado */
-.pg-t{display:flex;align-items:center;gap:16px}
+/* el botón de volver va encima del título */
+.pg-t{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .pg-t h1{margin:0!important;min-width:0}
 .back{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ice);color:var(--navy);display:grid;place-items:center;text-decoration:none;transition:background .2s,color .2s}
 .back:hover,.back:focus-visible{background:var(--navy);color:#fff}
@@ -190,11 +192,11 @@ a.tag:hover{background:var(--coral3)}
 .pg-h::after{width:140px;height:140px;right:230px;bottom:-90px;border:18px solid rgba(255,255,255,.55)}
 @media (prefers-reduced-motion:no-preference){.pg-h::before{animation:dk-float 14s ease-in-out infinite}.pg-h::after{animation:dk-drift 18s ease-in-out infinite}}
 .pg-h h1{margin-top:0}
-.pg-h p{color:var(--navy3)!important;padding-left:60px}
+.pg-h p{color:var(--navy3)!important}
 .pg-h .back{background:rgba(255,255,255,.6)}
 .pg-h .back:hover,.pg-h .back:focus-visible{background:var(--navy)}
 .pg-h :focus-visible{outline-color:var(--navy)}
-@media (max-width:760px){.pg-h{padding:28px 22px 30px}.pg-h::before{width:140px;height:140px;right:-60px;top:-80px}.pg-h::after{display:none}.pg-h p{padding-left:0}}
+@media (max-width:760px){.pg-h{padding:28px 22px 30px}.pg-h::before{width:140px;height:140px;right:-60px;top:-80px}.pg-h::after{display:none}}
 .ls{margin:0 0 16px}
 .ls .hs-q{height:52px}
 @media (max-width:640px){.ls .hs-r{flex-wrap:wrap}.ls .hs-q{flex-basis:100%}.ls .dd{flex:1}.ls .dd-b{width:100%}.dd.l .dd-l{left:0;right:auto}}
@@ -213,20 +215,21 @@ a.tag:hover{background:var(--coral3)}
 .sub{margin-top:52px}
 .sub h2{font:800 clamp(22px,2.4vw,28px)/1.1 var(--f-disp);letter-spacing:-.02em;margin-bottom:18px;padding-bottom:12px;border-bottom:1.5px solid var(--line2)}
 .others h2,.alt h2{font:800 clamp(24px,2.6vw,32px)/1.1 var(--f-disp);letter-spacing:-.02em;margin-bottom:18px}
-.oc{display:flex;flex-wrap:wrap;gap:8px}
+.oc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.others h2{text-align:center}
 .oc a{display:inline-flex;align-items:center;gap:8px;font:700 15px var(--f-body);color:var(--navy);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:9px 16px;text-decoration:none}
 .oc a:hover{border-color:var(--navy)}
 .oc svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* ficha de herramienta: cabecera (volver, logo, nombre y botón), «Qué es» y «Ficha rápida» del mismo tamaño, y los usos debajo */
 /* cabecera de la ficha con el estilo del hero: azul cielo, círculo coral y aro blanco que flotan */
-.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 36px}
+.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 18px;align-items:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 36px}
 .fh::before,.fh::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
 .fh::before{width:190px;height:190px;right:180px;top:-120px;background:var(--coral)}
 .fh::after{width:120px;height:120px;right:330px;bottom:-80px;border:16px solid rgba(255,255,255,.55)}
 @media (prefers-reduced-motion:no-preference){.fh::before{animation:dk-float 14s ease-in-out infinite}.fh::after{animation:dk-drift 18s ease-in-out infinite}}
 .fh .lg{background:#fff}
-.fh .back{background:rgba(255,255,255,.6)}
+.fh .back{background:rgba(255,255,255,.6);grid-column:1/-1;justify-self:start}
 .fh .back:hover,.fh .back:focus-visible{background:var(--navy)}
 .fh :focus-visible{outline-color:var(--navy)}
 .fh h1 small{color:var(--navy3)!important}
@@ -253,7 +256,7 @@ a.tag:hover{background:var(--coral3)}
 .fu li{display:flex;align-items:center;gap:10px;font:700 16px/1.3 var(--f-body);color:var(--navy)}
 .fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--sky);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
-@media (max-width:900px){.fh{grid-template-columns:auto auto minmax(0,1fr)}.fh .btn{grid-column:1/-1;justify-content:center}.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
+@media (max-width:900px){.fh{grid-template-columns:auto minmax(0,1fr)}.fh .btn{grid-column:1/-1;justify-content:center}.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
 @media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:52px;height:52px}.lg.xl img{width:32px;height:32px}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
 
 /* qué ha cambiado */
