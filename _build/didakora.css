@@ -108,6 +108,8 @@ a.tag:hover{background:var(--coral3)}
 .cc{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;text-decoration:none;transition:border-color .2s}
 .cc:hover{border-color:var(--navy)}
 .cc-i{width:40px;height:40px;border-radius:12px;background:var(--sky);display:grid;place-items:center}
+.cc-i{transition:background .25s}
+.cc:hover .cc-i,.cc:focus-visible .cc-i{background:var(--coral)}
 .cc-i svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cc b{font:800 18px/1.15 var(--f-disp);letter-spacing:-.01em;margin-top:4px}
 .cc-d{font-size:14.5px;line-height:1.4;color:var(--mut)}
