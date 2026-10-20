@@ -46,7 +46,7 @@ a.tag:hover{background:var(--coral3)}
 .more{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 
 /* cabecera de la portada: bloque azul cielo con texto navy, círculo coral y aro blanco */
-.hero{margin-top:40px;position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--navy);border-radius:28px;padding:64px 44px 84px;display:grid;grid-template-columns:minmax(0,1fr)}
+.hero{margin-top:40px;position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--navy);border-radius:28px;padding:68px 44px 68px;display:grid;grid-template-columns:minmax(0,1fr)}
 .hero::before,.hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
 .hero::before{width:300px;height:300px;right:-70px;top:-90px;background:var(--coral)}
 .hero::after{width:170px;height:170px;right:210px;bottom:-80px;border:22px solid rgba(255,255,255,.55)}
@@ -67,7 +67,7 @@ a.tag:hover{background:var(--coral3)}
 .hs button{display:inline-flex;align-items:center;gap:8px;height:56px;border:0;border-radius:999px;background:var(--navy);color:#fff;font:800 16.5px var(--f-body);padding:0 24px;cursor:pointer}
 .hs button:hover{background:var(--navy3)}
 .hs button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:860px){.hero{padding:40px 22px 56px}.hero::before{width:170px;height:170px;right:-60px;top:-70px}.hero::after{display:none}.hero .lab{padding-right:90px}
+@media (max-width:860px){.hero{padding:40px 22px 40px}.hero::before{width:170px;height:170px;right:-60px;top:-70px}.hero::after{display:none}.hero .lab{padding-right:90px}
  .hs{flex-wrap:wrap}.hs-q{flex-basis:100%}.hs-n{flex:1}.hs-n select{width:100%}}
 
 /* secciones */
