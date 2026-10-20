@@ -4,7 +4,6 @@
 #   /destacadas/           las diez más versátiles
 #   /categorias/           índice de categorías y /categorias/<slug>/ con sus apartados
 #   /<id>/                 una ficha por herramienta
-#   /alternativas/         qué ha cerrado o cambiado y qué usar ahora
 # Todas las rutas cuelgan de BASE ("/didakora" en GitHub Pages; "" si algún día va en dominio propio:
 #   DK_BASE= python _build/build.py). Datos: tools.js. Logos de la marca: _build/marca.py → marca/.
 # Uso: python _build/build.py
@@ -14,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "52"  # versión de didakora.css / didakora.js
+V = "53"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -384,22 +383,6 @@ def ficha(t):
 </main>'''
     write(f'{t["id"]}/index.html', head(f"{nm} · Didakora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
-# ---------------------------------------------------------------- alternativas (qué ha cambiado)
-def alternativas():
-    rowsh = []
-    for ch in CHANGES[:-1]:
-        ren = re.search(r"cambi[oó] su nombre", ch["what"], re.I)
-        rowsh.append(f'<div class="chr"><div><span class="tg {"nom" if ren else "cie"}">{"Cambio de nombre" if ren else "Ha cerrado"}</span><h2>{esc(ch["n"])}</h2><p>{esc(ch["what"])}</p></div>'
-                     f'<span class="ar" aria-hidden="true">{ICO["arrow"]}</span><div class="now"><span class="lab">{"Dónde está ahora" if ren else "Qué usar ahora"}</span><p>{esc(ch["alt"])}</p></div></div>')
-    last = CHANGES[-1]
-    body = f'''
-<main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Qué ha cambiado", "")])}<h1>Qué ha cambiado y qué usar ahora</h1></div><p>Herramientas del repositorio de 2024 que han cerrado o cambiado de nombre, con la alternativa que se puede usar hoy.</p></div>
- <div class="chl">{"".join(rowsh)}</div>
- <section class="sec chn"><span class="lab">Novedad</span><h2>{esc(last["n"])}</h2><p>{esc(last["what"])}</p><p><b>Qué hacer:</b> {esc(last["alt"])}</p></section>
-</main>'''
-    write("alternativas/index.html", head("Qué ha cambiado · Didakora", "Herramientas que han cerrado o cambiado de nombre desde 2024 y qué usar ahora.", "/alternativas/", "alternativas") + body + foot())
-
 # ---------------------------------------------------------------- datos para el listado
 def extras():
     """página de error 404 (GitHub Pages la sirve sola) y mapa del sitio (robots.txt solo cuenta en la raíz del dominio)"""
@@ -410,7 +393,7 @@ def extras():
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
     write("404.html", head("Página no encontrada · Didakora", "Esta página no existe en Didakora.", "/404.html") + body + foot())
-    urls = ["/", "/todas/", "/destacadas/", "/categorias/", "/alternativas/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
+    urls = ["/", "/todas/", "/destacadas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
           + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
@@ -425,6 +408,6 @@ def datos():
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); categorias(); alternativas(); sobremi(); extras()
+    datos(); portada(); todas(); destacadas(); categorias(); sobremi(); extras()
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")
