@@ -19,7 +19,7 @@ svg{flex:none}
 
 /* barra superior: píldora pegada arriba, como en el portfolio, con el logotipo de Didakora */
 .top{position:sticky;top:12px;z-index:30;margin-top:12px}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 8px 30px rgba(6,16,51,.06)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 32px;box-shadow:0 8px 30px rgba(6,16,51,.06)}
 .brand{display:flex;align-items:center;text-decoration:none;padding:6px 0}
 .lockup{height:20px;width:auto;display:block;overflow:visible}
 .bar nav{display:flex;align-items:center;gap:2px}
@@ -27,7 +27,8 @@ svg{flex:none}
 .bar nav a:hover{background:var(--bg)}
 .bar nav a[aria-current="page"]{background:var(--bg);font-weight:700}
 @media (max-width:640px){.bar nav a:nth-child(3),.bar nav a:nth-child(4){display:none}.bar nav a{padding:9px 11px;font-size:15.5px}}
-@media (max-width:440px){.bar{padding-left:16px}.lockup{height:18px}}
+@media (max-width:440px){.bar{padding:6px 10px 6px 22px}.lockup{height:18px}}
+@media (max-width:360px){.bar nav a:nth-child(2){display:none}}
 
 /* botones y etiquetas */
 .btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px var(--f-body);padding:11px 20px;min-height:44px;border-radius:999px;text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;background:none;color:var(--navy)}
@@ -69,23 +70,32 @@ a.tag:hover{background:var(--coral3)}
 .hs-q svg{width:20px;height:20px;stroke:var(--mut);fill:none;stroke-width:2.2;stroke-linecap:round}
 .hs-q input{flex:1;border:0;outline:0;font:500 17px var(--f-body);color:var(--txt);background:transparent;min-width:0;height:100%}
 .hs-q input::placeholder{color:#6B7591}
-/* etapa: botones en píldora; en la cabecera, translúcidos sobre el cielo */
-.et{border:0;padding:0;margin:0;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.et legend{float:left;font:700 12.5px var(--f-body);letter-spacing:.14em;text-transform:uppercase;margin-right:6px}
-.et label{cursor:pointer}
-.et span{display:inline-flex;align-items:center;min-height:38px;padding:7px 15px;border-radius:999px;font:600 15px var(--f-body);color:var(--navy);background:rgba(255,255,255,.5);transition:background .2s,color .2s}
-.et label:hover span{background:rgba(255,255,255,.85)}
-.et input:checked+span{background:var(--navy);color:#fff}
-.et input:focus-visible+span{outline:3px solid var(--navy);outline-offset:2px}
-.et.l span{background:#fff;border:1px solid var(--line2)}
-.et.l label:hover span{border-color:var(--navy);background:#fff}
-.et.l input:checked+span{background:var(--navy);border-color:var(--navy)}
-.et.l legend{color:var(--mut)}
-.hs button{display:inline-flex;align-items:center;gap:8px;height:56px;border:0;border-radius:999px;background:var(--navy);color:#fff;font:800 16.5px var(--f-body);padding:0 24px;cursor:pointer}
-.hs button:hover{background:var(--navy3)}
-.hs button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+/* etapa: desplegable a medida, redondeado como el resto (botón en píldora y lista con esquinas redondas) */
+.dd{position:relative;flex:none}
+.dd-b{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;height:56px;min-width:230px;border-radius:999px;border:1px solid transparent;background:#fff;color:var(--navy);font:600 16px var(--f-body);padding:0 18px 0 22px;cursor:pointer;text-align:left}
+.dd-b:hover{border-color:var(--navy)}
+.dd-v{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.dd-b svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.dd.open .dd-b svg{transform:rotate(180deg)}
+.dd.open .dd-b,.dd-b:focus-visible{box-shadow:0 0 0 3px var(--navy);outline:0}
+.dd-l{position:absolute;z-index:20;top:calc(100% + 8px);left:0;min-width:100%;list-style:none;margin:0;padding:6px;background:#fff;border-radius:22px;box-shadow:0 18px 40px -12px rgba(6,16,51,.28),0 0 0 1px var(--line);outline:0;animation:dd-in .16s ease-out}
+.dd-l li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 16px;border-radius:16px;font:600 16px var(--f-body);color:var(--navy);cursor:pointer;white-space:nowrap}
+.dd-l li.act{background:var(--bg)}
+.dd-l li[aria-selected="true"]{font-weight:800}
+.dd-l li[aria-selected="true"]::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);flex:none}
+@keyframes dd-in{from{opacity:0;transform:translateY(-4px)}}
+/* en la cabecera se abre hacia arriba, para no salirse del bloque azul */
+.hero .dd-l{top:auto;bottom:calc(100% + 8px);animation-name:dd-up}
+@keyframes dd-up{from{opacity:0;transform:translateY(4px)}}
+.dd.l .dd-b{height:52px;border-color:#CDD5E5}
+.dd.l .dd-b:hover{border-color:var(--navy)}
+.dd.l.open .dd-b,.dd.l .dd-b:focus-visible{box-shadow:0 0 0 3px var(--sky)}
+.dd.l .dd-l{left:auto;right:0}
+.hs button[type=submit]{display:inline-flex;align-items:center;gap:8px;height:56px;border:0;border-radius:999px;background:var(--navy);color:#fff;font:800 16.5px var(--f-body);padding:0 24px;cursor:pointer}
+.hs button[type=submit]:hover{background:var(--navy3)}
+.hs button[type=submit] svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:860px){.hero{padding:40px 22px 40px}.hero::before{width:170px;height:170px;right:-60px;top:-70px}.hero::after{display:none}.hero .lab{padding-right:90px}
- .hs-r{flex-wrap:wrap}.hs-q{flex-basis:100%}.hs button{flex:1;justify-content:center}.et legend{flex-basis:100%;margin-bottom:2px}}
+ .hs-r{flex-wrap:wrap}.hs-q{flex-basis:100%}.dd{flex:1;min-width:0}.dd-b{width:100%;min-width:0;padding:0 14px 0 18px}.hs button[type=submit]{flex:none;padding:0 20px}}
 
 /* secciones */
 .sec{margin-top:96px}
@@ -176,6 +186,7 @@ a.tag:hover{background:var(--coral3)}
 .pg-h h1{margin-top:14px}
 .ls{margin:0 0 16px}
 .ls .hs-q{height:52px}
+@media (max-width:640px){.ls .hs-r{flex-wrap:wrap}.ls .hs-q{flex-basis:100%}.ls .dd{flex:1}.ls .dd-b{width:100%}.dd.l .dd-l{left:0;right:auto}}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{font:700 14.5px var(--f-body);color:var(--navy);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer}
 .chips button:hover{border-color:var(--navy)}

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
-<link rel="stylesheet" href="/didakora/didakora.css?v=5">
+<link rel="stylesheet" href="/didakora/didakora.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -32,8 +32,8 @@
  <div class="pnav"><a class="back" href="/didakora/" data-back><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="sr">Atrás</span></a><nav class="crumbs" aria-label="Ruta"><ol><li><a href="/didakora/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6h-6v6H4z"/></svg>Inicio</a></li><li aria-current="page">Todas las herramientas</li></ol></nav></div>
  <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
-  <div class="hs-q"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg><label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-  <fieldset class="et l" id="lnv"><legend>Etapa</legend><label><input class="sr" type="radio" name="nivel" value="" checked><span>Todas</span></label><label><input class="sr" type="radio" name="nivel" value="I"><span>Infantil</span></label><label><input class="sr" type="radio" name="nivel" value="P"><span>Primaria</span></label><label><input class="sr" type="radio" name="nivel" value="S"><span>Secundaria y Bachillerato</span></label></fieldset>
+  <div class="hs-r"><div class="hs-q"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg><label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
+  <div class="dd l" id="lnv"><input type="hidden" name="nivel" value=""><button type="button" class="dd-b" aria-haspopup="listbox" aria-expanded="false" aria-controls="lnv-l" aria-labelledby="lnv-k lnv-v"><span class="sr" id="lnv-k">Etapa:</span><span class="dd-v" id="lnv-v">Todas las etapas</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd-l" id="lnv-l" role="listbox" aria-label="Etapa" tabindex="-1" hidden><li role="option" id="lnv-t" data-v="" aria-selected="true">Todas las etapas</li><li role="option" id="lnv-I" data-v="I" aria-selected="false">Infantil</li><li role="option" id="lnv-P" data-v="P" aria-selected="false">Primaria</li><li role="option" id="lnv-S" data-v="S" aria-selected="false">Secundaria y Bachillerato</li></ul></div></div>
  </form>
  <div class="chips" id="lcats" role="group" aria-label="Categoría"><button type="button" data-cat="" aria-pressed="true">Todas</button><button type="button" data-cat="participar-y-repasar" aria-pressed="false">Participar y repasar</button><button type="button" data-cat="crear-y-presentar" aria-pressed="false">Crear y presentar</button><button type="button" data-cat="colaborar-y-organizar" aria-pressed="false">Colaborar y organizar ideas</button><button type="button" data-cat="explorar-por-materias" aria-pressed="false">Explorar por materias</button><button type="button" data-cat="programacion-y-diseno-3d" aria-pressed="false">Programación y diseño 3D</button><button type="button" data-cat="inteligencia-artificial" aria-pressed="false">Inteligencia artificial</button><button type="button" data-cat="evaluacion-y-seguimiento" aria-pressed="false">Evaluación y seguimiento</button><button type="button" data-cat="gestion-del-aula" aria-pressed="false">Gestión del aula y familias</button><button type="button" data-cat="aulas-virtuales" aria-pressed="false">Aulas virtuales</button><button type="button" data-cat="bancos-de-recursos" aria-pressed="false">Bancos de recursos e imágenes</button></div>
  <p class="count" id="lcount" aria-live="polite"></p>
@@ -46,9 +46,9 @@
 </footer>
 </div>
 <script>window.DK_BASE="/didakora"</script>
-<script src="/didakora/didakora.js?v=5"></script>
-<script src="/didakora/tools.js?v=5"></script>
-<script src="/didakora/didakora-datos.js?v=5"></script>
+<script src="/didakora/didakora.js?v=9"></script>
+<script src="/didakora/tools.js?v=9"></script>
+<script src="/didakora/didakora-datos.js?v=9"></script>
 <script>cajaListado()</script>
 </body>
 </html>

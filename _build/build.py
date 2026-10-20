@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "5"  # versión de didakora.css / didakora.js
+V = "9"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -197,10 +197,15 @@ def catcard(c):
             f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a>')
 
 def etapas_html(fid, cls=""):
-    """filtro de etapa: botones en píldora (radios), como el resto de la web; name=nivel para el listado"""
-    ops = [("", "Todas"), ("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")]
-    radios = "".join(f'<label><input class="sr" type="radio" name="nivel" value="{v}"{" checked" if not v else ""}><span>{t}</span></label>' for v, t in ops)
-    return f'<fieldset class="et{cls}" id="{fid}"><legend>Etapa</legend>{radios}</fieldset>'
+    """desplegable de etapa a medida (el nativo sale cuadrado): botón en píldora y lista redondeada; lo maneja didakora.js.
+    El valor va en un campo oculto name=nivel, así el formulario de la portada lo manda a /todas/."""
+    ops = [("", "Todas las etapas"), ("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")]
+    li = "".join(f'<li role="option" id="{fid}-{v or "t"}" data-v="{v}" aria-selected="{"true" if not v else "false"}">{t}</li>' for v, t in ops)
+    chev = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+    return (f'<div class="dd{cls}" id="{fid}"><input type="hidden" name="nivel" value="">'
+            f'<button type="button" class="dd-b" aria-haspopup="listbox" aria-expanded="false" aria-controls="{fid}-l" aria-labelledby="{fid}-k {fid}-v">'
+            f'<span class="sr" id="{fid}-k">Etapa:</span><span class="dd-v" id="{fid}-v">Todas las etapas</span>{chev}</button>'
+            f'<ul class="dd-l" id="{fid}-l" role="listbox" aria-label="Etapa" tabindex="-1" hidden>{li}</ul></div>')
 
 # ---------------------------------------------------------------- portada
 def portada():
@@ -215,8 +220,8 @@ def portada():
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
    <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-   <button type="submit">Buscar {ICO["arrow"]}</button></div>
    {etapas_html("nv")}
+   <button type="submit">Buscar {ICO["arrow"]}</button></div>
   </form>
  </section>
 
@@ -252,8 +257,8 @@ def todas():
  {crumbs([("Inicio", f"{B}/"), ("Todas las herramientas", "")])}
  <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
-  <div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-  {etapas_html("lnv", " l")}
+  <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
+  {etapas_html("lnv", " l")}</div>
  </form>
  <div class="chips" id="lcats" role="group" aria-label="Categoría">{chips}</div>
  <p class="count" id="lcount" aria-live="polite"></p>

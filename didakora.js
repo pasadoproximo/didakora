@@ -1,5 +1,25 @@
 // Didakora: comportamiento común de todas sus páginas y listado con buscador (/todas/)
 (()=>{
+// desplegable de etapa a medida: ratón, teclado (flechas, Inicio, Fin, Intro, Esc) y lector de pantalla (listbox)
+document.querySelectorAll('.dd').forEach(dd=>{
+ const btn=dd.querySelector('.dd-b'),list=dd.querySelector('.dd-l'),val=dd.querySelector('.dd-v'),inp=dd.querySelector('input'),ops=[...list.querySelectorAll('[role=option]')];
+ let act=0;
+ const mark=i=>{act=(i+ops.length)%ops.length;ops.forEach((o,j)=>o.classList.toggle('act',j===act));list.setAttribute('aria-activedescendant',ops[act].id);};
+ const open=()=>{list.hidden=false;btn.setAttribute('aria-expanded','true');dd.classList.add('open');mark(Math.max(0,ops.findIndex(o=>o.getAttribute('aria-selected')==='true')));list.focus();};
+ const close=(focus)=>{list.hidden=true;btn.setAttribute('aria-expanded','false');dd.classList.remove('open');if(focus)btn.focus();};
+ const pick=(i,silent)=>{const o=ops[i];ops.forEach(x=>x.setAttribute('aria-selected',x===o?'true':'false'));val.textContent=o.textContent;inp.value=o.dataset.v;dd.classList.toggle('on',!!o.dataset.v);if(!silent)dd.dispatchEvent(new Event('change',{bubbles:true}));};
+ dd.dkSet=v=>{const i=ops.findIndex(o=>o.dataset.v===v);pick(i<0?0:i,true);};
+ btn.addEventListener('click',()=>list.hidden?open():close(true));
+ btn.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open();}});
+ list.addEventListener('click',e=>{const o=e.target.closest('[role=option]');if(!o)return;pick(ops.indexOf(o));close(true);});
+ list.addEventListener('mousemove',e=>{const o=e.target.closest('[role=option]');if(o)mark(ops.indexOf(o));});
+ list.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'){e.preventDefault();mark(act+1);}else if(e.key==='ArrowUp'){e.preventDefault();mark(act-1);}
+  else if(e.key==='Home'){e.preventDefault();mark(0);}else if(e.key==='End'){e.preventDefault();mark(ops.length-1);}
+  else if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(act);close(true);}
+  else if(e.key==='Escape'||e.key==='Tab'){close(e.key==='Escape');}});
+ document.addEventListener('click',e=>{if(!dd.contains(e.target)&&!list.hidden)close(false);});
+});
 // compartir la ficha: menú del sistema si existe; si no, se copia el enlace
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;
  const data={title:document.title,url:location.href};
@@ -59,7 +79,7 @@ function cajaListado(){
  const P=new URLSearchParams(location.search);
  const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||'',nuevas:P.get('nuevas')==='1'};
  const qEl=$('lq'),nEl=$('lnv');qEl.value=st.q;
- const setNv=v=>{(nEl.querySelector(`input[value="${v}"]`)||nEl.querySelector('input')).checked=true;};setNv(st.nivel);
+ const setNv=v=>nEl.dkSet(v);setNv(st.nivel);
  const NV={I:'Infantil',P:'Primaria',S:'Secundaria y Bachillerato'};
  function render(){
   const qs=query(st.q);
@@ -72,7 +92,7 @@ function cajaListado(){
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
  }
  qEl.addEventListener('input',()=>{st.q=qEl.value;render();});
- nEl.addEventListener('change',()=>{st.nivel=nEl.querySelector('input:checked').value;render();});
+ nEl.addEventListener('change',()=>{st.nivel=nEl.querySelector('input').value;render();});
  $('lcats').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.cat=b.dataset.cat;render();});
  document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:'',nuevas:false});qEl.value='';setNv('');render();qEl.focus();}});
  render();
