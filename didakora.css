@@ -111,7 +111,8 @@ a.tag:hover{background:var(--coral3)}
 
 /* secciones */
 .sec{margin-top:96px}
-.sh{margin-bottom:28px}
+.sh{margin-bottom:28px;text-align:center}
+.sh p{margin-inline:auto}
 .sh h2,.pg-h h1{font:800 clamp(32px,4vw,48px)/1 var(--f-disp);letter-spacing:-.03em;margin-top:8px}
 .sh p,.pg-h p{color:var(--mut);margin-top:12px;max-width:64ch}
 
@@ -200,11 +201,11 @@ a.tag:hover{background:var(--coral3)}
 .ls{margin:0 0 16px}
 .ls .hs-q{height:52px}
 @media (max-width:640px){.ls .hs-r{flex-wrap:wrap}.ls .hs-q{flex-basis:100%}.ls .dd{flex:1}.ls .dd-b{width:100%}.dd.l .dd-l{left:0;right:auto}}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .chips button{font:700 14.5px var(--f-body);color:var(--navy);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer}
 .chips button:hover{border-color:var(--navy)}
 .chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
-.count{margin:22px 0 14px;font:700 15px var(--f-body);color:var(--mut)}
+.count{margin:22px 0 14px;font:700 15px var(--f-body);color:var(--mut);text-align:center}
 .empty{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;text-align:center}
 .empty p:first-child{font:800 21px var(--f-disp)}
 .empty p{color:var(--mut);margin-bottom:14px}
@@ -223,13 +224,14 @@ a.tag:hover{background:var(--coral3)}
 
 /* ficha de herramienta: cabecera (volver, logo, nombre y botón), «Qué es» y «Ficha rápida» del mismo tamaño, y los usos debajo */
 /* cabecera de la ficha con el estilo del hero: azul cielo, círculo coral y aro blanco que flotan */
-.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 18px;align-items:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 36px}
+.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:14px;text-align:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 36px}
 .fh::before,.fh::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
 .fh::before{width:190px;height:190px;right:180px;top:-120px;background:var(--coral)}
 .fh::after{width:120px;height:120px;right:330px;bottom:-80px;border:16px solid rgba(255,255,255,.55)}
 @media (prefers-reduced-motion:no-preference){.fh::before{animation:dk-float 14s ease-in-out infinite}.fh::after{animation:dk-drift 18s ease-in-out infinite}}
 .fh .lg{background:#fff}
-.fh .back{background:rgba(255,255,255,.6);grid-column:1/-1;justify-self:start}
+.fh .back{background:rgba(255,255,255,.6);justify-self:start}
+.fh h1{margin-top:-4px}
 .fh .back:hover,.fh .back:focus-visible{background:var(--navy)}
 .fh :focus-visible{outline-color:var(--navy)}
 .fh h1 small{color:var(--navy3)!important}
@@ -256,7 +258,7 @@ a.tag:hover{background:var(--coral3)}
 .fu li{display:flex;align-items:center;gap:10px;font:700 16px/1.3 var(--f-body);color:var(--navy)}
 .fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--sky);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
-@media (max-width:900px){.fh{grid-template-columns:auto minmax(0,1fr)}.fh .btn{grid-column:1/-1;justify-content:center}.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
+@media (max-width:900px){.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
 @media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:52px;height:52px}.lg.xl img{width:32px;height:32px}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
 
 /* qué ha cambiado */
