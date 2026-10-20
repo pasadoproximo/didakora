@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "33"  # versión de didakora.css / didakora.js
+V = "34"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -181,7 +181,7 @@ CICO = {"mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 
 def foot(scripts=""):
     """bloque final de todas las páginas: invitación a proponer herramientas, centrada, con los contactos debajo"""
     cont = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto:") else ' rel="noopener" target="_blank"') +
-                   f'><svg viewBox="0 0 24 24" aria-hidden="true">{CICO[k]}</svg>{t}</a>' for k, t, d, u in CONTACTO)
+                   f' aria-label="{t}" title="{t}"><svg viewBox="0 0 24 24" aria-hidden="true">{CICO[k]}</svg></a>' for k, t, d, u in CONTACTO)
     return f'''
 <aside class="fin" id="contacto" aria-labelledby="h-inv">
  <h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p>
