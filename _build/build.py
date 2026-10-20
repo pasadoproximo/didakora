@@ -39,7 +39,7 @@ IC = {
 CATS = [
  ("participar-y-repasar", "Participar y repasar", "Cuestionarios, juegos y concursos para participar en clase y repasar.", "participar"),
  ("crear-y-presentar", "Crear y presentar", "Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente.", "crear"),
- ("colaborar-y-organizar", "Colaborar y organizar ideas", "Murales, mapas mentales, pizarras y herramientas para organizar recursos.", "colaborar"),
+ ("colaborar-y-organizar", "Colaborar y organizar", "Murales, mapas mentales, pizarras y herramientas para organizar recursos.", "colaborar"),
  ("explorar-por-materias", "Explorar por materias", "Herramientas propias de Geografía e Historia, Ciencias, Música y Arte o lectura.", "materias"),
  ("programacion-y-diseno-3d", "Programación y diseño 3D", "Pensamiento computacional, programación por bloques y diseño en 3D.", "programar"),
  ("inteligencia-artificial", "Inteligencia artificial", "Asistentes y herramientas de IA para preparar clase y para el alumnado.", "ia"),
