@@ -246,7 +246,7 @@ a.tag:hover{background:var(--coral3)}
 .fb{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
 .fb h2{font:800 21px/1.15 var(--f-disp);letter-spacing:-.01em;margin-bottom:12px}
 .fb p{color:var(--body);font-size:17.5px;line-height:1.6}
-.fb p.go{margin-top:20px;display:flex;justify-content:flex-end}  /* «Ir a…», dentro de «Qué es» */
+.pg>.go{margin-top:26px;display:flex;justify-content:center}  /* «Ir a…», debajo de las tarjetas de la ficha */
 .fa dl{display:grid;gap:0}
 .fa dl div{padding:11px 0;border-top:1px solid var(--line)}
 .fa dt{font:700 12.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
@@ -259,7 +259,7 @@ a.tag:hover{background:var(--coral3)}
 .fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--sky);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
 @media (max-width:900px){.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
-@media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:64px;height:64px;border-radius:18px}.lg.xl img{width:40px;height:40px}.fh{padding-bottom:24px}.fb p.go .btn{width:100%;justify-content:center}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:64px;height:64px;border-radius:18px}.lg.xl img{width:40px;height:40px}.fh{padding-bottom:24px}.pg>.go .btn{width:100%;justify-content:center}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
 
 /* qué ha cambiado */
 .chl{border-top:1.5px solid var(--line2)}
