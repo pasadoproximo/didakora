@@ -377,7 +377,7 @@ def ficha(t):
   <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  </div>
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
-  <p class="more"><a class="btn line" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
+  <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
     write(f'{t["id"]}/index.html', head(f"{nm} · Didakora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
