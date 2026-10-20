@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "9"  # versión de didakora.css / didakora.js
+V = "10"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -191,9 +191,8 @@ def crumbs(items):
     return f'<div class="pnav">{back}<nav class="crumbs" aria-label="Ruta"><ol>{"".join(li)}</ol></nav></div>'
 def secth(lab, title, desc="", hid=""):
     return f'<div class="sh">{f'<span class="lab">{esc(lab)}</span>' if lab else ""}<h2{f" id={chr(34)}{hid}{chr(34)}" if hid else ""}>{esc(title)}</h2>{f"<p>{esc(desc)}</p>" if desc else ""}</div>'
-def tone(c): return "t" + str(CATS.index(c) % 4)
 def catcard(c):
-    return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><span class="cc-i {tone(c)}">{icon(c[3])}</span><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
+    return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><span class="cc-i">{icon(c[3])}</span><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
             f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a>')
 
 def etapas_html(fid, cls=""):
