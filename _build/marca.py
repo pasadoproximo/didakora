@@ -78,6 +78,7 @@ if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     files = {
         "didakora-simbolo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, SKY, CORAL)}</g>', "Didakora"),
+        "didakora-simbolo-cielo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, WHITE, CORAL)}</g>', "Didakora"),
         "didakora-simbolo-blanco.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(WHITE, SKY, CORAL)}</g>', "Didakora"),
         "didakora-logo.svg": horizontal(NAVY, NAVY, SKY, CORAL),
         "didakora-logo-blanco.svg": horizontal(WHITE, WHITE, SKY, CORAL),
