@@ -196,7 +196,7 @@ def catcard(c):
     return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><span class="cc-i {tone(c)}">{icon(c[3])}</span><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
             f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a>')
 
-NIVEL = ('<label class="sr" for="nv">Nivel</label><select id="nv" name="nivel"><option value="">Todos los niveles</option>'
+NIVEL = ('<label class="sr" for="nv">Etapa</label><select id="nv" name="nivel"><option value="">Todas las etapas</option>'
          '<option value="I">Infantil</option><option value="P">Primaria</option><option value="S">Secundaria y Bachillerato</option></select>')
 
 # ---------------------------------------------------------------- portada
@@ -206,9 +206,9 @@ def portada():
 <main>
  <section class="hero" aria-labelledby="ph1">
   <div class="hero-t">
-   <span class="lab">Para docentes de Secundaria y Bachillerato</span>
+   <span class="lab">Herramientas digitales para docentes</span>
    <h1 id="ph1">La herramienta que <span>necesitas</span> para tu clase</h1>
-   <p class="hero-d">Herramientas digitales seleccionadas y revisadas para usar en clase. Búscala por su nombre o por lo que quieres hacer. Cada ficha la explica con un ejemplo, te dice la etapa recomendada, lo que necesita y te ofrece videotutoriales.</p>
+   <p class="hero-d">Una selección de herramientas revisadas una a una para usar en clase. Búscala por su nombre o por lo que quieres hacer y elige tu etapa. Cada ficha la explica con un ejemplo, te dice qué necesita y te ofrece videotutoriales.</p>
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
    <div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
@@ -239,7 +239,7 @@ def portada():
 
 </main>'''
     write("index.html", head("Didakora · Herramientas digitales para docentes",
-        f"{len(TOOLS)} herramientas digitales para docentes de Secundaria y Bachillerato, revisadas en octubre de 2026, con ejemplo de uso y lo que necesita cada una.", "/") + body + foot())
+        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con ejemplo de uso, etapa recomendada y lo que necesita cada una.", "/") + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
 def todas():
@@ -247,7 +247,7 @@ def todas():
     body = f'''
 <main class="pg">
  {crumbs([("Inicio", f"{B}/"), ("Todas las herramientas", "")])}
- <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por nivel.</p></div>
+ <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
   <div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
   <div class="hs-n">{NIVEL.replace('id="nv"', 'id="lnv"').replace('for="nv"', 'for="lnv"')}</div>
@@ -257,7 +257,7 @@ def todas():
  <div class="tcg" id="lgrid"></div>
  <noscript><div class="tcg">{"".join(card(t) for t in TOOLS)}</div></noscript>
 </main>'''
-    write("todas/index.html", head("Todas las herramientas · Didakora", "Todas las herramientas de Didakora, con buscador y filtros por categoría y nivel.", "/todas/", "todas")
+    write("todas/index.html", head("Todas las herramientas · Didakora", "Todas las herramientas de Didakora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
 
 # ---------------------------------------------------------------- destacadas

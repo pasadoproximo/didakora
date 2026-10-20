@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Todas las herramientas · Didakora</title>
-<meta name="description" content="Todas las herramientas de Didakora, con buscador y filtros por categoría y nivel.">
+<meta name="description" content="Todas las herramientas de Didakora, con buscador y filtros por categoría y etapa.">
 <meta property="og:title" content="Todas las herramientas · Didakora">
-<meta property="og:description" content="Todas las herramientas de Didakora, con buscador y filtros por categoría y nivel.">
+<meta property="og:description" content="Todas las herramientas de Didakora, con buscador y filtros por categoría y etapa.">
 <meta property="og:image" content="https://pasadoproximo.github.io/didakora/marca/og.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,10 +30,10 @@
 
 <main class="pg">
  <div class="pnav"><a class="back" href="/didakora/" data-back><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="sr">Atrás</span></a><nav class="crumbs" aria-label="Ruta"><ol><li><a href="/didakora/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6h-6v6H4z"/></svg>Inicio</a></li><li aria-current="page">Todas las herramientas</li></ol></nav></div>
- <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por nivel.</p></div>
+ <div class="pg-h"><span class="badge">Directorio</span><h1>Todas las herramientas</h1><p>Busca por nombre o por lo que necesitas hacer y filtra por categoría o por etapa.</p></div>
  <form class="ls" role="search" onsubmit="return false">
   <div class="hs-q"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg><label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
-  <div class="hs-n"><label class="sr" for="lnv">Nivel</label><select id="lnv" name="nivel"><option value="">Todos los niveles</option><option value="I">Infantil</option><option value="P">Primaria</option><option value="S">Secundaria y Bachillerato</option></select></div>
+  <div class="hs-n"><label class="sr" for="lnv">Etapa</label><select id="lnv" name="nivel"><option value="">Todas las etapas</option><option value="I">Infantil</option><option value="P">Primaria</option><option value="S">Secundaria y Bachillerato</option></select></div>
  </form>
  <div class="chips" id="lcats" role="group" aria-label="Categoría"><button type="button" data-cat="" aria-pressed="true">Todas</button><button type="button" data-cat="participar-y-repasar" aria-pressed="false">Participar y repasar</button><button type="button" data-cat="crear-y-presentar" aria-pressed="false">Crear y presentar</button><button type="button" data-cat="colaborar-y-organizar" aria-pressed="false">Colaborar y organizar ideas</button><button type="button" data-cat="explorar-por-materias" aria-pressed="false">Explorar por materias</button><button type="button" data-cat="programacion-y-diseno-3d" aria-pressed="false">Programación y diseño 3D</button><button type="button" data-cat="inteligencia-artificial" aria-pressed="false">Inteligencia artificial</button><button type="button" data-cat="evaluacion-y-seguimiento" aria-pressed="false">Evaluación y seguimiento</button><button type="button" data-cat="gestion-del-aula" aria-pressed="false">Gestión del aula y familias</button><button type="button" data-cat="aulas-virtuales" aria-pressed="false">Aulas virtuales</button><button type="button" data-cat="bancos-de-recursos" aria-pressed="false">Bancos de recursos e imágenes</button></div>
  <p class="count" id="lcount" aria-live="polite"></p>
