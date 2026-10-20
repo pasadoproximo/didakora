@@ -21,7 +21,7 @@ svg{flex:none}
 .top{position:sticky;top:12px;z-index:30;margin-top:12px}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 8px 30px rgba(6,16,51,.06)}
 .brand{display:flex;align-items:center;text-decoration:none;padding:6px 0}
-.lockup{height:30px;width:auto;display:block}
+.lockup{height:24px;width:auto;display:block;overflow:visible}
 .bar nav{display:flex;align-items:center;gap:2px}
 .bar nav a{text-decoration:none;font-weight:500;padding:8px 14px;border-radius:999px;font-size:16px}
 .bar nav a:hover{background:var(--bg)}
@@ -30,7 +30,7 @@ svg{flex:none}
 .bar nav a.go:hover{background:var(--navy3)}
 .bar nav a.go svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round}
 @media (max-width:900px){.bar nav a:not(.go){display:none}}
-@media (max-width:440px){.bar{padding-left:16px}.lockup{height:26px}}
+@media (max-width:440px){.bar{padding-left:16px}.lockup{height:22px}}
 
 /* botones y etiquetas */
 .btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px var(--f-body);padding:11px 20px;min-height:44px;border-radius:999px;text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;background:none;color:var(--navy)}
@@ -233,7 +233,7 @@ a.tag:hover{background:var(--coral3)}
 
 /* pie: logotipo en blanco, autor y fecha de revisión */
 .ft{margin-top:110px;background:var(--navy);color:#fff;border-radius:28px 28px 0 0;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px}
-.ft-l{display:block}.ft .lockup{height:28px}
+.ft-l{display:block}.ft .lockup{height:26px}
 .ft p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-weight:700;font-size:16px}
 .ft span{color:#DCE3F7;font-weight:400;font-size:15.5px}
 @media (max-width:900px){.ft{padding:28px 22px}}

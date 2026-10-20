@@ -36,6 +36,14 @@ def word(text):
     ext = font.get_glyph_extents(font.get_nominal_glyph(ord("d")))
     return "".join(parts), x, ext.y_bearing  # y_bearing = altura de la «d» sobre la base
 
+def overshoot(text):
+    """lo que bajan las letras redondas (o, a, d) por debajo de la base: hay que dejarles sitio para que no se corten"""
+    low = 0
+    for ch in set(text):
+        e = font.get_glyph_extents(font.get_nominal_glyph(ord(ch)))
+        low = min(low, e.y_bearing + e.height)
+    return -low
+
 # la caja abierta en su caja exacta: 42 × 30 (x 3–45, y 13–43); cuerpo de y 21 a 43 (22 de alto)
 def box(m, s, c):
     return (f'<path d="M3 13h17l4 8H7z" fill="{s}"/><path d="M45 13H28l-4 8h17z" fill="{c}"/>'
@@ -45,16 +53,17 @@ def svg(w, h, inner, title):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.1f} {h:.1f}" role="img" aria-label="{title}">'
             f'<title>{title}</title>{inner}</svg>\n')
 
-def horizontal(text_color, m, s, c):
+def horizontal(text_color, m, s, c, fit="B2"):
+    """B2: el cuerpo de la caja (22) mide lo que la «d»; A: la caja entera, con solapas (30), mide lo que la «d»"""
     paths, tw, asc = word("didakora")
-    k = asc / 22                      # el cuerpo de la caja (22) mide lo que la «d»
+    k = asc / (22 if fit == "B2" else 30)
     bw, bh = 42 * k, 30 * k
-    gap = bh * 0.2
+    gap = bh * (0.2 if fit == "B2" else 0.22)
     W, H = bw + gap + tw, bh
     base = H                          # base de las letras = base de la caja
     inner = (f'<g transform="translate({-3 * k:.2f} {-13 * k:.2f}) scale({k:.4f})">{box(m, s, c)}</g>'
              f'<g fill="{text_color}" transform="translate({bw + gap:.1f} {base:.1f}) scale(1 -1)">{paths}</g>')
-    return svg(W, H, inner, "Didakora")
+    return svg(W, H + overshoot("didakora"), inner, "Didakora")
 
 def apilado(text_color, m, s, c):
     paths, tw, asc = word("didakora")
@@ -63,7 +72,7 @@ def apilado(text_color, m, s, c):
     W = max(bw, tw); H = bh + gap + asc
     inner = (f'<g transform="translate({(W - bw) / 2 - 3 * k:.2f} {-13 * k:.2f}) scale({k:.4f})">{box(m, s, c)}</g>'
              f'<g fill="{text_color}" transform="translate({(W - tw) / 2:.1f} {H:.1f}) scale(1 -1)">{paths}</g>')
-    return svg(W, H, inner, "Didakora")
+    return svg(W, H + overshoot("didakora"), inner, "Didakora")
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
@@ -77,6 +86,9 @@ if __name__ == "__main__":
         # sobre fondo azul cielo la solapa cielo se pierde: va en blanco
         "didakora-apilado-cielo.svg": apilado(NAVY, NAVY, WHITE, CORAL),
         "didakora-logo-cielo.svg": horizontal(NAVY, NAVY, WHITE, CORAL),
+        # opción A: la caja entera a la altura de la «d» (más compacta, para la barra del menú)
+        "didakora-logo-a.svg": horizontal(NAVY, NAVY, SKY, CORAL, "A"),
+        "didakora-logo-a-blanco.svg": horizontal(WHITE, WHITE, SKY, CORAL, "A"),
         # icono de pestaña: la caja centrada en un cuadrado
         "favicon.svg": svg(48, 48, f'<g transform="translate(0 4)">{box(NAVY, SKY, CORAL)}</g>', "Didakora"),
     }
