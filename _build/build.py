@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "28"  # versión de didakora.css / didakora.js
+V = "29"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -135,7 +135,6 @@ def _svg_inline(name, cls):
     x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="Didakora"', ' aria-hidden="true" focusable="false"')
     return x.replace("<svg ", f'<svg class="{cls}" ', 1)
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
-SIMB_C = _svg_inline("didakora-simbolo-cielo.svg", "simb")  # la caja, de fondo en el pie
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
@@ -173,17 +172,10 @@ def head(title, desc, path, cur=""):
 '''
 def foot(scripts=""):
     return f'''
-<div class="fin">
- <span class="fin-l" aria-hidden="true">{SIMB_C}</span>
- <aside class="inv" aria-labelledby="h-inv">
-  <div><h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p></div>
-  <a class="btn solid" href="{B}/sobre-mi/#contacto">Proponer una herramienta {ICO["arrow"]}</a>
- </aside>
- <footer class="ft">
-  <p>Jorge Delgado Aguilera</p>
-  <a class="ft-cc" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
- </footer>
-</div>
+<aside class="fin" aria-labelledby="h-inv">
+ <div><h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p></div>
+ <a class="btn solid" href="{B}/sobre-mi/#contacto">Proponer una herramienta {ICO["arrow"]}</a>
+</aside>
 </div>
 <script>window.DK_BASE="{B}"</script>
 <script src="{B}/didakora.js?v={V}"></script>{scripts}

@@ -264,19 +264,11 @@ a.tag:hover{background:var(--coral3)}
 
 /* pie: logotipo en blanco, autor y fecha de revisión */
 /* invitación antes del pie: azul cielo, como la cabecera */
-/* final de página: un solo bloque azul cielo, como la cabecera; círculo coral arriba y la caja del logo de fondo, flotando */
-.fin{position:relative;isolation:isolate;overflow:hidden;margin:110px 0 20px;background:var(--sky);color:var(--navy);border-radius:28px;padding:40px 40px 24px}
-.fin::before{content:"";position:absolute;z-index:-1;width:220px;height:220px;border-radius:50%;background:var(--coral);right:-60px;top:-120px;pointer-events:none}
-.fin-l{position:absolute;z-index:-1;left:-30px;bottom:-62px;width:200px;opacity:.2;pointer-events:none}
-.fin-l svg{display:block;width:100%;height:auto;transform:rotate(-12deg)}
-.inv{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-right:120px}
-.inv h2{font:800 clamp(22px,2.6vw,30px)/1.1 var(--f-disp);letter-spacing:-.02em}
-.inv p{margin-top:6px;color:var(--navy3)}
-.ft{margin-top:30px;padding-top:18px;border-top:1px solid rgba(6,16,51,.14);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px 16px}
-.ft p{font-weight:700;font-size:16px}
-.ft-cc{color:var(--navy);font-weight:700;font-size:14px;text-decoration:none;border:1px solid rgba(6,16,51,.35);border-radius:999px;padding:5px 12px}
-.ft-cc:hover{background:rgba(255,255,255,.4)}
-@media (prefers-reduced-motion:no-preference){.fin::before{animation:dk-float 14s ease-in-out infinite}.fin-l{animation:dk-drift 18s ease-in-out infinite}}
-@media (max-width:760px){.fin{padding:30px 22px 22px}.inv{padding-right:0}.fin::before{width:150px;height:150px;right:-60px;top:-90px}.fin-l{width:150px;bottom:-50px;opacity:.15}}
+/* final de página: invitación a proponer herramientas, en azul cielo con el aro blanco de la cabecera */
+.fin{position:relative;isolation:isolate;overflow:hidden;margin:110px 0 20px;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.fin::after{content:"";position:absolute;z-index:-1;width:150px;height:150px;border-radius:50%;border:20px solid rgba(255,255,255,.55);right:260px;bottom:-95px;pointer-events:none}
+.fin h2{font:800 clamp(22px,2.6vw,30px)/1.1 var(--f-disp);letter-spacing:-.02em}
+.fin p{margin-top:6px;color:var(--navy3)}
+@media (max-width:760px){.fin{padding:28px 22px}.fin::after{right:-40px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .aprox{grid-column:1/-1;color:var(--mut);font-weight:700;margin-bottom:-2px}
