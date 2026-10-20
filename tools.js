@@ -229,7 +229,7 @@ const TOOLS = [
     i:["Fichas de especies de tu entorno","Comparar especies","Fuente fiable para un trabajo"],
     c:"ESO", disp:"Uno por alumno o pareja", cta:"No necesita" },
   { id:"bolsa", s:"aula", cat:"cienc", st:"vigente", n:"La Bolsa Virtual", url:"https://www.labolsavirtual.com",
-    a:"Invierte en un simulador de bolsa con dinero ficticio.",
+    a:"Invierte en un simulador de bolsa gratuito con dinero ficticio.",
     i:["Economía: cómo funciona la bolsa","Concurso de inversión por equipos","Seguir noticias y su efecto en los precios"],
     c:"4.º ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"Cuenta" },
   { id:"tinkercad", s:"aula", cat:"cienc", st:"vigente", n:"Tinkercad", url:"https://www.tinkercad.com",
@@ -271,7 +271,7 @@ const TOOLS = [
   { id:"snatchbot", s:"aula", cat:"cienc", st:"vigente", n:"SnatchBot", url:"https://snatchbot.me",
     a:"Diseña un chatbot sin programar.",
     i:["Chatbot de atención al cliente","Asistente de información del centro","Entender cómo funciona un bot"],
-    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta" },
+    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta · prueba gratuita de 14 días" },
 
   // --- Música y Arte
   { id:"musescore", s:"aula", cat:"arte", st:"vigente", n:"MuseScore", url:"https://musescore.org/es",
@@ -406,10 +406,10 @@ const TOOLS = [
     p:"Pizarra para proyectar con temporizador, semáforo, medidor de ruido y selector al azar.",
     i:["Marcar tiempos del trabajo cooperativo","Controlar el ruido","Elegir turnos al azar"],
     coste:"Plan gratuito", datos:"No necesita datos del alumnado" },
-  { id:"fastboard", s:"docente", cat:"gestion", st:"vigente", n:"Fastboard", url:"https://fastboard.app",
-    p:"Pizarra digital en el navegador para explicar y que el alumnado participe.",
-    i:["Explicar sobre un mapa o un esquema","Pizarra compartida en clase","Guardar lo trabajado en la sesión"],
-    coste:"Consulta el plan", datos:"No necesita datos del alumnado" },
+  { id:"fastboard", s:"docente", cat:"gestion", st:"vigente", n:"Fastboard", url:"https://fastboard.io",
+    p:"Pizarra en línea para dibujar a la vez con el alumnado, sin registrarse.",
+    i:["Explicar sobre un mapa o un esquema","Pizarra compartida en clase","Dibujar a la vez en grupo"],
+    coste:"Gratis", datos:"No necesita datos del alumnado" },
 
   // --- Evaluar y motivar
   { id:"corubrics", s:"docente", cat:"eval", st:"vigente", n:"CoRubrics", url:"https://corubrics-es.tecnocentres.org",
@@ -498,7 +498,7 @@ const TOOLS = [
     d:"IA y técnicas de productividad para ahorrar tiempo en el trabajo docente." },
   { id:"rosaliarte", s:"recursos", cat:"form", st:"vigente", n:"Blog de Rosa Liarte", url:"https://rosaliarte.com",
     d:"Tecnología y aprendizaje móvil en el aula, de una profesora de Geografía e Historia." },
-  { id:"academiaplay", s:"recursos", cat:"form", st:"vigente", n:"Academia Play", url:"https://academiaplay.es",
+  { id:"academiaplay", s:"recursos", cat:"form", st:"vigente", n:"Academia Play", url:"https://academiaplay.net",
     d:"Vídeos de divulgación de Historia, Arte y Geografía, muy útiles para clase." }
 ];
 
