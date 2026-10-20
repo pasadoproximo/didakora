@@ -8,12 +8,13 @@
 # Todas las rutas cuelgan de BASE ("/didakora" en GitHub Pages; "" si algún día va en dominio propio:
 #   DK_BASE= python _build/build.py). Datos: tools.js. Logos de la marca: _build/marca.py → marca/.
 # Uso: python _build/build.py
-import json, os, re, subprocess, html, shutil
+import json, os, re, subprocess, html, shutil, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "37"  # versión de didakora.css / didakora.js
+V = "38"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -330,55 +331,52 @@ def categorias():
         write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didakora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
 
 # ---------------------------------------------------------------- fichas
+from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
+faltan = [t["id"] for t in TOOLS if t["id"] not in F]
+assert not faltan, f"Faltan fichas en _build/fichas.py: {faltan}"
 OWN = re.compile(r"^no necesita|código|codigo|del docente|del centro|enlace del docente|integrado|extensión|solo para guardar|clase del docente", re.I)
 def uses_ai(t):
     a = (t.get("a") or "").lower(); a = a.translate(str.maketrans("áéíóú", "aeiou"))
     return t["s"] == "aula" and re.search(r"(^|[^a-z])ia([^a-z]|$)", a) is not None
-def yt(t): return "https://www.youtube.com/results?search_query=" + re.sub(r"\s+", "+", re.sub(r"\s*\(.*\)", "", t["n"]) + " tutorial español")
 def ficha(t):
-    nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; rec = t["s"] == "recursos"
-    tags = f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>' + "".join(f'<span class="tag et">{ETN[e]}</span>' for e in t["et"]) + ('<span class="tag new">Nueva en 2026</span>' if t["st"] == "nueva" else "")
-    rows = []
-    if aula: rows += [("Para", "El alumnado, en clase"), ("Nivel", t["c"]), ("Dispositivos", t["disp"]), ("Cuenta del alumnado", t["cta"])]
-    elif not rec: rows += [("Para", "El docente"), ("Coste", t["coste"]), ("Datos del alumnado", t["datos"])]
-    else: rows += [("Tipo", "Recurso en abierto")]
-    if t.get("edad"): rows.append(("Edad mínima", f'{esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>'))
-    dl = "".join(f'<div><dt>{k}</dt><dd>{v if k == "Edad mínima" else esc(v)}</dd></div>' for k, v in rows)
-    warn = []
-    if aula and not t.get("edad") and not OWN.search(t["cta"]): warn.append("Consulta la edad mínima en las condiciones de la herramienta antes de que el alumnado cree una cuenta.")
-    if uses_ai(t): warn.append("El alumnado trabaja con una IA: usa la cuenta del centro, comprueba la edad mínima en sus condiciones y no introduzcas datos personales.")
-    if t.get("nota"): warn.append(t["nota"])
-    ideas = t.get("i") or []
-    sec_ideas = (f'<section class="fb"><h2>{"Ideas para clase" if aula else "Ideas de uso"}</h2><ul class="ok">{"".join(f"<li>{ICO[chr(99)+chr(104)+chr(101)+chr(99)+chr(107)]}{esc(x)}</li>" for x in ideas)}</ul></section>' if ideas else "")
-    sec_warn = (f'<section class="fb warnb"><h2>Antes de usarla</h2>{"".join(f"<p>{ICO[chr(119)+chr(97)+chr(114)+chr(110)]}<span>{esc(w)}</span></p>" for w in warn)}</section>' if warn else "")
+    nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; f = F[t["id"]]
+    disp = t["disp"] if aula else f["disp"]; cta = t["cta"] if aula else f["cta"]
+    # debajo de la cuenta, en pequeño: edad mínima (solo con fuente oficial) y avisos de privacidad
+    notas = []
+    if t.get("edad"): notas.append(f'Edad mínima: {esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>')
+    elif aula and not OWN.search(t["cta"]): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
+    if uses_ai(t): notas.append("Usa la cuenta del centro y no introduzcas datos personales.")
+    if t.get("datos"): notas.append(esc(t["datos"]) + ".")
+    et = " · ".join(ETN[e] for e in t["et"])
+    rows = [("Categoría", f'<a href="{B}/categorias/{c[0]}/">{esc(c[1])}</a>'),
+            ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and not t["c"].startswith("Toda la etapa") else "")),
+            ("Dispositivos", esc(disp)),
+            ("Cuenta", esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]
+    dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
+    usos = "".join(f'<li>{ICO["check"]}<span>{esc(u)}</span></li>' for u in f["usos"])
     # alternativas en rueda: las siguientes del mismo apartado (y luego de la categoría), así toda herramienta
     # aparece como alternativa en alguna ficha y no salen siempre las mismas tres
     def ring(group):
         i = group.index(t); return [group[(i + k) % len(group)] for k in range(1, len(group))]
     same = ring([o for o in TOOLS if o["sub"] == t["sub"] and o["cs"] == t["cs"]])
     alts = (same + [o for o in ring([o for o in TOOLS if o["cs"] == t["cs"]]) if o not in same])[:3]
-    que = ("Qué hace el alumnado" if aula else "Para qué te sirve" if not rec else "Qué encontrarás")
     body = f'''
 <main class="pg">
  <section class="fh">
+  {crumbs([("Inicio", f"{B}/"), (c[1], f"{B}/categorias/{c[0]}/"), (nm, "")])}
   <span class="lg xl">{logo(t, 44)}</span>
-  <div class="fh-t"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), (c[1], f"{B}/categorias/{c[0]}/"), (nm, "")])}<h1>{esc(nm)}{f" <small>{esc(alias)}</small>" if alias else ""}</h1></div><p>{esc(lead(t))}</p><div class="tags">{tags}</div></div>
-  <div class="fh-b"><a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Abrir {esc(nm)} {ICO["ext"]}</a><button type="button" class="btn line" data-share>{ICO["share"]}Compartir</button></div>
+  <h1>{esc(nm)}{f" <small>{esc(alias)}</small>" if alias else ""}</h1>
+  <a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Ir a {esc(nm)} {ICO["ext"]}</a>
  </section>
  <div class="fg">
-  <div class="fm">
-   <section class="fb"><h2>Qué es {esc(nm)} y cómo se usa en clase</h2><p><b>{que}:</b> {esc(lead(t))}</p>{f'<p class="ex"><b>Ejemplo:</b> {esc(ideas[0])}</p>' if ideas else ""}</section>
-   {sec_ideas}
-   {sec_warn}
-  </div>
-  <aside class="fa">
-   <section class="fb"><h2>Ficha rápida</h2><dl>{dl}</dl>{"" if rec else f'<a class="tut" href="{yt(t)}" rel="noopener" target="_blank">{ICO["play"]}Buscar videotutoriales <span class="sr">(se abre en otra pestaña)</span></a>'}</section>
-  </aside>
+  <section class="fb"><h2>Qué es {esc(nm)}</h2><p>{esc(f["q"])}</p></section>
+  <aside class="fb fa"><h2>Ficha rápida</h2><dl>{dl}</dl></aside>
  </div>
+ <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn line" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
-    write(f'{t["id"]}/index.html', head(f"{nm} · Didakora", f"{lead(t)} Ficha revisada en octubre de 2026.", f'/{t["id"]}/') + body + foot())
+    write(f'{t["id"]}/index.html', head(f"{nm} · Didakora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
 # ---------------------------------------------------------------- alternativas (qué ha cambiado)
 def alternativas():

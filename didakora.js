@@ -114,25 +114,25 @@ function cajaListado(){
    `<article class="tc td">${head}<div class="tc-f"><a class="tag" href="${B}/categorias/${cs}/"><svg viewBox="0 0 24 24" aria-hidden="true">${ci}</svg>${esc(cn)}</a>${go}</div></article>`;};
 
  const P=new URLSearchParams(location.search);
- const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||'',nuevas:P.get('nuevas')==='1'};
+ const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||''};
  const qEl=$('lq'),nEl=$('lnv');qEl.value=st.q;
  const setNv=v=>nEl.dkSet(v);setNv(st.nivel);
  const NV={I:'Infantil',P:'Primaria',S:'Secundaria y Bachillerato'};
  function render(){
-  const pool=TOOLS.filter(t=>(!st.nivel||CAJA.t[t.id][1].includes(st.nivel))&&(!st.cat||CAJA.t[t.id][0]===st.cat)&&(!st.nuevas||t.st==='nueva'));
+  const pool=TOOLS.filter(t=>(!st.nivel||CAJA.t[t.id][1].includes(st.nivel))&&(!st.cat||CAJA.t[t.id][0]===st.cat));
   const r=M.buscar(st.q,pool),list=r.exactas.length?r.exactas:r.parecidas,aprox=!r.exactas.length&&r.parecidas.length>0;
   const note=aprox?`<p class="aprox">Ninguna herramienta tiene todas las palabras de «${esc(st.q)}». Estas tienen alguna:</p>`:'';
   $('lgrid').innerHTML=list.length?note+list.map(card).join(''):`<div class="empty"><p>No hay resultados${st.q?` para «${esc(st.q)}»`:''}.</p><p>Prueba con otra palabra o con lo que quieres hacer, por ejemplo «evaluar» o «vídeo»${st.nivel||st.cat?', o quita los filtros':''}.</p><button type="button" class="btn solid" data-reset>Ver todas</button></div>`;
   document.querySelectorAll('#lcats button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.cat===st.cat));
-  const extra=[st.nuevas?'nuevas en 2026':'',st.nivel?NV[st.nivel]:''].filter(Boolean).join(' · ');
+  const extra=st.nivel?NV[st.nivel]:'';
   $('lcount').textContent=`${list.length} ${list.length===1?'herramienta':'herramientas'}${aprox?' parecidas':''}${extra?' · '+extra:''}`;
-  const u=new URLSearchParams();if(st.q)u.set('q',st.q);if(st.nivel)u.set('nivel',st.nivel);if(st.cat)u.set('cat',st.cat);if(st.nuevas)u.set('nuevas','1');
+  const u=new URLSearchParams();if(st.q)u.set('q',st.q);if(st.nivel)u.set('nivel',st.nivel);if(st.cat)u.set('cat',st.cat);
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
  }
  qEl.addEventListener('input',()=>{st.q=qEl.value;render();});
  nEl.addEventListener('change',()=>{st.nivel=nEl.querySelector('input').value;render();});
  $('lcats').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.cat=b.dataset.cat;render();});
- document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:'',nuevas:false});qEl.value='';setNv('');render();qEl.focus();}});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:''});qEl.value='';setNv('');render();qEl.focus();}});
  render();
 }
 

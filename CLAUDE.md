@@ -15,6 +15,11 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   entiende plurales, sinónimos (`SYN`), frases (`PHRASES`), principio de palabra y una errata; ordena por relevancia y, si
   nada tiene todas las palabras, enseña las parecidas. **Tras tocar datos o buscador: `node _build/probar_buscador.js`**
   (busca cada herramienta por nombre, palabras, principio, nombre anterior y con errata, más búsquedas habituales de clase).
+- `_build/fichas.py` → contenido de cada ficha: «Qué es» (`q`), usos generales (`usos`) y, para docente y recursos,
+  dispositivos (`disp`) y cuenta (`cta`). Si se añade una herramienta a `tools.js`, hay que añadir su ficha aquí
+  (el build se para si falta). Ficha: cabecera (volver, logo, nombre, botón «Ir a…»), «Qué es» y «Ficha rápida»
+  (categoría, etapa, dispositivos, cuenta + edad mínima y avisos en pequeño) del mismo tamaño, usos debajo y alternativas.
+  Sin referencias al año en que se añadió cada herramienta.
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.

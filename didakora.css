@@ -40,7 +40,6 @@ svg{flex:none}
 .tag svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 a.tag:hover{background:var(--coral3)}
 .tag.et{background:#fff;border:1px solid var(--line2);color:var(--navy)}
-.tag.new{background:var(--navy);color:var(--coral)}
 .more{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 
 /* cabecera de la portada: bloque azul cielo con texto navy, círculo coral y aro blanco */
@@ -173,7 +172,7 @@ a.tag:hover{background:var(--coral3)}
 .back{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ice);color:var(--navy);display:grid;place-items:center;text-decoration:none;transition:background .2s,color .2s}
 .back:hover,.back:focus-visible{background:var(--navy);color:#fff}
 .back svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.fh .pg-t{gap:12px}.fh .back{width:38px;height:38px}
+
 @media (max-width:520px){.pg-t{gap:12px}.back{width:38px;height:38px}}
 .pg-h{margin:44px 0 30px}
 .pg-h h1{margin-top:14px}
@@ -200,41 +199,30 @@ a.tag:hover{background:var(--coral3)}
 .oc a:hover{border-color:var(--navy)}
 .oc svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* ficha de herramienta */
-.fh{margin-top:24px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
-.lg.xl{width:76px;height:76px;border-radius:20px}
-.lg.xl img{width:46px;height:46px}
-.lg.xl b{font-size:34px}
-.fh h1{font:800 clamp(30px,3.6vw,44px)/1.02 var(--f-disp);letter-spacing:-.03em}
-.fh h1 small{font:600 16px var(--f-body);color:var(--mut);letter-spacing:0}
-.fh-t p{color:var(--body);margin-top:8px;max-width:70ch}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.fh-b{display:flex;flex-direction:column;gap:8px}
-.fh-b .btn{justify-content:center}
-.fg{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}
-.fm{display:grid;gap:18px}
-.fb{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+/* ficha de herramienta: cabecera (volver, logo, nombre y botón), «Qué es» y «Ficha rápida» del mismo tamaño, y los usos debajo */
+.fh{margin-top:28px;display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px 24px}
+.lg.xl{width:64px;height:64px;border-radius:18px}
+.lg.xl img{width:40px;height:40px}
+.lg.xl b{font-size:30px}
+.fh h1{font:800 clamp(28px,3.4vw,42px)/1.05 var(--f-disp);letter-spacing:-.03em;min-width:0}
+.fh h1 small{display:block;font:600 15px var(--f-body);color:var(--mut);letter-spacing:0;margin-top:4px}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;align-items:stretch}
+.fb{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
 .fb h2{font:800 21px/1.15 var(--f-disp);letter-spacing:-.01em;margin-bottom:12px}
-.fb p{color:var(--body)}
-.fb p+p{margin-top:10px}
-.fb .ex{padding-left:12px;border-left:3px solid var(--coral)}
-.fb ul.ok{list-style:none;padding:0;display:grid;gap:10px}
-.fb ul.ok li{display:flex;gap:10px;color:var(--body)}
-.fb ul.ok svg{width:20px;height:20px;stroke:var(--navy3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
-.warnb{background:#FFF8EA;border-color:#F3DDAF}
-.warnb p{display:flex;gap:10px;color:#6B4500}
-.warnb svg{width:19px;height:19px;stroke:#7A4E00;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
-.fa{position:sticky;top:96px}
+.fb p{color:var(--body);font-size:17.5px;line-height:1.6}
 .fa dl{display:grid;gap:0}
 .fa dl div{padding:11px 0;border-top:1px solid var(--line)}
 .fa dt{font:700 12.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
 .fa dd{margin:2px 0 0;color:var(--txt)}
 .fa dd a{font-weight:700;color:var(--navy3)}
-.tut{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:700 15.5px var(--f-body);color:var(--navy3)}
-.tut svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fa dd small{display:block;color:var(--mut);font-size:14px;margin-top:3px}
+.fu{margin-top:18px}
+.fu ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.fu li{display:flex;align-items:center;gap:10px;font:700 16px/1.3 var(--f-body);color:var(--navy)}
+.fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--coral2);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
-@media (max-width:900px){.fh{grid-template-columns:auto minmax(0,1fr)}.fh-b{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}.fg{grid-template-columns:minmax(0,1fr)}.fa{position:static}}
-@media (max-width:520px){.fh{padding:20px;gap:14px}.lg.xl{width:58px;height:58px}.lg.xl img{width:36px;height:36px}}
+@media (max-width:900px){.fh{grid-template-columns:auto auto minmax(0,1fr)}.fh .btn{grid-column:1/-1;justify-content:center}.fg{grid-template-columns:minmax(0,1fr)}.fu ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fh{padding:18px;gap:12px}.lg.xl{width:52px;height:52px}.lg.xl img{width:32px;height:32px}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
 
 /* qué ha cambiado */
 .chl{border-top:1.5px solid var(--line2)}
