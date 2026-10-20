@@ -269,7 +269,9 @@ a.tag:hover{background:var(--coral3)}
 .fin::after{content:"";position:absolute;z-index:-1;width:150px;height:150px;border-radius:50%;border:20px solid rgba(255,255,255,.55);right:260px;bottom:-95px;pointer-events:none}
 .fin h2{font:800 clamp(22px,2.6vw,30px)/1.1 var(--f-disp);letter-spacing:-.02em}
 .fin p{margin-top:6px;color:var(--navy3)}
-@media (max-width:760px){.fin{padding:28px 22px}.fin::after{right:-40px}}
+.fin.c{justify-content:center;text-align:center}
+.fin.c::after{right:-30px}
+@media (max-width:760px){.fin{padding:28px 22px}.fin::after{right:-40px}.fin.c::after{right:-80px;bottom:-115px}}
 /* debajo del bloque final, sobre el fondo: nombre a la izquierda y licencia a la derecha */
 .ft{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:18px 8px 28px;font-size:15px;color:var(--mut)}
 .ft p{font-weight:700}

@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "30"  # versión de didakora.css / didakora.js
+V = "32"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -170,11 +170,12 @@ def head(title, desc, path, cur=""):
 <div class="wrap">
 {topbar(cur)}
 '''
-def foot(scripts=""):
+def foot(scripts="", contacto=False):
+    """contacto=True en Sobre mí: la invitación no lleva botón (ya se está en el contacto) y va centrada"""
+    btn = "" if contacto else f'<a class="btn solid" href="{B}/sobre-mi/#contacto">Proponer una herramienta {ICO["arrow"]}</a>'
     return f'''
-<aside class="fin" aria-labelledby="h-inv">
- <div><h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p></div>
- <a class="btn solid" href="{B}/sobre-mi/#contacto">Proponer una herramienta {ICO["arrow"]}</a>
+<aside class="fin{" c" if contacto else ""}" aria-labelledby="h-inv">
+ <div><h2 id="h-inv">¿Echas en falta una herramienta?</h2><p>Propónmela y la reviso con los mismos criterios.</p></div>{btn}
 </aside>
 <footer class="ft">
  <p>Jorge Delgado Aguilera</p>
@@ -294,7 +295,7 @@ def sobremi():
   <ul class="cl">{cont}</ul>
  </section>
 </main>'''
-    write("sobre-mi/index.html", head("Sobre mí · Didakora", "Quién hace Didakora y cómo contactar con él: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
+    write("sobre-mi/index.html", head("Sobre mí · Didakora", "Quién hace Didakora y cómo contactar con él: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot(contacto=True))
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
