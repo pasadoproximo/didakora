@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "21"  # versión de didakora.css / didakora.js
+V = "22"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -118,11 +118,12 @@ def card_dest(t):
             f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a></div></article>')
 
 def card(t):
+    """tarjeta de herramienta: logo y nombre, frase de uso, categoría a la izquierda y flecha (abre la herramienta)"""
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]
-    return (f'<article class="tc"><div class="tc-h"><span class="lg">{logo(t)}</span><h3><a class="tc-a" href="{B}/{t["id"]}/">{esc(nm)}</a>'
+    return (f'<article class="tc td"><div class="tc-h"><span class="lg">{logo(t)}</span><h3><a class="tc-a" href="{B}/{t["id"]}/">{esc(nm)}</a>'
             f'{f"<small>{esc(alias)}</small>" if alias else ""}</h3></div><p>{esc(lead(t))}</p>'
-            f'<div class="tc-f"><a class="tc-go" href="{esc(t["url"])}" rel="noopener" target="_blank">Abrir {ICO["ext"]}<span class="sr"> {esc(nm)} (se abre en otra pestaña)</span></a>'
-            f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a></div></article>')
+            f'<div class="tc-f"><a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'
+            f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a></div></article>')
 
 def _svg_inline(name, cls):
     """mete en la página un SVG de marca/ (sin el <title>, que ya da el aria-label del enlace)"""

@@ -107,9 +107,9 @@ function cajaListado(){
  const lead=t=>t.s==='aula'?t.a:t.s==='docente'?t.p:t.d;
  const card=t=>{const m=t.n.match(/^(.+?)\s*\((.+)\)$/),nm=m?m[1]:t.n,[cs,,hasLogo]=CAJA.t[t.id],[cn,ci]=CAJA.cats[cs];
   const lg=hasLogo?`<img src="${B}/logos/${t.id}.png?v=3" alt="" width="26" height="26" loading="lazy">`:`<b aria-hidden="true">${esc(t.n[0])}</b>`;
-  return `<article class="tc"><div class="tc-h"><span class="lg">${lg}</span><h3><a class="tc-a" href="${B}/${t.id}/">${esc(nm)}</a>${m?`<small>${esc(m[2])}</small>`:''}</h3></div><p>${esc(lead(t))}</p>`+
-   `<div class="tc-f"><a class="tc-go" href="${esc(t.url)}" rel="noopener" target="_blank">Abrir ${EXT}<span class="sr"> ${esc(nm)} (se abre en otra pestaña)</span></a>`+
-   `<a class="tag" href="${B}/categorias/${cs}/"><svg viewBox="0 0 24 24" aria-hidden="true">${ci}</svg>${esc(cn)}</a></div></article>`;};
+  return `<article class="tc td"><div class="tc-h"><span class="lg">${lg}</span><h3><a class="tc-a" href="${B}/${t.id}/">${esc(nm)}</a>${m?`<small>${esc(m[2])}</small>`:''}</h3></div><p>${esc(lead(t))}</p>`+
+   `<div class="tc-f"><a class="tag" href="${B}/categorias/${cs}/"><svg viewBox="0 0 24 24" aria-hidden="true">${ci}</svg>${esc(cn)}</a>`+
+   `<a class="td-x" href="${esc(t.url)}" rel="noopener" target="_blank">${EXT}<span class="sr">Abrir ${esc(nm)} (se abre en otra pestaña)</span></a></div></article>`;};
 
  const P=new URLSearchParams(location.search);
  const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||'',nuevas:P.get('nuevas')==='1'};
