@@ -215,7 +215,7 @@ def portada():
   <div class="hero-t">
    <span class="lab">Herramientas digitales para docentes</span>
    <h1 id="ph1">La herramienta que <span>necesitas</span> para tu clase</h1>
-   <p class="hero-d">Una selección de herramientas revisadas una a una para usar en clase. Búscala por su nombre o por lo que quieres hacer y elige tu etapa. Cada ficha la explica con un ejemplo, te dice qué necesita y te ofrece videotutoriales.</p>
+   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad. Todos revisados uno a uno y explicados con un ejemplo de uso.</p>
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
    <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
