@@ -263,7 +263,7 @@ a.tag:hover{background:var(--coral3)}
 @media (max-width:760px){.chr{grid-template-columns:minmax(0,1fr);gap:10px}.chr .ar{transform:rotate(90deg);width:30px;height:30px}}
 
 /* pie: logotipo en blanco, autor y fecha de revisión */
-.ft{margin-top:110px;background:var(--navy);color:#fff;border-radius:28px 28px 0 0;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px}
+.ft{margin:110px 0 20px;background:var(--navy);color:#fff;border-radius:28px;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px}
 .ft-l{display:block}.ft .lockup{height:26px}
 .ft-cc{color:#fff;font-weight:700;font-size:15px;text-decoration:none;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 14px}
 .ft-cc:hover{background:rgba(255,255,255,.1)}
