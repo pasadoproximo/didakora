@@ -233,7 +233,7 @@ def portada():
   <div class="hero-t">
    <span class="lab">Herramientas digitales para docentes</span>
    <h1 id="ph1">La herramienta que <span>necesitas</span> para tu clase</h1>
-   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad. Todos revisados uno a uno y explicados con un ejemplo de uso.</p>
+   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad. Todos revisados uno a uno, con una ficha que explica qué son, para qué sirven y qué necesitan.</p>
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
    <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
@@ -258,7 +258,7 @@ def portada():
 
 </main>'''
     write("index.html", head("Didakora · Herramientas digitales para docentes",
-        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con ejemplo de uso, etapa recomendada y lo que necesita cada una.", "/") + body + foot())
+        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/") + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
 def todas():
