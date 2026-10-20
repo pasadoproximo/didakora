@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "43"  # versión de didakora.css / didakora.js
+V = "44"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -136,6 +136,9 @@ def _svg_inline(name, cls):
     x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="Didakora"', ' aria-hidden="true" focusable="false"')
     return x.replace("<svg ", f'<svg class="{cls}" ', 1)
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
+# la caja del logo del menú va en su propio grupo para poder animarla al pulsar
+_i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
+LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)

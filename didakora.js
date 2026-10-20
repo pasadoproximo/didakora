@@ -24,6 +24,12 @@ document.querySelectorAll('.dd').forEach(dd=>{
 document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(!b||e.metaKey||e.ctrlKey||e.shiftKey)return;
  try{if(document.referrer&&new URL(document.referrer).origin===location.origin&&history.length>1){e.preventDefault();history.back();}}catch(err){}
 });
+// logo del menú: al pulsarlo, la caja hace su animación y después va al inicio
+document.addEventListener('click',e=>{const b=e.target.closest('.brand');if(!b||e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ e.preventDefault();b.classList.remove('tap');void b.offsetWidth;b.classList.add('tap');
+ setTimeout(()=>{if(new URL(b.href).pathname!==location.pathname||location.search||location.hash)location.href=b.href;},480);
+});
 // compartir la ficha: menú del sistema si existe; si no, se copia el enlace
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;
  const data={title:document.title,url:location.href};
