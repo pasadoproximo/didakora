@@ -111,8 +111,7 @@ a.tag:hover{background:var(--coral3)}
 
 /* secciones */
 .sec{margin-top:96px}
-.sh{margin-bottom:28px;text-align:center}
-.sh p{margin-inline:auto}
+.sh{margin-bottom:28px}
 .sh h2,.pg-h h1{font:800 clamp(32px,4vw,48px)/1 var(--f-disp);letter-spacing:-.03em;margin-top:8px}
 .sh p,.pg-h p{color:var(--mut);margin-top:12px;max-width:64ch}
 
@@ -224,21 +223,21 @@ a.tag:hover{background:var(--coral3)}
 
 /* ficha de herramienta: cabecera (volver, logo, nombre y botón), «Qué es» y «Ficha rápida» del mismo tamaño, y los usos debajo */
 /* cabecera de la ficha con el estilo del hero: azul cielo, círculo coral y aro blanco que flotan */
-.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:14px;text-align:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:34px 36px}
+.fh{margin-top:28px;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:14px;text-align:center;background:var(--sky);color:var(--navy);border-radius:28px;padding:30px 36px 44px}
 .fh::before,.fh::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
 .fh::before{width:190px;height:190px;right:180px;top:-120px;background:var(--coral)}
 .fh::after{width:120px;height:120px;right:330px;bottom:-80px;border:16px solid rgba(255,255,255,.55)}
 @media (prefers-reduced-motion:no-preference){.fh::before{animation:dk-float 14s ease-in-out infinite}.fh::after{animation:dk-drift 18s ease-in-out infinite}}
 .fh .lg{background:#fff}
 .fh .back{background:rgba(255,255,255,.6);justify-self:start}
-.fh h1{margin-top:-4px}
+.fh h1{margin-top:2px}
 .fh .back:hover,.fh .back:focus-visible{background:var(--navy)}
 .fh :focus-visible{outline-color:var(--navy)}
 .fh h1 small{color:var(--navy3)!important}
-.lg.xl{width:64px;height:64px;border-radius:18px}
-.lg.xl img{width:40px;height:40px}
-.lg.xl b{font-size:30px}
-.fh h1{font:800 clamp(28px,3.4vw,42px)/1.05 var(--f-disp);letter-spacing:-.03em;min-width:0}
+.lg.xl{width:92px;height:92px;border-radius:26px}
+.lg.xl img{width:58px;height:58px}
+.lg.xl b{font-size:44px}
+.fh h1{font:800 clamp(38px,5.4vw,64px)/1 var(--f-disp);letter-spacing:-.03em;min-width:0}
 .fh h1 small{display:block;font:600 15px var(--f-body);color:var(--mut);letter-spacing:0;margin-top:4px}
 /* a la izquierda «Qué es» y los usos; a la derecha, más estrecha, la ficha rápida a toda la altura */
 .fg{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-areas:"q a" "u a";gap:18px;margin-top:18px;align-items:stretch}
@@ -247,6 +246,7 @@ a.tag:hover{background:var(--coral3)}
 .fb{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
 .fb h2{font:800 21px/1.15 var(--f-disp);letter-spacing:-.01em;margin-bottom:12px}
 .fb p{color:var(--body);font-size:17.5px;line-height:1.6}
+.fb p.go{margin-top:20px}  /* «Ir a…», dentro de «Qué es» */
 .fa dl{display:grid;gap:0}
 .fa dl div{padding:11px 0;border-top:1px solid var(--line)}
 .fa dt{font:700 12.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
@@ -259,7 +259,7 @@ a.tag:hover{background:var(--coral3)}
 .fu svg{flex:none;width:34px;height:34px;padding:7px;border-radius:11px;background:var(--sky);stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .alt{margin-top:64px}
 @media (max-width:900px){.fg{grid-template-columns:minmax(0,1fr);grid-template-areas:"q" "u" "a"}}
-@media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:52px;height:52px}.lg.xl img{width:32px;height:32px}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.fh{padding:22px 20px;gap:12px}.fh::before{width:120px;height:120px;right:-62px;top:-78px}.fh::after{display:none}.lg.xl{width:72px;height:72px;border-radius:20px}.lg.xl img{width:46px;height:46px}.fh{padding-bottom:30px}.fb p.go .btn{width:100%;justify-content:center}.fb{padding:20px}.fu ul{grid-template-columns:minmax(0,1fr)}}
 
 /* qué ha cambiado */
 .chl{border-top:1.5px solid var(--line2)}
