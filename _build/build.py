@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "3"  # versión de didakora.css / didakora.js
+V = "4"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -132,12 +132,12 @@ def _svg_inline(name, cls):
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 LOGO_W = _svg_inline("didakora-logo-a-blanco.svg", "lockup")
 def topbar(cur=""):
-    nav = [("categorias", "Categorías", "/categorias/"), ("todas", "Todas", "/todas/"), ("destacadas", "Destacadas", "/destacadas/"), ("alternativas", "Qué ha cambiado", "/alternativas/")]
+    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/#quien-la-hace")]
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="Didakora · inicio">{LOGO}</a>
-  <nav aria-label="Principal">{links}<a class="go" href="{B}/todas/">{ICO["search"]}Buscar</a></nav>
+  <nav aria-label="Principal">{links}</nav>
  </div>
 </header>'''
 def head(title, desc, path, cur=""):
@@ -230,7 +230,7 @@ def portada():
   <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver las {len(DESTACADAS)} destacadas {ICO["arrow"]}</a></p>
  </section>
 
- <section class="sec who" aria-labelledby="h-who">
+ <section class="sec who" id="quien-la-hace" aria-labelledby="h-who">
   {secth("", "Quién la hace", "", "h-who")}
   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
   <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
