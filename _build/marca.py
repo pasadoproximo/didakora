@@ -89,6 +89,7 @@ if __name__ == "__main__":
         # opción A: la caja entera a la altura de la «d» (más compacta, para la barra del menú)
         "didakora-logo-a.svg": horizontal(NAVY, NAVY, SKY, CORAL, "A"),
         "didakora-logo-a-blanco.svg": horizontal(WHITE, WHITE, SKY, CORAL, "A"),
+        "didakora-logo-a-cielo.svg": horizontal(NAVY, NAVY, WHITE, CORAL, "A"),
         # icono de pestaña: la caja centrada en un cuadrado
         "favicon.svg": svg(48, 48, f'<g transform="translate(0 4)">{box(NAVY, SKY, CORAL)}</g>', "Didakora"),
     }
