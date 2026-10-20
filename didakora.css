@@ -163,9 +163,23 @@ a.tag:hover{background:var(--coral3)}
 .bal span{color:var(--mut);font-size:16px}
 @media (max-width:760px){.bal{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* quién la hace */
-.who p{color:var(--body);margin-top:14px;max-width:72ch}
-
+/* sobre mí y contacto */
+.me{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center;margin-top:28px}
+.me img{width:100%;height:auto;border-radius:28px;aspect-ratio:1/1;object-fit:cover;background:var(--ice)}
+.me h1{font:800 clamp(34px,4.4vw,56px)/1 var(--f-disp);letter-spacing:-.035em}
+.me p{color:var(--body);margin-top:16px;max-width:62ch;font-size:18px}
+.me .more{margin-top:26px}
+.cl{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cl a{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;text-decoration:none;transition:border-color .2s}
+.cl a:hover{border-color:var(--navy)}
+.cl b{display:block;font:800 18px var(--f-disp)}
+.cl small{display:block;color:var(--mut);font-size:14.5px;overflow-wrap:anywhere}
+.cl a>span:nth-child(2){flex:1;min-width:0}
+.ci{width:44px;height:44px;border-radius:13px;background:var(--sky);display:grid;place-items:center;flex:none;transition:background .25s}
+.ci svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cl a:hover .ci{background:var(--coral)}
+.cl a:hover .cc-x{transform:rotate(45deg);background:var(--navy);color:#fff}
+@media (max-width:900px){.me{grid-template-columns:minmax(0,1fr);gap:28px}.me img{max-width:420px}.cl{grid-template-columns:minmax(0,1fr)}}
 
 /* páginas interiores */
 .pg{padding-top:8px}
@@ -263,6 +277,10 @@ a.tag:hover{background:var(--coral3)}
 /* pie: logotipo en blanco, autor y fecha de revisión */
 .ft{margin-top:110px;background:var(--navy);color:#fff;border-radius:28px 28px 0 0;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px}
 .ft-l{display:block}.ft .lockup{height:26px}
+.ft-n{display:flex;gap:6px 22px;flex-wrap:wrap;margin-left:auto}
+.ft-n a{color:#fff;font-weight:700;text-decoration:none}
+.ft-n a:hover{text-decoration:underline;text-underline-offset:3px}
+.ft-n+p{flex-basis:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
 .ft p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-weight:700;font-size:16px}
 .ft span{color:#DCE3F7;font-weight:400;font-size:15.5px}
 @media (max-width:900px){.ft{padding:28px 22px}}

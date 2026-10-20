@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "12"  # versión de didakora.css / didakora.js
+V = "13"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -132,7 +132,7 @@ def _svg_inline(name, cls):
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 LOGO_W = _svg_inline("didakora-logo-a-blanco.svg", "lockup")
 def topbar(cur=""):
-    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/#quien-la-hace")]
+    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
@@ -170,6 +170,7 @@ def foot(scripts=""):
     return f'''
 <footer class="ft">
  <a class="ft-l" href="{B}/" aria-label="Didakora · inicio">{LOGO_W}</a>
+ <nav class="ft-n" aria-label="Pie"><a href="{B}/sobre-mi/">Sobre mí</a><a href="{B}/sobre-mi/#contacto">Contacta conmigo</a></nav>
  <p>Por Jorge Delgado Aguilera<span>Revisada en octubre de 2026</span></p>
 </footer>
 </div>
@@ -237,12 +238,6 @@ def portada():
   <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver las {len(DESTACADAS)} destacadas {ICO["arrow"]}</a></p>
  </section>
 
- <section class="sec who" id="quien-la-hace" aria-labelledby="h-who">
-  {secth("", "Quién la hace", "", "h-who")}
-  <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
-  <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
-  <p class="more"><a class="btn solid" href="{SITE}/proyectos/repositorio-digital/">Cómo la hice {ICO["arrow"]}</a><a class="btn line" href="https://sites.google.com/view/repositorio-digital-docente-cc/inicio" rel="noopener" target="_blank">El repositorio de 2024 {ICO["ext"]}</a></p>
- </section>
 
 </main>'''
     write("index.html", head("Didakora · Herramientas digitales para docentes",
@@ -266,6 +261,38 @@ def todas():
 </main>'''
     write("todas/index.html", head("Todas las herramientas · Didakora", "Todas las herramientas de Didakora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
+
+# ---------------------------------------------------------------- sobre mí y contacto
+CONTACTO = [
+ ("mail", "Correo", "jorgedelagui@gmail.com", "mailto:jorgedelagui@gmail.com"),
+ ("in", "LinkedIn", "jorgedelgadoaguilera", "https://www.linkedin.com/in/jorgedelgadoaguilera"),
+ ("ig", "Instagram", "@pasadoproximo · divulgación histórica", "https://www.instagram.com/pasadoproximo/"),
+]
+CICO = {"mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>',
+        "in": '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.8v.1M12 16v-5.5M12 13c0-1.6 1-2.6 2.3-2.6S16.5 11.3 16.5 13v3"/>',
+        "ig": '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7v.1"/>'}
+def sobremi():
+    cont = "".join(f'<li><a href="{u}"{"" if u.startswith("mailto:") else " rel=" + chr(34) + "noopener" + chr(34) + " target=" + chr(34) + "_blank" + chr(34)}>'
+                   f'<span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">{CICO[k]}</svg></span><span><b>{t}</b><small>{esc(d)}</small></span>'
+                   f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a></li>' for k, t, d, u in CONTACTO)
+    body = f'''
+<main class="pg">
+ {crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}
+ <section class="me">
+  <img src="{B}/img/jorge.jpg" alt="Jorge Delgado Aguilera en un aula, con una estantería de libros y un mapamundi al fondo" width="720" height="734">
+  <div>
+   <h1>Sobre mí</h1>
+   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
+   <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
+   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didakora {ICO["ext"]}</a></p>
+  </div>
+ </section>
+ <section class="sec contact" id="contacto" aria-labelledby="h-contacto">
+  {secth("", "Contacta conmigo", "Para proponer una herramienta, avisar de un enlace que ya no funciona o hablar de un proyecto.", "h-contacto")}
+  <ul class="cl">{cont}</ul>
+ </section>
+</main>'''
+    write("sobre-mi/index.html", head("Sobre mí · Didakora", "Quién hace Didakora y cómo contactar con él: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
@@ -380,6 +407,6 @@ def datos():
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); categorias(); alternativas()
+    datos(); portada(); todas(); destacadas(); categorias(); alternativas(); sobremi()
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")
