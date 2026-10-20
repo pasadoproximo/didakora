@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "44"  # versión de didakora.css / didakora.js
+V = "45"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -213,7 +213,7 @@ def crumbs(items):
 def secth(lab, title, desc="", hid=""):
     return f'<div class="sh">{f'<span class="lab">{esc(lab)}</span>' if lab else ""}<h2{f" id={chr(34)}{hid}{chr(34)}" if hid else ""}>{esc(title)}</h2>{f"<p>{esc(desc)}</p>" if desc else ""}</div>'
 def catcard(c):
-    return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><span class="cc-i">{icon(c[3])}</span><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
+    return (f'<a class="cc" href="{B}/categorias/{c[0]}/"><b>{esc(c[1])}</b><span class="cc-d">{esc(CORTO[c[0]])}</span>'
             f'<span class="cc-x" aria-hidden="true">{ICO["ext"]}</span></a>')
 
 def etapas_html(fid, cls=""):
@@ -323,7 +323,7 @@ def categorias():
             if t["sub"] not in subs: subs.append(t["sub"])
         nav = "".join(f'<a href="#{slug(s)}">{esc(s)} <span>{sum(1 for t in ts if t["sub"] == s)}</span></a>' for s in subs) if len(subs) > 1 else ""
         blocks = "".join(f'<section class="sub" aria-labelledby="{slug(s)}"><h2 id="{slug(s)}">{esc(s)} <span>{sum(1 for t in ts if t["sub"] == s)}</span></h2><div class="tcg">{"".join(card(t, False) for t in ts if t["sub"] == s)}</div></section>' for s in subs)
-        others = "".join(f'<a href="{B}/categorias/{o[0]}/">{icon(o[3])}{esc(o[1])}</a>' for o in CATS if o[0] != c[0])
+        others = "".join(f'<a href="{B}/categorias/{o[0]}/">{esc(o[1])}</a>' for o in CATS if o[0] != c[0])
         body = f'''
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", f"{B}/categorias/"), (c[1], "")])}<h1>{esc(c[1])}</h1></div><p>{esc(c[2])} {len(ts)} herramientas.</p></div>
