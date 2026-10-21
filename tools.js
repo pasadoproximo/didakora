@@ -424,7 +424,7 @@ const TOOLS = [
     p:"Cuestionarios, exámenes autocorregibles y encuestas.",
     i:["Prueba de ideas previas","Autoevaluación y coevaluación","Encuesta a familias"],
     coste:"Gratuito", datos:"Con la cuenta del centro" },
-  { id:"msforms", s:"docente", cat:"eval", st:"vigente", n:"Microsoft Forms", url:"https://forms.office.com",
+  { id:"msforms", s:"docente", cat:"eval", st:"vigente", n:"Microsoft Forms", url:"https://forms.cloud.microsoft",
     p:"Cuestionarios y encuestas integrados con Teams.",
     i:["Cuestionario dentro de una tarea de Teams","Repaso con retroalimentación","Recogida de datos de un proyecto"],
     coste:"Incluido en Microsoft 365", datos:"Con la cuenta del centro" },
