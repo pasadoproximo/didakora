@@ -316,7 +316,7 @@ const TOOLS = [
     i:["Explicaciones y actividades a varios niveles","Reescribir un texto para hacerlo más accesible","Ideas para una situación de aprendizaje"],
     coste:"Incluido con la cuenta educativa", datos:"Con la cuenta del centro, Google indica que no se usa para entrenar sus modelos",
     nota:"Con la cuenta del centro también la puede usar el alumnado." },
-  { id:"notebooklm", s:"docente", cat:"ia", st:"nueva", n:"NotebookLM", url:"https://notebooklm.google.com",
+  { id:"notebooklm", s:"docente", cat:"ia", st:"nueva", n:"NotebookLM", url:"https://notebook.google.com",
     p:"Responde solo a partir de los documentos que le subes y cita el fragmento exacto.",
     i:["Cuaderno por unidad con tus apuntes","Guías de estudio y preguntas de repaso","Revisar la programación frente al decreto"],
     coste:"Incluido en todas las ediciones de Workspace for Education, también en la gratuita (con límites diarios)", datos:"Con la cuenta del centro, Google indica que no se usa para entrenar sus modelos ni lo revisan personas",
