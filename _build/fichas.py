@@ -31,7 +31,7 @@ F = {
 # ---------------- Explorar por materias: Geografía e Historia
 "artsculture": dict(q="Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo. Permite ver obras en altísima resolución, recorrer museos con visitas virtuales y leer historias preparadas por los propios museos. Incluye también juegos y experimentos sobre arte.",
   usos=["Analizar obras de arte", "Hacer visitas virtuales", "Investigar con fuentes fiables", "Repasar estilos artísticos"]),
-"visitas": dict(q="Muchos museos y monumentos ofrecen visitas virtuales en 360º que permiten recorrerlos por dentro desde el aula. Son un buen recurso para conocer un espacio antes de estudiarlo o para visitar lugares a los que no se puede ir de excursión.",
+"visitas": dict(q="Muchos museos y monumentos ofrecen visitas virtuales en 360° que permiten recorrerlos por dentro desde el aula. Son un buen recurso para conocer un espacio antes de estudiarlo o para visitar lugares a los que no se puede ir de excursión.",
   usos=["Visitar museos y monumentos", "Preparar una salida", "Analizar un espacio histórico", "Motivar al empezar un tema"]),
 "earth": dict(q="Google Earth es un globo terráqueo en 3D con imágenes de satélite de todo el planeta. Permite viajar a cualquier lugar, ver edificios y relieve en tres dimensiones, comparar imágenes de distintos años y crear proyectos propios con mapas, fotos y texto.",
   usos=["Explorar paisajes", "Comparar cambios en el tiempo", "Crear rutas y proyectos", "Localizar lugares estudiados"]),
@@ -47,8 +47,8 @@ F = {
   usos=["Explicar la tectónica de placas", "Visualizar el tiempo geológico", "Relacionar Geografía y Ciencias", "Motivar al empezar un tema"]),
 
 # ---------------- Crear y presentar
-"canva": dict(q="Canva es una herramienta de diseño gráfico con miles de plantillas. Con la cuenta de Canva para Educación, el docente crea una clase e invita al alumnado, que puede diseñar infografías, pósters, presentaciones, vídeos o documentos, también en grupo.",
-  usos=["Diseñar infografías y pósters", "Hacer presentaciones", "Crear materiales de clase", "Trabajar en grupo"]),
+"canva": dict(q="Canva es una herramienta de diseño gráfico con miles de plantillas. Con la cuenta de Canva para Educación, el docente crea una clase e invita al alumnado, que puede diseñar infografías, pósteres, presentaciones, vídeos o documentos, también en grupo.",
+  usos=["Diseñar infografías y pósteres", "Hacer presentaciones", "Crear materiales de clase", "Trabajar en grupo"]),
 "genially": dict(q="Genially sirve para crear contenidos interactivos: presentaciones, infografías, imágenes con puntos que se pueden pulsar, juegos y escape rooms. Tiene muchas plantillas y el resultado se comparte con un enlace o se inserta en el aula virtual.",
   usos=["Crear presentaciones interactivas", "Diseñar juegos y escape rooms", "Hacer infografías", "Presentar trabajos del alumnado"]),
 "bookcreator": dict(q="Book Creator permite crear libros digitales combinando texto, imágenes, dibujos, audio y vídeo. El docente crea una biblioteca y el alumnado entra con un código para escribir sus libros, solo o en grupo; el resultado se puede leer en línea.",
@@ -95,7 +95,7 @@ F = {
   usos=["Representar funciones", "Explorar parámetros", "Comprobar resultados", "Analizar datos"]),
 "phet": dict(q="PhET, de la Universidad de Colorado, ofrece simulaciones interactivas y gratuitas de física, química, biología y matemáticas, traducidas al español. El alumnado manipula variables y observa qué ocurre, como en un laboratorio.",
   usos=["Hacer un laboratorio virtual", "Visualizar conceptos abstractos", "Aprender por descubrimiento", "Comprobar hipótesis"]),
-"gizmos": dict(q="Gizmos es una colección de simulaciones de ciencias y matemáticas, en inglés, con guías de actividad para cada una. Algunas son gratuitas y el resto requieren suscripción.",
+"gizmos": dict(q="Gizmos es una colección de simulaciones de ciencias y matemáticas, en inglés, con guías de actividad para cada una. Algunas son gratuitas y el resto requiere suscripción.",
   usos=["Simular experimentos", "Trabajar en clases bilingües", "Visualizar conceptos", "Aprender por descubrimiento"]),
 "bodymaps": dict(q="Body Maps es un atlas interactivo del cuerpo humano en 3D. Permite girar el modelo, ver los órganos y sistemas por capas y leer una explicación de cada parte.",
   usos=["Estudiar anatomía", "Explicar los aparatos del cuerpo", "Repasar con apoyo visual", "Preparar presentaciones"]),

@@ -90,8 +90,8 @@ const TOOLS = [
     a:"Explora colecciones de museos en alta resolución, visitas virtuales e historias.",
     i:["Analizar una obra con todo detalle","Visita virtual a un monumento antes de estudiarlo","Juegos de arte para repasar estilos"],
     c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"No necesita" },
-  { id:"visitas", s:"aula", cat:"geohis", st:"vigente", n:"Visitas virtuales 360º", url:"https://www.louvre.fr/es/visitas-virtuales",
-    a:"Recorre por dentro museos y monumentos en 360º desde el aula.",
+  { id:"visitas", s:"aula", cat:"geohis", st:"vigente", n:"Visitas virtuales 360°", url:"https://www.louvre.fr/es/visitas-virtuales",
+    a:"Recorre por dentro museos y monumentos en 360° desde el aula.",
     i:["Museo del Prado: museodelprado.es","Egipto: describingegypt.com","Louvre y Saint-Sernin de Toulouse"],
     c:"Toda la etapa", disp:"Uno por pareja o proyectado", cta:"No necesita" },
   { id:"earth", s:"aula", cat:"geohis", st:"nueva", n:"Google Earth", url:"https://earth.google.com",
@@ -121,7 +121,7 @@ const TOOLS = [
 
   // --- Crear y presentar
   { id:"canva", s:"aula", cat:"crear", st:"vigente", n:"Canva para Educación", url:"https://www.canva.com/education/",
-    a:"Diseña infografías, pósters, presentaciones y vídeos con plantillas.",
+    a:"Diseña infografías, pósteres, presentaciones y vídeos con plantillas.",
     i:["Infografía de un periodo histórico","Póster de un proyecto","Presentación en grupo"],
     c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"Cuenta educativa (el docente invita a la clase)" },
   { id:"genially", s:"aula", cat:"crear", st:"vigente", n:"Genially", url:"https://genially.com",
