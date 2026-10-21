@@ -38,9 +38,13 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 
 ```json
 { "id": "T-AAAAMMDD-01", "ciclo": "AAAA-MM-DD", "tipo": "alta|actualizacion|retirada",
-  "herramienta": "id o nombre", "resumen": "una línea", "prioridad": "alta|media|baja",
+  "herramienta": "nombre legible de la herramienta", "resumen": "una línea", "prioridad": "alta|media|baja",
+  "cambio": "qué se cambia exactamente", "motivo": "por qué, con lo que dicen las fuentes", "dudas": "lo que no está confirmado (o null)",
+  "opciones": [ { "id": "A", "texto": "…", "recomendada": true }, { "id": "B", "texto": "…" } ],
   "fuentes": ["https://…"], "estado": "propuesta", "decision": null, "nota_jorge": null,
   "archivos": [], "commit": null, "verificacion": null }
 ```
+
+Jorge decide muchas veces desde el monasterio, que enseña cada propuesta como una ficha con `cambio`, `motivo`, `fuentes` y `dudas` (más un botón por cada opción): rellena siempre esos campos con frases completas y, si hay alternativas, ponlas en `opciones` (si no las hay, `[]`).
 
 Nunca cambies el `estado` de tareas de otros ciclos ni marques nada como aprobado: no puedes aprobar tus propias propuestas. No toques `tools.js`, `_build/` ni ninguna página. Devuelve a la sesión principal la tabla resumen.
