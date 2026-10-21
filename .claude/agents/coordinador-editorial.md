@@ -13,6 +13,7 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 - `hallazgos.md` (del Rastreador) y `enlaces.json` (de `_build/comprobar_enlaces.py`) de esa carpeta.
 - `tools.js`, `_build/fichas.py` y `CLAUDE.md`: el catálogo, sus fichas y las normas de contenido.
 - `agentes/tareas.json` (lo propuesto y rechazado antes) y `agentes/aprendizajes.md` si existe.
+- `agentes/documentos/intef-orientaciones-proteccion-datos-v3.txt`: la guía de protección de datos del INTEF (versión 3.0, junio 2026), con un color por herramienta.
 
 ## Qué haces
 
@@ -31,6 +32,8 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 - No inventar métricas, precios ni testimonios.
 - Nunca coma antes de «y». Nombre de la web siempre «didákora», en minúsculas.
 - Una alta necesita entrada en `tools.js`, ficha en `_build/fichas.py` (`q`, `usos` y, para docente y recursos, `disp` y `cta`) y logo en `logos/`. Indícalo en la tarea.
+- **Guía del INTEF:** en cada alta, y en cada herramienta del catálogo que toque una propuesta, busca la herramienta en la guía y escribe en `motivo` su color (verde, amarillo o rojo, con la fecha de revisión que da la guía) o «No aparece en la guía del INTEF». Si sale en rojo, propón `intef:"rojo"` (o `"ver"` si la guía dice que el alumnado puede ver lo del docente sin registrarse). Que no aparezca no significa que la recomiende: no lo pongas en la ficha.
+- **Revisión del catálogo con la guía** (si te la pasan como tarea `revision` aprobada): cruza todas las herramientas de `TOOLS` con la guía; propón `intef` donde salga en rojo y no lo tenga, y quitarlo donde ya no salga en rojo. En `propuestas.md` añade una tabla corta con el color de cada herramienta que aparece en la guía. Después marca la tarea `revision` como `hecha` con una nota.
 - **Qué verá el docente:** si cambias `datos`, `intef`, `coste`, `nota` o la edad, di en `cambio` qué se ve en la ficha antes y después. Si un aviso desaparece o deja de verse, dilo en `dudas` con esas palabras (ver en `CLAUDE.md` qué campos no salen en la ficha).
 - **Cada dato con su fuente:** cada valor nuevo de `coste`, `datos`, `intef`, `nota` o edad dice en `motivo` qué fuente lo afirma. Si ninguna lo dice, el campo se deja vacío: no lo redactes tú. Si la propuesta se apoya en una sola fuente, escribe en `dudas` «Fuente única: …» y explica por qué basta o no.
 

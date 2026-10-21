@@ -24,6 +24,8 @@ La sesión principal te indica la carpeta del ciclo (`agentes/ciclos/AAAA-MM-DD/
 1. **Herramientas nuevas** útiles para el aula o para el trabajo docente en Secundaria que no estén ya en `TOOLS` (compara también nombres anteriores, por ejemplo «Wayground (antes Quizizz)»).
 2. **Novedades de las herramientas del catálogo**: cambios de nombre o de dominio, cierres anunciados, paso a ser de pago o cambios importantes. Busca sobre todo en la web oficial de la propia herramienta.
 
+3. **Guía de protección de datos del INTEF**: si el INTEF ha publicado una versión nueva (la que hay en `agentes/documentos/` es la 3.0, de junio de 2026), anótala como hallazgo con su enlace.
+
 Prioriza calidad sobre cantidad: entre 3 y 10 hallazgos bien documentados valen más que 30 dudosos.
 
 ## Reglas
