@@ -251,13 +251,13 @@ def portada():
  <section class="sec" aria-labelledby="h-cats">
   {secth("", "Categorías principales", "Navega por lo que necesitas.", "h-cats")}
   <div class="ccg c4">{"".join(catcard(c) for c in CATS[:4])}</div>
-  <p class="more"><a class="btn solid" href="{B}/categorias/">Ver las {len(CATS)} categorías {ICO["arrow"]}</a></p>
+  <p class="more"><a class="btn solid" href="{B}/categorias/">Ver categorías {ICO["arrow"]}</a></p>
  </section>
 
  <section class="sec" aria-labelledby="h-dest">
   {secth("", "Herramientas destacadas", "Las más versátiles para empezar a usar en clase.", "h-dest")}
   <div class="tcg c4">{dest}</div>
-  <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver las {len(DESTACADAS)} destacadas {ICO["arrow"]}</a></p>
+  <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver destacadas {ICO["arrow"]}</a></p>
  </section>
 {seccion_nuevas()}
 
@@ -318,7 +318,7 @@ def seccion_nuevas():
  <section class="sec" aria-labelledby="h-nuevas">
   {secth("", "Añadidas recientemente", "Las últimas herramientas que han entrado en el catálogo.", "h-nuevas")}
   <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns[:4])}</div>
-  <p class="more"><a class="btn solid" href="{B}/nuevas/">Ver las nuevas {ICO["arrow"]}</a></p>
+  <p class="more"><a class="btn solid" href="{B}/nuevas/">Ver nuevas {ICO["arrow"]}</a></p>
  </section>
 '''
 def nuevas():
