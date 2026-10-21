@@ -2,6 +2,7 @@
 #   /                      portada: buscador, categorías, destacadas, quién la hace
 #   /todas/                listado completo con buscador y filtros (JS)
 #   /destacadas/           las diez más versátiles
+#   /nuevas/               las últimas añadidas (RECIENTES en tools.js)
 #   /categorias/           índice de categorías y /categorias/<slug>/ con sus apartados
 #   /<id>/                 una ficha por herramienta
 # Todas las rutas cuelgan de BASE ("/didakora" en GitHub Pages; "" si algún día va en dominio propio:
@@ -16,9 +17,9 @@ SITE = "https://pasadoproximo.github.io"
 V = "57"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
-    "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
+    "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
     os.path.join(H, "tools.js")]).decode("utf-8"))
-SECTIONS, TOOLS, CHANGES = d["SECTIONS"], d["TOOLS"], d["CHANGES"]
+SECTIONS, TOOLS, CHANGES, RECIENTES = d["SECTIONS"], d["TOOLS"], d["CHANGES"], d["RECIENTES"]
 LOGOS = {f[:-4] for f in os.listdir(os.path.join(H, "logos")) if f.endswith(".png")}
 esc = lambda s: html.escape(str(s), quote=True)
 
@@ -111,11 +112,11 @@ def logo(t, size=26): return (f'<img src="{B}/logos/{t["id"]}.png?v=3" alt="" wi
 def split_name(n):
     m = re.match(r"^(.+?)\s*\((.+)\)$", n); return (m.group(1), m.group(2)) if m else (n, "")
 def lead(t): return t.get("a") if t["s"] == "aula" else t.get("p") if t["s"] == "docente" else t.get("d")
-def card_dest(t):
-    """tarjeta compacta de las destacadas: texto corto, categoría a la izquierda y solo la flecha"""
+def card_dest(t, txt=None):
+    """tarjeta compacta de las destacadas y las nuevas: texto corto, categoría a la izquierda y solo la flecha"""
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]
     return (f'<article class="tc td"><div class="tc-h"><span class="lg">{logo(t)}</span><h3><a class="tc-a" href="{B}/{t["id"]}/">{esc(nm)}</a>'
-            f'{f"<small>{esc(alias)}</small>" if alias else ""}</h3></div><p>{esc(DEST_TXT[t["id"]])}</p>'
+            f'{f"<small>{esc(alias)}</small>" if alias else ""}</h3></div><p>{esc(txt or DEST_TXT[t["id"]])}</p>'
             f'<div class="tc-f"><a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'
             f'<a class="td-x" href="{esc(t["url"])}" rel="noopener" target="_blank">{ICO["ext"]}<span class="sr">Abrir {esc(nm)} (se abre en otra pestaña)</span></a></div></article>')
 
@@ -141,7 +142,7 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 def topbar(cur=""):
-    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
+    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("nuevas", "Nuevas", "/nuevas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
@@ -258,7 +259,7 @@ def portada():
   <div class="tcg c4">{dest}</div>
   <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver las {len(DESTACADAS)} destacadas {ICO["arrow"]}</a></p>
  </section>
-
+{seccion_nuevas()}
 
 </main>'''
     write("index.html", head("Didákora · Herramientas digitales para docentes",
@@ -307,6 +308,28 @@ def destacadas():
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
     write("destacadas/index.html", head("Herramientas destacadas · Didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de Didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
+
+# ---------------------------------------------------------------- nuevas (las últimas añadidas)
+def nuevas_lista(): return [(BYID[x["id"]], x["txt"]) for x in RECIENTES if x["id"] in BYID]
+def seccion_nuevas():
+    ns = nuevas_lista()
+    if not ns: return ""
+    return f'''
+ <section class="sec" aria-labelledby="h-nuevas">
+  {secth("", "Añadidas recientemente", "Las últimas herramientas que han entrado en el catálogo.", "h-nuevas")}
+  <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns[:4])}</div>
+  <p class="more"><a class="btn solid" href="{B}/nuevas/">Ver las nuevas {ICO["arrow"]}</a></p>
+ </section>
+'''
+def nuevas():
+    ns = nuevas_lista()
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Herramientas nuevas", "")])}<h1>Herramientas nuevas</h1></div><p>Las últimas {len(ns)} que han entrado en el catálogo, de la más reciente a la más antigua.</p></div>
+ <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns)}</div>
+ <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
+</main>'''
+    write("nuevas/index.html", head("Herramientas nuevas · Didákora", f"Las últimas herramientas digitales para docentes añadidas a Didákora.", "/nuevas/", "nuevas") + body + foot())
 
 # ---------------------------------------------------------------- categorías
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans("áéíóúñü", "aeiounu"))).strip("-")
@@ -393,7 +416,7 @@ def extras():
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
     write("404.html", head("Página no encontrada · Didákora", "Esta página no existe en Didákora.", "/404.html") + body + foot())
-    urls = ["/", "/todas/", "/destacadas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
+    urls = ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
           + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
@@ -408,6 +431,6 @@ def datos():
 if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); categorias(); sobremi(); extras()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras()
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")

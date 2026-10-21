@@ -8,7 +8,9 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 - `_build/build.py` → genera todas las páginas (portada, `todas/`, `destacadas/`, `categorias/`, una ficha por herramienta,
   `sobre-mi/` y 404). **Las páginas son generadas: no editarlas a mano.** Las rutas cuelgan de `B` (`/didakora`);
   para un dominio propio: `DK_BASE= python _build/build.py`.
-- `tools.js` → los datos de las herramientas (`SECTIONS`, `TOOLS`, `CHANGES`). `logos/` → logos de cada herramienta.
+- `tools.js` → los datos de las herramientas (`SECTIONS`, `TOOLS`, `RECIENTES`, `CHANGES`). `logos/` → logos de cada herramienta.
+  `RECIENTES` = las últimas añadidas, de la más reciente a la más antigua (máximo 12, cada una con texto corto): salen en
+  «Añadidas recientemente» de la portada (las 4 primeras, bajo las destacadas) y en `/nuevas/` («Nuevas» en el menú).
 - `_build/didakora.css` y `_build/didakora.js` → se copian a la raíz al generar. Si cambian, subir `V` en `build.py`.
 - `didakora-datos.js` → generado (categoría, etapas, logo y apartado de cada herramienta para el listado).
 - Buscador: `dkMotor` en `didakora.js` puntúa por nombre, descripción, categoría, apartado, materia, etapa e ideas;

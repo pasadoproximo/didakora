@@ -519,6 +519,15 @@ const TOOLS = [
 ];
 
 // Lo que ha cambiado desde el repositorio de 2024
+// RECIENTES: las últimas herramientas añadidas, de la más reciente a la más antigua (portada y /nuevas/). Al dar de alta una
+// herramienta, se pone la primera con un texto corto, como el de las destacadas. Como mucho 12: se quita la última.
+const RECIENTES = [
+  { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms." },
+  { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes." },
+  { id:"koalendar", txt:"Agenda para que las familias reserven tutoría." },
+  { id:"elevenlabs", txt:"Convierte textos en audio con voces naturales." }
+];
+
 const CHANGES = [
   { n:"Flip", what:"Microsoft lo cerró en octubre de 2024 y borró el contenido.", alt:"Padlet (respuestas en vídeo) o Microsoft Teams" },
   { n:"Tome", what:"Dejó de ofrecer presentaciones en abril de 2025.", alt:"Gamma o Canva" },
