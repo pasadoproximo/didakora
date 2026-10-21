@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "58"  # versión de didakora.css / didakora.js
+V = "59"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -374,6 +374,9 @@ def ficha(t):
     if t.get("edad"): notas.append(f'Edad mínima: {esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>')
     elif aula and not OWN.search(t["cta"]): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
     if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
+    # aviso de la guía de protección de datos del INTEF: punto rojo y explicación corta (intef: "rojo" o "ver")
+    if t.get("intef"): notas.append('<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'
+                                    + ('; puede ver lo que crea el docente sin registrarse' if t["intef"] == "ver" else '') + '.</span>')
     if t.get("datos") and not re.match(r"(con|trabaja con|usa) la cuenta del centro", t["datos"], re.I): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),

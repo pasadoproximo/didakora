@@ -31,8 +31,8 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 - No inventar métricas, precios ni testimonios.
 - Nunca coma antes de «y». Nombre de la web siempre «didákora», en minúsculas.
 - Una alta necesita entrada en `tools.js`, ficha en `_build/fichas.py` (`q`, `usos` y, para docente y recursos, `disp` y `cta`) y logo en `logos/`. Indícalo en la tarea.
-- **Qué verá el docente:** si cambias `datos`, `coste`, `nota` o la edad, di en `cambio` qué se ve en la ficha antes y después. Si un aviso desaparece o deja de verse, dilo en `dudas` con esas palabras (ver en `CLAUDE.md` qué campos no salen en la ficha).
-- **Cada dato con su fuente:** cada valor nuevo de `coste`, `datos`, `nota` o edad dice en `motivo` qué fuente lo afirma. Si ninguna lo dice, el campo se deja vacío: no lo redactes tú. Si la propuesta se apoya en una sola fuente, escribe en `dudas` «Fuente única: …» y explica por qué basta o no.
+- **Qué verá el docente:** si cambias `datos`, `intef`, `coste`, `nota` o la edad, di en `cambio` qué se ve en la ficha antes y después. Si un aviso desaparece o deja de verse, dilo en `dudas` con esas palabras (ver en `CLAUDE.md` qué campos no salen en la ficha).
+- **Cada dato con su fuente:** cada valor nuevo de `coste`, `datos`, `intef`, `nota` o edad dice en `motivo` qué fuente lo afirma. Si ninguna lo dice, el campo se deja vacío: no lo redactes tú. Si la propuesta se apoya en una sola fuente, escribe en `dudas` «Fuente única: …» y explica por qué basta o no.
 
 ## Qué entregas
 

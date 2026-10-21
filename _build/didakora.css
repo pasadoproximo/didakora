@@ -302,3 +302,5 @@ a.tag:hover{background:var(--coral3)}
 .ft-cc:hover{color:var(--navy);border-color:var(--navy)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .aprox{grid-column:1/-1;color:var(--mut);font-weight:700;margin-bottom:-2px}
+.fa dd .intef{display:block;color:var(--navy)}
+.fa dd .intef i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#D93025;margin-right:7px;vertical-align:1px}
