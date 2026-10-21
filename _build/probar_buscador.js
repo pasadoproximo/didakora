@@ -32,7 +32,8 @@ const tareas = ['evaluar', 'rúbrica', 'vídeo', 'podcast', 'mapa mental', 'gami
   'dislexia', 'sin registro', 'matemáticas', 'programar', 'inteligencia artificial', 'IA', '3D', 'familias', 'cuestionario', 'encuesta',
   'infografía', 'cómic', 'música', 'imágenes gratis', 'historia', 'geografía', 'ciencias', 'robótica', 'murales', 'colaborar', 'tareas',
   'notas', 'cuaderno del profesor', 'pizarra', 'temporizador', 'audio', 'diapositivas', 'juegos', 'concurso', 'repasar', 'atención a la diversidad',
-  'lectura', 'accesibilidad', 'planificar', 'crear actividades', 'formularios', 'insignias', 'aula virtual', 'moodle', 'quizizz', 'traducir'];
+  'lectura', 'accesibilidad', 'planificar', 'crear actividades', 'formularios', 'insignias', 'aula virtual', 'moodle', 'quizizz', 'traducir',
+  'voz', 'voces', 'locución', 'narrar', 'narración', 'doblaje', 'texto a voz', 'voz en off', 'audiolibro'];
 const vacias = [];
 for (const q of tareas) { pruebas++; const r = M.buscar(q); if (!r.exactas.length) vacias.push(q + (r.parecidas.length ? ` (solo ${r.parecidas.length} parecidas)` : ' (nada)')); }
 console.log(`${TOOLS.length} herramientas · ${pruebas} búsquedas probadas`);

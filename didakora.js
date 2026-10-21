@@ -43,7 +43,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
 // principio de una palabra («pres» → presentaciones) y una errata por palabra («kahot» → Kahoot!).
 function dkMotor(TOOLS,SECTIONS,CAJA){
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- const stem=w=>w.length>4&&w.endsWith('es')?w.slice(0,-2):w.length>3&&w.endsWith('s')?w.slice(0,-1):w;
+ const stem=w=>w.length>4&&w.endsWith('ces')?w.slice(0,-3)+'z':w.length>4&&w.endsWith('es')?w.slice(0,-2):w.length>3&&w.endsWith('s')?w.slice(0,-1):w;
  const STOP=new Set('de la el los las un una unos unas y o a en con para por del al que se su sus mi me lo como'.split(' '));
  const SYN={evaluacion:['evaluar','rubrica','calificar','corregir'],evaluar:['evaluacion','rubrica','calificar','corregir'],rubrica:['evaluacion','evaluar'],
   cuestionario:['quiz','test','preguntas','encuesta'],quiz:['cuestionario','test','preguntas'],test:['cuestionario','quiz','preguntas'],
@@ -56,8 +56,10 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
   gamificar:['juego','concurso','puntos','jugar','gamificado','gamificacion'],interactivo:['preguntas','interactiva','responde'],
   cooperativo:['cooperativa','cooperativas','equipo','colaborar'],cooperativa:['cooperativo','equipo','colaborar'],trabajo:['trabajar'],
   diversidad:['dislexia','lectura en voz alta','dictado','accesibilidad','dificultades','inclusion'],inclusion:['diversidad','accesibilidad','dislexia','dificultades'],
-  planificar:['programacion','planificacion','preparar'],traducir:['traduccion','idiomas']};
- const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica']];
+  planificar:['programacion','planificacion','preparar'],traducir:['traduccion','idiomas'],
+  voz:['locucion','narrar','narracion','leer en voz alta'],locucion:['voz','narrar','narracion'],narrar:['narracion','locucion','voz','relato'],narracion:['narrar','locucion','voz','relato'],
+  doblaje:['doblar','idiomas','locucion'],doblar:['doblaje','idiomas'],audiolibro:['leer en voz alta','narrar','locucion','audio']};
+ const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica'],['voz en off','locucion'],['texto a voz','locucion']];
  const SYNS=Object.fromEntries(Object.entries(SYN).map(([k,v])=>[stem(k),v]));
  const words=s=>norm(s).split(/[^a-z0-9ñ]+/).filter(Boolean);
  const CATKW={'aula:ia':'apoyo al aprendizaje','aula:cienc':'','aula:arte':''};
@@ -90,6 +92,8 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
   if(best<3&&w.length>=3&&X.cwl.some(x=>x.startsWith(w)))best=3;
   if(best<2&&forms(w).some(f=>f.includes(' ')?X.it.includes(' '+f+' '):(stem(f).length>3&&X.iw.has(stem(f)))))best=2;
   if(best<1&&w.length>=5&&X.cwl.some(x=>x.length>=5&&near(x,w)))best=1;
+  // desempate: si además aparecen términos relacionados («voz» → locución, narrar…), la herramienta va más centrada en el tema
+  if(best>0){const extra=forms(w).slice(1).filter(f=>f.includes(' ')?(X.ct.includes(' '+f+' ')||X.it.includes(' '+f+' ')):(X.cw.has(stem(f))||X.iw.has(stem(f)))).length;best+=Math.min(.9,extra*.3);}
   return best;};
  const query=raw=>{let r=' '+norm(raw).replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return words(r).filter(w=>!STOP.has(w));};
  // devuelve {exactas, parecidas}: exactas = tienen todas las palabras; parecidas = alguna (solo si no hay exactas)
