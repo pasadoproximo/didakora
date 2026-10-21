@@ -37,9 +37,13 @@ svg{flex:none}
 .bar nav a{text-decoration:none;font:600 16.5px var(--f-body);color:var(--navy);padding:9px 15px;border-radius:999px;white-space:nowrap}
 .bar nav a:hover{background:var(--bg)}
 .bar nav a[aria-current="page"]{background:var(--bg);font-weight:700}
+/* «Sobre mí» como botón coral */
+.bar nav a.cta{background:var(--coral);color:var(--navy);font-weight:700;margin-left:6px}
+.bar nav a.cta:hover{background:var(--coral3)}
+.bar nav a.cta[aria-current="page"]{background:var(--coral);box-shadow:inset 0 0 0 2px var(--navy)}
 /* móvil: Todas, Categorías y Sobre mí (Destacadas se queda en la portada); por debajo de 400 px, Todas y Sobre mí */
 @media (max-width:640px){.bar nav a:nth-child(3){display:none}.bar nav a{padding:8px 9px;font-size:15px}}
-@media (max-width:440px){.bar{padding:6px 8px 6px 18px}.lockup{height:16px}.bar nav{gap:0}.bar nav a{padding:8px 7px;font-size:14.5px}}
+@media (max-width:440px){.bar{padding:6px 8px 6px 18px}.lockup{height:16px}.bar nav{gap:0}.bar nav a{padding:8px 7px;font-size:14.5px}.bar nav a.cta{margin-left:4px;padding:8px 10px}}
 @media (max-width:400px){.bar nav a:nth-child(2){display:none}}
 
 /* botones y etiquetas */

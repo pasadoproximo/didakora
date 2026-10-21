@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "57"  # versión de didakora.css / didakora.js
+V = "58"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -143,7 +143,7 @@ _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("nuevas", "Nuevas", "/nuevas/"), ("sobre", "Sobre mí", "/sobre-mi/")]
-    links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
+    links = "".join(f'<a href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="Didákora · inicio">{LOGO}</a>
