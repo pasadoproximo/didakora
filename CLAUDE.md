@@ -32,6 +32,21 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
    `python -m http.server 8020` → http://127.0.0.1:8020/didakora/ . Revisar escritorio y móvil (390 px).
 3. Commit con autor `Jorge Delgado Aguilera <jorgedelagui@gmail.com>` y mensaje en español.
 
+## Sistema de agentes
+
+Mantenimiento manual del catálogo con cinco agentes (`.claude/agents/`): Rastreador, Coordinador editorial,
+Administrador web, Auditor y Optimizador. Se lanza solo a mano:
+
+- `/ciclo` → Rastreador → Coordinador → **pausa para que Jorge apruebe** → Administrador (commit local por tarea) → Auditor.
+  `/ciclo prueba` recorre el flujo con datos ficticios sin tocar el catálogo.
+- `/optimizar` → solo el Optimizador; propone mejoras a los agentes y nunca las aplica.
+- `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
+- `python _build/comprobar_enlaces.py` → comprueba las URL de `tools.js` (solo lee).
+
+Registros privados en `agentes/` (en `.gitignore`: solo en este equipo): `fuentes.md`, `estado.json`, `tareas.json`,
+`aprendizajes.md`, `ciclos/<fecha>/` y `mejoras/`. `git push` está bloqueado para Claude en `.claude/settings.json`:
+publicar lo hace Jorge con `! git push`. Sin tareas programadas, servicios externos ni dependencias nuevas.
+
 ## Identidad
 
 - Paleta «cielo y coral», de la familia del portfolio: cielo `#9FB3FF` (cabecera, con texto navy), coral `#FF8A6B`
