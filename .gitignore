@@ -1,3 +1,4 @@
 propuestas/
 __pycache__/
 agentes/
+.playwright-mcp/

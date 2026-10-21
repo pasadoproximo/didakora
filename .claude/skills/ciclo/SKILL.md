@@ -20,6 +20,10 @@ Lleva `agentes/estado.json` al día **antes y después** de cada paso; es lo que
                "coordinador-editorial": {…}, "administrador-web": {…}, "auditor": {…}, "optimizador": {…} } }
 ```
 
+Las horas van siempre en UTC con `Z` (`new Date().toISOString()`, p. ej. `2026-10-21T10:42:00Z`); el panel las pasa a hora local.
+
+Lleva también `agentes/ciclos/indice.json` (`{"ciclos": [...]}`): al arrancar añade `{ "id", "inicio", "fin": null, "fase", "archivos": [] }` y en cada cambio de fase actualiza `fase` y `archivos` (los `.md` que ya existen en la carpeta del ciclo). Es lo que usa el panel del monasterio (`agentes/monasterio/`) para el historial.
+
 Si `agentes/` o alguno de sus archivos no existe, créalo (con `tareas.json` = `{"tareas": []}`).
 
 ## Pasos
