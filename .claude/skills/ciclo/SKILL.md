@@ -50,7 +50,7 @@ Te ha lanzado la campana del monasterio (`agentes/monasterio/servidor.py`) sin i
 
 - Pon `"origen": "monasterio"` en `estado.json` → `ciclo` al arrancar (el servidor lo usa para reanudar el ciclo cuando Jorge decida).
 - Actualiza `estado.json`, `ciclos/indice.json` y `tareas.json` con las herramientas Read, Edit y Write (no con `node -e`). Python se llama `python` a secas y el monasterio ya sirve la web en el puerto 8020: díselo al Auditor y al Administrador en su encargo.
-- Donde el flujo normal pregunta a Jorge, **no preguntes**: si hay cambios sin commit, si hay otro ciclo a medias en una fase distinta de `esperando-aprobacion` o si un agente falla, deja el ciclo en `interrumpido` (o el agente en `error`) con una `nota` que explique qué ha pasado y qué debe hacer Jorge, y termina.
+- Donde el flujo normal pregunta a Jorge, **no preguntes**: si hay cambios sin commit, si hay otro ciclo a medias en una fase distinta de `esperando-aprobacion` o si un agente falla, deja el ciclo en `interrumpido` (o el agente en `error`) con una `nota` que explique qué ha pasado y qué debe hacer Jorge. Después termina.
 - **Pausa (paso 5):** deja las propuestas en `tareas.json` (con `cambio`, `motivo`, `dudas` y `opciones`), pon el ciclo en `esperando-aprobacion` y termina **sin espera en segundo plano**. El servidor te volverá a lanzar en cuanto Jorge selle todos los pergaminos.
 - **Al reanudar:** si el ciclo está en `esperando-aprobacion` y ya no quedan tareas suyas en `propuesta`, sigue desde el paso 6 (las decisiones ya están escritas).
 - **Al terminar:** el resumen va en `resumen.md`; tu último mensaje, en una o dos frases (queda en el registro del monasterio). El push sigue siendo cosa de Jorge.
