@@ -1,4 +1,5 @@
 // Prueba el buscador fuera del navegador: node _build/probar_buscador.js
+// Las recién añadidas (RECIENTES en tools.js) se prueban además con sus búsquedas típicas (campo q): entre las 5 primeras.
 // Comprueba que cada herramienta se encuentra por su nombre, por cada palabra del nombre, por el principio
 // del nombre, por su nombre anterior y con una errata; y que las búsquedas habituales de clase dan resultados.
 const fs = require('fs'), path = require('path');
@@ -6,7 +7,7 @@ const R = path.join(__dirname, '..');
 const src = ['tools.js', 'didakora-datos.js'].map(f => fs.readFileSync(path.join(R, f), 'utf8')).join('\n');
 const js = fs.readFileSync(path.join(R, 'didakora.js'), 'utf8');
 const motor = js.slice(js.indexOf('function dkMotor'), js.indexOf('// ---------- listado completo'));
-const { TOOLS, SECTIONS, CAJA, dkMotor } = new Function(src + '\n' + motor + '\nreturn {TOOLS,SECTIONS,CAJA,dkMotor};')();
+const { TOOLS, SECTIONS, CAJA, RECIENTES, dkMotor } = new Function(src + '\n' + motor + '\nreturn {TOOLS,SECTIONS,CAJA,RECIENTES:typeof RECIENTES==="undefined"?[]:RECIENTES,dkMotor};')();
 const M = dkMotor(TOOLS, SECTIONS, CAJA);
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const fallos = [];
@@ -36,6 +37,13 @@ const tareas = ['evaluar', 'rúbrica', 'vídeo', 'podcast', 'mapa mental', 'gami
   'voz', 'voces', 'locución', 'narrar', 'narración', 'doblaje', 'texto a voz', 'voz en off', 'audiolibro'];
 const vacias = [];
 for (const q of tareas) { pruebas++; const r = M.buscar(q); if (!r.exactas.length) vacias.push(q + (r.parecidas.length ? ` (solo ${r.parecidas.length} parecidas)` : ' (nada)')); }
+// las recién añadidas: cada búsqueda típica de un docente (campo q de RECIENTES) tiene que sacarla entre las 5 primeras
+const usos = [];
+for (const x of RECIENTES) {
+  if (!(x.q || []).length) { usos.push(`${x.id}: sin búsquedas típicas en RECIENTES (añade q)`); continue; }
+  for (const q of x.q) { pruebas++; const r = pos(q, x.id); if (r.i < 0 || r.i >= 5) usos.push(`${x.id} · «${q}»: ${r.i < 0 ? 'no sale' : 'puesto ' + (r.i + 1) + ' de ' + r.n}`); }
+}
 console.log(`${TOOLS.length} herramientas · ${pruebas} búsquedas probadas`);
 console.log(fallos.length ? `\nNo se encuentran bien (${fallos.length}):\n- ` + fallos.join('\n- ') : '\nTodas las herramientas se encuentran por nombre, palabras, principio, nombre anterior y con errata.');
+console.log(usos.length ? `\nLas nuevas no salen bien por lo que hacen (${usos.length}):\n- ` + usos.join('\n- ') : '\nLas recién añadidas se encuentran por lo que hacen (entre las 5 primeras).');
 console.log(vacias.length ? `\nBúsquedas de clase sin coincidencia completa (${vacias.length}):\n- ` + vacias.join('\n- ') : '\nTodas las búsquedas de clase dan resultados.');

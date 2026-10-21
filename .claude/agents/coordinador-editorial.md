@@ -19,7 +19,7 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 1. **Descarta** duplicados, lo ya rechazado sin hechos nuevos, lo que no sirve para Secundaria y lo que no está confirmado (puedes dejarlo como «a vigilar»).
 2. **Enlaces**: «roto» y «redirige» a otro dominio son candidatos a propuesta; «no verificable» no lo es por sí solo (muchas webs bloquean a los robots). Antes de proponer, abre la URL con WebFetch y mira qué pasa de verdad.
 3. **Propón** solo lo justificado, de uno de estos tipos:
-   - `alta`: nueva herramienta. Indica apartado (`s`) y categoría (`cat`) de `SECTIONS`, materia de `AREAS` si es propia de una materia y qué alternativas del mismo apartado tiene.
+   - `alta`: nueva herramienta. Indica apartado (`s`) y categoría (`cat`) de `SECTIONS`, materia de `AREAS` si es propia de una materia y qué alternativas del mismo apartado tiene. Añade a la tarea `"busquedas": [...]` con 2 a 4 búsquedas que haría un docente para encontrarla por lo que hace (por ejemplo, «reservar cita» o «texto a voz»), no por su nombre.
    - `actualizacion`: cambio de URL, de nombre («Nuevo (antes Viejo)»), de descripción o de edad mínima.
    - **Cambio de nombre o integración en otra herramienta:** la opción recomendada (A) mantiene el nombre que conocen los docentes y explica el cambio en la ficha; renombrar o fusionar va como opción B. Recomienda renombrar solo si Jorge lo ha pedido o si el nombre nuevo lleva tiempo asentado (por ejemplo, la web oficial ya no usa el antiguo). Retirar, solo si deja de existir.
    - `retirada`: la herramienta cerró o dejó de servir. Propón su entrada en `CHANGES` (qué pasó y alternativa).

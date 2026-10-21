@@ -15,7 +15,7 @@ La carpeta del ciclo (`hallazgos.md`, `propuestas.md`, `implementacion.md`, `enl
 
 1. **Alcance**: cada commit corresponde a una tarea con `estado` `aprobada` o `hecha` y no cambia nada fuera de ella. `git status` limpio salvo lo esperado. Nada publicado: `git status -sb` debe mostrar la rama por delante de `origin/main` si hubo commits.
 2. **Generación**: `python _build/build.py` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa) y después `git status`: si aparecen cambios, las páginas del commit no estaban regeneradas. Anota la incidencia con la lista de archivos y deja esos cambios sin commit ni descartar: los decide Jorge.
-3. **Buscador**: `node _build/probar_buscador.js`.
+3. **Buscador**: `node _build/probar_buscador.js`. En las altas, comprueba además que la herramienta esté en `RECIENTES` con sus búsquedas típicas (`q`) y que la prueba diga «Las recién añadidas se encuentran por lo que hacen». Prueba tú una búsqueda más que haría un docente; si no la encuentra entre las 5 primeras, es una incidencia.
 4. **Enlaces**: `python _build/comprobar_enlaces.py --solo id1,id2` (los ids tocados) y, si una URL sale «no verificable», ábrela con WebFetch.
 5. **Datos**: cada alta tiene ficha en `_build/fichas.py`, logo (o la ausencia está anotada), apartado y categoría válidos, alternativas; cada edad mínima tiene `edadUrl` oficial; cada retirada tiene entrada en `CHANGES` y nadie la cita como alternativa.
 6. **Textos** del diff: sin coma antes de «y» (`git diff <rango> | grep -n ", y "`), «didákora» en minúsculas, sin cifras o precios sin fuente.
