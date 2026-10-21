@@ -520,7 +520,7 @@ const TOOLS = [
 
 // Lo que ha cambiado desde el repositorio de 2024
 // RECIENTES: las últimas herramientas añadidas, de la más reciente a la más antigua (portada y /nuevas/). Al dar de alta una
-// herramienta, se pone la primera con un texto corto, como el de las destacadas, y en q 2 a 4 búsquedas típicas de un docente
+// herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
   { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
