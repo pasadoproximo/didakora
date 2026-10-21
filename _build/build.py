@@ -382,9 +382,8 @@ def ficha(t):
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
             ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and t["c"] != "Toda la etapa" else "")),
             ("Dispositivos", esc(disp)),
-            # con aviso del INTEF, el aviso va primero y la cuenta debajo, en pequeño como el resto de notas
-            ("Cuenta", "".join(f"<small>{n}</small>" for n in notas[:1]) + f"<small>{esc(cta)}.</small>" + "".join(f"<small>{n}</small>" for n in notas[1:])
-                       if t.get("intef") else esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]
+            # con aviso del INTEF, la cuenta va en pequeño como las notas, y el aviso justo debajo
+            ("Cuenta", (f"<small>{esc(cta)}.</small>" if t.get("intef") else esc(cta)) + "".join(f"<small>{n}</small>" for n in notas))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
     usos = "".join(f'<li>{ICO["check"]}<span>{esc(u)}</span></li>' for u in f["usos"])
     # alternativas en rueda: las siguientes del mismo apartado (y luego de la categoría), así toda herramienta
