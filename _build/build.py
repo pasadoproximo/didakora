@@ -262,7 +262,7 @@ def portada():
 {seccion_nuevas()}
 
 </main>'''
-    write("index.html", head("Didákora · Herramientas digitales para docentes",
+    write("index.html", head("didákora · Herramientas digitales para docentes",
         f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/") + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
@@ -280,7 +280,7 @@ def todas():
  <div class="tcg" id="lgrid"></div>
  <noscript><div class="tcg">{"".join(card(t) for t in TOOLS)}</div></noscript>
 </main>'''
-    write("todas/index.html", head("Todas las herramientas · Didákora", "Todas las herramientas de Didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
+    write("todas/index.html", head("Todas las herramientas · didákora", "Todas las herramientas de didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
 
 # ---------------------------------------------------------------- sobre mí
@@ -297,7 +297,7 @@ def sobremi():
   </div>
  </section>
 </main>'''
-    write("sobre-mi/index.html", head("Sobre mí · Didákora", "Quién hace Didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
+    write("sobre-mi/index.html", head("Sobre mí · didákora", "Quién hace didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
@@ -307,7 +307,7 @@ def destacadas():
  <div class="tcg c4">{"".join(card_dest(BYID[i]) for i in DESTACADAS)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("destacadas/index.html", head("Herramientas destacadas · Didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de Didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
+    write("destacadas/index.html", head("Herramientas destacadas · didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
 
 # ---------------------------------------------------------------- nuevas (las últimas añadidas)
 def nuevas_lista(): return [(BYID[x["id"]], x["txt"]) for x in RECIENTES if x["id"] in BYID]
@@ -329,7 +329,7 @@ def nuevas():
  <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("nuevas/index.html", head("Herramientas nuevas · Didákora", f"Las últimas herramientas digitales para docentes añadidas a Didákora.", "/nuevas/", "nuevas") + body + foot())
+    write("nuevas/index.html", head("Herramientas nuevas · didákora", f"Las últimas herramientas digitales para docentes añadidas a didákora.", "/nuevas/", "nuevas") + body + foot())
 
 # ---------------------------------------------------------------- categorías
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans("áéíóúñü", "aeiounu"))).strip("-")
@@ -339,7 +339,7 @@ def categorias():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", "")])}<h1>Categorías</h1></div><p>Diez categorías según para qué sirve cada herramienta.</p></div>
  <div class="ccg">{"".join(catcard(c) for c in CATS)}</div>
 </main>'''
-    write("categorias/index.html", head("Categorías · Didákora", "Las diez categorías de Didákora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
+    write("categorias/index.html", head("Categorías · didákora", "Las diez categorías de didákora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
     for c in CATS:
         ts = [t for t in TOOLS if t["cs"] == c[0]]
         subs = []
@@ -355,7 +355,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -404,7 +404,7 @@ def ficha(t):
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
-    write(f'{t["id"]}/index.html', head(f"{nm} · Didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
+    write(f'{t["id"]}/index.html', head(f"{nm} · didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
 # ---------------------------------------------------------------- datos para el listado
 def extras():
@@ -415,7 +415,7 @@ def extras():
  <form class="ls" action="{B}/todas/" method="get" role="search"><div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="eq">Busca una herramienta</label><input id="eq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div></div></form>
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("404.html", head("Página no encontrada · Didákora", "Esta página no existe en Didákora.", "/404.html") + body + foot())
+    write("404.html", head("Página no encontrada · didákora", "Esta página no existe en didákora.", "/404.html") + body + foot())
     urls = ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
