@@ -1,4 +1,4 @@
-// Didakora: comportamiento común de todas sus páginas y listado con buscador (/todas/)
+// Didákora: comportamiento común de todas sus páginas y listado con buscador (/todas/)
 (()=>{
 // desplegable de etapa a medida: ratón, teclado (flechas, Inicio, Fin, Intro, Esc) y lector de pantalla (listbox)
 document.querySelectorAll('.dd').forEach(dd=>{

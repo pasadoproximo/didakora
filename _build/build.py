@@ -1,4 +1,4 @@
-# Genera Didakora (antes «Caja de herramientas digitales» del portfolio) en varias páginas:
+# Genera Didákora (antes «Caja de herramientas digitales» del portfolio) en varias páginas:
 #   /                      portada: buscador, categorías, destacadas, quién la hace
 #   /todas/                listado completo con buscador y filtros (JS)
 #   /destacadas/           las diez más versátiles
@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "54"  # versión de didakora.css / didakora.js
+V = "56"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES}')();process.stdout.write(JSON.stringify(d))",
@@ -70,7 +70,7 @@ def place(t):
             ("docente","eval"):("evaluacion-y-seguimiento","Evaluar y motivar"), ("docente","org"):("colaborar-y-organizar","Organizar recursos"),
             ("recursos","sa"):("bancos-de-recursos","Situaciones de aprendizaje"), ("recursos","form"):("bancos-de-recursos","Formación e inspiración"),
             ("recursos","img"):("bancos-de-recursos","Imágenes y multimedia")}[(s, c)]
-# etapas: Didakora es de Secundaria; Infantil y Primaria cuando el repositorio de 2024 las recogía también ahí
+# etapas: Didákora es de Secundaria; Infantil y Primaria cuando el repositorio de 2024 las recogía también ahí
 REPO_P = {"chatterpix","stopmotion","suno","canva","genially","padlet","vocaroo","bookcreator","codeorg","blockly","classdojo",
           "nearpod","badge","educaplay","exelearning","kahoot","plickers","edpuzzle","loom","scratch","phet","gizmos","geogebra","classroomscreen","fastboard"}
 REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
@@ -134,7 +134,7 @@ def card(t, cat=True):
 def _svg_inline(name, cls):
     """mete en la página un SVG de marca/ (sin el <title>, que ya da el aria-label del enlace)"""
     x = open(os.path.join(ROOT, "marca", name), encoding="utf-8").read().strip()
-    x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="Didakora"', ' aria-hidden="true" focusable="false"')
+    x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="Didákora"', ' aria-hidden="true" focusable="false"')
     return x.replace("<svg ", f'<svg class="{cls}" ', 1)
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
@@ -145,7 +145,7 @@ def topbar(cur=""):
     links = "".join(f'<a href="{B}{h}"' + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
-  <a class="brand" href="{B}/" aria-label="Didakora · inicio">{LOGO}</a>
+  <a class="brand" href="{B}/" aria-label="Didákora · inicio">{LOGO}</a>
   <nav aria-label="Principal">{links}</nav>
  </div>
 </header>'''
@@ -261,7 +261,7 @@ def portada():
 
 
 </main>'''
-    write("index.html", head("Didakora · Herramientas digitales para docentes",
+    write("index.html", head("Didákora · Herramientas digitales para docentes",
         f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/") + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
@@ -279,7 +279,7 @@ def todas():
  <div class="tcg" id="lgrid"></div>
  <noscript><div class="tcg">{"".join(card(t) for t in TOOLS)}</div></noscript>
 </main>'''
-    write("todas/index.html", head("Todas las herramientas · Didakora", "Todas las herramientas de Didakora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
+    write("todas/index.html", head("Todas las herramientas · Didákora", "Todas las herramientas de Didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
 
 # ---------------------------------------------------------------- sobre mí
@@ -290,13 +290,13 @@ def sobremi():
   <img src="{B}/img/jorge.jpg" alt="Jorge Delgado Aguilera en un aula, con una estantería de libros y un mapamundi al fondo" width="720" height="734">
   <div>
    <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
-   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didakora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
+   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
    <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
-   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didakora {ICO["ext"]}</a></p>
+   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didákora {ICO["ext"]}</a></p>
   </div>
  </section>
 </main>'''
-    write("sobre-mi/index.html", head("Sobre mí · Didakora", "Quién hace Didakora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
+    write("sobre-mi/index.html", head("Sobre mí · Didákora", "Quién hace Didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
@@ -306,7 +306,7 @@ def destacadas():
  <div class="tcg c4">{"".join(card_dest(BYID[i]) for i in DESTACADAS)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("destacadas/index.html", head("Herramientas destacadas · Didakora", f"Las {len(DESTACADAS)} herramientas más versátiles de Didakora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
+    write("destacadas/index.html", head("Herramientas destacadas · Didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de Didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
 
 # ---------------------------------------------------------------- categorías
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans("áéíóúñü", "aeiounu"))).strip("-")
@@ -316,7 +316,7 @@ def categorias():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", "")])}<h1>Categorías</h1></div><p>Diez categorías según para qué sirve cada herramienta.</p></div>
  <div class="ccg">{"".join(catcard(c) for c in CATS)}</div>
 </main>'''
-    write("categorias/index.html", head("Categorías · Didakora", "Las diez categorías de Didakora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
+    write("categorias/index.html", head("Categorías · Didákora", "Las diez categorías de Didákora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
     for c in CATS:
         ts = [t for t in TOOLS if t["cs"] == c[0]]
         subs = []
@@ -332,7 +332,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didakora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -381,7 +381,7 @@ def ficha(t):
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
-    write(f'{t["id"]}/index.html', head(f"{nm} · Didakora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
+    write(f'{t["id"]}/index.html', head(f"{nm} · Didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
 # ---------------------------------------------------------------- datos para el listado
 def extras():
@@ -392,7 +392,7 @@ def extras():
  <form class="ls" action="{B}/todas/" method="get" role="search"><div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="eq">Busca una herramienta</label><input id="eq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div></div></form>
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("404.html", head("Página no encontrada · Didakora", "Esta página no existe en Didakora.", "/404.html") + body + foot())
+    write("404.html", head("Página no encontrada · Didákora", "Esta página no existe en Didákora.", "/404.html") + body + foot())
     urls = ["/", "/todas/", "/destacadas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL

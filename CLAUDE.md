@@ -1,4 +1,4 @@
-# Didakora · herramientas digitales para docentes
+# Didákora · herramientas digitales para docentes
 
 Web estática de Jorge Delgado Aguilera (antes «Caja de herramientas digitales» del portfolio pasadoproximo.github.io).
 Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.github.io/didakora/ (hay `.nojekyll`).
@@ -38,7 +38,7 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   (subrayado del titular, círculo de la cabecera, iconos y etiquetas; suave `#FFE1D8`), navy `#061033` (texto y botones),
   `#1B2C6B`, hielo `#DDE4F6`, fondo `#F2F4F9`.
 - Logo: caja abierta (solapas cielo y coral, caja navy). Logotipo «B2» en la web (el cuerpo de la caja mide lo que la «d»);
-  apilado para redes. Nombre siempre en minúsculas: «didakora», en Bricolage Grotesque 800.
+  apilado para redes. Nombre siempre en minúsculas: «didákora», en Bricolage Grotesque 800.
 - Tipografías: Bricolage Grotesque (títulos) y Alegreya Sans (texto).
 
 ## Normas de contenido
