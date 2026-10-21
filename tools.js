@@ -300,7 +300,7 @@ const TOOLS = [
     a:"Explica su razonamiento en voz alta y con dibujos; la IA le devuelve comentarios.",
     i:["Explicar un proceso histórico con sus palabras","Practicar la expresión oral","Ver qué ideas previas tiene el grupo"],
     c:"ESO, con supervisión", disp:"Uno por alumno (con micrófono)", cta:"Código de clase" },
-  { id:"immersive", s:"aula", cat:"ia", st:"nueva", n:"Lector inmersivo", url:"https://www.onenote.com/learningtools",
+  { id:"immersive", s:"aula", cat:"ia", st:"nueva", n:"Lector inmersivo", url:"https://www.microsoft.com/es-es/education/learning-tools",
     a:"Escucha el texto en voz alta, lo traduce y lo ve separado en sílabas o por clases de palabras.",
     i:["Apoyo a la lectura","Traducir un texto al idioma familiar","Mejorar la comprensión lectora"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Integrado en Edge, Word y Teams" },
