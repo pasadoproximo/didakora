@@ -343,7 +343,7 @@ const TOOLS = [
   { id:"edugems", s:"docente", cat:"ia", st:"nueva", n:"EduGems", url:"https://www.edugems.ai",
     p:"Más de 160 prompts listos para Gemini, pensados para docentes y ordenados por tareas.",
     i:["Planificar una unidad","Crear un juego de repaso","Adaptar una actividad a varios niveles"],
-    coste:"Usa Gemini, incluido con la cuenta educativa", datos:"No introduzcas datos personales del alumnado" },
+    datos:"No introduzcas datos personales del alumnado" },
   { id:"magicschool", s:"docente", cat:"ia", st:"vigente", n:"MagicSchool", url:"https://www.magicschool.ai",
     p:"Decenas de generadores de IA para docentes, muy orientados al sistema de EE. UU.",
     i:["Rúbricas y bancos de preguntas","Adaptar un texto a varios niveles","Comunicaciones a familias"],
