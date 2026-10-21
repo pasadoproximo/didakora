@@ -375,14 +375,16 @@ def ficha(t):
     elif aula and not OWN.search(t["cta"]) and not t.get("intef"): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
     if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
     # aviso de la guía de protección de datos del INTEF: punto rojo y explicación corta (intef: "rojo" o "ver")
-    if t.get("intef"): notas.append('<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'
+    if t.get("intef"): notas.insert(0, '<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'
                                     + ('; puede ver lo que crea el docente sin registrarse' if t["intef"] == "ver" else '') + '.</span>')
     if t.get("datos") and not re.match(r"(con|trabaja con|usa) la cuenta del centro", t["datos"], re.I): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
             ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and t["c"] != "Toda la etapa" else "")),
             ("Dispositivos", esc(disp)),
-            ("Cuenta", esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]
+            # con aviso del INTEF, el aviso va primero y la cuenta debajo, en pequeño como el resto de notas
+            ("Cuenta", "".join(f"<small>{n}</small>" for n in notas[:1]) + f"<small>{esc(cta)}.</small>" + "".join(f"<small>{n}</small>" for n in notas[1:])
+                       if t.get("intef") else esc(cta) + "".join(f"<small>{n}</small>" for n in notas))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
     usos = "".join(f'<li>{ICO["check"]}<span>{esc(u)}</span></li>' for u in f["usos"])
     # alternativas en rueda: las siguientes del mismo apartado (y luego de la categoría), así toda herramienta
