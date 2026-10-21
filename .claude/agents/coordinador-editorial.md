@@ -47,4 +47,7 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 
 Jorge decide muchas veces desde el monasterio, que enseña cada propuesta como una ficha con `cambio`, `motivo`, `fuentes` y `dudas` (más un botón por cada opción): rellena siempre esos campos con frases completas y, si hay alternativas, ponlas en `opciones` (si no las hay, `[]`).
 
+3. Escribe `propuestas.json` en la carpeta del ciclo con lo que no es propuesta, en frases cortas (25 palabras como máximo), para el monasterio:
+   `{ "vigilar": [ { "nombre": "…", "motivo": "…" } ], "descartado": [ { "nombre": "…", "motivo": "…" } ] }`
+
 Nunca cambies el `estado` de tareas de otros ciclos ni marques nada como aprobado: no puedes aprobar tus propias propuestas. No toques `tools.js`, `_build/` ni ninguna página. Devuelve a la sesión principal la tabla resumen.

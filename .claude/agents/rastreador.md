@@ -46,4 +46,12 @@ Escribe `agentes/ciclos/AAAA-MM-DD/hallazgos.md` con este formato, uno por halla
 - ¿Duplicado?: no está en tools.js | se parece a … (id)
 ```
 
-Al final añade «Fuentes consultadas» (cuáles has mirado y cuáles no han respondido). Devuelve a la sesión principal un resumen de cinco líneas como máximo: cuántos hallazgos, cuántos confirmados y cualquier problema.
+Además, escribe `hallazgos.json` en la misma carpeta: es lo que enseña el monasterio de Jorge, así que cada texto va **corto** (una frase de 25 palabras como máximo):
+
+```json
+{ "fuentes": "una frase: cuáles abriste y cuáles fallaron",
+  "hallazgos": [ { "nombre": "Nombre de la herramienta", "tipo": "nueva|novedad", "estado": "confirmado|por confirmar|dudoso",
+                   "resumen": "qué es o qué ha cambiado, en una frase", "web": "https://… (la oficial, abierta)" } ] }
+```
+
+Al final de `hallazgos.md` añade «Fuentes consultadas» (cuáles has mirado y cuáles no han respondido). Devuelve a la sesión principal un resumen de cinco líneas como máximo: cuántos hallazgos, cuántos confirmados y cualquier problema.
