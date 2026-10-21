@@ -379,7 +379,7 @@ const TOOLS = [
     i:["Vídeo introductorio de una unidad","Cuento o relato para clase","Cápsula para el aula invertida"],
     coste:"Plan gratuito con límites", datos:"No necesita datos del alumnado" },
   { id:"elevenlabs", edad:"Desde 18 años", edadTxt:"18 años (también en la UE)", edadUrl:"https://elevenlabs.io/terms-of-use-eu", s:"docente", cat:"crear", st:"nueva", n:"ElevenLabs", url:"https://elevenlabs.io",
-    p:"Convierte un texto en una locución con voces muy naturales en español y en muchos otros idiomas.",
+    p:"Convierte un texto en una locución con voces de IA muy naturales en español y en muchos otros idiomas.",
     i:["Versión en audio de una lectura","Diálogo entre personajes históricos","Locución de un vídeo o una presentación"],
     coste:"Plan gratuito con límites (unos 10 minutos al mes)", datos:"No subas la voz de nadie sin su permiso" },
   { id:"loom", s:"docente", cat:"crear", st:"vigente", n:"Loom", url:"https://www.loom.com",
@@ -530,9 +530,9 @@ const TOOLS = [
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
   { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
-  { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes.", q:["prompts", "prompts gemini"] },
+  { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes.", q:["prompts", "prompts gemini", "plantillas ia"] },
   { id:"koalendar", txt:"Agenda para que las familias reserven tutoría.", q:["tutorías", "reservar cita", "citas familias", "agenda"] },
-  { id:"elevenlabs", txt:"Convierte textos en audio con voces naturales.", q:["texto a voz", "voz", "locución"] }
+  { id:"elevenlabs", txt:"Convierte textos en audio con voces naturales.", q:["texto a voz", "voz", "locución", "audio ia"] }
 ];
 
 const CHANGES = [
