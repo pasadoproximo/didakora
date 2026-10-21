@@ -414,6 +414,10 @@ const TOOLS = [
     p:"Pizarra en línea para dibujar a la vez con el alumnado, sin registrarse.",
     i:["Explicar sobre un mapa o un esquema","Pizarra compartida en clase","Dibujar a la vez en grupo"],
     coste:"Gratis", datos:"No necesita datos del alumnado" },
+  { id:"koalendar", s:"docente", cat:"gestion", st:"nueva", n:"Koalendar", url:"https://koalendar.com/es/software-agendar-citas-para/educacion",
+    p:"Agenda en línea para que las familias reserven cita de tutoría en los huecos que tú marcas.",
+    i:["Tutorías con familias","Reservar el aula de informática o el material","Revisiones de examen por turnos"],
+    coste:"Plan gratuito", datos:"Guarda los datos de quien reserva: comprueba que el centro lo autorice" },
 
   // --- Evaluar y motivar
   { id:"corubrics", s:"docente", cat:"eval", st:"vigente", n:"CoRubrics", url:"https://corubrics-es.tecnocentres.org",

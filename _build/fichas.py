@@ -223,6 +223,9 @@ F = {
 "fastboard": dict(q="Fastboard es una pizarra en línea para dibujar y escribir a la vez con otras personas. Creas una pizarra, compartes el enlace y el alumnado se une desde su dispositivo, sin registrarse.",
   usos=["Explicar con dibujos y esquemas", "Compartir la pizarra", "Dibujar a la vez en grupo", "Hacer participar al alumnado"],
   disp="Cualquier dispositivo con navegador", cta="No necesita"),
+"koalendar": dict(q="Koalendar es una agenda en línea para que otras personas reserven cita contigo. Marcas los huecos libres, compartes tu página de reservas y las familias, el alumnado o los compañeros eligen hora en pocos clics. Se sincroniza con Google Calendar, Outlook e iCloud y cada reserva puede incluir un enlace de videollamada. Tiene un plan gratuito sin límite de tiempo.",
+  usos=["Organizar tutorías", "Citar a las familias", "Reservar espacios y material", "Evitar correos de ida y vuelta"],
+  disp="Ordenador o móvil", cta="Cuenta del docente"),
 
 # ---------------- Evaluación y seguimiento (docente)
 "corubrics": dict(q="CoRubrics es un complemento gratuito de Hojas de cálculo de Google para evaluar con rúbricas. Sirve para la evaluación del docente, la autoevaluación y la coevaluación. Después envía los resultados a cada alumno por correo.",
