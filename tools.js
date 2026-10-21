@@ -1,6 +1,6 @@
 // Caja de herramientas digitales · Secundaria · Revisión de octubre de 2026
 // st: "vigente" = estaba en el repositorio de 2024 y sigue activa · "nueva" = añadida en 2026 · "cambio" = sigue, con otro nombre
-// AULA: a = qué hace el alumnado · i = ideas de actividad · c = curso · disp = dispositivo · cta = cuenta
+// AULA: a = qué hace el alumnado · i = ideas de actividad · c = curso · disp = dispositivo · cta = cuenta · datos = aviso de datos (opcional)
 // DOCENTE: p = para qué te sirve · i = ideas de uso · coste · datos = datos del alumnado · nota
 // RECURSOS: d = descripción
 // edad / edadTxt / edadUrl: edad mínima según las condiciones oficiales (comprobada en octubre de 2026; solo cuando hay fuente oficial)
@@ -139,7 +139,8 @@ const TOOLS = [
   { id:"timetoast", edad:"Desde 13 años", edadTxt:"13 años para una cuenta propia", edadUrl:"https://www.timetoast.com/terms", s:"aula", cat:"crear", st:"vigente", n:"Timetoast", url:"https://www.timetoast.com",
     a:"Construye líneas del tiempo interactivas con imágenes y descripciones.",
     i:["Cronología de una unidad","Biografía de un personaje","Dos procesos en paralelo"],
-    c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"Cuenta para crear" },
+    c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"Cuenta para crear",
+    datos:"La guía de protección de datos del INTEF la marca en rojo: no aconseja que la use el alumnado; sí puede ver lo que crea el docente sin registrarse ni dar datos personales" },
   { id:"storymap", edad:"Desde 14 años (España)", edadTxt:"14 años en España para gestionar una cuenta de Google propia", edadUrl:"https://support.google.com/accounts/answer/1350409?hl=es", s:"aula", cat:"crear", st:"nueva", n:"StoryMap JS", url:"https://storymap.knightlab.com",
     a:"Cuenta una historia paso a paso sobre un mapa, con texto e imágenes en cada punto.",
     i:["Ruta de Magallanes","Recorrido por el patrimonio local","Mapa de las batallas de una guerra"],
@@ -175,7 +176,8 @@ const TOOLS = [
   { id:"suno", edad:"Desde 13 años", edadTxt:"13 años con permiso de la familia; en la UE, según el país, hasta 16", edadUrl:"https://help.suno.com/en/articles/9720001", s:"aula", cat:"crear", st:"vigente", n:"Suno", url:"https://suno.com",
     a:"Escribe la letra y la IA la convierte en una canción.",
     i:["Canción que resuma un tema","Himno de una civilización inventado","Practicar la escritura con rima"],
-    c:"Toda la etapa, con supervisión", disp:"Proyectado o por equipo", cta:"Cuenta del docente" },
+    c:"Toda la etapa, con supervisión", disp:"Proyectado o por equipo", cta:"Cuenta del docente",
+    datos:"La guía de protección de datos del INTEF la marca en rojo: no aconseja que la use el alumnado; sí puede ver lo que crea el docente sin registrarse ni dar datos personales" },
 
   // --- Trabajar en equipo
   { id:"padlet", s:"aula", cat:"equipo", st:"vigente", n:"Padlet", url:"https://padlet.com",
@@ -259,7 +261,8 @@ const TOOLS = [
   { id:"thunkable", s:"aula", cat:"cienc", st:"vigente", n:"Thunkable", url:"https://thunkable.com",
     a:"Crea apps para iOS, Android y web sin escribir código.",
     i:["App informativa de la localidad","Prototipo de una idea","Proyecto de emprendimiento"],
-    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta" },
+    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta",
+    datos:"La guía de protección de datos del INTEF la marca en rojo: no aconseja que la use el alumnado; sí puede ver lo que crea el docente sin registrarse ni dar datos personales" },
   { id:"cospaces", s:"aula", cat:"cienc", st:"cambio", n:"Delightex Edu (antes CoSpaces Edu)", url:"https://www.delightex.com/edu",
     a:"Crea mundos 3D y de realidad virtual o aumentada y los programa con bloques.",
     i:["Recrear un espacio histórico en 3D","Museo virtual del alumnado","Escena interactiva"],
@@ -295,11 +298,13 @@ const TOOLS = [
   { id:"schoolai", s:"aula", cat:"ia", st:"nueva", n:"SchoolAI", url:"https://schoolai.com",
     a:"Conversa con un tutor de IA que sigue las reglas y límites que pone el docente.",
     i:["Tutor para repasar un tema","Ticket de salida conversado","Ver en directo quién se atasca"],
-    c:"ESO y Bachillerato, con supervisión", disp:"Uno por alumno", cta:"Entra con el enlace del docente" },
+    c:"ESO y Bachillerato, con supervisión", disp:"Uno por alumno", cta:"Entra con el enlace del docente",
+    datos:"La guía de protección de datos del INTEF la marca en rojo: no aconseja que la use el alumnado; sí puede ver lo que crea el docente sin registrarse ni dar datos personales" },
   { id:"snorkl", s:"aula", cat:"ia", st:"nueva", n:"Snorkl", url:"https://snorkl.app",
     a:"Explica su razonamiento en voz alta y con dibujos; la IA le devuelve comentarios.",
     i:["Explicar un proceso histórico con sus palabras","Practicar la expresión oral","Ver qué ideas previas tiene el grupo"],
-    c:"ESO, con supervisión", disp:"Uno por alumno (con micrófono)", cta:"Código de clase" },
+    c:"ESO, con supervisión", disp:"Uno por alumno (con micrófono)", cta:"Código de clase",
+    datos:"La guía de protección de datos del INTEF la marca en rojo: no aconseja que la use el alumnado; sí puede ver lo que crea el docente sin registrarse ni dar datos personales" },
   { id:"immersive", s:"aula", cat:"ia", st:"nueva", n:"Lector inmersivo", url:"https://www.microsoft.com/es-es/education/learning-tools",
     a:"Escucha el texto en voz alta, lo traduce y lo ve separado en sílabas o por clases de palabras.",
     i:["Apoyo a la lectura","Traducir un texto al idioma familiar","Mejorar la comprensión lectora"],
