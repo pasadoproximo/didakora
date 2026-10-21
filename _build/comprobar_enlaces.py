@@ -4,7 +4,7 @@
 #   redirige        responde, pero acaba en otro dominio: revisar si la herramienta ha cambiado de web o de nombre
 #   roto            404, 410, el dominio no existe o acaba en una página de error (…/404, ?404, not-found)
 #   no verificable  403, 429, 5xx o sin respuesta: muchas webs bloquean a los robots; abrirla a mano antes de concluir nada
-# Uso: python _build/comprobar_enlaces.py [--json salida.json] [--solo id1,id2]
+# Uso: python _build/comprobar_enlaces.py [--json salida.json] [--solo id1,id2 (o id1 id2)]
 import json, os, re, subprocess, sys, socket, urllib.request, urllib.error
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
@@ -45,7 +45,13 @@ def comprobar(u):
 
 def main():
     a = sys.argv[1:]
-    solo = set(a[a.index("--solo") + 1].split(",")) if "--solo" in a else None
+    solo = None
+    if "--solo" in a:  # ids separados por comas o por espacios
+        i, vals = a.index("--solo") + 1, []
+        while i < len(a) and not a[i].startswith("--"): vals += a[i].split(","); i += 1
+        solo = {v for v in vals if v}
+        faltan = solo - {t["id"] for t in TOOLS}
+        if faltan: print("Ids que no están en tools.js:", ", ".join(sorted(faltan)))
     enlaces = [(t["id"], campo, t[campo]) for t in TOOLS if not solo or t["id"] in solo
                for campo in ("url", "edadUrl") if t.get(campo)]
     with ThreadPoolExecutor(8) as ex:

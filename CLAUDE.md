@@ -20,6 +20,10 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   (el build se para si falta). Ficha: cabecera (volver, logo, nombre, botón «Ir a…»), «Qué es» y «Ficha rápida»
   (categoría, etapa, dispositivos, cuenta + edad mínima y avisos en pequeño) del mismo tamaño, usos debajo y alternativas.
   Sin referencias al año en que se añadió cada herramienta.
+  Lo que **no se ve** en la ficha: `coste` (solo lo usa el buscador) y un `datos` que empieza por «Con la cuenta del centro»,
+  «Usa la cuenta del centro» o «Trabaja con la cuenta del centro» (`build.py`, en `ficha()`). El aviso «Trabaja con IA: no
+  introduzcas datos personales» solo sale en las del alumnado (Aula) cuya descripción habla de IA (`uses_ai`); las del
+  docente no lo llevan salvo que lo diga su `datos`. Si cambia esa lógica de `build.py`, actualiza estas líneas.
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.

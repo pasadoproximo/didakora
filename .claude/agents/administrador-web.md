@@ -27,7 +27,7 @@ Después de cada tarea:
 
 1. `python _build/build.py` sin errores.
 2. `node _build/probar_buscador.js` sin fallos.
-3. `python _build/comprobar_enlaces.py --solo <ids>` para las herramientas tocadas.
+3. `python _build/comprobar_enlaces.py --solo id1,id2` (separados por comas) para las herramientas tocadas.
 
 Si algo falla y no lo puedes arreglar dentro del alcance, deja la tarea como `fallida` y explica por qué.
 
@@ -39,8 +39,19 @@ Un commit local por tarea, en español, con autor `Jorge Delgado Aguilera <jorge
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 ```
 
+La identidad ya está en la configuración del repo: usa `git commit` a secas, **nunca `git -c`**. Escribe el mensaje con Write en `agentes/ciclos/<ciclo>/mensaje-commit.txt` y haz `git commit -F agentes/ciclos/<ciclo>/mensaje-commit.txt`: así caracteres como «›» no rompen la orden.
+
 Añade solo los archivos de la tarea (nunca `git add -A`; `agentes/` está fuera del repo). **Nunca hagas push, merge, rebase ni cambies de rama remota**: publicar es decisión de Jorge.
 
 ## Qué entregas
 
-Actualiza cada tarea en `agentes/tareas.json`: `estado` (`hecha` o `fallida`), `archivos` y `commit` (hash corto). Escribe `implementacion.md` en la carpeta del ciclo: por tarea, qué has cambiado, archivos, commit, resultado de cada comprobación (con su salida resumida) y limitaciones. Devuelve un resumen breve a la sesión principal.
+Actualiza cada tarea en `agentes/tareas.json`: `estado` (`hecha` o `fallida`), `archivos` y `commit` (hash corto). Escribe `implementacion.md` en la carpeta del ciclo: por tarea, qué has cambiado, archivos, commit, resultado de cada comprobación (con su salida resumida) y limitaciones.
+
+Escribe también `cambios.json` en la carpeta del ciclo: es lo que Jorge ve en el monasterio para saber qué ha cambiado en la web **sin abrirla**. Una entrada por cada cosa que el docente nota en la ficha, en lenguaje llano (sin nombres de campos ni de archivos):
+
+```json
+{ "cambios": [ { "tarea": "T-…", "id": "notebooklm", "herramienta": "NotebookLM",
+                 "que": "Enlace del botón «Ir a…»", "antes": "notebooklm.google.com", "despues": "notebook.google.com" } ] }
+```
+
+En las altas, `antes` es `null` y `despues` resume lo nuevo (por ejemplo, «Nueva ficha en Docente › Evaluar y motivar»). Si un cambio no se ve en la ficha (por ejemplo, el coste, que solo usa el buscador), dilo en `que`. Devuelve un resumen breve a la sesión principal.

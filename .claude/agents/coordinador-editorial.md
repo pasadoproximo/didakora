@@ -21,6 +21,7 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 3. **Propón** solo lo justificado, de uno de estos tipos:
    - `alta`: nueva herramienta. Indica apartado (`s`) y categoría (`cat`) de `SECTIONS`, materia de `AREAS` si es propia de una materia y qué alternativas del mismo apartado tiene.
    - `actualizacion`: cambio de URL, de nombre («Nuevo (antes Viejo)»), de descripción o de edad mínima.
+   - **Cambio de nombre o integración en otra herramienta:** la opción recomendada (A) mantiene el nombre que conocen los docentes y explica el cambio en la ficha; renombrar o fusionar va como opción B. Recomienda renombrar solo si Jorge lo ha pedido o si el nombre nuevo lleva tiempo asentado (por ejemplo, la web oficial ya no usa el antiguo). Retirar, solo si deja de existir.
    - `retirada`: la herramienta cerró o dejó de servir. Propón su entrada en `CHANGES` (qué pasó y alternativa).
 4. **Prioriza**: alta = enlace roto o herramienta cerrada (el catálogo está dando información falsa); media = cambio de nombre o dominio; baja = altas nuevas.
 
@@ -30,10 +31,12 @@ La sesión principal te indica la carpeta del ciclo. Lee:
 - No inventar métricas, precios ni testimonios.
 - Nunca coma antes de «y». Nombre de la web siempre «didákora», en minúsculas.
 - Una alta necesita entrada en `tools.js`, ficha en `_build/fichas.py` (`q`, `usos` y, para docente y recursos, `disp` y `cta`) y logo en `logos/`. Indícalo en la tarea.
+- **Qué verá el docente:** si cambias `datos`, `coste`, `nota` o la edad, di en `cambio` qué se ve en la ficha antes y después. Si un aviso desaparece o deja de verse, dilo en `dudas` con esas palabras (ver en `CLAUDE.md` qué campos no salen en la ficha).
+- **Cada dato con su fuente:** cada valor nuevo de `coste`, `datos`, `nota` o edad dice en `motivo` qué fuente lo afirma. Si ninguna lo dice, el campo se deja vacío: no lo redactes tú. Si la propuesta se apoya en una sola fuente, escribe en `dudas` «Fuente única: …» y explica por qué basta o no.
 
 ## Qué entregas
 
-1. `propuestas.md` en la carpeta del ciclo: una tabla resumen (id, tipo, herramienta, prioridad, una línea) y debajo cada propuesta con motivo, fuentes (URL abiertas), cambio concreto propuesto, dudas y riesgos. Añade una sección «Descartado» con una línea por cada hallazgo descartado y su motivo.
+1. `propuestas.md` en la carpeta del ciclo, corto: la tabla resumen (id, tipo, herramienta, prioridad y una línea con lo que se pide a Jorge), «A vigilar» y «Descartado» (una línea por hallazgo y su motivo). El detalle de cada propuesta va **solo** en `tareas.json`: no lo repitas aquí.
 2. Añade cada propuesta a `agentes/tareas.json` (lista `tareas`) con `estado: "propuesta"`:
 
 ```json

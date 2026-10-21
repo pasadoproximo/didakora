@@ -26,9 +26,12 @@ Lleva también `agentes/ciclos/indice.json` (`{"ciclos": [...]}`): al arrancar a
 
 Si `agentes/` o alguno de sus archivos no existe, créalo (con `tareas.json` = `{"tareas": []}`).
 
+Estados válidos de una tarea: `propuesta`, `aprobada`, `rechazada`, `hecha`, `fallida`, `verificada`. No uses ningún otro. Si la auditoría no pudo hacer alguna comprobación, la tarea queda en `hecha` y `verificacion` dice qué falta (por ejemplo, «pendiente: revisión a 390 px»).
+
 ## Pasos
 
 1. **Arranque.** `git status -sb`. Si hay cambios sin commit, enséñaselos a Jorge y pregunta antes de seguir. Lee `agentes/estado.json`: si hay un ciclo sin cerrar, ofrece retomarlo desde su fase o darlo por interrumpido. Si está en `esperando-aprobacion` y ya no quedan tareas suyas en `propuesta` (Jorge decidió en el monasterio), retómalo directamente desde el paso 6. Crea `agentes/ciclos/AAAA-MM-DD/` (si ya existe, añade `-2`).
+   **Seguimientos pendientes:** si hay tareas `aprobada` de ciclos anteriores sin hacer (sobre todo `tipo: "seguimiento"`), pásalas también al Administrador en este ciclo, con su `nota_jorge`. Las de seguimiento que solo pedían mirar algo y Jorge resolvió con «Ya lo he mirado» o «Dejarlo como está», márcalas `hecha` con su nota, sin tocar la web.
 2. **Enlaces.** `python _build/comprobar_enlaces.py --json agentes/ciclos/<ciclo>/enlaces.json` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
 3. **Rastreador.** Lánzalo con la ruta de la carpeta del ciclo. Al terminar, comprueba que existe `hallazgos.md`.
 4. **Coordinador editorial.** Lánzalo con la carpeta del ciclo. Comprueba que existen `propuestas.md` y las tareas nuevas en `tareas.json`.
@@ -39,6 +42,11 @@ Si `agentes/` o alguno de sus archivos no existe, créalo (con `tareas.json` = `
 6. **Registra la decisión** en `tareas.json`: `estado` `aprobada` o `rechazada`, `decision` con la fecha y `nota_jorge` con sus palabras si edita o explica algo. Si decidió en el monasterio, el servidor ya lo ha escrito (`decision` «… desde el monasterio», `nota_jorge` con la opción y su nota): compruébalo sin reescribirlo y resúmele en el chat lo que decidió.
 7. **Administrador web** con la lista de tareas aprobadas; después, **Auditor** con la carpeta del ciclo. Si el Administrador para por un problema, enséñaselo a Jorge antes de auditar.
 8. **Cierre.** Escribe `resumen.md` en la carpeta del ciclo (qué se encontró, qué se aprobó y rechazó, commits, resultado de la auditoría, pendientes), pon el ciclo en `cerrado` y los agentes en `completado` o `no-ejecutado` según corresponda.
+   **Pergaminos de seguimiento** (para que Jorge decida todo desde el monasterio): cada pendiente que **necesite una decisión suya** se añade a `tareas.json` como tarea del mismo ciclo con `tipo: "seguimiento"`, `estado: "propuesta"`, `herramienta`, `resumen`, `cambio`, `motivo`, `dudas` y `opciones`, en lenguaje llano. Ajústalo para no llenar el tablón:
+   - Solo lo que pide decisión. Lo informativo se queda en `resumen.md`.
+   - Como mucho **4 por ciclo**; si hay más, junta los parecidos (por ejemplo, varias fichas que mirar en el móvil, en un solo pergamino).
+   - Sin repetir: si ya hay una tarea abierta o decidida sobre lo mismo, no crees otra, salvo que haya un hecho nuevo (dilo en `motivo`).
+   - Una opción es siempre «Dejarlo como está». Si es una revisión en el móvil y el Auditor ya dejó capturas, no hace falta pergamino: Jorge las ve en el monasterio.
 
 Termina con un mensaje corto para Jorge, con el mismo formato numerado (por tarea: resultado, commit, auditoría y, al final de cada una, su estado y lo pendiente). Si hay commits, dile que para publicar debe revisar y escribir él mismo `! git push` (el push está bloqueado para los agentes).
 

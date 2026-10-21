@@ -15,6 +15,9 @@ La sesión principal te indica la carpeta del ciclo (`agentes/ciclos/AAAA-MM-DD/
 - `tools.js`: el catálogo actual (`TOOLS` con `id`, `n` y `url`; `CHANGES` con las herramientas que ya cerraron o cambiaron).
 - `agentes/tareas.json`: lo ya propuesto, aprobado o **rechazado** en ciclos anteriores. No vuelvas a traer algo rechazado salvo que haya un hecho nuevo (dilo).
 - `agentes/aprendizajes.md`, si existe: correcciones de Jorge que debes respetar.
+- `agentes/ciclos/indice.json` y `hallazgos.json` (listas `abiertas` y `sin_abrir`, o el campo `fuentes` en los antiguos) de los dos últimos ciclos.
+
+**Rota las fuentes y lee solo lo nuevo:** empieza por las fuentes que no se abrieron en los dos últimos ciclos; cada fuente prioritaria se abre al menos uno de cada dos ciclos. En feeds y portadas, lee solo lo publicado después del inicio del último ciclo cerrado y no más de 20.000 caracteres por fuente. Si no hay nada nuevo, dilo en una línea y no sigas buscando: así se gasta menos.
 
 ## Qué buscas
 
@@ -49,7 +52,7 @@ Escribe `agentes/ciclos/AAAA-MM-DD/hallazgos.md` con este formato, uno por halla
 Además, escribe `hallazgos.json` en la misma carpeta: es lo que enseña el monasterio de Jorge, así que cada texto va **corto** (una frase de 25 palabras como máximo):
 
 ```json
-{ "fuentes": "una frase: cuáles abriste y cuáles fallaron",
+{ "abiertas": ["Educación 3.0", "INTEF", "…"], "sin_abrir": ["EdSurge (no responde)", "…"],
   "hallazgos": [ { "nombre": "Nombre de la herramienta", "tipo": "nueva|novedad", "estado": "confirmado|por confirmar|dudoso",
                    "resumen": "qué es o qué ha cambiado, en una frase", "web": "https://… (la oficial, abierta)" } ] }
 ```
