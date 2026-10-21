@@ -372,7 +372,7 @@ def ficha(t):
     # debajo de la cuenta, en pequeño: edad mínima (solo con fuente oficial) y avisos de privacidad
     notas = []
     if t.get("edad"): notas.append(f'Edad mínima: {esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>')
-    elif aula and not OWN.search(t["cta"]): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
+    elif aula and not OWN.search(t["cta"]) and not t.get("intef"): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
     if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
     # aviso de la guía de protección de datos del INTEF: punto rojo y explicación corta (intef: "rojo" o "ver")
     if t.get("intef"): notas.append('<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'

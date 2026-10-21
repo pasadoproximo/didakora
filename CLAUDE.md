@@ -27,7 +27,8 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   «Usa la cuenta del centro» o «Trabaja con la cuenta del centro» (`build.py`, en `ficha()`). El aviso «Trabaja con IA: no
   introduzcas datos personales» solo sale en las del alumnado (Aula) cuya descripción habla de IA (`uses_ai`); las del
   docente no lo llevan salvo que lo diga su `datos`. Lo que está en rojo en la guía de protección de datos del INTEF va en
-  `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`: sale con un punto rojo.
+  `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`: sale con un punto rojo
+  y sustituye a «Consulta la edad mínima…», que sobra.
   Si cambia esa lógica de `build.py`, actualiza estas líneas.
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
