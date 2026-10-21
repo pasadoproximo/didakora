@@ -304,7 +304,7 @@ const TOOLS = [
     a:"Escucha el texto en voz alta, lo traduce y lo ve separado en sílabas o por clases de palabras.",
     i:["Apoyo a la lectura","Traducir un texto al idioma familiar","Mejorar la comprensión lectora"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Integrado en Edge, Word y Teams" },
-  { id:"readwrite", s:"aula", cat:"ia", st:"nueva", n:"Read&Write", url:"https://www.texthelp.com/products/read-and-write-education/",
+  { id:"readwrite", s:"aula", cat:"ia", st:"nueva", n:"Read&Write", url:"https://www.everway.com/products/read-and-write-education/",
     a:"Usa lectura en voz alta, dictado, predicción de palabras y diccionario con imágenes.",
     i:["Dictado para quien tiene dificultades de escritura","Leer documentos en voz alta","Diccionario visual"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Extensión del navegador" },

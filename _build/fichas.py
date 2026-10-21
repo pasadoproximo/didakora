@@ -143,7 +143,7 @@ F = {
   usos=["Explicar razonamientos", "Practicar la expresión oral", "Detectar ideas previas", "Recibir retroalimentación"]),
 "immersive": dict(q="El Lector inmersivo es una herramienta gratuita de Microsoft integrada en Edge, Word, OneNote y Teams. Lee el texto en voz alta, lo traduce, lo separa en sílabas, marca las clases de palabras y permite cambiar el tamaño y el espaciado de las letras.",
   usos=["Apoyar la lectura", "Atender a la diversidad", "Traducir textos", "Mejorar la comprensión lectora"]),
-"readwrite": dict(q="Read&Write es una barra de herramientas de apoyo a la lectura y la escritura. Incluye lectura en voz alta, dictado por voz, predicción de palabras y un diccionario con imágenes. Se instala como extensión del navegador.",
+"readwrite": dict(q="Read&Write, de Everway (antes Texthelp), es una barra de herramientas de apoyo a la lectura y la escritura. Incluye lectura en voz alta, dictado por voz, predicción de palabras y un diccionario con imágenes. Se instala como extensión del navegador.",
   usos=["Apoyar la lectura", "Atender a la diversidad", "Escribir con dictado", "Reforzar el vocabulario"]),
 
 # ---------------- IA para preparar clase (docente)
