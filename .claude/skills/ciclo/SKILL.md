@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 Ejecuta el ciclo de mantenimiento de didákora. Tú (la sesión principal) eres quien coordina: los agentes no pueden hablar con Jorge, así que **la pausa de aprobación la haces tú**. No invoques al Optimizador.
 
-Si el argumento es `prueba` ($ARGUMENTS), sigue la sección «Modo prueba» en lugar de este flujo.
+Si el argumento es `prueba` ($ARGUMENTS), sigue la sección «Modo prueba» en lugar de este flujo. Si es `monasterio`, sigue el flujo normal con los cambios de la sección «Modo monasterio».
 
 ## Estado real
 
@@ -29,7 +29,7 @@ Si `agentes/` o alguno de sus archivos no existe, créalo (con `tareas.json` = `
 ## Pasos
 
 1. **Arranque.** `git status -sb`. Si hay cambios sin commit, enséñaselos a Jorge y pregunta antes de seguir. Lee `agentes/estado.json`: si hay un ciclo sin cerrar, ofrece retomarlo desde su fase o darlo por interrumpido. Si está en `esperando-aprobacion` y ya no quedan tareas suyas en `propuesta` (Jorge decidió en el monasterio), retómalo directamente desde el paso 6. Crea `agentes/ciclos/AAAA-MM-DD/` (si ya existe, añade `-2`).
-2. **Enlaces.** `python _build/comprobar_enlaces.py --json agentes/ciclos/<ciclo>/enlaces.json` (en este equipo: `%LOCALAPPDATA%/Programs/Python/Python312/python.exe`).
+2. **Enlaces.** `python _build/comprobar_enlaces.py --json agentes/ciclos/<ciclo>/enlaces.json` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
 3. **Rastreador.** Lánzalo con la ruta de la carpeta del ciclo. Al terminar, comprueba que existe `hallazgos.md`.
 4. **Coordinador editorial.** Lánzalo con la carpeta del ciclo. Comprueba que existen `propuestas.md` y las tareas nuevas en `tareas.json`.
 5. **Pausa de aprobación.** Pon el ciclo en `esperando-aprobacion` y enseña a Jorge **una sección numerada por herramienta** («1. Nombre de la herramienta») con toda su información junta (qué se cambia, motivo, fuentes, dudas y opciones si las hay) y, **al final de cada sección, una línea** con tipo, prioridad, si es propuesta, a vigilar o descartado y qué se le pide. Nada de detalles sueltos en otro sitio: Jorge no quiere subir y bajar; responde por número («1 A, 2 rechazar»). Pídele que diga, para cada una: **aprobar**, **rechazar** o **editar** (con su cambio). Si no hay propuestas, salta al paso 8.
@@ -43,6 +43,17 @@ Si `agentes/` o alguno de sus archivos no existe, créalo (con `tareas.json` = `
 Termina con un mensaje corto para Jorge, con el mismo formato numerado (por tarea: resultado, commit, auditoría y, al final de cada una, su estado y lo pendiente). Si hay commits, dile que para publicar debe revisar y escribir él mismo `! git push` (el push está bloqueado para los agentes).
 
 Si un agente falla, márcalo como `error` con la nota, cuéntaselo a Jorge y pregunta si seguir. Nunca marques una tarea como hecha sin evidencia.
+
+## Modo monasterio
+
+Te ha lanzado la campana del monasterio (`agentes/monasterio/servidor.py`) sin interfaz: **nadie lee el chat** y no puedes preguntar. Jorge lo sigue todo en el monasterio, así que lo que importa es lo que escribes en `agentes/`.
+
+- Pon `"origen": "monasterio"` en `estado.json` → `ciclo` al arrancar (el servidor lo usa para reanudar el ciclo cuando Jorge decida).
+- Actualiza `estado.json`, `ciclos/indice.json` y `tareas.json` con las herramientas Read, Edit y Write (no con `node -e`). Python se llama `python` a secas y el monasterio ya sirve la web en el puerto 8020: díselo al Auditor y al Administrador en su encargo.
+- Donde el flujo normal pregunta a Jorge, **no preguntes**: si hay cambios sin commit, si hay otro ciclo a medias en una fase distinta de `esperando-aprobacion` o si un agente falla, deja el ciclo en `interrumpido` (o el agente en `error`) con una `nota` que explique qué ha pasado y qué debe hacer Jorge, y termina.
+- **Pausa (paso 5):** deja las propuestas en `tareas.json` (con `cambio`, `motivo`, `dudas` y `opciones`), pon el ciclo en `esperando-aprobacion` y termina **sin espera en segundo plano**. El servidor te volverá a lanzar en cuanto Jorge selle todos los pergaminos.
+- **Al reanudar:** si el ciclo está en `esperando-aprobacion` y ya no quedan tareas suyas en `propuesta`, sigue desde el paso 6 (las decisiones ya están escritas).
+- **Al terminar:** el resumen va en `resumen.md`; tu último mensaje, en una o dos frases (queda en el registro del monasterio). El push sigue siendo cosa de Jorge.
 
 ## Modo prueba
 

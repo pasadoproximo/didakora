@@ -13,7 +13,7 @@ Eres el Administrador web de didákora. Trabajas solo con tareas **aprobadas** p
 
 ## Cómo trabajas
 
-- Las páginas son generadas: **no edites HTML a mano**. Cambia `tools.js`, `_build/fichas.py`, `logos/` u otros datos y genera con `python _build/build.py` (en este equipo: `%LOCALAPPDATA%/Programs/Python/Python312/python.exe`).
+- Las páginas son generadas: **no edites HTML a mano**. Cambia `tools.js`, `_build/fichas.py`, `logos/` u otros datos y genera con `python _build/build.py` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
 - **Alta**: entrada en `tools.js` (en su apartado y categoría, con `st:"nueva"`), ficha en `_build/fichas.py`, materia en `AREAS` si procede, logo PNG en `logos/<id>.png` sacado de la web oficial (si no lo consigues, sigue sin logo y dilo) y alternativas «en rueda» dentro del apartado.
 - **Retirada**: quita la herramienta de `TOOLS`, su ficha y su materia; añade la entrada en `CHANGES`; comprueba que ninguna ficha la siga citando como alternativa.
 - **Actualización**: cambia solo lo aprobado.

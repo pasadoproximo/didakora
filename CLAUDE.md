@@ -27,7 +27,7 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 
 ## Flujo
 
-1. `python _build/build.py` (en este equipo: `%LOCALAPPDATA%/Programs/Python/Python312/python.exe`).
+1. `python _build/build.py` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
 2. Probar en local sirviendo la carpeta padre (`El pasado próximo`) para que exista `/didakora/`:
    `python -m http.server 8020` → http://127.0.0.1:8020/didakora/ . Revisar escritorio y móvil (390 px).
 3. Commit con autor `Jorge Delgado Aguilera <jorgedelagui@gmail.com>` y mensaje en español.
@@ -43,7 +43,9 @@ Administrador web, Auditor y Optimizador. Se lanza solo a mano:
 - `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
 - `/monasterio` → abre el monasterio (`agentes/monasterio/`, privado): juego en pixel art (LPC) donde Jorge habla con los
   monjes-agentes, lee los informes y decide las propuestas. Su servidor (`servidor.py`, solo 127.0.0.1) guarda las
-  decisiones en `agentes/tareas.json`; si `/ciclo` está esperando en Claude Code, sigue solo.
+  decisiones en `agentes/tareas.json`; si `/ciclo` está esperando en Claude Code, sigue solo. La **campana** del claustro
+  (y Fray Ambrosio) lanzan `claude -p "/ciclo monasterio"` u `"/optimizar monasterio"` sin interfaz, con permisos cerrados
+  (`agentes/monasterio/permisos-campana.json`, sin push); el ciclo se para en la decisión y el servidor lo reanuda al sellar.
 - `python _build/comprobar_enlaces.py` → comprueba las URL de `tools.js` (solo lee).
 
 Registros privados en `agentes/` (en `.gitignore`: solo en este equipo): `fuentes.md`, `estado.json`, `tareas.json`,
