@@ -41,6 +41,7 @@ Administrador web, Auditor y Optimizador. Se lanza solo a mano:
   `/ciclo prueba` recorre el flujo con datos ficticios sin tocar el catálogo.
 - `/optimizar` → solo el Optimizador; propone mejoras a los agentes y nunca las aplica.
 - `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
+- `/monasterio` → abre el panel visual de los agentes (`agentes/monasterio/`, privado) con el servidor local.
 - `python _build/comprobar_enlaces.py` → comprueba las URL de `tools.js` (solo lee).
 
 Registros privados en `agentes/` (en `.gitignore`: solo en este equipo): `fuentes.md`, `estado.json`, `tareas.json`,
