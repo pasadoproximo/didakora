@@ -60,16 +60,16 @@ Administrador web y Auditor. Actualidad (el blog): Cronista, Redactor y Maquetad
 
 - `/ciclo` → Rastreador → Coordinador → **pausa para que Jorge apruebe** → Administrador (commit local por tarea) → Auditor.
   `/ciclo prueba` recorre el flujo con datos ficticios sin tocar el catálogo.
-- `/boletin` → ciclo de Actualidad, aparte del catálogo: **un post por ciclo**. Cronista (repasa las noticias pendientes
-  y busca otras de educación digital: herramientas, IA, legislación, Ministerio, INTEF y Junta de Andalucía; fuentes en
-  `agentes/boletin/fuentes.md`) → **Jorge elige la noticia del post y deja otras pendientes** (`agentes/boletin/pendientes.json`)
-  → Redactor (el post, de corrido) → **Jorge lo aprueba o lo reescribe con sus palabras** → Maquetador (tres miniaturas)
-  → **Jorge elige la miniatura** → Maquetador (el post con esa miniatura, vista previa) → **visto bueno de Jorge** → el
-  Maquetador lo vuelca en la web con un commit local. En cada
-  consulta Jorge puede pedir cambios (se rehace con su nota) o descartar el post. Al cerrar cada post, el Auditor (modo
-  boletín) compara el texto de Lucas con el de Jorge (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`)
-  junto con sus decisiones; después pone al día `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen
-  Redactor, Cronista y Maquetador. Registros en `agentes/boletin/`.
+- `/boletin` → Actualidad, aparte del catálogo, en tres trabajos que pueden ir a la vez. **Buscar** (la campanilla del
+  monasterio): el Cronista trae noticias de educación digital (herramientas, IA, legislación, Ministerio, INTEF y Junta de
+  Andalucía; fuentes en `agentes/boletin/fuentes.md`) y **Jorge guarda las que le interesan** (`agentes/boletin/pendientes.json`).
+  **Encargar** (desde el Libro): Jorge elige una o varias guardadas y se crea un post (varias = un único post con todas).
+  **Cada post** sigue su camino: Redactor → **Jorge aprueba o reescribe el texto** → Maquetador (tres miniaturas) → **Jorge
+  elige una** → Maquetador (el post con ella) → **visto bueno** → publicación con commit local, por turnos. Hasta 2 posts a la
+  vez; las guardadas salen de la lista cuando su post se publica. Cada post tiene su estado en `agentes/boletin/numeros/<id>/`.
+  Al cerrar cada post, el Auditor (modo boletín) compara el texto de Lucas con el de Jorge
+  (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`) junto con sus decisiones; después pone al día
+  `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen Redactor, Cronista y Maquetador.
 - `/optimizar` → solo el Optimizador; propone mejoras a los agentes de los dos ciclos y nunca las aplica.
 - `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
 - `/monasterio` → abre el monasterio (`agentes/monasterio/`, privado): juego en pixel art (LPC) donde Jorge habla con los
@@ -77,9 +77,10 @@ Administrador web y Auditor. Actualidad (el blog): Cronista, Redactor y Maquetad
   decisiones en `agentes/tareas.json`; si `/ciclo` está esperando en Claude Code, sigue solo. La **campana** del claustro
   (y Fray Ambrosio) lanzan `claude -p "/ciclo monasterio"` u `"/optimizar monasterio"` sin interfaz, con permisos cerrados
   (`agentes/monasterio/permisos-campana.json`, sin push); el ciclo se para en la decisión y el servidor lo reanuda al sellar.
-  Al sur del claustro, el **Scriptorium de la Gaceta** (Fray Tomás, Fray Lucas y Fray Isidoro): su **campanilla** lanza
-  `claude -p "/boletin monasterio"` y las tres consultas se deciden hablando con ellos o en la pestaña «Gaceta» del Libro.
-  Solo trabaja una sesión a la vez (campana, campanilla o Fray Ambrosio).
+  Al sur del claustro, el **Scriptorium de la Gaceta** (Fray Tomás, Fray Lucas y Fray Isidoro): su **campanilla** lanza la
+  búsqueda (`claude -p "/boletin monasterio buscar"`); los posts se encargan en la pestaña «Gaceta» del Libro y el servidor
+  lanza `claude -p "/boletin monasterio post <id>"` para cada uno (hasta 2 a la vez; publicar, por turnos). Las consultas se
+  deciden hablando con los monjes o en la Gaceta. El catálogo (campana y Fray Ambrosio) sigue con una sesión a la vez.
 - `python _build/comprobar_enlaces.py` → comprueba las URL de `tools.js` (solo lee).
 
 Registros privados en `agentes/` (en `.gitignore`: solo en este equipo): `fuentes.md`, `estado.json`, `tareas.json`,

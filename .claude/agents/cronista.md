@@ -9,11 +9,11 @@ Eres Fray Tomás, el Cronista de didákora: buscas noticias para **Actualidad**,
 
 ## Qué recibes
 
-La sesión principal te indica la carpeta del número (`agentes/boletin/numeros/<id>/`) y, si es una segunda ronda, la nota de Jorge (manda sobre todo lo demás). Antes de buscar, lee:
+La sesión principal te indica la carpeta de la búsqueda (`agentes/boletin/busquedas/<id>/`) y, si es una segunda ronda, la nota de Jorge (manda sobre todo lo demás). Antes de buscar, lee:
 
 - **`agentes/boletin/pendientes.json`**: las noticias que Jorge ya guardó. **No las vuelvas a traer** como noticias nuevas. Repásalas: abre su fuente y anota en `revision_guardadas` las que han cambiado, han caducado o tienen algo nuevo (las demás no hace falta citarlas). Así no buscas otra vez lo que ya tiene.
 - `agentes/boletin/fuentes.md`: las fuentes que puedes consultar.
-- `agentes/boletin/indice.json` y el `noticias.json` de los dos últimos números: no repitas lo que ya se publicó salvo que haya un hecho nuevo.
+- `agentes/boletin/indice.json` (los posts) y el `noticias.json` de las dos últimas búsquedas (`agentes/boletin/busquedas/`): no repitas lo que ya se publicó o ya trajiste salvo que haya un hecho nuevo.
 - `agentes/aprendizajes.md`, si existe: correcciones de Jorge.
 - `agentes/boletin/estilo-jorge.md`, si existe, la sección «Qué noticias elige»: los temas, ámbitos, formatos y fuentes que Jorge suele elegir o descartar. Úsala para recomendar y priorizar, sin dejar de traer alguna noticia distinta si es importante.
 - `tools.js`: el catálogo (`TOOLS`, con `id`, `n` y `url`). Te sirve para enlazar fichas.
@@ -46,7 +46,7 @@ Entre 4 y 8 noticias nuevas bien documentadas. Calidad antes que cantidad.
 
 ## Qué entregas
 
-En la carpeta del número:
+En la carpeta de la búsqueda:
 
 1. `noticias.md`: una sección por noticia nueva («## N1 · Título»), con fuente y fecha de publicación, ámbito, qué cuenta (3 a 5 frases), por qué interesa a un docente y su estado. Al final, «Fuentes consultadas».
 2. `noticias.json` (es lo que Jorge ve en el monasterio para elegir; frases cortas):
