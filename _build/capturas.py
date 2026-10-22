@@ -3,6 +3,7 @@
 #   python _build/capturas.py <carpeta> id1,id2[,portada]            → <id>-despues.png de la web local (127.0.0.1:8020)
 #   python _build/capturas.py <carpeta> id1,id2 --antes              → <id>-antes.png de la web publicada (GitHub Pages)
 # Una herramienta nueva no tiene «antes»: la publicada da 404 y no se guarda captura.
+# Otras páginas: nombre=ruta (p. ej. boletin-1=boletin/1 o vista=agentes/boletin/numeros/2026-10-22/vista) → <nombre>-despues.png
 import os, subprocess, sys, tempfile, urllib.request, urllib.error
 
 EDGE = next((p for p in [os.path.expandvars(r"%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"),
@@ -23,7 +24,8 @@ def main():
     os.makedirs(carpeta, exist_ok=True)
     perfil = tempfile.mkdtemp(prefix="dk-capturas-")
     for i in ids:
-        url = (PUBLICADA if antes else LOCAL) + ("" if i == "portada" else i + "/")
+        i, ruta = i.split("=", 1) if "=" in i else (i, i)
+        url = (PUBLICADA if antes else LOCAL) + ("" if ruta == "portada" else ruta.strip("/") + "/")
         salida = os.path.abspath(os.path.join(carpeta, f"{i}-{'antes' if antes else 'despues'}.png"))
         if antes and not existe(url): print(i, "sin antes (no está publicada)"); continue
         # Edge sin ventana no baja de ~500 px de ancho: la ficha va dentro de un marco de 390 px (así aplica el CSS de móvil)

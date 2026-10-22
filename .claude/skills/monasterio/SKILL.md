@@ -13,4 +13,4 @@ Abre el monasterio (`agentes/monasterio/`): Jorge recorre el monasterio, habla c
 3. Ábrelo en el navegador de Jorge: `cmd //c start "" "http://127.0.0.1:8020/didakora/agentes/monasterio/"`.
 4. Responde en una línea: que está abierto, la dirección y que el servidor se cierra al cerrar esta sesión de Claude Code (o con «para el servidor del monasterio»).
 
-El servidor solo escucha en 127.0.0.1, rechaza peticiones de otras webs y únicamente puede escribir decisiones sobre tareas en «propuesta» (`agentes/tareas.json`) y aprendizajes (`agentes/aprendizajes.md`). No ejecuta comandos.
+El servidor solo escucha en 127.0.0.1, rechaza peticiones de otras webs y únicamente puede escribir decisiones sobre tareas en «propuesta» (`agentes/tareas.json`), las decisiones de las tres consultas del boletín (`agentes/boletin/numeros/<id>/decisiones.json`, solo cuando el número las espera) y aprendizajes (`agentes/aprendizajes.md`). Lo único que ejecuta son las órdenes fijas de la campana, la campanilla y Fray Ambrosio (`/ciclo`, `/boletin` y `/optimizar` en modo monasterio, con `permisos-campana.json`).
