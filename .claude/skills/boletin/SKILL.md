@@ -1,11 +1,11 @@
 ---
 name: boletin
-description: Ciclo de Actualidad (el blog de didákora), aparte del ciclo del catálogo. Un post por ciclo. Cronista (noticias y pendientes) → Jorge elige → Redactor (el post) → Jorge aprueba o reescribe → Maquetador (diseño) → Jorge aprueba → publicación con commit local.
+description: Ciclo de Actualidad (el blog de didákora), aparte del ciclo del catálogo. Un post por ciclo. Cronista (noticias y pendientes) → Jorge elige → Redactor (el post) → Jorge aprueba o reescribe → Maquetador (tres miniaturas) → Jorge elige → Maquetador (el post con esa miniatura) → visto bueno de Jorge → publicación con commit local.
 argument-hint: "[monasterio]"
 disable-model-invocation: true
 ---
 
-Ejecuta el ciclo de **Actualidad**, la sección de blog de didákora (`/actualidad/`), con noticias de educación digital. **Cada ciclo produce un solo post** (un «número»). Lo que Jorge quiere guardar para otro día va a la **cola de pendientes**. Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador ni al Administrador. Al Auditor, solo en su modo boletín (paso 9). Tú (la sesión principal) coordinas y haces las **tres pausas** de aprobación: los agentes no hablan con Jorge. Si el argumento es `monasterio` ($ARGUMENTS), sigue además la sección «Modo monasterio».
+Ejecuta el ciclo de **Actualidad**, la sección de blog de didákora (`/actualidad/`), con noticias de educación digital. **Cada ciclo produce un solo post** (un «número»). Lo que Jorge quiere guardar para otro día va a la **cola de pendientes**. Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador ni al Administrador. Al Auditor, solo en su modo boletín (paso 9). Tú (la sesión principal) coordinas y haces las **cuatro pausas** de aprobación (noticias, texto, miniatura y el post con su miniatura): los agentes no hablan con Jorge. Si el argumento es `monasterio` ($ARGUMENTS), sigue además la sección «Modo monasterio».
 
 ## Archivos (todos privados, en `agentes/boletin/`)
 
@@ -14,13 +14,13 @@ Ejecuta el ciclo de **Actualidad**, la sección de blog de didákora (`/actualid
   { "actualizado": "…", "numero": { "id": "AAAA-MM-DD", "numero": 1, "fase": "…", "ronda": 1, "inicio": "…", "fin": null, "origen": "chat|monasterio", "nota": "" },
     "agentes": { "cronista": { "estado": "…", "desde": "…", "nota": "" }, "redactor": {…}, "maquetador": {…}, "auditor": {…} } }
   ```
-  Fases: `sin-numero`, `investigacion`, `esperando-noticias`, `redaccion`, `esperando-texto`, `maquetacion`, `esperando-diseno`, `publicacion`, `publicado`, `descartado`, `interrumpido` y, mientras el monasterio espera a que lo retomes, `decidido-noticias`, `decidido-texto`, `decidido-diseno`. Estados de agente: los de `/ciclo` (`en-espera`, `en-ejecucion`, `completado`, `error`, `pendiente-aprobacion`, `no-ejecutado`).
+  Fases: `sin-numero`, `investigacion`, `esperando-noticias`, `redaccion`, `esperando-texto`, `miniaturas`, `esperando-miniatura`, `maquetacion`, `esperando-diseno`, `publicacion`, `publicado`, `descartado`, `interrumpido` y, mientras el monasterio espera a que lo retomes, `decidido-noticias`, `decidido-texto`, `decidido-miniatura`, `decidido-diseno`. Estados de agente: los de `/ciclo` (`en-espera`, `en-ejecucion`, `completado`, `error`, `pendiente-aprobacion`, `no-ejecutado`).
 - `indice.json` (`{"numeros": [...]}`): una entrada por post `{ "id", "numero", "titulo", "slug", "fase", "inicio", "fin", "commit" }`.
 - **`pendientes.json`** (`{"pendientes": [...]}`): la cola de noticias que Jorge eligió para más adelante. Cada una es la noticia tal como la dio el Cronista, con `id` global (`<id del número>/<N>`), `desde` (el número en que se apartó) y `motivo`.
 - `numeros/<id>/`: lo de cada post (`noticias.*`, `borrador.*`, `post.json`, `diseno.*`, `vista/`, `capturas/`, `publicacion.md`, `estilo.*`) y `decisiones.json`:
   ```json
   { "noticias": [ { "ronda": 1, "decision": "aprobar|cambios|descartar", "elegidas": ["N1"], "pendientes": ["N3", "N5"], "nota": "…", "fecha": "…", "desde": "chat|monasterio" } ],
-    "texto": [ … ], "diseno": [ … ] }
+    "texto": [ … ], "miniatura": [ { …, "miniatura": "2" } ], "diseno": [ … ] }
   ```
   `cambios` = el mismo agente lo rehace con la nota de Jorge (la nota es obligatoria); `descartar` = el post se abandona.
 
@@ -29,7 +29,7 @@ Si falta algo, créalo (`estado.json` con fase `sin-numero`, `indice.json` con `
 ## Pasos
 
 1. **Arranque.** `git status -sb`: si hay cambios sin commit, enséñaselos a Jorge y pregunta antes de seguir. Lee `estado.json`:
-   - si hay un número en `decidido-…`, retómalo desde ese punto (paso 3, 5 o 7);
+   - si hay un número en `decidido-…`, retómalo desde ese punto (paso 3, 5, 6b o 7);
    - si está en otra fase sin cerrar, ofrece retomarlo o darlo por interrumpido;
    - si no, crea `numeros/<hoy>/` (si existe, añade `-2`), con `numero` = el último de `indice.json` + 1; añádelo al índice.
 2. **Cronista** (fase `investigacion`): lánzalo con la carpeta del número (y la nota de Jorge si es otra ronda). Empieza por las pendientes y propone una para el post. Comprueba que existen `noticias.md` y `noticias.json`.
@@ -37,8 +37,10 @@ Si falta algo, créalo (`estado.json` con fase `sin-numero`, `indice.json` con `
    **Al aprobar**, actualiza `pendientes.json`: añade las que marcó como pendientes (con `id` global, `desde` y `motivo`) y quita las que han entrado en este post o ha descartado.
 4. **Redactor** (fase `redaccion`) con las elegidas. Comprueba `borrador.json` y `borrador.md`.
 5. **Consulta 2 · Texto** (fase `esperando-texto`). Enséñale el post completo por secciones numeradas («1. Subtítulo»), como se leerá, con su fuente. Pídele **aprobar**, **cambios** (con lo que quiere) o **descartar**. También puede **reescribir textos con sus palabras**, aquí o en la pestaña «Gaceta» del monasterio. Si lo hace en el chat, copia antes `borrador.json` a `borrador-lucas-r<ronda>.json`. Después pon sus textos **literales** en `borrador.json` (solo los campos de texto: titular, entradilla, `etiqueta`, `titulo`, `texto`, `intro`, `ejemplo` y los de `items` y `pasos`), añade `"editado_por_jorge": true` y anota `editado_por_jorge` (cuántos textos) en su decisión. Si en el monasterio edita y aprueba, el servidor ya lo ha hecho.
-6. **Maquetador, modo diseño** (fase `maquetacion`), con el número. Comprueba `post.json`, `vista/index.html` y la captura.
-7. **Consulta 3 · Diseño** (fase `esperando-diseno`). Primero, **las tres miniaturas** que propone Fray Isidoro (`diseno.json` → `opciones`): ábrelas con Read y enséñaselas numeradas, con lo que se ve, la foto original y su licencia. Jorge elige una («la 2») o pide otras; sin miniatura elegida no se aprueba. Anota la elegida en la decisión (`"miniatura": "2"`). Enséñale también, aparte, cualquier otra imagen del post (`imagenes`). Después, dale la vista previa (`http://127.0.0.1:8020/didakora/agentes/boletin/numeros/<id>/vista/`, que se ve con el servidor del monasterio o con `python -m http.server 8020` desde la carpeta padre) y la captura del móvil (ábrela con Read para describirla). Dile también, por sección numerada, si lleva caja de color e imagen o vídeo (con su licencia). Pídele **aprobar**, **cambios** o **descartar**.
+6. **Maquetador, modo miniaturas** (fase `miniaturas`). Comprueba que `diseno.json` tiene tres `opciones` con sus imágenes.
+6a. **Consulta 3 · Miniatura** (fase `esperando-miniatura`, Maquetador `pendiente-aprobacion`). Abre las tres miniaturas con Read y enséñaselas numeradas, con lo que se ve, la foto original y su licencia. Jorge elige una («la 2») o pide otras (`cambios`: el Maquetador hace tres nuevas). Anota la elegida en la decisión (`"miniatura": "2"`).
+6b. **Maquetador, modo diseño** (fase `maquetacion`), con la miniatura elegida. Comprueba `post.json`, `vista/index.html` y las capturas.
+7. **Consulta 4 · El post con su miniatura** (fase `esperando-diseno`). Enséñale la miniatura elegida y, aparte, cualquier otra imagen del post (`imagenes`). Después, dale la vista previa (`http://127.0.0.1:8020/didakora/agentes/boletin/numeros/<id>/vista/`, que se ve con el servidor del monasterio o con `python -m http.server 8020` desde la carpeta padre) y la captura del móvil (ábrela con Read para describirla). Dile también, por sección numerada, si lleva caja de color e imagen o vídeo (con su licencia). Pídele **aprobar**, **cambios** o **descartar**.
 8. **Maquetador, modo publicación** (fase `publicacion`). Comprueba el commit con `git show --stat HEAD`. Pon el número en `publicado` con `fin`, `slug` y `commit` (también en `indice.json`) y los tres agentes en `completado`.
 9. **Auditor, modo boletín** (también si el número se descarta, siempre que Jorge haya decidido algo). Pon `"auditor": {"estado": "en-ejecucion", …}` en los `agentes` de `agentes/boletin/estado.json` (no en el `estado.json` del catálogo) y lánzalo con la carpeta del número **diciéndole que es el modo boletín**. Anota los cambios de Jorge al texto de Fray Lucas y sus decisiones en `estilo.md` y pone al día `agentes/boletin/estilo-jorge.md`. Al terminar, ponlo en `completado` con una nota corta (cuántos textos cambió Jorge y cuántas reglas nuevas).
 

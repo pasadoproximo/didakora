@@ -63,8 +63,9 @@ Administrador web y Auditor. Actualidad (el blog): Cronista, Redactor y Maquetad
 - `/boletin` → ciclo de Actualidad, aparte del catálogo: **un post por ciclo**. Cronista (repasa las noticias pendientes
   y busca otras de educación digital: herramientas, IA, legislación, Ministerio, INTEF y Junta de Andalucía; fuentes en
   `agentes/boletin/fuentes.md`) → **Jorge elige la noticia del post y deja otras pendientes** (`agentes/boletin/pendientes.json`)
-  → Redactor (el post, de corrido) → **Jorge lo aprueba o lo reescribe con sus palabras** → Maquetador (portada, imágenes
-  con licencia, vista previa) → **Jorge aprueba el diseño** → el Maquetador lo vuelca en la web con un commit local. En cada
+  → Redactor (el post, de corrido) → **Jorge lo aprueba o lo reescribe con sus palabras** → Maquetador (tres miniaturas)
+  → **Jorge elige la miniatura** → Maquetador (el post con esa miniatura, vista previa) → **visto bueno de Jorge** → el
+  Maquetador lo vuelca en la web con un commit local. En cada
   consulta Jorge puede pedir cambios (se rehace con su nota) o descartar el post. Al cerrar cada post, el Auditor (modo
   boletín) compara el texto de Lucas con el de Jorge (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`)
   junto con sus decisiones; después pone al día `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen
