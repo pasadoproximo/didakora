@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "61"  # versión de didakora.css / didakora.js
+V = "62"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -421,7 +421,8 @@ def ficha(t):
 
 # ---------------------------------------------------------------- actualidad (blog)
 # Cada post es un JSON (_build/actualidad/<slug>.json) que deja el Maquetador cuando Jorge aprueba el diseño:
-#   slug, titulo, fecha (AAAA-MM-DD), entradilla, etiqueta (tema, opcional), portada {src, alt, credito, url_credito} | null,
+#   slug, titulo, fecha (AAAA-MM-DD), entradilla, etiqueta (tema, opcional), portada {src, alt, credito, url_credito} | null
+#   (21:9, cabecera del post), miniatura {src} (16:9, tarjetas; las dos salen de _build/miniatura.py),
 #   bloques: las secciones del artículo, en orden [{tipo: texto | destacado | lista | pasos | oficial | video | imagen | cita, …}],
 #   fuentes: [{nombre, url}]
 # Se lee de corrido, como un artículo de blog: las secciones no van en tarjetas sueltas. Las imágenes van junto a la
@@ -437,13 +438,6 @@ def bt_inline(s):
     return re.sub(r"\[([^\]]+)\]\((https?://[^\s)]+)\)", lambda m: f'<a href="{m.group(2)}" rel="noopener" target="_blank">{m.group(1)}</a>', s)
 def bt_parrafos(s): return "".join(f"<p>{bt_inline(p.strip())}</p>" for p in re.split(r"\n\s*\n", str(s or "")) if p.strip())
 def bt_plano(s): return re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", str(s or "")).replace("**", "")
-def minutos(p):
-    """minutos de lectura (200 palabras por minuto)"""
-    t = [p.get("entradilla", "")]
-    for b in p.get("bloques", []):
-        t += [b.get(k, "") for k in ("titulo", "texto", "intro", "ejemplo")]
-        t += [i.get(k, "") for lst in ("items", "pasos") for i in b.get(lst) or [] for k in ("titulo", "texto")]
-    return max(1, round(len(bt_plano(" ".join(map(str, t))).split()) / 200))
 def post_slug(p): return p.get("slug") or slug(p["titulo"])
 def bt_fuente(f): return f'<p class="pa-fu">Fuente: <a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></p>' if f else ""
 def bt_enlace(e): return f'<p class="pa-go"><a class="btn solid" href="{esc(e["url"])}" rel="noopener" target="_blank">{esc(e["texto"])} {ICO["ext"]}</a></p>' if e else ""
@@ -492,27 +486,39 @@ def seccion_post(b):
     raise SystemExit(f"Actualidad: tipo de sección desconocido «{k}»")
 def post_card(p, img_base=None):
     s = post_slug(p); base = img_base if img_base is not None else f"{B}/actualidad/{s}/"
-    pt = p.get("portada") or {}
-    img = (f'<img src="{esc(base + pt["src"])}" alt="" loading="lazy">' if pt.get("src")
-           else f'<span class="pc-ph" aria-hidden="true">{esc(p.get("etiqueta") or "Actualidad")}</span>')
-    return (f'<article class="tc pc"><div class="pc-img">{img}</div><span class="lab">{esc(fecha_larga(p["fecha"]))} · {minutos(p)} min de lectura</span>'
+    pt = p.get("miniatura") or p.get("portada") or {}  # la miniatura (16:9) hecha con _build/miniatura.py; si no, la portada
+    img = f'<img src="{esc(base + pt["src"])}" alt="" loading="lazy">' if pt.get("src") else '<span class="pc-ph" aria-hidden="true"></span>'
+    # en la miniatura: el tema arriba a la izquierda y la fecha, en pequeño, abajo a la derecha
+    tema = f'<span class="pc-tema">{esc(p["etiqueta"])}</span>' if p.get("etiqueta") else ""
+    return (f'<article class="tc pc"><div class="pc-img">{img}{tema}'
+            f'<time class="pc-fecha" datetime="{esc(p["fecha"])}">{esc(fecha_larga(p["fecha"]))}</time></div>'
             f'<h3><a class="tc-a" href="{B}/actualidad/{s}/">{esc(p["titulo"])}</a></h3><p>{esc(bt_plano(p["entradilla"]))}</p></article>')
+def portada_post(p):
+    """cabecera del post: la portada (21:9) en pantallas anchas y la miniatura (16:9) en el móvil, para que no se corte el titular"""
+    h = bt_img(p.get("portada"), "pa-img portada")
+    mini = (p.get("miniatura") or {}).get("src")
+    if h and mini: h = h.replace("<img ", f'<picture><source media="(max-width:640px)" srcset="{esc(mini)}"><img ', 1).replace('loading="lazy">', 'loading="lazy"></picture>', 1)
+    return h
 def pagina_post(p, path):
     s = post_slug(p)
     fu = "".join(f'<li><a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></li>' for f in p.get("fuentes", []))
     otros = [x for x in reversed(POSTS) if post_slug(x) != s][:3]
     body = f'''
 <main class="pg post">
- <header class="pa-h">{crumbs([("Inicio", f"{B}/"), ("Actualidad", f"{B}/actualidad/"), (p["titulo"], "")])}
-  <span class="lab">{f"{esc(p['etiqueta'])} · " if p.get("etiqueta") else ""}{esc(fecha_larga(p["fecha"]))} · {minutos(p)} min de lectura</span>
-  <h1>{esc(p["titulo"])}</h1><p class="pa-lead">{bt_inline(p["entradilla"])}</p></header>
- {bt_img(p.get("portada"), "pa-img portada")}
+ <div class="pa-volver">{crumbs([("Inicio", f"{B}/"), ("Actualidad", f"{B}/actualidad/"), (p["titulo"], "")])}</div>
+ <header class="pa-h">
+  <h1>{esc(p["titulo"])}</h1>
+  <span class="lab">{f"{esc(p['etiqueta'])} · " if p.get("etiqueta") else ""}<time datetime="{esc(p["fecha"])}">{esc(fecha_larga(p["fecha"]))}</time></span>
+  <p class="pa-lead">{bt_inline(p["entradilla"])}</p></header>
+ {portada_post(p)}
  <article class="pa">{"".join(seccion_post(x) for x in p["bloques"])}
   {f'<footer class="pa-fuentes"><h2>Fuentes</h2><ul>{fu}</ul></footer>' if fu else ""}</article>
  {f'<section class="sec" aria-labelledby="h-mas">{secth("", "Más actualidad", "", "h-mas")}<div class="pcg">{"".join(post_card(x) for x in otros)}</div></section>' if otros else ""}
  <p class="more"><a class="btn solid" href="{B}/actualidad/">Toda la actualidad {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    return head(f'{p["titulo"]} · didákora', bt_plano(p["entradilla"])[:155], path, "actualidad") + body + foot()
+    # el texto de los posts va en Literata (letra de lectura en pantalla); los títulos, en la de la marca
+    lectura = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">\n'
+    return head(f'{p["titulo"]} · didákora', bt_plano(p["entradilla"])[:155], path, "actualidad").replace("</head>", lectura + "</head>", 1) + body + foot()
 def seccion_actualidad():
     if not POSTS: return ""
     return f'''

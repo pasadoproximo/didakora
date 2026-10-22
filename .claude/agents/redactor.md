@@ -35,7 +35,7 @@ En la carpeta del número:
 1. `borrador.json`: el post, con sus secciones en orden (`bloques`). El Maquetador elige el diseño, pero no cambia el texto.
 
 ```json
-{ "titulo": "titular del post (8 palabras como máximo)", "entradilla": "dos frases que invitan a leer", "etiqueta": "tema corto: IA, Junta de Andalucía, Herramientas…",
+{ "titulo": "titular del post (8 palabras y 55 caracteres como máximo: en las tarjetas solo caben dos líneas)", "entradilla": "dos frases que invitan a leer (35 palabras como máximo: en las tarjetas salen cuatro líneas)", "etiqueta": "tema corto: IA, Junta de Andalucía, Herramientas…",
   "bloques": [
     { "tipo": "texto|destacado|lista|pasos|oficial|video|cita", "noticia": "N1", "etiqueta": "…", "titulo": "subtítulo de la sección", "texto": "…",
       "items": [ { "titulo": "…", "texto": "…", "url": "https://…", "ficha": "id-del-catalogo o null" } ],

@@ -38,6 +38,10 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
   artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
   (en el móvil ocupa el sitio de «Nuevas») y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  Diseño fijado por Jorge el 22-10-2026: post con volver arriba a la izquierda, título, tema y fecha, entradilla, portada
+  21:9 a todo el ancho (16:9 en el móvil), texto en Literata en una columna centrada de 820 px y botones a la derecha;
+  tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de
+  `_build/miniatura.py` (foto con licencia y duotono navy y cielo, forma coral, aro blanco y gancho corto; o ilustración).
   Vista previa sin publicar: `python _build/build.py --vista <post.json> <carpeta>`.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
