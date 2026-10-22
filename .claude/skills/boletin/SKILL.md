@@ -5,7 +5,7 @@ argument-hint: "[monasterio]"
 disable-model-invocation: true
 ---
 
-Ejecuta el ciclo del boletín de didákora. Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador, al Administrador ni al Auditor. Tú (la sesión principal) coordinas y haces las **tres pausas** de aprobación: los agentes no hablan con Jorge. Si el argumento es `monasterio` ($ARGUMENTS), sigue además la sección «Modo monasterio».
+Ejecuta el ciclo del boletín de didákora. Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador ni al Administrador. Al Auditor, solo en su modo boletín (paso 9). Tú (la sesión principal) coordinas y haces las **tres pausas** de aprobación: los agentes no hablan con Jorge. Si el argumento es `monasterio` ($ARGUMENTS), sigue además la sección «Modo monasterio».
 
 ## Archivos (todos privados, en `agentes/boletin/`)
 
@@ -38,12 +38,13 @@ Si falta algo, créalo (`estado.json` con fase `sin-numero`, `indice.json` con `
 6. **Maquetador, modo diseño** (fase `maquetacion`), con el número del boletín. Comprueba `boletin.json`, `vista/index.html` y la captura.
 7. **Consulta 3 · Diseño** (fase `esperando-diseno`). Dale la vista previa (`http://127.0.0.1:8020/didakora/agentes/boletin/numeros/<id>/vista/`, que se ve con el servidor del monasterio o con `python -m http.server 8020` desde la carpeta padre), la captura del móvil (ábrela con Read para describirla); y, por bloque numerado, su tipo, tono e imagen o vídeo con licencia. Pídele **aprobar**, **cambios** o **descartar**.
 8. **Maquetador, modo publicación** (fase `publicacion`). Comprueba el commit con `git show --stat HEAD`. Pon el número en `publicado` con `fin` y `commit` y los tres agentes en `completado`.
+9. **Auditor, modo boletín** (también si el número se descarta, siempre que Jorge haya decidido algo). Pon `"auditor": {"estado": "en-ejecucion", …}` en los `agentes` de `agentes/boletin/estado.json` (no en el `estado.json` del catálogo) y lánzalo con la carpeta del número **diciéndole que es el modo boletín**. Anota los cambios de Jorge al texto de Fray Lucas y sus decisiones en `estilo.md` y pone al día `agentes/boletin/estilo-jorge.md`. Al terminar, ponlo en `completado` con una nota corta (cuántos textos cambió Jorge y cuántas reglas nuevas).
 
 **En cada consulta**: registra la decisión en `decisiones.json` (`desde: "chat"`), con sus palabras en `nota`. Jorge también puede decidir **en el monasterio** (Scriptorium de la Gaceta, o la pestaña «Gaceta» del Libro): díselo. Antes de terminar el turno, deja una espera en segundo plano (Bash con `run_in_background`) que acabe cuando el monasterio escriba la decisión:
 `until node -e "const e=require('./agentes/boletin/estado.json');process.exit(String(e.numero.fase).startsWith('decidido-')?0:1)"; do sleep 5; done; echo decidido`
-**Termina tu turno ahí.** Sigue cuando Jorge responda en el chat (para la espera con TaskStop) o cuando acabe la espera (lee la última entrada de `decisiones.json`, ya escrita por el servidor; resúmesela). Una respuesta ambigua no es una aprobación: pregunta. Con `cambios`, sube `ronda`, relanza al mismo agente con la nota y vuelve a la misma consulta. Con `descartar`, pon el número en `descartado` y los agentes en `en-espera`; después, termina.
+**Termina tu turno ahí.** Sigue cuando Jorge responda en el chat (para la espera con TaskStop) o cuando acabe la espera (lee la última entrada de `decisiones.json`, ya escrita por el servidor; resúmesela). Una respuesta ambigua no es una aprobación: pregunta. Con `cambios`, sube `ronda`, relanza al mismo agente con la nota y vuelve a la misma consulta. Con `descartar`, pon el número en `descartado` y los agentes en `en-espera`; después, haz el paso 9 (Auditor) y termina.
 
-**Cierre.** Mensaje corto para Jorge: título y número, commit y que para publicarlo en la web debe escribir él `! git push` (el push está bloqueado para los agentes). Si hay `para_el_rastreador` en `noticias.json`, recuérdale que puede pasárselas al próximo `/ciclo`.
+**Cierre.** Mensaje corto para Jorge: título y número, commit, lo que ha aprendido Fray Custodio de su forma de escribir y que para publicarlo en la web debe escribir él `! git push` (el push está bloqueado para los agentes). Si hay `para_el_rastreador` en `noticias.json`, recuérdale que puede pasárselas al próximo `/ciclo`.
 
 Si un agente falla, márcalo `error` con la nota, cuéntaselo a Jorge y pregunta si seguir.
 

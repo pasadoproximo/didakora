@@ -59,7 +59,11 @@ Administrador web y Auditor. Boletín: Cronista, Redactor y Maquetador. El Optim
   legislación, Ministerio, INTEF y Junta de Andalucía; fuentes en `agentes/boletin/fuentes.md`) → **Jorge elige las
   noticias** → Redactor (texto estilo newsletter) → **Jorge aprueba el texto** → Maquetador (diseño, imágenes con licencia,
   vista previa) → **Jorge aprueba el diseño** → el Maquetador lo vuelca en la web con un commit local. En cada consulta
-  Jorge puede pedir cambios (se rehace con su nota) o descartar el número. Registros en `agentes/boletin/`.
+  Jorge puede pedir cambios (se rehace con su nota), reescribir el texto de Fray Lucas con sus palabras o descartar el
+  número. Al cerrar cada número, el Auditor (modo boletín) compara el texto de Lucas con el de Jorge
+  (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`) junto con sus decisiones; después pone al día
+  `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen Redactor, Cronista y Maquetador.
+  Registros en `agentes/boletin/`.
 - `/optimizar` → solo el Optimizador; propone mejoras a los agentes de los dos ciclos y nunca las aplica.
 - `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
 - `/monasterio` → abre el monasterio (`agentes/monasterio/`, privado): juego en pixel art (LPC) donde Jorge habla con los

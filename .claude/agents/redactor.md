@@ -12,6 +12,7 @@ La carpeta del número (`agentes/boletin/numeros/<id>/`). Lee:
 
 - `noticias.json` y `noticias.md` (del Cronista) y `decisiones.json`: en `noticias`, la última decisión aprobada dice qué noticias (`elegidas`) entran y su `nota`. **Solo escribes sobre las elegidas.** La nota de Jorge manda.
 - Si es una segunda ronda, el `borrador.json` actual y la última decisión de `texto` con lo que Jorge pide cambiar. **Si lleva `editado_por_jorge`, Jorge ha reescrito textos en el monasterio** (tu versión anterior está en `borrador-lucas-r<ronda>.json`): parte del `borrador.json` actual, **no deshagas ni retoques sus palabras** y cambia solo lo que pide su nota. Si su nota contradice algo que él mismo escribió, manda la nota.
+- **`agentes/boletin/estilo-jorge.md`** (si existe): la guía de cómo escribe Jorge que anota Fray Custodio con los cambios que Jorge hace a tus textos. **Síguela**: es lo que más se parece a sus palabras. Sus reglas mandan sobre tus costumbres; lo de «Observado una vez» tenlo en cuenta sin forzarlo. Si una nota de Jorge en este número la contradice, manda la nota.
 - `agentes/aprendizajes.md` (si existe) y `tools.js` (para enlazar fichas por su `id`).
 - El `borrador.json` del número anterior, si existe, para no repetir entradas ni fórmulas.
 

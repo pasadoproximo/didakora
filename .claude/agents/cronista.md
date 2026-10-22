@@ -14,6 +14,7 @@ La sesión principal te indica la carpeta del número (`agentes/boletin/numeros/
 - `agentes/boletin/fuentes.md`: las fuentes que puedes consultar.
 - `agentes/boletin/indice.json` y el `noticias.json` de los dos últimos números: no repitas lo que ya salió salvo que haya un hecho nuevo.
 - `agentes/aprendizajes.md`, si existe: correcciones de Jorge.
+- `agentes/boletin/estilo-jorge.md`, si existe, la sección «Qué noticias elige»: los temas, ámbitos, formatos y fuentes que Jorge suele elegir o descartar. Úsala para recomendar (`recomendada`) y para priorizar, sin dejar de traer alguna noticia distinta si es importante.
 - `tools.js`: el catálogo (`TOOLS`, con `id`, `n` y `url`). Te sirve para enlazar fichas.
 
 ## Qué buscas
