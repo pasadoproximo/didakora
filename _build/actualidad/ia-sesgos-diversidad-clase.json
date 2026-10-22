@@ -1,0 +1,133 @@
+{
+  "slug": "ia-sesgos-diversidad-clase",
+  "titulo": "La IA, sus sesgos y la diversidad en clase.",
+  "fecha": "2026-10-22",
+  "etiqueta": "IA",
+  "entradilla": "EDUGENIA, del Instituto de las Mujeres, ayuda a trabajar en clase los sesgos de género de la IA. La reunimos con 23 prompts para adaptar tareas y atender a la diversidad.",
+  "miniatura": {"src": "img/miniatura.jpg"},
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una profesora explica a una alumna cómo montar un pequeño robot sobre la mesa del aula",
+    "credito": "Foto: Vanessa Loring · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/woman-teaching-a-student-7869138/"
+  },
+  "bloques": [
+    {
+      "tipo": "oficial",
+      "titulo": "EDUGENIA, una guía para mirar la IA con perspectiva de género",
+      "ambito": "Gobierno de España",
+      "fecha": "2026-10-06",
+      "texto": "El Instituto de las Mujeres ha publicado **EDUGENIA**, un conjunto de recursos para trabajar la inteligencia artificial en el aula con enfoque de género. Code INTEF, la web del INTEF sobre Código Escuela 4.0, lo dio a conocer el 6 de octubre.\n\nLa guía propone abordar la IA desde una «perspectiva interseccional, inclusiva y con enfoque de género». Explica qué es la IA, qué son los sesgos y qué dice el marco normativo. También trae preguntas para la reflexión, buenas prácticas y ejemplos de actividades.\n\nNo se queda en Tecnología. Plantea temas y situaciones que encajan en actividades de distintas materias, con preguntas y ejercicios para debatir con el alumnado. Además da orientaciones para integrar la perspectiva de género de forma transversal.",
+      "enlace": {
+        "url": "https://www.inmujeres.gob.es/areasTematicas/AreaEducacion/MaterialesDidacticos/docs/Edugenia.pdf",
+        "texto": "Descargar EDUGENIA"
+      },
+      "fuente": {
+        "nombre": "Code INTEF",
+        "url": "https://code.intef.es/noticias/publicada-edugenia-una-guia-para-abordar-los-sesgos-de-genero-de-la-ia-en-el-aula/"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Para el aula",
+      "titulo": "Por qué llevar los sesgos a clase",
+      "texto": "La IA aprende de lo que ya existe. Si en esos datos hay estereotipos, la IA los repite. El alumnado la usa cada vez más y casi nunca se pregunta por qué responde lo que responde.\n\nAhí está el valor de EDUGENIA. Convierte una idea abstracta en preguntas concretas para clase. Sirve para una tutoría, para un debate en Lengua o en Filosofía o para una actividad de Tecnología o Digitalización.\n\nUna forma sencilla de empezar es proyectar tú una consulta en un chatbot. Pídele que describa a «una persona que investiga» o a «una persona que cuida» y comentad juntos qué ha dado por hecho."
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "IA y diversidad",
+      "titulo": "La otra cara, la IA para atender a la diversidad",
+      "texto": "Mirar la IA con ojo crítico no impide usarla bien. Eric Curts publicó el 18 de octubre en su blog Control Alt Achieve **23 prompts para el apoyo y la diferenciación**. Quince son para el docente (adaptaciones, andamiajes, nivel de lectura de un texto…) y ocho para el alumnado, como un tutor que pregunta en vez de dar la respuesta.\n\nCada prompt está listo como Gem de Gemini. Puedes abrirlo tal cual o hacer una copia para editarla. Si usas otro chatbot, copias el texto del prompt y lo pegas.\n\nEstán en inglés. Basta con añadir al final «Responde en español» o traducir el prompt antes de pegarlo. Algunos piensan en el sistema educativo de Estados Unidos, así que conviene adaptarlos a nuestras etapas y a nuestro currículo.",
+      "fuente": {
+        "nombre": "Control Alt Achieve",
+        "url": "https://www.controlaltachieve.com/2026/10/support-prompts.html"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para el aula",
+      "titulo": "5 prompts para empezar",
+      "intro": "De los veintitrés, estos son los que más rinden en un aula con niveles distintos.",
+      "items": [
+        {
+          "titulo": "Differentiation Strategies",
+          "texto": "Le das el objetivo, el curso, la tarea y lo que necesita tu grupo. Te propone estrategias de diferenciación para esa clase o ese examen.",
+          "url": "https://www.edugems.ai/gem/differentiation-strategies",
+          "ficha": null
+        },
+        {
+          "titulo": "Learner Scaffolds",
+          "texto": "Prepara apoyos para antes, durante y después de la tarea. Útil cuando una actividad se le hace cuesta arriba a parte del grupo.",
+          "url": "https://www.edugems.ai/gem/learner-scaffolds",
+          "ficha": null
+        },
+        {
+          "titulo": "Reading Level Analyzer",
+          "texto": "Analiza si un texto encaja con tu alumnado. Después te ofrece simplificarlo, añadirle apoyos o hacerlo más exigente.",
+          "url": "https://www.edugems.ai/gem/reading-level-analyzer",
+          "ficha": null
+        },
+        {
+          "titulo": "Choice Board",
+          "texto": "Crea un tablero de elección para una tarea, con opciones variadas siguiendo el Diseño Universal para el Aprendizaje. Cada estudiante elige cómo demostrar lo que sabe.",
+          "url": "https://www.edugems.ai/gem/choice-board",
+          "ficha": null
+        },
+        {
+          "titulo": "Quiz Me",
+          "texto": "Para el alumnado. Le hace preguntas sobre un tema con pistas y explicaciones. Al final resume qué domina y qué debe repasar.",
+          "url": "https://www.edugems.ai/gem/quiz-me",
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Control Alt Achieve",
+        "url": "https://www.controlaltachieve.com/2026/10/support-prompts.html"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Paso a paso",
+      "titulo": "Cómo usarlos con cabeza en 3 pasos",
+      "intro": "Las dos noticias se dan la mano aquí. Usa los prompts y revisa lo que salga con la mirada de EDUGENIA.",
+      "pasos": [
+        {
+          "titulo": "Elige uno y adáptalo",
+          "texto": "Abre el Gem o copia el prompt en tu chatbot. Pide la respuesta en español y cuéntale tu curso y tu materia."
+        },
+        {
+          "titulo": "Describe al grupo, no a las personas",
+          "texto": "Explica qué necesita tu grupo sin nombres ni datos personales del alumnado. Para adaptar una tarea no hacen falta."
+        },
+        {
+          "titulo": "Revisa antes de llevarlo a clase",
+          "texto": "Lee el resultado como lo haría EDUGENIA. Mira si los ejemplos, los nombres y los papeles repiten estereotipos y corrige lo que haga falta."
+        }
+      ],
+      "ejemplo": "Preparas una lectura para 2.º de ESO. Pasas el texto por Reading Level Analyzer, pides una versión con apoyos y, antes de repartirla, compruebas que los ejemplos no reparten los papeles de siempre.",
+      "fuente": {
+        "nombre": "Control Alt Achieve",
+        "url": "https://www.controlaltachieve.com/2026/10/support-prompts.html"
+      }
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Code INTEF · Publicada EDUGENIA, una guía para abordar los sesgos de género de la IA en el aula",
+      "url": "https://code.intef.es/noticias/publicada-edugenia-una-guia-para-abordar-los-sesgos-de-genero-de-la-ia-en-el-aula/"
+    },
+    {
+      "nombre": "Instituto de las Mujeres · EDUGENIA (PDF)",
+      "url": "https://www.inmujeres.gob.es/areasTematicas/AreaEducacion/MaterialesDidacticos/docs/Edugenia.pdf"
+    },
+    {
+      "nombre": "Control Alt Achieve · AI Prompts for Support & Differentiation",
+      "url": "https://www.controlaltachieve.com/2026/10/support-prompts.html"
+    },
+    {
+      "nombre": "EduGems · Gems de Eric Curts",
+      "url": "https://www.edugems.ai/gem/quiz-me"
+    }
+  ]
+}
