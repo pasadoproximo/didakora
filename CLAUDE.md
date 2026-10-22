@@ -33,11 +33,12 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.
-- **Boletín** (`/boletin/` y `/boletin/<n>/`): cada número es `_build/boletines/<n>.json` (bloques `texto`, `destacado`,
-  `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`; ver la sección «boletín» de `build.py`) con sus imágenes en
-  `boletin/<n>/img/`. Mientras no hay ningún número, la web no cambia; con el primero aparecen «Boletín» en el menú (en el
-  móvil ocupa el sitio de «Nuevas») y su bloque en la portada. Los vídeos van como enlace, sin reproductor incrustado.
-  Vista previa sin publicar: `python _build/build.py --vista <boletin.json> <carpeta>`.
+- **Actualidad** (`/actualidad/` y `/actualidad/<slug>/`): el blog de noticias de educación digital. Cada post es
+  `_build/actualidad/<slug>.json` (secciones `texto`, `destacado`, `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`;
+  ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
+  artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
+  (en el móvil ocupa el sitio de «Nuevas») y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  Vista previa sin publicar: `python _build/build.py --vista <post.json> <carpeta>`.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
@@ -51,19 +52,19 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 ## Sistema de agentes
 
 Dos ciclos independientes, con ocho agentes (`.claude/agents/`). Catálogo: Rastreador, Coordinador editorial,
-Administrador web y Auditor. Boletín: Cronista, Redactor y Maquetador. El Optimizador revisa a los ocho. Se lanzan solo a mano:
+Administrador web y Auditor. Actualidad (el blog): Cronista, Redactor y Maquetador. El Optimizador revisa a los ocho. Se lanzan solo a mano:
 
 - `/ciclo` → Rastreador → Coordinador → **pausa para que Jorge apruebe** → Administrador (commit local por tarea) → Auditor.
   `/ciclo prueba` recorre el flujo con datos ficticios sin tocar el catálogo.
-- `/boletin` → ciclo del boletín, aparte del catálogo: Cronista (noticias de educación digital: herramientas, IA,
-  legislación, Ministerio, INTEF y Junta de Andalucía; fuentes en `agentes/boletin/fuentes.md`) → **Jorge elige las
-  noticias** → Redactor (texto estilo newsletter) → **Jorge aprueba el texto** → Maquetador (diseño, imágenes con licencia,
-  vista previa) → **Jorge aprueba el diseño** → el Maquetador lo vuelca en la web con un commit local. En cada consulta
-  Jorge puede pedir cambios (se rehace con su nota), reescribir el texto de Fray Lucas con sus palabras o descartar el
-  número. Al cerrar cada número, el Auditor (modo boletín) compara el texto de Lucas con el de Jorge
-  (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`) junto con sus decisiones; después pone al día
-  `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen Redactor, Cronista y Maquetador.
-  Registros en `agentes/boletin/`.
+- `/boletin` → ciclo de Actualidad, aparte del catálogo: **un post por ciclo**. Cronista (repasa las noticias pendientes
+  y busca otras de educación digital: herramientas, IA, legislación, Ministerio, INTEF y Junta de Andalucía; fuentes en
+  `agentes/boletin/fuentes.md`) → **Jorge elige la noticia del post y deja otras pendientes** (`agentes/boletin/pendientes.json`)
+  → Redactor (el post, de corrido) → **Jorge lo aprueba o lo reescribe con sus palabras** → Maquetador (portada, imágenes
+  con licencia, vista previa) → **Jorge aprueba el diseño** → el Maquetador lo vuelca en la web con un commit local. En cada
+  consulta Jorge puede pedir cambios (se rehace con su nota) o descartar el post. Al cerrar cada post, el Auditor (modo
+  boletín) compara el texto de Lucas con el de Jorge (`python _build/comparar_texto.py agentes/boletin/numeros/<id>`)
+  junto con sus decisiones; después pone al día `agentes/boletin/estilo-jorge.md`, la guía de su forma de escribir que leen
+  Redactor, Cronista y Maquetador. Registros en `agentes/boletin/`.
 - `/optimizar` → solo el Optimizador; propone mejoras a los agentes de los dos ciclos y nunca las aplica.
 - `/aprendizaje <corrección>` → registra una corrección de Jorge para los próximos ciclos.
 - `/monasterio` → abre el monasterio (`agentes/monasterio/`, privado): juego en pixel art (LPC) donde Jorge habla con los

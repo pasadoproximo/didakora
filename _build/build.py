@@ -5,18 +5,18 @@
 #   /nuevas/               las últimas añadidas (RECIENTES en tools.js)
 #   /categorias/           índice de categorías y /categorias/<slug>/ con sus apartados
 #   /<id>/                 una ficha por herramienta
-#   /boletin/              el boletín (newsletter) y /boletin/<n>/ cada número, desde _build/boletines/<n>.json
+#   /actualidad/           el blog de noticias de educación digital y /actualidad/<slug>/ cada post (_build/actualidad/)
 # Todas las rutas cuelgan de BASE ("/didakora" en GitHub Pages; "" si algún día va en dominio propio:
 #   DK_BASE= python _build/build.py). Datos: tools.js. Logos de la marca: _build/marca.py → marca/.
 # Uso: python _build/build.py
-#      python _build/build.py --vista <boletin.json> <carpeta>   → solo la vista previa de un número (no toca la web)
+#      python _build/build.py --vista <post.json> <carpeta>   → solo la vista previa de un post (no toca la web)
 import json, os, re, subprocess, html, shutil, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "60"  # versión de didakora.css / didakora.js
+V = "61"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -24,10 +24,10 @@ d = json.loads(subprocess.check_output(["node", "-e",
 SECTIONS, TOOLS, CHANGES, RECIENTES = d["SECTIONS"], d["TOOLS"], d["CHANGES"], d["RECIENTES"]
 LOGOS = {f[:-4] for f in os.listdir(os.path.join(H, "logos")) if f.endswith(".png")}
 esc = lambda s: html.escape(str(s), quote=True)
-# boletines publicados (los prepara el sistema de agentes con /boletin): uno por archivo, del más antiguo al más reciente
-BDIR = os.path.join(ROOT, "_build", "boletines")
-BOLETINES = sorted((json.load(open(os.path.join(BDIR, f), encoding="utf-8")) for f in os.listdir(BDIR) if f.endswith(".json")),
-                   key=lambda b: b["numero"]) if os.path.isdir(BDIR) else []
+# posts de Actualidad (los prepara el ciclo del blog, /boletin): uno por archivo, del más antiguo al más reciente
+PDIR = os.path.join(ROOT, "_build", "actualidad")
+POSTS = sorted((json.load(open(os.path.join(PDIR, f), encoding="utf-8")) for f in os.listdir(PDIR) if f.endswith(".json")),
+               key=lambda p: (p["fecha"], p.get("numero", 0))) if os.path.isdir(PDIR) else []
 
 # ---------------------------------------------------------------- categorías (10, por uso)
 IC = {
@@ -149,7 +149,7 @@ _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("nuevas", "Nuevas", "/nuevas/")]
-    if BOLETINES: nav.append(("boletin", "Boletín", "/boletin/"))  # solo cuando ya hay algún número
+    if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
     links = "".join(f'<a href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
@@ -268,7 +268,7 @@ def portada():
   <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver destacadas {ICO["arrow"]}</a></p>
  </section>
 {seccion_nuevas()}
-{seccion_boletin()}
+{seccion_actualidad()}
 </main>'''
     write("index.html", head("didákora · Herramientas digitales para docentes",
         f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/") + body + foot())
@@ -419,14 +419,16 @@ def ficha(t):
     write(f'{t["id"]}/index.html', head(f"{nm} · didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
 
-# ---------------------------------------------------------------- boletín
-# Cada número es un JSON (_build/boletines/<n>.json) que deja el Maquetador cuando Jorge aprueba el diseño:
-#   numero, titulo, fecha (AAAA-MM-DD), entradilla, portada {src, alt, credito, url_credito} | null,
-#   bloques: [{tipo: texto | destacado | lista | pasos | oficial | video | imagen | cita, …}], fuentes: [{nombre, url}]
-# Las imágenes van junto a la página (boletin/<n>/img/…) y se citan en relativo («img/portada.jpg»).
+# ---------------------------------------------------------------- actualidad (blog)
+# Cada post es un JSON (_build/actualidad/<slug>.json) que deja el Maquetador cuando Jorge aprueba el diseño:
+#   slug, titulo, fecha (AAAA-MM-DD), entradilla, etiqueta (tema, opcional), portada {src, alt, credito, url_credito} | null,
+#   bloques: las secciones del artículo, en orden [{tipo: texto | destacado | lista | pasos | oficial | video | imagen | cita, …}],
+#   fuentes: [{nombre, url}]
+# Se lee de corrido, como un artículo de blog: las secciones no van en tarjetas sueltas. Las imágenes van junto a la
+# página (actualidad/<slug>/img/…) y se citan en relativo («img/portada.jpg»).
 # En los textos solo vale **negrita**, [texto](https://…) y párrafos separados por una línea en blanco.
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
-TONOS = ("cielo", "coral", "hielo", "navy")
+TONOS = ("cielo", "coral", "hielo")
 def fecha_larga(f):
     a, m, d = (int(x) for x in f[:10].split("-")); return f"{d} de {MESES[m - 1]} de {a}"
 def bt_inline(s):
@@ -435,95 +437,105 @@ def bt_inline(s):
     return re.sub(r"\[([^\]]+)\]\((https?://[^\s)]+)\)", lambda m: f'<a href="{m.group(2)}" rel="noopener" target="_blank">{m.group(1)}</a>', s)
 def bt_parrafos(s): return "".join(f"<p>{bt_inline(p.strip())}</p>" for p in re.split(r"\n\s*\n", str(s or "")) if p.strip())
 def bt_plano(s): return re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", str(s or "")).replace("**", "")
-def bt_fuente(f):
-    if not f: return ""
-    return f'<p class="bl-fu">Fuente: <a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></p>'
-def bt_enlace(e, cls="btn line"):
-    return f'<p class="bl-go"><a class="{cls}" href="{esc(e["url"])}" rel="noopener" target="_blank">{esc(e["texto"])} {ICO["ext"]}</a></p>' if e else ""
-def bt_img(i, cls="bl-img"):
+def minutos(p):
+    """minutos de lectura (200 palabras por minuto)"""
+    t = [p.get("entradilla", "")]
+    for b in p.get("bloques", []):
+        t += [b.get(k, "") for k in ("titulo", "texto", "intro", "ejemplo")]
+        t += [i.get(k, "") for lst in ("items", "pasos") for i in b.get(lst) or [] for k in ("titulo", "texto")]
+    return max(1, round(len(bt_plano(" ".join(map(str, t))).split()) / 200))
+def post_slug(p): return p.get("slug") or slug(p["titulo"])
+def bt_fuente(f): return f'<p class="pa-fu">Fuente: <a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></p>' if f else ""
+def bt_enlace(e): return f'<p class="pa-go"><a class="btn solid" href="{esc(e["url"])}" rel="noopener" target="_blank">{esc(e["texto"])} {ICO["ext"]}</a></p>' if e else ""
+def bt_img(i, cls="pa-img"):
     if not i or not i.get("src"): return ""
     cred = esc(i.get("credito", ""))
     if cred and i.get("url_credito"): cred = f'<a href="{esc(i["url_credito"])}" rel="noopener" target="_blank">{cred}</a>'
     pie = " · ".join(x for x in (esc(i.get("pie", "")), cred) if x)
     return f'<figure class="{cls}"><img src="{esc(i["src"])}" alt="{esc(i.get("alt", ""))}" loading="lazy">{f"<figcaption>{pie}</figcaption>" if pie else ""}</figure>'
-def bt_cab(b):
-    et = f'<span class="bl-et">{esc(b["etiqueta"])}</span>' if b.get("etiqueta") else ""
-    return et + (f'<h2>{esc(b["titulo"])}</h2>' if b.get("titulo") else "")
+def bt_cab(b, kicker=""):
+    k = kicker or (esc(b["etiqueta"]) if b.get("etiqueta") else "")
+    return (f'<span class="pa-k">{k}</span>' if k else "") + (f'<h2>{esc(b["titulo"])}</h2>' if b.get("titulo") else "")
 def bt_item(it):
     t = BYID.get(it.get("ficha") or "")
-    lg = f'<span class="lg">{logo(t)}</span>' if t else '<span class="bl-n" aria-hidden="true"></span>'
+    lg = f'<span class="lg">{logo(t)}</span>' if t else '<span class="pa-n" aria-hidden="true"></span>'
     nombre = esc(it["titulo"])
     if it.get("url"): nombre = f'<a href="{esc(it["url"])}" rel="noopener" target="_blank">{nombre}</a>'
-    fl = f'<p class="bl-fl"><a href="{B}/{t["id"]}/">Ver su ficha en didákora {ICO["arrow"]}</a></p>' if t else ""
-    return f'<li>{lg}<div><h3>{nombre}</h3>{bt_parrafos(it.get("texto"))}{fl}</div></li>'
-def bloque(b):
-    k = b["tipo"]; tono = f' t-{b["tono"]}' if b.get("tono") in TONOS else ""
-    if k == "texto": return f'<section class="bl bl-texto{tono}">{bt_cab(b)}{bt_parrafos(b.get("texto"))}</section>'
+    fl = f' <a class="pa-ficha" href="{B}/{t["id"]}/">Ver su ficha en didákora {ICO["arrow"]}</a>' if t else ""
+    return f'<li>{lg}<div><h3>{nombre}</h3>{bt_parrafos(it.get("texto"))}{f"<p>{fl.strip()}</p>" if fl else ""}</div></li>'
+def seccion_post(b):
+    k = b["tipo"]; caja = f' pa-caja t-{b["tono"]}' if b.get("tono") in TONOS else ""
+    if k == "texto": return f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("texto"))}{bt_fuente(b.get("fuente"))}</section>'
     if k == "destacado":
-        im = bt_img(b.get("img"))
-        return (f'<section class="bl bl-dest{tono or " t-cielo"}{" con-img" if im else ""}"><div>{bt_cab(b)}{bt_parrafos(b.get("texto"))}'
-                f'{bt_enlace(b.get("enlace"), "btn solid")}{bt_fuente(b.get("fuente"))}</div>{im}</section>')
+        return (f'<section class="pa-s pa-dest{caja}">{bt_cab(b)}{bt_parrafos(b.get("texto"))}{bt_img(b.get("img"))}'
+                f'{bt_enlace(b.get("enlace"))}{bt_fuente(b.get("fuente"))}</section>')
+    if k == "oficial":
+        k2 = esc(b.get("ambito", "Oficial")) + (f' · {esc(fecha_larga(b["fecha"]))}' if b.get("fecha") else "")
+        return f'<section class="pa-s pa-of{caja}">{bt_cab(b, k2)}{bt_parrafos(b.get("texto"))}{bt_enlace(b.get("enlace"))}{bt_fuente(b.get("fuente"))}</section>'
     if k == "lista":
-        return (f'<section class="bl bl-lista{tono}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}'
-                f'<ol class="bl-items">{"".join(bt_item(i) for i in b.get("items", []))}</ol>{bt_fuente(b.get("fuente"))}</section>')
+        return (f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="pa-lista">{"".join(bt_item(i) for i in b.get("items", []))}</ol>'
+                f'{bt_fuente(b.get("fuente"))}</section>')
     if k == "pasos":
-        ej = f'<div class="bl-ej"><span class="lab">Ejemplo</span><p>{bt_inline(b["ejemplo"])}</p></div>' if b.get("ejemplo") else ""
-        return (f'<section class="bl bl-pasos{tono}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="bl-p">'
+        ej = f'<div class="pa-ej"><span class="lab">Ejemplo</span><p>{bt_inline(b["ejemplo"])}</p></div>' if b.get("ejemplo") else ""
+        return (f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="pa-pasos">'
                 + "".join(f'<li><h3>{esc(p["titulo"])}</h3>{bt_parrafos(p.get("texto"))}</li>' for p in b.get("pasos", []))
                 + f'</ol>{ej}{bt_fuente(b.get("fuente"))}</section>')
-    if k == "oficial":
-        fe = f' · {esc(fecha_larga(b["fecha"]))}' if b.get("fecha") else ""
-        return (f'<section class="bl bl-of{tono}"><span class="bl-amb">{esc(b.get("ambito", "Oficial"))}{fe}</span>'
-                f'{bt_cab(b)}{bt_parrafos(b.get("texto"))}{bt_enlace(b.get("enlace"))}</section>')
     if k == "video":  # sin reproductor incrustado: un enlace al vídeo (así didákora no carga cookies de terceros)
         meta = " · ".join(esc(x) for x in (b.get("canal"), b.get("duracion")) if x)
-        return (f'<section class="bl bl-video{tono}">{bt_cab({"etiqueta": b.get("etiqueta")})}<a class="bl-v" href="{esc(b["url"])}" rel="noopener" target="_blank"><span class="bl-play">{ICO["play"]}</span>'
+        return (f'<section class="pa-s">{bt_cab({"etiqueta": b.get("etiqueta")})}<a class="pa-v" href="{esc(b["url"])}" rel="noopener" target="_blank"><span class="pa-play">{ICO["play"]}</span>'
                 f'<span><b>{esc(b["titulo"])}</b>{f"<small>{meta}</small>" if meta else ""}</span></a>{bt_parrafos(b.get("texto"))}</section>')
-    if k == "imagen": return f'<section class="bl bl-solo">{bt_img(b.get("img"), "bl-img ancha")}</section>'
+    if k == "imagen": return bt_img(b.get("img"), "pa-img ancha")
     if k == "cita":
         au = esc(b.get("autor", ""))
         if au and b.get("url"): au = f'<a href="{esc(b["url"])}" rel="noopener" target="_blank">{au}</a>'
-        return f'<section class="bl bl-cita{tono}"><blockquote><p>{bt_inline(b["texto"])}</p>{f"<footer>{au}</footer>" if au else ""}</blockquote></section>'
-    raise SystemExit(f"Boletín: tipo de bloque desconocido «{k}»")
-def pagina_boletin(b, path):
-    pt = bt_img(b.get("portada"), "bl-img portada")
-    fu = "".join(f'<li><a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></li>' for f in b.get("fuentes", []))
+        return f'<blockquote class="pa-cita"><p>{bt_inline(b["texto"])}</p>{f"<footer>{au}</footer>" if au else ""}</blockquote>'
+    raise SystemExit(f"Actualidad: tipo de sección desconocido «{k}»")
+def post_card(p, img_base=None):
+    s = post_slug(p); base = img_base if img_base is not None else f"{B}/actualidad/{s}/"
+    pt = p.get("portada") or {}
+    img = (f'<img src="{esc(base + pt["src"])}" alt="" loading="lazy">' if pt.get("src")
+           else f'<span class="pc-ph" aria-hidden="true">{esc(p.get("etiqueta") or "Actualidad")}</span>')
+    return (f'<article class="tc pc"><div class="pc-img">{img}</div><span class="lab">{esc(fecha_larga(p["fecha"]))} · {minutos(p)} min de lectura</span>'
+            f'<h3><a class="tc-a" href="{B}/actualidad/{s}/">{esc(p["titulo"])}</a></h3><p>{esc(bt_plano(p["entradilla"]))}</p></article>')
+def pagina_post(p, path):
+    s = post_slug(p)
+    fu = "".join(f'<li><a href="{esc(f["url"])}" rel="noopener" target="_blank">{esc(f["nombre"])}</a></li>' for f in p.get("fuentes", []))
+    otros = [x for x in reversed(POSTS) if post_slug(x) != s][:3]
     body = f'''
-<main class="pg bol">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Boletín", f"{B}/boletin/"), (b["titulo"], "")])}<span class="lab">Boletín nº {b["numero"]} · {esc(fecha_larga(b["fecha"]))}</span><h1>{esc(b["titulo"])}</h1></div><p>{bt_inline(b["entradilla"])}</p></div>
- {pt}
- <div class="bls">{"".join(bloque(x) for x in b["bloques"])}</div>
- {f'<section class="bl bl-fuentes"><h2>Fuentes de este número</h2><ul>{fu}</ul></section>' if fu else ""}
- <p class="more"><a class="btn solid" href="{B}/boletin/">Todos los boletines {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver las herramientas {ICO["arrow"]}</a></p>
+<main class="pg post">
+ <header class="pa-h">{crumbs([("Inicio", f"{B}/"), ("Actualidad", f"{B}/actualidad/"), (p["titulo"], "")])}
+  <span class="lab">{f"{esc(p['etiqueta'])} · " if p.get("etiqueta") else ""}{esc(fecha_larga(p["fecha"]))} · {minutos(p)} min de lectura</span>
+  <h1>{esc(p["titulo"])}</h1><p class="pa-lead">{bt_inline(p["entradilla"])}</p></header>
+ {bt_img(p.get("portada"), "pa-img portada")}
+ <article class="pa">{"".join(seccion_post(x) for x in p["bloques"])}
+  {f'<footer class="pa-fuentes"><h2>Fuentes</h2><ul>{fu}</ul></footer>' if fu else ""}</article>
+ {f'<section class="sec" aria-labelledby="h-mas">{secth("", "Más actualidad", "", "h-mas")}<div class="pcg">{"".join(post_card(x) for x in otros)}</div></section>' if otros else ""}
+ <p class="more"><a class="btn solid" href="{B}/actualidad/">Toda la actualidad {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    return head(f'{b["titulo"]} · Boletín de didákora', bt_plano(b["entradilla"])[:155], path, "boletin") + body + foot()
-def bol_card(b):
-    return (f'<article class="tc bc"><span class="lab">Nº {b["numero"]} · {esc(fecha_larga(b["fecha"]))}</span><h3><a class="tc-a" href="{B}/boletin/{b["numero"]}/">{esc(b["titulo"])}</a></h3>'
-            f'<p>{esc(bt_plano(b["entradilla"]))}</p></article>')
-def seccion_boletin():
-    if not BOLETINES: return ""
-    b = BOLETINES[-1]
+    return head(f'{p["titulo"]} · didákora', bt_plano(p["entradilla"])[:155], path, "actualidad") + body + foot()
+def seccion_actualidad():
+    if not POSTS: return ""
     return f'''
- <section class="sec" aria-labelledby="h-bol">
-  {secth("", "Boletín", "Novedades de educación digital, herramientas e ideas para clase.", "h-bol")}
-  <div class="bcg">{bol_card(b)}</div>
-  <p class="more"><a class="btn solid" href="{B}/boletin/{b["numero"]}/">Leer el último boletín {ICO["arrow"]}</a></p>
+ <section class="sec" aria-labelledby="h-act">
+  {secth("", "Actualidad", "Noticias de educación digital, con lo que te sirve para clase.", "h-act")}
+  <div class="pcg">{"".join(post_card(p) for p in list(reversed(POSTS))[:3])}</div>
+  <p class="more"><a class="btn solid" href="{B}/actualidad/">Ver toda la actualidad {ICO["arrow"]}</a></p>
  </section>
 '''
-def boletines():
-    if not BOLETINES: return
-    for b in BOLETINES: write(f'boletin/{b["numero"]}/index.html', pagina_boletin(b, f'/boletin/{b["numero"]}/'))
+def actualidad():
+    if not POSTS: return
+    for p in POSTS: write(f"actualidad/{post_slug(p)}/index.html", pagina_post(p, f"/actualidad/{post_slug(p)}/"))
     body = f'''
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Boletín", "")])}<h1>Boletín</h1></div><p>Novedades de educación digital: herramientas, inteligencia artificial, lo que recomiendan el Ministerio y la Junta de Andalucía e ideas para aprovecharlo en clase.</p></div>
- <div class="bcg">{"".join(bol_card(b) for b in reversed(BOLETINES))}</div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Actualidad", "")])}<h1>Actualidad</h1></div><p>Noticias de educación digital: herramientas, inteligencia artificial, lo que publican el Ministerio y la Junta de Andalucía e ideas para aprovecharlo en clase.</p></div>
+ <div class="pcg">{"".join(post_card(p) for p in reversed(POSTS))}</div>
 </main>'''
-    write("boletin/index.html", head("Boletín · didákora", "Novedades de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.", "/boletin/", "boletin") + body + foot())
+    write("actualidad/index.html", head("Actualidad · didákora", "Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.", "/actualidad/", "actualidad") + body + foot())
 def vista(ruta_json, carpeta):
-    """vista previa de un número sin publicarlo: escribe <carpeta>/index.html (dentro del repo, por ejemplo en agentes/)"""
-    b = json.load(open(ruta_json, encoding="utf-8"))
+    """vista previa de un post sin publicarlo: escribe <carpeta>/index.html (dentro del repo, por ejemplo en agentes/)"""
+    p = json.load(open(ruta_json, encoding="utf-8"))
     rel = os.path.relpath(os.path.abspath(carpeta), H).replace(os.sep, "/")
-    write(f"{rel}/index.html", pagina_boletin(b, f"/{rel}/").replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1))
+    write(f"{rel}/index.html", pagina_post(p, f"/{rel}/").replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1))
     print("vista previa:", f"{rel}/index.html")
 
 # ---------------------------------------------------------------- datos para el listado
@@ -537,7 +549,7 @@ def extras():
 </main>'''
     write("404.html", head("Página no encontrada · didákora", "Esta página no existe en didákora.", "/404.html") + body + foot())
     urls = ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
-    if BOLETINES: urls += ["/boletin/"] + [f'/boletin/{b["numero"]}/' for b in BOLETINES]
+    if POSTS: urls += ["/actualidad/"] + [f"/actualidad/{post_slug(p)}/" for p in POSTS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
           + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
@@ -554,6 +566,6 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); boletines()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad()
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")
