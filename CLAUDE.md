@@ -5,12 +5,12 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 
 ## Estructura
 
-- `_build/build.py` → genera todas las páginas (portada, `todas/`, `destacadas/`, `categorias/`, una ficha por herramienta,
+- `_build/build.py` → genera todas las páginas (portada, `todas/`, `destacadas/` (sin enlace en el menú ni en la portada desde el 22-10-2026), `categorias/`, una ficha por herramienta,
   `sobre-mi/` y 404). **Las páginas son generadas: no editarlas a mano.** Las rutas cuelgan de `B` (`/didakora`);
   para un dominio propio: `DK_BASE= python _build/build.py`.
 - `tools.js` → los datos de las herramientas (`SECTIONS`, `TOOLS`, `RECIENTES`, `CHANGES`). `logos/` → logos de cada herramienta.
   `RECIENTES` = las últimas añadidas, de la más reciente a la más antigua (máximo 12, cada una con texto corto): salen en
-  «Añadidas recientemente» de la portada (las 4 primeras, bajo las destacadas) y en `/nuevas/` («Nuevas» en el menú).
+  «Añadidas recientemente» de la portada (las 4 primeras, bajo las categorías) y en `/nuevas/` («Nuevas» en el menú).
 - `_build/didakora.css` y `_build/didakora.js` → se copian a la raíz al generar. Si cambian, subir `V` en `build.py`.
 - `didakora-datos.js` → generado (categoría, etapas, logo y apartado de cada herramienta para el listado).
 - Buscador: `dkMotor` en `didakora.js` puntúa por nombre, descripción, categoría, apartado, materia, etapa e ideas;
@@ -37,7 +37,7 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   `_build/actualidad/<slug>.json` (secciones `texto`, `destacado`, `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`;
   ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
   artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
-  (en el móvil ocupa el sitio de «Nuevas») y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  (en el móvil, con poco ancho, quedan Todas, Actualidad y Sobre mí) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
   Diseño fijado por Jorge el 22-10-2026: post con volver arriba a la izquierda, título, tema y fecha, entradilla, portada
   21:9 a todo el ancho (16:9 en el móvil), texto en Literata en una columna centrada de 820 px y botones a la derecha;
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de

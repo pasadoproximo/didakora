@@ -1,7 +1,7 @@
 # Genera Didákora (antes «Caja de herramientas digitales» del portfolio) en varias páginas:
-#   /                      portada: buscador, categorías, destacadas, quién la hace
+#   /                      portada: buscador, categorías, añadidas recientemente y actualidad
 #   /todas/                listado completo con buscador y filtros (JS)
-#   /destacadas/           las diez más versátiles
+#   /destacadas/           las diez más versátiles (ya sin enlace en el menú ni en la portada)
 #   /nuevas/               las últimas añadidas (RECIENTES en tools.js)
 #   /categorias/           índice de categorías y /categorias/<slug>/ con sus apartados
 #   /<id>/                 una ficha por herramienta
@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "63"  # versión de didakora.css / didakora.js
+V = "64"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -148,7 +148,7 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 def topbar(cur=""):
-    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("destacadas", "Destacadas", "/destacadas/"), ("nuevas", "Nuevas", "/nuevas/")]
+    nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
     links = "".join(f'<a href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
@@ -239,7 +239,6 @@ def etapas_html(fid, cls=""):
 
 # ---------------------------------------------------------------- portada
 def portada():
-    dest = "".join(card_dest(BYID[i]) for i in DESTACADAS[:4])
     body = f'''
 <main>
  <section class="hero" aria-labelledby="ph1">
@@ -262,11 +261,6 @@ def portada():
   <p class="more"><a class="btn solid" href="{B}/categorias/">Ver categorías {ICO["arrow"]}</a></p>
  </section>
 
- <section class="sec" aria-labelledby="h-dest">
-  {secth("", "Herramientas destacadas", "Las más versátiles para empezar a usar en clase.", "h-dest")}
-  <div class="tcg c4">{dest}</div>
-  <p class="more"><a class="btn solid" href="{B}/destacadas/">Ver destacadas {ICO["arrow"]}</a></p>
- </section>
 {seccion_nuevas()}
 {seccion_actualidad()}
 </main>'''

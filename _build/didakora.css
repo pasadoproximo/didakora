@@ -43,7 +43,7 @@ svg{flex:none}
 .bar nav a.cta:hover{background:var(--coral3)}
 .bar nav a.cta[aria-current="page"]{background:var(--coral);box-shadow:inset 0 0 0 2px var(--navy)}
 /* móvil: Todas, Categorías y Sobre mí (Destacadas se queda en la portada); por debajo de 400 px, Todas y Sobre mí */
-@media (max-width:640px){.bar nav a:nth-child(3){display:none}.bar nav a{padding:8px 9px;font-size:15px}}
+@media (max-width:640px){.bar nav a{padding:8px 9px;font-size:15px}}
 @media (max-width:440px){.bar{padding:6px 8px 6px 18px}.lockup{height:16px}.bar nav{gap:0}.bar nav a{padding:8px 7px;font-size:14.5px}.bar nav a.cta{margin-left:4px;padding:8px 10px}}
 @media (max-width:400px){.bar nav a:nth-child(2){display:none}}
 
@@ -382,5 +382,5 @@ a.tag:hover{background:var(--coral3)}
 @media (max-width:1000px){.pcg{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.pcg{grid-template-columns:minmax(0,1fr)}.pa{font-size:18px}.pa-caja{padding:22px 20px;border-radius:20px}.pa-volver{margin-top:20px}.pa-h{margin-top:14px}.pa-img.portada img{aspect-ratio:16/9;border-radius:20px}
  .pa-lista li{grid-template-columns:36px minmax(0,1fr);gap:12px}.pa-lista .lg,.pa-n{width:36px;height:36px}.pa-lista .lg img{width:24px;height:24px}}
-/* con «Actualidad» en el menú son seis enlaces: en el móvil «Nuevas» deja su sitio (sigue en la portada) */
-@media (max-width:440px){.bar nav a:nth-child(4):nth-last-child(3){display:none}}
+/* con «Actualidad» en el menú son cinco enlaces: en el móvil quedan Todas, Actualidad y Sobre mí (Nuevas y Categorías siguen en la portada) */
+@media (max-width:440px){.bar nav a:nth-child(2):nth-last-child(4),.bar nav a:nth-child(3):nth-last-child(3){display:none}}
