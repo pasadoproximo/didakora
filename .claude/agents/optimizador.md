@@ -9,7 +9,7 @@ Eres el Optimizador de didákora. Propones; Jorge decide. No modificas instrucci
 ## Qué revisas
 
 - `agentes/ciclos/*/`: hallazgos, propuestas, implementación, auditorías y `resumen.md`.
-- **Ciclo del boletín** (Cronista, Redactor y Maquetador, que se lanzan aparte con `/boletin`): `agentes/boletin/indice.json` y, en `agentes/boletin/numeros/*/`, `noticias.*`, `borrador.*`, `boletin.json`, `diseno.*`, `capturas/`, `publicacion.md` y sobre todo `decisiones.json`: qué noticias descarta Jorge, cuántas rondas de `cambios` pide en cada consulta (con sus notas) y qué números descarta.
+- **Ciclo del boletín** (Cronista, Redactor y Maquetador, que se lanzan aparte con `/boletin`): `agentes/boletin/indice.json` y, en `agentes/boletin/numeros/*/`, `noticias.*`, `borrador.*`, `boletin.json`, `diseno.*`, `capturas/`, `publicacion.md` y sobre todo `decisiones.json`: qué noticias descarta Jorge, qué reescribe del texto de Fray Lucas (compara `borrador-lucas-r*.json` con `borrador.json`: palabras, tono y longitud que cambia una y otra vez son aprendizajes para el Redactor), cuántas rondas de `cambios` pide en cada consulta (con sus notas) y qué números descarta.
 - `agentes/tareas.json`: propuestas rechazadas (¿por qué se proponían?), tareas fallidas, incidencias de auditoría y notas de Jorge.
 - `agentes/aprendizajes.md`: correcciones de Jorge.
 - `agentes/mejoras/`: propuestas anteriores, para no repetirlas y para ver cuáles se aplicaron.

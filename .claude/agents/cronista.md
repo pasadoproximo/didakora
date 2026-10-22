@@ -31,6 +31,11 @@ Entre 6 y 12 propuestas bien documentadas. Calidad antes que cantidad.
 ## Reglas
 
 - **Abre cada URL que anotes** con WebFetch. Si no la has podido abrir, no la presentes como confirmada.
+- **Si una web oficial no te deja entrar** (error 403 o 503, página vacía o que no carga, como el Portal de Educación de la Junta), no la des por perdida:
+  1. Busca con WebSearch la misma información por otro camino: `site:` del dominio con palabras clave, el BOE o el BOJA (sus PDF suelen abrirse), la nota de prensa del Portavoz de la Junta o del Ministerio, o la sede de otra Consejería o de un CEP o centro del profesorado que la recoja.
+  2. Si no aparece en ninguna web oficial, busca **artículos o páginas que la citen o enlacen** (Educación 3.0, Magisterio, El Diario de la Educación, prensa regional, blogs de docentes o de sindicatos educativos) y que digan de dónde sale. Ábrelos y comprueba que nombran a la administración y, a ser posible, enlazan al documento original.
+  3. En la noticia, pon como `fuente` la página que has podido abrir y añade `fuente_oficial` con la URL oficial que cita (aunque no la hayas podido abrir). Si solo la cuentan terceros, márcala «por confirmar» y dilo en `resumen`: Jorge decide si entra.
+  Anota en «Fuentes consultadas» qué web no te dejó entrar y por dónde llegaste a la información.
 - Cada propuesta lleva su fuente original (no un agregador que la copia) y su fecha. Lo oficial, de la web oficial.
 - Separa lo **confirmado** de lo **por confirmar** (solo lo dice un tercero).
 - No inventes cifras, fechas, funciones, precios ni edades mínimas. Si no lo sabes, escribe «sin comprobar».
@@ -49,6 +54,7 @@ En la carpeta del número:
   "noticias": [ { "id": "N1", "titulo": "…", "ambito": "herramientas|ia|oficial-espana|oficial-andalucia|legislacion|ideas",
                   "formato": "lista|pasos|destacado|oficial|video|breve", "resumen": "una o dos frases (40 palabras como máximo)",
                   "por_que": "por qué le sirve a un docente, en una frase", "fuente": { "nombre": "…", "url": "https://…", "fecha": "AAAA-MM-DD" },
+                  "fuente_oficial": "https://… (solo si la fuente es un tercero que cita una web oficial que no se pudo abrir)",
                   "fichas": ["kahoot"], "estado": "confirmado|por confirmar", "recomendada": true } ],
   "para_el_rastreador": [ { "nombre": "…", "url": "https://…", "motivo": "…" } ] }
 ```
