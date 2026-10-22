@@ -1,0 +1,117 @@
+{
+  "slug": "guia-ia-intef-2-0",
+  "titulo": "La guía de IA del INTEF 2.0.",
+  "fecha": "2026-10-22",
+  "etiqueta": "IA",
+  "entradilla": "El INTEF publicó en septiembre la versión 2.0 de su guía sobre IA en educación. Con el curso en marcha, es buen momento para ver qué trae y cómo llevarla al aula este trimestre.",
+  "miniatura": {"src": "img/miniatura.jpg"},
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una profesora sonríe sentada a su mesa con un portátil abierto, delante de una pizarra llena de fórmulas",
+    "credito": "Foto: Vitaly Gariev · Licencia de Unsplash, modificada",
+    "url_credito": "https://unsplash.com/photos/CL9OLZqPdus"
+  },
+  "bloques": [
+    {
+      "tipo": "oficial",
+      "titulo": "La guía del INTEF sobre IA, en su versión 2.0",
+      "ambito": "Gobierno de España",
+      "fecha": "2026-09-08",
+      "texto": "El INTEF publicó el 8 de septiembre la versión 2.0 de su **Guía sobre el uso de la inteligencia artificial en el ámbito educativo**. La primera versión era de 2024. El 5 de octubre la presentó en un webinar que quedó grabado.\n\nNo es de esta semana, pero sigue siendo la referencia estatal para decidir qué hacemos con la IA en clase. Ahora, con el curso ya en marcha, es cuando más rinde. Ya hay trabajos en los que asoma la IA y decisiones que tomar en el claustro.\n\nSe organiza en tres perfiles: alumnado, profesorado y centro. Para cada uno repasa oportunidades, riesgos y propuestas de actuación. Pone el foco en la alfabetización en IA del alumnado, en el docente como «guía y mediador» y en planificar el uso de la IA en el centro. Esta edición añade principios éticos, privacidad, equidad, transparencia, integridad académica, impacto ambiental y bienestar digital.\n\nSon 105 páginas de descarga gratuita, también en inglés. Tiene licencia **CC BY-SA**: puedes adaptarla a tu centro citando al INTEF y compartiendo el resultado con la misma licencia.",
+      "enlace": {
+        "url": "https://www.libreria.educacion.gob.es/libro/guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo_187146/",
+        "texto": "Descargar la guía"
+      },
+      "fuente": {
+        "nombre": "INTEF",
+        "url": "https://intef.es/Noticias/nueva-version-de-la-guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo/"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para el aula",
+      "titulo": "3 materiales de la guía para llevar al aula",
+      "intro": "Además de las orientaciones, la guía trae material listo para usar.",
+      "items": [
+        {
+          "titulo": "Situaciones de aprendizaje",
+          "texto": "Propuestas para distintas etapas en las que la IA se usa con una finalidad pedagógica. Te sirven de punto de partida para tu programación o para adaptarlas a tu grupo.",
+          "url": "https://run.gob.es/dra7841a",
+          "ficha": null
+        },
+        {
+          "titulo": "Modelo de declaración de uso de IA",
+          "texto": "Para que el alumnado explique si ha usado IA en un trabajo y cómo. En lugar de sospechar, pides que lo cuenten. Es una forma práctica de trabajar la integridad académica.",
+          "url": "https://run.gob.es/dra7841a",
+          "ficha": null
+        },
+        {
+          "titulo": "Cuestionario de reflexión crítica",
+          "texto": "Dirigido al alumnado, para que piense en su relación con la tecnología. Encaja en una tutoría o antes de empezar una actividad con IA.",
+          "url": "https://run.gob.es/dra7841a",
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "INTEF",
+        "url": "https://intef.es/Noticias/nueva-version-de-la-guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo/"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Para el aula",
+      "titulo": "Cómo aprovecharla este trimestre en 4 pasos",
+      "intro": "Una propuesta para que no se quede en la carpeta de descargas.",
+      "pasos": [
+        {
+          "titulo": "Mira el webinar",
+          "texto": "Si ahora no tienes tiempo para las 105 páginas, empieza por la grabación de la presentación del 5 de octubre."
+        },
+        {
+          "titulo": "Lee tu perfil",
+          "texto": "Ve directo a la parte del profesorado. Si estás en el equipo directivo o coordinas la transformación digital, lee también la del centro."
+        },
+        {
+          "titulo": "Prueba un material",
+          "texto": "Elige uno. La declaración de uso de IA encaja en el próximo trabajo que mandes; el cuestionario, en una sesión de tutoría."
+        },
+        {
+          "titulo": "Llévala al claustro",
+          "texto": "La guía pide planificar el uso de la IA en el centro. Es un buen documento de partida para acordar criterios comunes: qué se permite, cómo se declara y qué herramientas autoriza el centro."
+        }
+      ],
+      "ejemplo": "Mandas un trabajo de investigación en 4.º de ESO y pides que lo entreguen con la declaración de uso de IA adaptada a tu materia. Al corregir, sabes cómo ha trabajado cada uno.",
+      "fuente": {
+        "nombre": "INTEF",
+        "url": "https://intef.es/Noticias/nueva-version-de-la-guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo/"
+      }
+    },
+    {
+      "tipo": "video",
+      "etiqueta": "Vídeo",
+      "titulo": "Webinar de lanzamiento de la guía de la IA en el ámbito educativo",
+      "url": "https://www.youtube.com/live/r24Od6Xzxcc",
+      "canal": "INTEF",
+      "texto": "La presentación oficial del 5 de octubre, grabada. Útil para hacerte una idea de la guía antes de leerla entera."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "INTEF · Nueva versión de la guía sobre el uso de la IA en el ámbito educativo",
+      "url": "https://intef.es/Noticias/nueva-version-de-la-guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo/"
+    },
+    {
+      "nombre": "Librería del Ministerio de Educación · Guía sobre el uso de la inteligencia artificial en el ámbito educativo",
+      "url": "https://www.libreria.educacion.gob.es/libro/guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo_187146/"
+    },
+    {
+      "nombre": "Code INTEF · Actualización de la guía sobre el uso de la IA en el ámbito educativo",
+      "url": "https://code.intef.es/noticias/guia-sobre-el-uso-de-la-inteligencia-artificial-en-el-ambito-educativo-version-2/"
+    },
+    {
+      "nombre": "INTEF en YouTube · Webinar lanzamiento de la Guía de la IA en el ámbito educativo",
+      "url": "https://www.youtube.com/live/r24Od6Xzxcc"
+    }
+  ]
+}
