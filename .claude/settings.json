@@ -1,5 +1,8 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(git -C \"C:/Users/USER/Desktop/El pasado próximo/didakora\" push origin rediseno-2026-10:main)"
+    ],
     "deny": [
       "Bash(git push)",
       "Bash(git push *)",

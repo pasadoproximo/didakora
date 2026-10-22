@@ -84,8 +84,10 @@ Administrador web y Auditor. Actualidad (el blog): Cronista, Redactor y Maquetad
 - `python _build/comprobar_enlaces.py` → comprueba las URL de `tools.js` (solo lee).
 
 Registros privados en `agentes/` (en `.gitignore`: solo en este equipo): `fuentes.md`, `estado.json`, `tareas.json`,
-`aprendizajes.md`, `ciclos/<fecha>/` y `mejoras/`. `git push` está bloqueado para Claude en `.claude/settings.json`:
-publicar lo hace Jorge con `! git push`. Sin tareas programadas, servicios externos ni dependencias nuevas.
+`aprendizajes.md`, `ciclos/<fecha>/` y `mejoras/`. `git push` está bloqueado para Claude en `.claude/settings.json`,
+con una sola excepción que autorizó Jorge el 22-10-2026: `git -C "C:/Users/USER/Desktop/El pasado próximo/didakora" push origin
+rediseno-2026-10:main` (GitHub Pages publica desde `main`), que Claude hace cuando Jorge se lo pide. Los agentes del
+monasterio siguen sin poder publicar. Sin tareas programadas, servicios externos ni dependencias nuevas.
 
 ## Identidad
 
