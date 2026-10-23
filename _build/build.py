@@ -141,7 +141,7 @@ def card(t, cat=True):
 def _svg_inline(name, cls):
     """mete en la página un SVG de marca/ (sin el <title>, que ya da el aria-label del enlace)"""
     x = open(os.path.join(ROOT, "marca", name), encoding="utf-8").read().strip()
-    x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="Didákora"', ' aria-hidden="true" focusable="false"')
+    x = re.sub(r"<title>.*?</title>", "", x).replace(' role="img" aria-label="didákora"',' aria-hidden="true" focusable="false"')
     return x.replace("<svg ", f'<svg class="{cls}" ', 1)
 LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
@@ -154,7 +154,7 @@ def topbar(cur=""):
     links = "".join(f'<a href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
-  <a class="brand" href="{B}/" aria-label="Didákora · inicio">{LOGO}</a>
+  <a class="brand" href="{B}/" aria-label="didákora · inicio">{LOGO}</a>
   <nav aria-label="Principal">{links}</nav>
  </div>
 </header>'''
@@ -293,9 +293,9 @@ def sobremi():
   <img src="{B}/img/jorge.jpg" alt="Jorge Delgado Aguilera en un aula, con una estantería de libros y un mapamundi al fondo" width="720" height="734">
   <div>
    <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
-   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
+   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
    <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
-   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didákora {ICO["ext"]}</a></p>
+   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice didákora {ICO["ext"]}</a></p>
   </div>
  </section>
 </main>'''

@@ -63,7 +63,7 @@ def horizontal(text_color, m, s, c, fit="B2"):
     base = H                          # base de las letras = base de la caja
     inner = (f'<g transform="translate({-3 * k:.2f} {-13 * k:.2f}) scale({k:.4f})">{box(m, s, c)}</g>'
              f'<g fill="{text_color}" transform="translate({bw + gap:.1f} {base:.1f}) scale(1 -1)">{paths}</g>')
-    return svg(W, H + overshoot("didákora"), inner, "Didákora")
+    return svg(W, H + overshoot("didákora"), inner, "didákora")
 
 def apilado(text_color, m, s, c):
     paths, tw, asc = word("didákora")
@@ -72,14 +72,14 @@ def apilado(text_color, m, s, c):
     W = max(bw, tw); H = bh + gap + asc
     inner = (f'<g transform="translate({(W - bw) / 2 - 3 * k:.2f} {-13 * k:.2f}) scale({k:.4f})">{box(m, s, c)}</g>'
              f'<g fill="{text_color}" transform="translate({(W - tw) / 2:.1f} {H:.1f}) scale(1 -1)">{paths}</g>')
-    return svg(W, H + overshoot("didákora"), inner, "Didákora")
+    return svg(W, H + overshoot("didákora"), inner, "didákora")
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     files = {
-        "didakora-simbolo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, SKY, CORAL)}</g>', "Didákora"),
-        "didakora-simbolo-cielo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, WHITE, CORAL)}</g>', "Didákora"),
-        "didakora-simbolo-blanco.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(WHITE, SKY, CORAL)}</g>', "Didákora"),
+        "didakora-simbolo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, SKY, CORAL)}</g>', "didákora"),
+        "didakora-simbolo-cielo.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(NAVY, WHITE, CORAL)}</g>', "didákora"),
+        "didakora-simbolo-blanco.svg": svg(42, 30, f'<g transform="translate(-3 -13)">{box(WHITE, SKY, CORAL)}</g>', "didákora"),
         "didakora-logo.svg": horizontal(NAVY, NAVY, SKY, CORAL),
         "didakora-logo-blanco.svg": horizontal(WHITE, WHITE, SKY, CORAL),
         "didakora-apilado.svg": apilado(NAVY, NAVY, SKY, CORAL),
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         "didakora-logo-a-blanco.svg": horizontal(WHITE, WHITE, SKY, CORAL, "A"),
         "didakora-logo-a-cielo.svg": horizontal(NAVY, NAVY, WHITE, CORAL, "A"),
         # icono de pestaña: la caja centrada en un cuadrado
-        "favicon.svg": svg(48, 48, f'<g transform="translate(0 4)">{box(NAVY, SKY, CORAL)}</g>', "Didákora"),
+        "favicon.svg": svg(48, 48, f'<g transform="translate(0 4)">{box(NAVY, SKY, CORAL)}</g>', "didákora"),
     }
     for n, c in files.items():
         open(os.path.join(OUT, n), "w", encoding="utf-8", newline="\n").write(c)
