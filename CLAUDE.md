@@ -37,8 +37,8 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Primera: NotebookLM (23-10-2026); el resto, por tandas de
-  hasta 5 fichas por ciclo (empezando por las de IA), propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-10-2026 las llevan 118 de las 121 fichas
+  (sin ellas: Stormboard, BodyMaps y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
