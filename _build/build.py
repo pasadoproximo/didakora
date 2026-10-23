@@ -444,9 +444,11 @@ def bt_img(i, cls="pa-img"):
 def bt_cab(b, kicker=""):
     k = kicker or (esc(b["etiqueta"]) if b.get("etiqueta") else "")
     return (f'<span class="pa-k">{k}</span>' if k else "") + (f'<h2>{esc(b["titulo"])}</h2>' if b.get("titulo") else "")
-def bt_item(it):
+def bt_item(it, con_logo=True):
+    # el logo sustituye al número solo si todos los elementos de la lista son herramientas del catálogo;
+    # si se mezclan, todos llevan su número (el enlace a la ficha se mantiene)
     t = BYID.get(it.get("ficha") or "")
-    lg = f'<span class="lg">{logo(t)}</span>' if t else '<span class="pa-n" aria-hidden="true"></span>'
+    lg = f'<span class="lg">{logo(t)}</span>' if t and con_logo else '<span class="pa-n" aria-hidden="true"></span>'
     nombre = esc(it["titulo"])
     if it.get("url"): nombre = f'<a href="{esc(it["url"])}" rel="noopener" target="_blank">{nombre}</a>'
     fl = f' <a class="pa-ficha" href="{B}/{t["id"]}/">Ver su ficha en didákora {ICO["arrow"]}</a>' if t else ""
@@ -461,7 +463,8 @@ def seccion_post(b):
         k2 = esc(b.get("ambito", "Oficial")) + (f' · {esc(fecha_larga(b["fecha"]))}' if b.get("fecha") else "")
         return f'<section class="pa-s pa-of{caja}">{bt_cab(b, k2)}{bt_parrafos(b.get("texto"))}{bt_enlace(b.get("enlace"))}{bt_fuente(b.get("fuente"))}</section>'
     if k == "lista":
-        return (f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="pa-lista">{"".join(bt_item(i) for i in b.get("items", []))}</ol>'
+        its = b.get("items", []); cl = bool(its) and all(BYID.get(i.get("ficha") or "") for i in its)
+        return (f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="pa-lista">{"".join(bt_item(i, cl) for i in its)}</ol>'
                 f'{bt_fuente(b.get("fuente"))}</section>')
     if k == "pasos":
         ej = f'<div class="pa-ej"><span class="lab">Ejemplo</span><p>{bt_inline(b["ejemplo"])}</p></div>' if b.get("ejemplo") else ""

@@ -1,0 +1,98 @@
+{
+  "slug": "tutorias-familias-koalendar",
+  "titulo": "Tutorías con familias sin cruzar correos.",
+  "fecha": "2026-10-23",
+  "etiqueta": "Herramientas",
+  "entradilla": "Koalendar deja que las familias reserven su tutoría en los huecos que tú marcas. Te contamos qué ofrece gratis, cómo pedir el descuento para docentes y cómo dejar tu agenda lista.",
+  "miniatura": {"src": "img/miniatura.jpg"},
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una familia sentada a una mesa escucha a una persona que está de espaldas, como en una tutoría",
+    "credito": "Foto: Kampus Production · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/people-talking-8729978/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "Herramientas",
+      "titulo": "Una agenda que se rellena sola",
+      "texto": "Cuadrar una tutoría suele costar varios mensajes. Propones un día, la familia no puede, pruebas con otro. **Koalendar** ataja ese ir y venir.\n\nKoalendar es una herramienta de reservas que se sincroniza con tu calendario. Marcas tus horas libres, compartes un enlace y cada familia elige el hueco que le viene bien. Cuando alguien reserva, ese hueco desaparece de la página. Así no hay dos citas a la misma hora.\n\nLlega en buen momento. En estas semanas empiezan las primeras tutorías del curso y conviene tener la agenda montada antes de que se llene el correo."
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "En el centro",
+      "titulo": "3 usos para el centro",
+      "intro": "Sirve para algo más que las tutorías.",
+      "items": [
+        {
+          "titulo": "Tutorías con familias",
+          "texto": "Creas una página con tus horas de tutoría y la compartes por la plataforma del centro. La cita puede ser presencial o por videollamada.",
+          "url": "https://koalendar.com/es/software-agendar-citas-para/reuniones-padres-profesores",
+          "ficha": "koalendar"
+        },
+        {
+          "titulo": "Reserva de espacios",
+          "texto": "El aula de informática, el carro de portátiles o la biblioteca pueden tener su propia página. Cada docente ve qué está libre y lo reserva sin pisar a nadie.",
+          "url": "https://koalendar.com/es/software-agendar-citas-para/salas-reuniones-espacios",
+          "ficha": null
+        },
+        {
+          "titulo": "Eventos del centro",
+          "texto": "Jornadas de puertas abiertas, reuniones de inicio de curso o entrevistas con orientación, con franjas para que las familias se apunten. Para varias familias en una misma sesión hace falta el plan Pro.",
+          "url": "https://koalendar.com/es/software-agendar-citas-para/eventos-y-actividades",
+          "ficha": null
+        }
+      ]
+    },
+    {
+      "tipo": "destacado",
+      "tono": "hielo",
+      "etiqueta": "Planes",
+      "titulo": "Los planes, de un vistazo",
+      "texto": "**Gratis.** Sin caducidad ni tarjeta. Reservas ilimitadas. Dos calendarios sincronizados con Google, Outlook o iCloud. Videollamada en cada cita. Se puede poner en la web del centro o en el blog de aula. Más de treinta idiomas.\n\n**Pro.** Recordatorios automáticos. Reuniones de grupo. Sin la marca de Koalendar. Prueba gratis de siete días.\n\n**Descuento docente.** Hasta el 60 % en el Pro. Cuenta con el correo del centro y formulario de descuento. Koalendar revisa cada solicitud a mano.\n\n**Para tutorías individuales** el plan gratuito suele bastar.",
+      "enlace": {
+        "url": "https://koalendar.com/es/precios/plan-gratuito",
+        "texto": "Ver el plan gratuito"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "etiqueta": "Paso a paso",
+      "titulo": "Tu agenda de tutorías en 4 pasos",
+      "intro": "La configuración básica lleva unos minutos.",
+      "pasos": [
+        {
+          "titulo": "Crea la cuenta",
+          "texto": "Usa el correo del centro. Si más adelante quieres el plan Pro, es el requisito para pedir el descuento."
+        },
+        {
+          "titulo": "Conecta tu calendario",
+          "texto": "Enlaza Google Calendar, Outlook o iCloud. Las citas caen solas en tu agenda y Koalendar no ofrece las horas que ya tienes ocupadas."
+        },
+        {
+          "titulo": "Crea la página de reservas",
+          "texto": "Marca tus horas de tutoría y la duración de cada cita. Si quieres saber de qué viene a hablar la familia, pide solo lo justo. Para cuadrar una cita no hacen falta datos del alumnado."
+        },
+        {
+          "titulo": "Comparte el enlace",
+          "texto": "Envíalo por la plataforma del centro o ponlo en la web o en el blog de aula. A partir de ahí cada familia elige su hora."
+        }
+      ],
+      "ejemplo": "Eres tutor de 1.º de ESO y tienes la tutoría los martes por la tarde. Abres franjas de veinte minutos, mandas el enlace a las familias por la plataforma del centro y en tu calendario van apareciendo las citas con su nombre."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Rosaliarte · Koalendar, la agenda online para tutorías con familias",
+      "url": "https://rosaliarte.com/koalendar-agenda-online-docentes/"
+    },
+    {
+      "nombre": "Koalendar · Software para educación",
+      "url": "https://koalendar.com/es/software-agendar-citas-para/educacion"
+    },
+    {
+      "nombre": "Koalendar · Plan gratuito",
+      "url": "https://koalendar.com/es/precios/plan-gratuito"
+    }
+  ]
+}
