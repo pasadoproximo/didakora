@@ -26,6 +26,8 @@ La sesión principal te indica la carpeta del ciclo (`agentes/ciclos/AAAA-MM-DD/
 
 3. **Guía de protección de datos del INTEF**: si el INTEF ha publicado una versión nueva (la que hay en `agentes/documentos/` es la 3.0, de junio de 2026), anótala como hallazgo con su enlace.
 
+4. **Fuentes de las fichas**: abre cada `fu.url` de `_build/fichas.py` (la línea «… (anuncio oficial, comprobado el DD/MM/AAAA)» que sale bajo «Qué es»). Si ya no dice lo que afirma `fu.t`, ha cambiado o no abre, anótalo como novedad de esa herramienta. Si sigue igual, ponlo en una línea en «Fuentes consultadas»: las fichas prometen «Si cambia, lo anoto aquí».
+
 Prioriza calidad sobre cantidad: entre 3 y 10 hallazgos bien documentados valen más que 30 dudosos.
 
 ## Reglas

@@ -32,6 +32,13 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   Si cambia esa lógica de `build.py`, actualiza estas líneas.
   La Ficha rápida acaba con «Revisada» (mes y año): `rev:"AAAA-MM"` en la herramienta o, si no lo tiene, `REV` en `build.py`
   (la revisión general). El Administrador pone `rev` al dar de alta o cambiar una herramienta; comprobar el enlace no cuenta.
+  Lo que puede cambiar (un nombre nuevo, un cierre, un precio) va con su fuente bajo «Qué es»: `fu=dict(t, url, fecha)` en
+  `fichas.py` → «t (anuncio oficial, comprobado el DD/MM/AAAA). Si cambia, lo anoto aquí.» (`fuente_q()` en `build.py`; `enlace`
+  cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
+  cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
+- Portada: bajo el párrafo del hero, la autoría (`autoria()` en `build.py`, brief del portfolio v3): foto, «Revisado a mano por
+  Jorge Delgado Aguilera» (enlaza al portfolio), el número de herramientas y el mes de la última revisión, calculados solos.
+  Solo es verdad si Jorge ve cada cambio: los agentes proponen y él aprueba y publica.
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.
