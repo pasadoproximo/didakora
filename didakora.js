@@ -151,3 +151,6 @@ function cajaListado(){
 (()=>{const mq=matchMedia('(max-width:560px)'),els=[...document.querySelectorAll('#hq,#lq')];
  const f=()=>els.forEach(e=>{e.dataset.ph=e.dataset.ph||e.placeholder;e.placeholder=mq.matches?'Busca una herramienta o tarea…':e.dataset.ph;});
  f();mq.addEventListener('change',f);})();
+
+// Agentation (anotar la página para Claude Code): solo en local
+if(["127.0.0.1","localhost"].includes(location.hostname))import((window.DK_BASE||"")+"/agentation-local.js").catch(()=>{});

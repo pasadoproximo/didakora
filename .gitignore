@@ -2,3 +2,4 @@ propuestas/
 __pycache__/
 agentes/
 .playwright-mcp/
+agentation-local.js
