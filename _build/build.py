@@ -455,7 +455,7 @@ def ficha(t):
 </main>'''
     pagina = {"@type": "WebPage", "name": f"{nm} · Didákora", "url": f'{SITE}{B}/{t["id"]}/', "inLanguage": "es", "isPartOf": {"@id": SITIO["@id"]},
               "author": {"@id": PERSONA["@id"]}, "dateModified": t.get("rev", REV),
-              "about": {"@type": "SoftwareApplication", "name": nm, "url": t["url"], "applicationCategory": "EducationalApplication",
+              "about": {"@type": "Thing", "name": nm, "url": t["url"], "sameAs": t["url"],
                         "description": f["q"].split(". ")[0].rstrip(".") + "."}}
     ld = [pagina] + ([{"@type": "FAQPage", "url": f'{SITE}{B}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
     write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld) + body + foot())
