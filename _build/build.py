@@ -570,11 +570,43 @@ def extras():
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
     write("404.html", head("Página no encontrada · Didákora", "Esta página no existe en Didákora.", "/404.html") + body + foot())
-    urls = ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
-    if POSTS: urls += ["/actualidad/"] + [f"/actualidad/{post_slug(p)}/" for p in POSTS]
+    # sitemap con la fecha de cada página (lastmod): la revisión de cada ficha (`rev`, o `REV`), la más reciente de cada
+    # categoría y la fecha de cada post; las páginas generales llevan la más reciente de todas. «Sobre mí» va sin fecha.
+    rev = lambda t: t.get("rev", REV)
+    ult_post = max((p["fecha"][:10] for p in POSTS), default="")
+    ult = max([rev(t) for t in TOOLS] + [ult_post])
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"]] + [("/sobre-mi/", "")]
+            + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
+            + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
+    if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
-          + "".join(f"<url><loc>{SITE}{B}{u}</loc></url>{NL}" for u in urls) + "</urlset>" + NL)
+          + "".join(f"<url><loc>{SITE}{B}{u}</loc>{f'<lastmod>{d}</lastmod>' if d else ''}</url>{NL}" for u, d in urls) + "</urlset>" + NL)
+    llms()
+
+def llms():
+    # llms.txt: índice en texto plano para que las IA entiendan qué es Didákora y encuentren cada ficha (https://llmstxt.org)
+    from fichas import F
+    rev = lambda t: t.get("rev", REV)
+    pri = lambda q: q.split(". ")[0].rstrip(".") + "."
+    L = ["# Didákora", "",
+         "> Catálogo de herramientas digitales para docentes, sobre todo de Secundaria en España. Cada ficha explica qué es la "
+         "herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus "
+         "condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales "
+         "educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.", "",
+         f"Herramientas: {len(TOOLS)}. Última revisión: {revisada(max(rev(t) for t in TOOLS)).lower()}.", "",
+         "## Páginas principales", "",
+         f"- [Todas las herramientas]({SITE}{B}/todas/): listado completo con buscador y filtros por categoría y etapa",
+         f"- [Sobre mí]({SITE}{B}/sobre-mi/): quién hace Didákora y cómo se revisa",
+         f"- [Portfolio de Jorge Delgado Aguilera]({SITE}/)"]
+    if POSTS: L.append(f"- [Actualidad]({SITE}{B}/actualidad/): noticias de educación digital para docentes")
+    for c in CATS:
+        L += ["", f"## {c[1]}", "", c[2], ""]
+        L += [f'- [{split_name(t["n"])[0]}]({SITE}{B}/{t["id"]}/): {pri(F[t["id"]]["q"])}' for t in TOOLS if t["cs"] == c[0]]
+    if POSTS:
+        L += ["", "## Actualidad", ""] + [f"- [{bt_plano(p['titulo']).rstrip('.')}]({SITE}{B}/actualidad/{post_slug(p)}/): {bt_plano(p['entradilla'])}"
+                                          for p in reversed(POSTS)]
+    write("llms.txt", "\n".join(L) + "\n")
 
 def datos():
     from fichas import F
