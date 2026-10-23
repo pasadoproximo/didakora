@@ -1,11 +1,11 @@
 ---
 name: boletin
-description: Actualidad (el blog de didákora), aparte del ciclo del catálogo. «buscar»: el Cronista trae noticias y Jorge guarda las que le interesan. «encargar»: un post con una o varias noticias guardadas. «post <id>»: lleva un post por sus pasos (Redactor → texto → tres miniaturas → miniatura elegida → el post con ella → visto bueno → publicación con commit local). Varios posts pueden ir a la vez.
+description: Actualidad (el blog de Didákora), aparte del ciclo del catálogo. «buscar»: el Cronista trae noticias y Jorge guarda las que le interesan. «encargar»: un post con una o varias noticias guardadas. «post <id>»: lleva un post por sus pasos (Redactor → texto → tres miniaturas → miniatura elegida → el post con ella → visto bueno → publicación con commit local). Varios posts pueden ir a la vez.
 argument-hint: "[monasterio] buscar | encargar <ids> | post <id>"
 disable-model-invocation: true
 ---
 
-Coordina **Actualidad**, la sección de blog de didákora (`/actualidad/`). Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador ni al Administrador; al Auditor, solo en su modo boletín. Los agentes no hablan con Jorge: las consultas las haces tú (en el chat) o el monasterio (pestaña «Gaceta» del Libro). Argumentos: $ARGUMENTS. Si empiezan por `monasterio`, sigue además «Modo monasterio».
+Coordina **Actualidad**, la sección de blog de Didákora (`/actualidad/`). Es **independiente de `/ciclo`**: no lances al Rastreador, al Coordinador ni al Administrador; al Auditor, solo en su modo boletín. Los agentes no hablan con Jorge: las consultas las haces tú (en el chat) o el monasterio (pestaña «Gaceta» del Libro). Argumentos: $ARGUMENTS. Si empiezan por `monasterio`, sigue además «Modo monasterio».
 
 Hay tres trabajos, que pueden ir a la vez (la búsqueda y hasta dos posts):
 

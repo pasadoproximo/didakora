@@ -104,7 +104,8 @@ monasterio siguen sin poder publicar. Sin tareas programadas, servicios externos
   (subrayado del titular, círculo de la cabecera, iconos y etiquetas; suave `#FFE1D8`), navy `#061033` (texto y botones),
   `#1B2C6B`, hielo `#DDE4F6`, fondo `#F2F4F9`.
 - Logo: caja abierta (solapas cielo y coral, caja navy). Logotipo «B2» en la web (el cuerpo de la caja mide lo que la «d»);
-  apilado para redes. Nombre siempre en minúsculas: «didákora», en Bricolage Grotesque 800.
+  apilado para redes. En el logo, el nombre va en minúsculas: «didákora», en Bricolage Grotesque 800.
+  En el texto (títulos de pestaña incluidos), con mayúscula: «Didákora» (Jorge, 23-10-2026).
 - Tipografías: Bricolage Grotesque (títulos) y Alegreya Sans (texto).
 
 ## Normas de contenido

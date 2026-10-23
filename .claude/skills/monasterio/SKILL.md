@@ -1,6 +1,6 @@
 ---
 name: monasterio
-description: Abre el monasterio de didákora (juego local para trabajar con los agentes) en el navegador, arrancando su servidor si hace falta.
+description: Abre el monasterio de Didákora (juego local para trabajar con los agentes) en el navegador, arrancando su servidor si hace falta.
 disable-model-invocation: true
 ---
 

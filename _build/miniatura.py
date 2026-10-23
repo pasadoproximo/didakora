@@ -1,4 +1,4 @@
-# Miniaturas de Actualidad: la imagen de cada post, con el estilo de didákora, en dos tamaños:
+# Miniaturas de Actualidad: la imagen de cada post, con el estilo de Didákora, en dos tamaños:
 #   miniatura.jpg (1200 × 675, 16:9) para las tarjetas de la portada y de /actualidad/
 #   portada.jpg   (2100 × 900, 21:9) para la cabecera del post
 # Con foto: la recorta y le pone siempre el filtro de la marca (duotono navy y cielo), una forma orgánica coral,

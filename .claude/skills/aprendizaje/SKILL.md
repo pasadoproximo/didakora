@@ -1,6 +1,6 @@
 ---
 name: aprendizaje
-description: Registra una corrección o preferencia de Jorge para el sistema de agentes de didákora, con la propuesta de cambio mínimo, sin aplicarla.
+description: Registra una corrección o preferencia de Jorge para el sistema de agentes de Didákora, con la propuesta de cambio mínimo, sin aplicarla.
 argument-hint: "[corrección o preferencia]"
 disable-model-invocation: true
 ---

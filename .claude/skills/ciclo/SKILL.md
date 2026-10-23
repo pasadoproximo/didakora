@@ -1,11 +1,11 @@
 ---
 name: ciclo
-description: Ciclo manual de mantenimiento de didákora con los agentes Rastreador, Coordinador editorial, Administrador web y Auditor, con pausa obligatoria para que Jorge apruebe las propuestas.
+description: Ciclo manual de mantenimiento de Didákora con los agentes Rastreador, Coordinador editorial, Administrador web y Auditor, con pausa obligatoria para que Jorge apruebe las propuestas.
 argument-hint: "[prueba]"
 disable-model-invocation: true
 ---
 
-Ejecuta el ciclo de mantenimiento de didákora. Tú (la sesión principal) eres quien coordina: los agentes no pueden hablar con Jorge, así que **la pausa de aprobación la haces tú**. No invoques al Optimizador.
+Ejecuta el ciclo de mantenimiento de Didákora. Tú (la sesión principal) eres quien coordina: los agentes no pueden hablar con Jorge, así que **la pausa de aprobación la haces tú**. No invoques al Optimizador.
 
 Si el argumento es `prueba` ($ARGUMENTS), sigue la sección «Modo prueba» en lugar de este flujo. Si es `monasterio`, sigue el flujo normal con los cambios de la sección «Modo monasterio».
 

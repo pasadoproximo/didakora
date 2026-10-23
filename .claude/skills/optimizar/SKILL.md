@@ -1,6 +1,6 @@
 ---
 name: optimizar
-description: Invoca solo al Optimizador de didákora para que proponga mejoras a los agentes a partir de los registros. Nunca aplica cambios.
+description: Invoca solo al Optimizador de Didákora para que proponga mejoras a los agentes a partir de los registros. Nunca aplica cambios.
 disable-model-invocation: true
 ---
 

@@ -264,7 +264,7 @@ def portada():
 {seccion_nuevas()}
 {seccion_actualidad()}
 </main>'''
-    write("index.html", head("didákora · Herramientas digitales para docentes",
+    write("index.html", head("Didákora · Herramientas digitales para docentes",
         f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/") + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
@@ -282,7 +282,7 @@ def todas():
  <div class="tcg" id="lgrid"></div>
  <noscript><div class="tcg">{"".join(card(t) for t in TOOLS)}</div></noscript>
 </main>'''
-    write("todas/index.html", head("Todas las herramientas · didákora", "Todas las herramientas de didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
+    write("todas/index.html", head("Todas las herramientas · Didákora", "Todas las herramientas de Didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
 
 # ---------------------------------------------------------------- sobre mí
@@ -293,14 +293,13 @@ def sobremi():
   <img src="{B}/img/jorge.jpg" alt="Jorge Delgado Aguilera en un aula, con una estantería de libros y un mapamundi al fondo" width="720" height="734">
   <div>
    <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
-   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
-   <p>Cada herramienta se comprueba a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Si una cierra o cambia de nombre, lo anoto y propongo una alternativa.</p>
-   <p>Para no perderme novedades, me ayuda un equipo de agentes de IA que busca cambios en las herramientas y me propone qué actualizar. Ellos solo proponen. Cada cambio lo reviso y publico yo.</p>
-   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice didákora {ICO["ext"]}</a></p>
+   <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
+   <p>Cada herramienta la compruebo a mano: que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Para no perderme novedades, me ayuda un equipo de agentes de IA que vigila si alguna cierra o cambia de nombre y me propone qué actualizar y qué alternativa poner. Ellos solo proponen. Cada cambio lo reviso y publico yo.</p>
+   <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didákora {ICO["ext"]}</a></p>
   </div>
  </section>
 </main>'''
-    write("sobre-mi/index.html", head("Sobre mí · didákora", "Quién hace didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
+    write("sobre-mi/index.html", head("Sobre mí · Didákora", "Quién hace Didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre") + body + foot())
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
@@ -310,7 +309,7 @@ def destacadas():
  <div class="tcg c4">{"".join(card_dest(BYID[i]) for i in DESTACADAS)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("destacadas/index.html", head("Herramientas destacadas · didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
+    write("destacadas/index.html", head("Herramientas destacadas · Didákora", f"Las {len(DESTACADAS)} herramientas más versátiles de Didákora para empezar a usar en clase.", "/destacadas/", "destacadas") + body + foot())
 
 # ---------------------------------------------------------------- nuevas (las últimas añadidas)
 def nuevas_lista(): return [(BYID[x["id"]], x["txt"]) for x in RECIENTES if x["id"] in BYID]
@@ -332,7 +331,7 @@ def nuevas():
  <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("nuevas/index.html", head("Herramientas nuevas · didákora", f"Las últimas herramientas digitales para docentes añadidas a didákora.", "/nuevas/", "nuevas") + body + foot())
+    write("nuevas/index.html", head("Herramientas nuevas · Didákora", f"Las últimas herramientas digitales para docentes añadidas a Didákora.", "/nuevas/", "nuevas") + body + foot())
 
 # ---------------------------------------------------------------- categorías
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans("áéíóúñü", "aeiounu"))).strip("-")
@@ -342,7 +341,7 @@ def categorias():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Categorías", "")])}<h1>Categorías</h1></div><p>Diez categorías según para qué sirve cada herramienta.</p></div>
  <div class="ccg">{"".join(catcard(c) for c in CATS)}</div>
 </main>'''
-    write("categorias/index.html", head("Categorías · didákora", "Las diez categorías de didákora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
+    write("categorias/index.html", head("Categorías · Didákora", "Las diez categorías de Didákora, según para qué sirve cada herramienta.", "/categorias/", "categorias") + body + foot())
     for c in CATS:
         ts = [t for t in TOOLS if t["cs"] == c[0]]
         subs = []
@@ -358,7 +357,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias") + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -430,7 +429,7 @@ def ficha(t):
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
-    write(f'{t["id"]}/index.html', head(f"{nm} · didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
+    write(f'{t["id"]}/index.html', head(f"{nm} · Didákora", f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/') + body + foot())
 
 
 # ---------------------------------------------------------------- actualidad (blog)
@@ -471,7 +470,7 @@ def bt_item(it, con_logo=True):
     lg = f'<span class="lg">{logo(t)}</span>' if t and con_logo else '<span class="pa-n" aria-hidden="true"></span>'
     nombre = esc(it["titulo"])
     if it.get("url"): nombre = f'<a href="{esc(it["url"])}" rel="noopener" target="_blank">{nombre}</a>'
-    fl = f' <a class="pa-ficha" href="{B}/{t["id"]}/">Ver su ficha en didákora {ICO["arrow"]}</a>' if t else ""
+    fl = f' <a class="pa-ficha" href="{B}/{t["id"]}/">Ver su ficha en Didákora {ICO["arrow"]}</a>' if t else ""
     return f'<li>{lg}<div><h3>{nombre}</h3>{bt_parrafos(it.get("texto"))}{f"<p>{fl.strip()}</p>" if fl else ""}</div></li>'
 def seccion_post(b):
     k = b["tipo"]; caja = f' pa-caja t-{b["tono"]}' if b.get("tono") in TONOS else ""
@@ -491,7 +490,7 @@ def seccion_post(b):
         return (f'<section class="pa-s{caja}">{bt_cab(b)}{bt_parrafos(b.get("intro"))}<ol class="pa-pasos">'
                 + "".join(f'<li><h3>{esc(p["titulo"])}</h3>{bt_parrafos(p.get("texto"))}</li>' for p in b.get("pasos", []))
                 + f'</ol>{ej}{bt_fuente(b.get("fuente"))}</section>')
-    if k == "video":  # sin reproductor incrustado: un enlace al vídeo (así didákora no carga cookies de terceros)
+    if k == "video":  # sin reproductor incrustado: un enlace al vídeo (así Didákora no carga cookies de terceros)
         meta = " · ".join(esc(x) for x in (b.get("canal"), b.get("duracion")) if x)
         return (f'<section class="pa-s">{bt_cab({"etiqueta": b.get("etiqueta")})}<a class="pa-v" href="{esc(b["url"])}" rel="noopener" target="_blank"><span class="pa-play">{ICO["play"]}</span>'
                 f'<span><b>{esc(b["titulo"])}</b>{f"<small>{meta}</small>" if meta else ""}</span></a>{bt_parrafos(b.get("texto"))}</section>')
@@ -535,7 +534,7 @@ def pagina_post(p, path):
 </main>'''
     # el texto de los posts va en Literata (letra de lectura en pantalla); los títulos, en la de la marca
     lectura = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">\n'
-    return head(f'{p["titulo"]} · didákora', bt_plano(p["entradilla"])[:155], path, "actualidad").replace("</head>", lectura + "</head>", 1) + body + foot()
+    return head(f'{p["titulo"]} · Didákora', bt_plano(p["entradilla"])[:155], path, "actualidad").replace("</head>", lectura + "</head>", 1) + body + foot()
 def seccion_actualidad():
     if not POSTS: return ""
     return f'''
@@ -553,7 +552,7 @@ def actualidad():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Actualidad", "")])}<h1>Actualidad</h1></div><p>Noticias de educación digital: herramientas, inteligencia artificial, lo que publican el Ministerio y la Junta de Andalucía e ideas para aprovecharlo en clase.</p></div>
  <div class="pcg">{"".join(post_card(p) for p in reversed(POSTS))}</div>
 </main>'''
-    write("actualidad/index.html", head("Actualidad · didákora", "Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.", "/actualidad/", "actualidad") + body + foot())
+    write("actualidad/index.html", head("Actualidad · Didákora", "Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.", "/actualidad/", "actualidad") + body + foot())
 def vista(ruta_json, carpeta):
     """vista previa de un post sin publicarlo: escribe <carpeta>/index.html (dentro del repo, por ejemplo en agentes/)"""
     p = json.load(open(ruta_json, encoding="utf-8"))
@@ -570,7 +569,7 @@ def extras():
  <form class="ls" action="{B}/todas/" method="get" role="search"><div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="eq">Busca una herramienta</label><input id="eq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div></div></form>
  <p class="more"><a class="btn solid" href="{B}/">Ir al inicio {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("404.html", head("Página no encontrada · didákora", "Esta página no existe en didákora.", "/404.html") + body + foot())
+    write("404.html", head("Página no encontrada · Didákora", "Esta página no existe en Didákora.", "/404.html") + body + foot())
     urls = ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/", "/sobre-mi/"] + [f"/categorias/{c[0]}/" for c in CATS] + [f'/{t["id"]}/' for t in TOOLS]
     if POSTS: urls += ["/actualidad/"] + [f"/actualidad/{post_slug(p)}/" for p in POSTS]
     NL = "\n"
