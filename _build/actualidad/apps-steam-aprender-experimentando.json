@@ -1,0 +1,105 @@
+{
+  "slug": "apps-steam-aprender-experimentando",
+  "titulo": "5 apps STEAM para aprender experimentando.",
+  "fecha": "2026-10-23",
+  "etiqueta": "Herramientas",
+  "entradilla": "Realidad aumentada, simulaciones y juegos para unir ciencia, tecnología, arte y matemáticas. Repasamos las cinco apps que propone Educación 3.0 y cómo sacarles partido en clase.",
+  "miniatura": {"src": "img/miniatura.jpg"},
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Alumnas y alumnos con gafas de protección siguen un experimento de química con su profesor en el laboratorio del centro.",
+    "credito": "Foto: Tima Miroshnichenko · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/students-wearing-protective-goggles-5427681/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "La noticia",
+      "titulo": "Aprender STEAM probando",
+      "texto": "Diseñar una casa, seguir la trayectoria de una pelota o montar un circuito. Son proyectos que obligan a observar, a hacerse preguntas y a probar ideas. Ahí se juntan ciencia, tecnología, ingeniería, arte y matemáticas, lo que llamamos STEAM.\n\nCon esa idea, Educación 3.0 publicó el 18 de octubre una selección de **cinco apps STEAM** para aprender creando y experimentando. Las cinco son gratuitas. Hay realidad aumentada, modelos 3D, simulaciones y juegos.\n\nNo son apps para pasar el rato con la tablet. Funcionan mejor como punto de partida de una pregunta o como herramienta para que el alumnado construya algo y lo enseñe.",
+      "fuente": {
+        "nombre": "Educación 3.0",
+        "url": "https://www.educaciontrespuntocero.com/recursos/apps-steam-educacion/"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para el aula",
+      "titulo": "Las 5 apps y para qué sirven",
+      "items": [
+        {
+          "titulo": "AR-STEAMapp",
+          "texto": "Usa la realidad aumentada para analizar edificios y monumentos europeos, con sus materiales, su estructura y su contexto histórico. Nace de un proyecto Erasmus+ que coordina la Universidad de Burgos, pensado para alumnado de 12 a 16 años. Para Android e iOS.",
+          "url": "https://www.ubu.es/otri-transferencia/areas-y-servicios/oficina-de-proyectos-internacionales-eubu/proyectos-internacionales-cerrados-en-los-que-ha-participado-la-ubu/ar-steamapp",
+          "ficha": null
+        },
+        {
+          "titulo": "Assemblr EDU",
+          "texto": "Trae una biblioteca de modelos 3D y materiales para el docente. Su editor permite al alumnado crear proyectos en realidad aumentada con objetos 3D, imágenes, textos, vídeos y audios. Gratuita con compras integradas, para Android e iOS.",
+          "url": "https://apps.apple.com/es/app/assemblr-edu-learn-in-3d-ar/id1505499586",
+          "ficha": null
+        },
+        {
+          "titulo": "STEAM Nexus",
+          "texto": "Explica conceptos STEAM con simulaciones interactivas y recursos visuales. Cada tema se acompaña de preguntas y respuestas para pensar un poco más. Para Android.",
+          "url": "https://play.google.com/store/apps/details?id=com.steamnexus.www&hl=es",
+          "ficha": null
+        },
+        {
+          "titulo": "STEAM Thinkers",
+          "texto": "Reúne contenidos para aprender conceptos nuevos y actividades para practicarlos. Cada estudiante avanza a su ritmo y repasa lo que necesita. Para Android.",
+          "url": "https://play.google.com/store/apps/details?id=co.varys.xdsdc",
+          "ficha": null
+        },
+        {
+          "titulo": "Juegos STEAM Niños",
+          "texto": "Ocho juegos de lógica, creatividad, música, física, matemáticas y visión espacial. Pensada para Infantil y Primaria. Para Android.",
+          "url": "https://play.google.com/store/apps/details?id=com.pescAPPs.SteamKids&hl=es",
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Educación 3.0",
+        "url": "https://www.educaciontrespuntocero.com/recursos/apps-steam-educacion/"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Antes de empezar",
+      "titulo": "Antes de instalarlas en el aula",
+      "texto": "Tres de las cinco se descargan en Google Play para Android. Si en tu centro hay iPad, empieza por AR-STEAMapp o Assemblr EDU, que también están para iOS.\n\nPruébalas tú primero en tu móvil. Mira qué piden al abrirlas, si hace falta cuenta y qué edad mínima marcan sus condiciones. Assemblr EDU tiene compras dentro de la app, así que conviene saber qué parte es gratuita antes de que la abra el grupo.\n\nLa realidad aumentada necesita cámara y algo de espacio. Con una tablet por pareja o por grupo suele bastar."
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Paso a paso",
+      "titulo": "Una sesión con AR-STEAMapp en 3 pasos",
+      "intro": "Una propuesta para Secundaria que une la app con el patrimonio cercano.",
+      "pasos": [
+        {
+          "titulo": "Explora un monumento",
+          "texto": "En pequeños grupos, el alumnado abre la app y analiza uno de los edificios. Anota los materiales, cómo se sostiene y en qué época se levantó."
+        },
+        {
+          "titulo": "Busca uno cerca",
+          "texto": "Cada grupo elige un edificio de su pueblo o su ciudad. Se hace las mismas preguntas que le ha planteado la app."
+        },
+        {
+          "titulo": "Explícalo a los demás",
+          "texto": "Preparan una presentación breve con fotos y un esquema de su estructura. Si queréis ir más allá, la pueden montar en 3D con Assemblr EDU."
+        }
+      ],
+      "ejemplo": "En 2.º de ESO, una sesión de Tecnología y otra de Geografía e Historia sobre la iglesia o el puente del barrio. Una misma pregunta, cómo se construyó, sirve a las dos materias."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Educación 3.0 · 5 apps STEAM para aprender creando y experimentando",
+      "url": "https://www.educaciontrespuntocero.com/recursos/apps-steam-educacion/"
+    },
+    {
+      "nombre": "Universidad de Burgos · Proyecto AR-STEAMapp",
+      "url": "https://www.ubu.es/otri-transferencia/areas-y-servicios/oficina-de-proyectos-internacionales-eubu/proyectos-internacionales-cerrados-en-los-que-ha-participado-la-ubu/ar-steamapp"
+    }
+  ]
+}
