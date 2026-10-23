@@ -2,7 +2,7 @@
 
 > Catálogo de herramientas digitales para docentes, sobre todo de Secundaria en España. Cada ficha explica qué es la herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.
 
-Herramientas: 121. Última revisión: octubre de 2026.
+Herramientas: 120. Última revisión: octubre de 2026.
 
 ## Páginas principales
 
@@ -82,7 +82,6 @@ Herramientas propias de Geografía e Historia, Ciencias, Música y Arte o lectur
 - [Desmos](https://pasadoproximo.github.io/didakora/desmos/): Desmos reúne calculadoras gráfica, geométrica y científica en línea.
 - [PhET](https://pasadoproximo.github.io/didakora/phet/): PhET, de la Universidad de Colorado, ofrece simulaciones interactivas y gratuitas de física, química, biología y matemáticas, traducidas al español.
 - [Gizmos](https://pasadoproximo.github.io/didakora/gizmos/): Gizmos es una colección de simulaciones de ciencias y matemáticas, en inglés, con guías de actividad para cada una.
-- [Body Maps](https://pasadoproximo.github.io/didakora/bodymaps/): Body Maps es un atlas interactivo del cuerpo humano en 3D.
 - [Anatomy 3D Atlas](https://pasadoproximo.github.io/didakora/anatomy3d/): Anatomy 3D Atlas es una aplicación con modelos anatómicos en 3D muy detallados.
 - [Vertebrados ibéricos](https://pasadoproximo.github.io/didakora/vertebrados/): Vertebrados ibéricos es una enciclopedia del CSIC con fichas de los anfibios, reptiles, aves y mamíferos de la Península, Baleares y Canarias.
 - [La Bolsa Virtual](https://pasadoproximo.github.io/didakora/bolsa/): La Bolsa Virtual es un simulador de bolsa gratuito con dinero ficticio.
@@ -100,9 +99,9 @@ Pensamiento computacional, programación por bloques y diseño en 3D.
 - [Tinkercad](https://pasadoproximo.github.io/didakora/tinkercad/): Tinkercad es una herramienta gratuita de Autodesk para diseñar en 3D, montar y simular circuitos electrónicos y programar con bloques.
 - [Scratch](https://pasadoproximo.github.io/didakora/scratch/): Scratch, del MIT, es un lenguaje de programación por bloques para crear juegos, animaciones e historias interactivas.
 - [Snap!](https://pasadoproximo.github.io/didakora/snap/): Snap! es un lenguaje de programación por bloques de la Universidad de Berkeley, parecido a Scratch pero con conceptos más avanzados, como funciones propias, listas y recursividad.
-- [Blockly Games](https://pasadoproximo.github.io/didakora/blockly/): Blockly Games es una serie de juegos de Google para aprender a programar con bloques.
+- [Blockly Games](https://pasadoproximo.github.io/didakora/blockly/): Blockly Games es una serie de juegos libres para aprender a programar con bloques.
 - [Code.org](https://pasadoproximo.github.io/didakora/codeorg/): Code.org ofrece cursos y actividades gratuitas de programación por niveles, con tutoriales de la Hora del Código y materiales para entender cómo funciona la inteligencia artificial.
-- [MIT App Inventor](https://pasadoproximo.github.io/didakora/appinventor/): MIT App Inventor permite crear aplicaciones para móviles Android programando con bloques.
+- [MIT App Inventor](https://pasadoproximo.github.io/didakora/appinventor/): MIT App Inventor permite crear aplicaciones para móviles Android e iPhone programando con bloques.
 - [Thunkable](https://pasadoproximo.github.io/didakora/thunkable/): Thunkable sirve para crear aplicaciones para iOS, Android y web sin escribir código, arrastrando componentes y bloques de lógica.
 - [Delightex Edu](https://pasadoproximo.github.io/didakora/cospaces/): Delightex Edu (antes CoSpaces Edu) permite crear mundos en 3D, realidad virtual y realidad aumentada y programar lo que ocurre en ellos con bloques.
 - [CoppeliaSim](https://pasadoproximo.github.io/didakora/coppelia/): CoppeliaSim es un simulador de robótica profesional.
@@ -143,7 +142,7 @@ Formularios, rúbricas, itinerarios e insignias.
 Rutinas de clase, cuaderno del docente y comunicación con las familias.
 
 - [Additio](https://pasadoproximo.github.io/didakora/additio/): Additio es un cuaderno del profesor digital.
-- [iDoceo](https://pasadoproximo.github.io/didakora/idoceo/): iDoceo es un cuaderno del profesor muy completo para iPad y Mac.
+- [iDoceo](https://pasadoproximo.github.io/didakora/idoceo/): iDoceo es un cuaderno del profesor muy completo para iPad, iPhone y Mac.
 - [ClassDojo](https://pasadoproximo.github.io/didakora/classdojo/): ClassDojo es una herramienta de gestión del aula y comunicación con familias.
 - [Classroomscreen](https://pasadoproximo.github.io/didakora/classroomscreen/): Classroomscreen es una pantalla para proyectar en clase con herramientas para gestionar la sesión: temporizador, semáforo, medidor de ruido, selector al azar, instrucciones de trabajo y mucho más.
 - [Fastboard](https://pasadoproximo.github.io/didakora/fastboard/): Fastboard es una pizarra en línea para dibujar y escribir a la vez con otras personas.
