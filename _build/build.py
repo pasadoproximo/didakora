@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "65"  # versión de didakora.css / didakora.js
+V = "66"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -245,7 +245,8 @@ def portada():
   <div class="hero-t">
    <span class="lab">Herramientas digitales para docentes</span>
    <h1 id="ph1">La herramienta que <span>necesitas</span> para tu clase</h1>
-   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad. Todos revisados uno a uno, con una ficha que explica qué son, para qué sirven y qué necesitan.</p>
+   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad.</p>
+   {autoria()}
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
    <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="hq">Busca una herramienta</label><input id="hq" name="q" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
@@ -372,6 +373,19 @@ REV = "2026-10"  # revisión general del catálogo (cabecera de tools.js)
 MESES = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()
 def revisada(rev):
     a, m = rev.split("-"); return f"{MESES[int(m) - 1].capitalize()} de {a}"
+def autoria():
+    # bajo el hero de la portada: quién revisa, cuántas herramientas hay y el mes de la última revisión (se calculan solos)
+    ult = max([REV] + [t.get("rev", REV) for t in TOOLS])
+    return (f'<p class="hero-a"><img src="{B}/img/jorge.jpg" alt="" width="32" height="32">'
+            f'<span>Revisado a mano por <a href="{SITE}/">Jorge Delgado Aguilera</a> · {len(TOOLS)} herramientas · '
+            f'actualizado en {revisada(ult).lower()}</span></p>')
+def fuente_q(f):
+    # bajo «Qué es», lo que puede cambiar (nombre, cierre, precio) con su enlace oficial y el día en que se comprobó: fu en fichas.py
+    fu = f.get("fu")
+    if not fu: return ""
+    a, m, d = fu["fecha"].split("-")
+    return (f'<p class="fq-fu">{esc(fu["t"])} (<a href="{esc(fu["url"])}" rel="noopener" target="_blank">{esc(fu.get("enlace", "anuncio oficial"))}</a>, '
+            f'comprobado el {d}/{m}/{a}). Si cambia, lo anoto aquí.</p>')
 def ficha(t):
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; f = F[t["id"]]
     disp = t["disp"] if aula else f["disp"]; cta = t["cta"] if aula else f["cta"]
@@ -408,7 +422,7 @@ def ficha(t):
   <h1>{esc(nm)}{f" <small>{esc(alias)}</small>" if alias else ""}</h1>
  </section>
  <div class="fg">
-  <section class="fb fq"><h2>Qué es {esc(nm)}</h2><p>{esc(f["q"])}</p></section>
+  <section class="fb fq"><h2>Qué es {esc(nm)}</h2><p>{esc(f["q"])}</p>{fuente_q(f)}</section>
   <aside class="fb fa"><h2>Ficha rápida</h2><dl>{dl}</dl></aside>
   <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  </div>
@@ -566,7 +580,7 @@ def extras():
 def datos():
     from fichas import F
     # también van los textos de la ficha («Qué es» y usos) para que el buscador los encuentre
-    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"], " ".join(F[t["id"]]["usos"]) + " " + F[t["id"]]["q"]] for t in TOOLS}
+    m = {t["id"]: [t["cs"], t["et"], 1 if t["id"] in LOGOS else 0, t["sub"], " ".join(F[t["id"]]["usos"]) + " " + F[t["id"]]["q"] + " " + F[t["id"]].get("fu", {}).get("t", "")] for t in TOOLS}
     cats = {c[0]: [c[1], IC[c[3]]] for c in CATS}
     write("didakora-datos.js", "// Generado por _build/build.py: categoría, etapas, logo, apartado y textos de la ficha de cada herramienta\nconst CAJA=" + json.dumps({"cats": cats, "t": m}, ensure_ascii=False) + ";\n")
 

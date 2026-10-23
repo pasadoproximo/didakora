@@ -78,6 +78,9 @@ a.tag:hover{background:var(--coral3)}
 @keyframes dk-float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-26px,22px) scale(1.06)}}
 @keyframes dk-drift{0%,100%{transform:translate(0,0)}33%{transform:translate(26px,-18px)}66%{transform:translate(-14px,-30px)}}
 .hero-d{font-size:clamp(16.5px,1.5vw,18.5px);color:var(--navy3);margin-top:18px;max-width:60ch}
+.hero-a{display:flex;align-items:center;gap:16px;margin-top:16px;font-size:15px;color:var(--navy)}
+.hero-a img{width:32px;height:32px;flex:none;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.hero-a a{color:inherit;font-weight:700}
 .hs,.ls{grid-column:1/-1;display:grid;gap:14px;margin-top:30px}
 .hs-r{display:flex;gap:10px}
 .hs-q{flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid transparent;border-radius:999px;padding:0 18px;height:56px;min-width:0}
@@ -246,7 +249,7 @@ a.tag:hover{background:var(--coral3)}
 .fh h1 small{display:block;font:600 15px var(--f-body);color:var(--mut);letter-spacing:0;margin-top:4px}
 /* a la izquierda «Qué es» y los usos; a la derecha, más estrecha, la ficha rápida a toda la altura */
 .fg{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-areas:"q a" "u a";gap:18px;margin-top:18px;align-items:stretch}
-.fq{grid-area:q}.fa{grid-area:a}.fu{grid-area:u;display:flex;align-items:center}
+.fq{grid-area:q}.fq .fq-fu{margin-top:14px;font-size:14.5px;line-height:1.5;color:var(--mut)}.fq .fq-fu a{color:inherit}.fa{grid-area:a}.fu{grid-area:u;display:flex;align-items:center}
 .fu ul{flex:1}
 .fb{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
 .fb h2{font:800 21px/1.15 var(--f-disp);letter-spacing:-.01em;margin-bottom:12px}
