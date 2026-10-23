@@ -71,7 +71,7 @@ Murales, mapas mentales, pizarras y herramientas para organizar recursos.
 Herramientas propias de Geografía e Historia, Ciencias, Música y Arte o lectura.
 
 - [Google Arts & Culture](https://pasadoproximo.github.io/didakora/artsculture/): Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo.
-- [Visitas virtuales 360°](https://pasadoproximo.github.io/didakora/visitas/): Muchos museos y monumentos ofrecen visitas virtuales en 360° que permiten recorrerlos por dentro desde el aula.
+- [Visitas virtuales 360°](https://pasadoproximo.github.io/didakora/visitas/): Las visitas virtuales en 360° son recorridos por dentro de museos y monumentos que se hacen desde el aula, en la web de cada lugar.
 - [Google Earth](https://pasadoproximo.github.io/didakora/earth/): Google Earth es un globo terráqueo en 3D con imágenes de satélite de todo el planeta.
 - [GeaCron](https://pasadoproximo.github.io/didakora/geacron/): GeaCron es un atlas histórico interactivo.
 - [Historia Hispánica](https://pasadoproximo.github.io/didakora/rah/): Historia Hispánica es el portal de la Real Academia de la Historia.
@@ -135,7 +135,7 @@ Formularios, rúbricas, itinerarios e insignias.
 - [Google Forms](https://pasadoproximo.github.io/didakora/gforms/): Google Forms sirve para crear cuestionarios, exámenes que se corrigen solos y encuestas.
 - [Microsoft Forms](https://pasadoproximo.github.io/didakora/msforms/): Microsoft Forms permite crear cuestionarios y encuestas que se corrigen solos.
 - [Jotform](https://pasadoproximo.github.io/didakora/jotform/): Jotform es un creador de formularios con muchos tipos de campo y plantillas.
-- [Symbaloo Learning Paths](https://pasadoproximo.github.io/didakora/learningpaths/): Learning Paths ya no es una web aparte: es una función integrada en Symbaloo que convierte un webmix en un itinerario de aprendizaje.
+- [Symbaloo Learning Paths](https://pasadoproximo.github.io/didakora/learningpaths/): Learning Paths es una función de Symbaloo que convierte un webmix en un itinerario de aprendizaje.
 - [Open Badge Designer](https://pasadoproximo.github.io/didakora/badge/): Open Badge Designer es una herramienta gratuita para diseñar insignias digitales.
 
 ## Gestión del aula y familias

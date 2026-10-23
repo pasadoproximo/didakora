@@ -31,7 +31,7 @@ F = {
 # ---------------- Explorar por materias: Geografía e Historia
 "artsculture": dict(q="Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo. Permite ver obras en altísima resolución, recorrer museos con visitas virtuales y leer historias preparadas por los propios museos. Incluye también juegos y experimentos sobre arte.",
   usos=["Analizar obras de arte", "Hacer visitas virtuales", "Investigar con fuentes fiables", "Repasar estilos artísticos"]),
-"visitas": dict(q="Muchos museos y monumentos ofrecen visitas virtuales en 360° que permiten recorrerlos por dentro desde el aula. Son un buen recurso para conocer un espacio antes de estudiarlo o para visitar lugares a los que no se puede ir de excursión.",
+"visitas": dict(q="Las visitas virtuales en 360° son recorridos por dentro de museos y monumentos que se hacen desde el aula, en la web de cada lugar. Son un buen recurso para conocer un espacio antes de estudiarlo o para visitar lugares a los que no se puede ir de excursión.",
   usos=["Visitar museos y monumentos", "Preparar una salida", "Analizar un espacio histórico", "Motivar al empezar un tema"]),
 "earth": dict(q="Google Earth es un globo terráqueo en 3D con imágenes de satélite de todo el planeta. Permite viajar a cualquier lugar, ver edificios y relieve en tres dimensiones, comparar imágenes de distintos años y crear proyectos propios con mapas, fotos y texto.",
   usos=["Explorar paisajes", "Comparar cambios en el tiempo", "Crear rutas y proyectos", "Localizar lugares estudiados"]),
@@ -317,7 +317,7 @@ F = {
 "jotform": dict(q="Jotform es un creador de formularios con muchos tipos de campo y plantillas. Sirve para cuestionarios, inscripciones, encuestas o rúbricas en formato formulario.",
   usos=["Crear formularios", "Hacer encuestas", "Gestionar inscripciones", "Evaluar con rúbricas"],
   disp="Ordenador", cta="Cuenta del docente (plan gratuito con límites)"),
-"learningpaths": dict(q="Learning Paths ya no es una web aparte: es una función integrada en Symbaloo que convierte un webmix en un itinerario de aprendizaje. Añades los recursos que el alumnado debe leer, ver, escuchar o jugar, les pones actividades de opción múltiple o de respuesta abierta y los colocas en el orden en que hay que recorrerlos. El progreso del alumnado se guarda solo en su ordenador y en la Biblioteca de Symbaloo hay itinerarios de otros docentes para usarlos o adaptarlos.",
+"learningpaths": dict(q="Learning Paths es una función de Symbaloo que convierte un webmix en un itinerario de aprendizaje. Ya no es una web aparte, sino parte de Symbaloo. Añades los recursos que el alumnado debe leer, ver, escuchar o jugar, les pones actividades de opción múltiple o de respuesta abierta y los colocas en el orden en que hay que recorrerlos. El progreso del alumnado se guarda solo en su ordenador y en la Biblioteca de Symbaloo hay itinerarios de otros docentes para usarlos o adaptarlos.",
   usos=["Crear itinerarios", "Ordenar recursos paso a paso", "Comprobar la comprensión con preguntas", "Trabajar de forma autónoma"],
   disp="Ordenador", cta="Cuenta del docente"),
 "badge": dict(q="Open Badge Designer es una herramienta gratuita para diseñar insignias digitales. Las insignias sirven para reconocer logros, competencias o actitudes y dar visibilidad al progreso del alumnado.",
