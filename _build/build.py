@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
 B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"
-V = "67"  # versión de didakora.css / didakora.js
+V = "68"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -245,7 +245,6 @@ def portada():
   <div class="hero-t">
    <span class="lab">Herramientas digitales para docentes</span>
    <h1 id="ph1">La herramienta que <span>necesitas</span> para tu clase</h1>
-   <p class="hero-d">Descubre apps, plataformas y recursos para planificar clases, evaluar, crear actividades, gamificar y atender la diversidad.</p>
    {autoria()}
   </div>
   <form class="hs" action="{B}/todas/" method="get" role="search">
