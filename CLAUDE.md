@@ -36,6 +36,13 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   `fichas.py` → «t (anuncio oficial, comprobado el DD/MM/AAAA). Si cambia, lo anoto aquí.» (`fuente_q()` en `build.py`; `enlace`
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
+  «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Primera: NotebookLM (23-10-2026); el resto, por tandas de
+  hasta 5 fichas por ciclo (empezando por las de IA), propuestas por el Coordinador y aprobadas por Jorge.
+- SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
+  Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con
+  `SoftwareApplication`, preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
+  El `robots.txt` está en la raíz del dominio, es decir, en el repo del portfolio.
 - Portada: bajo el párrafo del hero, la autoría (`autoria()` en `build.py`, brief del portfolio v3): foto, «Revisado a mano por
   Jorge Delgado Aguilera» (enlaza al portfolio), el número de herramientas y el mes de la última revisión, calculados solos.
   Solo es verdad si Jorge ve cada cambio: los agentes proponen y él aprueba y publica.
