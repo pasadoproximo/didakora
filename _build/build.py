@@ -294,7 +294,7 @@ def sobremi():
   <div>
    <div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Sobre mí", "")])}<h1>Sobre mí</h1></div>
    <p>Soy Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Didákora es la actualización del repositorio digital que creé en 2024 para el Colegio Cerrado de Calderón, que el centro presentó en el IX Congreso Internacional de Creatividad Educativa (Braining, Valencia, 2025).</p>
-   <p>De cada herramienta compruebo que funcione hoy, para qué tarea de clase sirve, si se puede empezar gratis, si pide cuenta y, cuando sus condiciones lo indican, qué edad mínima exige. Para estar al día me ayudo de un equipo de agentes de IA que vigila si alguna cierra o cambia de nombre y me propone qué actualizar. Compruebo la información que me dan y solo publico un cambio cuando lo he revisado.</p>
+   <p>De cada herramienta compruebo para lo que sirve, si pide cuenta, edad mínima de uso y que funcione adecuadamente. Para estar al día me ayudo de un equipo de agentes de IA que vigila si alguna cierra o cambia de nombre y me propone qué actualizar. Compruebo la información que me dan y solo publico un cambio cuando lo he revisado.</p>
    <p class="more"><a class="btn solid" href="{SITE}/" rel="noopener" target="_blank">Visita mi portfolio {ICO["ext"]}</a><a class="btn line" href="{SITE}/proyectos/repositorio-digital/" rel="noopener" target="_blank">Cómo hice Didákora {ICO["ext"]}</a></p>
   </div>
  </section>
