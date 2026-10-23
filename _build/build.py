@@ -368,6 +368,10 @@ def uses_ai(t):
     a = (t.get("a") or "").lower(); a = a.translate(str.maketrans("áéíóú", "aeiou"))
     # Code.org solo habla de la IA en sus cursos: el alumnado no conversa con una IA
     return t["s"] == "aula" and t["id"] != "codeorg" and re.search(r"(^|[^a-z])ia([^a-z]|$)", a) is not None
+REV = "2026-10"  # revisión general del catálogo (cabecera de tools.js)
+MESES = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()
+def revisada(rev):
+    a, m = rev.split("-"); return f"{MESES[int(m) - 1].capitalize()} de {a}"
 def ficha(t):
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; f = F[t["id"]]
     disp = t["disp"] if aula else f["disp"]; cta = t["cta"] if aula else f["cta"]
@@ -385,7 +389,9 @@ def ficha(t):
             ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and t["c"] != "Toda la etapa" else "")),
             ("Dispositivos", esc(disp)),
             # con aviso del INTEF, la cuenta va en pequeño como las notas, y el aviso justo debajo
-            ("Cuenta", (f"<small>{esc(cta)}.</small>" if t.get("intef") else esc(cta)) + "".join(f"<small>{n}</small>" for n in notas))]
+            ("Cuenta", (f"<small>{esc(cta)}.</small>" if t.get("intef") else esc(cta)) + "".join(f"<small>{n}</small>" for n in notas)),
+            # última revisión de la ficha: `rev` («AAAA-MM») en tools.js; sin él, la revisión general del catálogo
+            ("Revisada", revisada(t.get("rev", REV)))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
     usos = "".join(f'<li>{ICO["check"]}<span>{esc(u)}</span></li>' for u in f["usos"])
     # alternativas en rueda: las siguientes del mismo apartado (y luego de la categoría), así toda herramienta

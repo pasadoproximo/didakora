@@ -30,6 +30,8 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`: sale con un punto rojo
   bajo la cuenta (que entonces va en pequeño, como las notas) y sustituye a «Consulta la edad mínima…».
   Si cambia esa lógica de `build.py`, actualiza estas líneas.
+  La Ficha rápida acaba con «Revisada» (mes y año): `rev:"AAAA-MM"` en la herramienta o, si no lo tiene, `REV` en `build.py`
+  (la revisión general). El Administrador pone `rev` al dar de alta o cambiar una herramienta; comprobar el enlace no cuenta.
 - Alternativas de cada ficha «en rueda» dentro del apartado: todas las herramientas salen como alternativa en alguna ficha.
 - `_build/marca.py` → genera los logos de `marca/` con el nombre en trazos (necesita `fonttools` y `uharfbuzz`;
   fuente en `_build/fuentes/`, licencia OFL). Las PNG de `marca/` (og, icono, redes, avatar) se sacaron con el navegador.

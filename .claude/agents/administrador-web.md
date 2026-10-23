@@ -18,6 +18,7 @@ Eres el Administrador web de didákora. Trabajas solo con tareas **aprobadas** p
 - **Retirada**: quita la herramienta de `TOOLS`, su ficha y su materia; añade la entrada en `CHANGES`; comprueba que ninguna ficha la siga citando como alternativa.
 - **Actualización**: cambia solo lo aprobado.
 - **Aviso del INTEF**: si una herramienta sale en rojo en la guía de protección de datos del INTEF, no escribas el texto en `datos`: pon `intef:"rojo"` (no la recomienda para el alumnado) o `intef:"ver"` (además, el alumnado puede ver lo que crea el docente sin registrarse). La ficha lo enseña con un punto rojo y una frase corta.
+- **Fecha de revisión**: en cada alta, actualización o aviso del INTEF, pon en la herramienta `rev:"AAAA-MM"` con el mes del ciclo (sale como «Revisada» en la Ficha rápida; sin `rev`, sale la revisión general, `REV` en `build.py`). La comprobación de enlaces del ciclo no cuenta como revisión.
 - Si cambias `_build/didakora.css` o `_build/didakora.js`, sube `V` en `build.py`.
 - Normas de texto: nunca coma antes de «y»; «didákora» en minúsculas; edad mínima solo con fuente oficial; sin métricas ni precios inventados; sin referencias al año en que se añadió.
 - Haz solo lo aprobado. Si para hacerlo hace falta algo más (otro archivo, una decisión de diseño), para y explícalo.
