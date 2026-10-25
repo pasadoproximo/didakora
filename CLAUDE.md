@@ -30,7 +30,7 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`: sale con un punto rojo
   bajo la cuenta (que entonces va en pequeño, como las notas) y sustituye a «Consulta la edad mínima…».
   Si cambia esa lógica de `build.py`, actualiza estas líneas.
-  La Ficha rápida acaba con «Revisada» (mes y año): `rev:"AAAA-MM"` en la herramienta o, si no lo tiene, `REV` en `build.py`
+  La Ficha rápida acaba con «Revisada» (día, mes y año): `rev:"AAAA-MM-DD"` en la herramienta o, si no lo tiene, `REV` en `build.py`
   (la revisión general). El Administrador pone `rev` al dar de alta o cambiar una herramienta; comprobar el enlace no cuenta.
   Lo que puede cambiar (un nombre nuevo, un cierre, un precio) va con su fuente bajo «Qué es»: `fu=dict(t, url, fecha)` en
   `fichas.py` → «t (anuncio oficial, comprobado el DD/MM/AAAA). Si cambia, lo anoto aquí.» (`fuente_q()` en `build.py`; `enlace`

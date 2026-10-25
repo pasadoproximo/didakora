@@ -383,16 +383,18 @@ def uses_ai(t):
     a = (t.get("a") or "").lower(); a = a.translate(str.maketrans("áéíóú", "aeiou"))
     # Code.org solo habla de la IA en sus cursos: el alumnado no conversa con una IA
     return t["s"] == "aula" and t["id"] != "codeorg" and re.search(r"(^|[^a-z])ia([^a-z]|$)", a) is not None
-REV = "2026-10"  # revisión general del catálogo (cabecera de tools.js)
+REV = "2026-10-23"  # revisión general del catálogo («AAAA-MM-DD»): solo para una herramienta sin `rev`
 MESES = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()
 def revisada(rev):
+    # «AAAA-MM-DD» → «23 de octubre de 2026» (la ficha); «AAAA-MM» → «Octubre de 2026»
+    if len(rev) > 7: return fecha_larga(rev)
     a, m = rev.split("-"); return f"{MESES[int(m) - 1].capitalize()} de {a}"
 def autoria():
     # bajo el hero de la portada: quién revisa, cuántas herramientas hay y el mes de la última revisión (se calculan solos)
     ult = max([REV] + [t.get("rev", REV) for t in TOOLS])
     return (f'<p class="hero-a"><img src="{B}/img/jorge.jpg" alt="" width="32" height="32">'
             f'<span>Revisado a mano por <a href="{SITE}/">Jorge Delgado Aguilera</a> · {len(TOOLS)} herramientas · '
-            f'actualizado en {revisada(ult).lower()}</span></p>')
+            f'actualizado en {revisada(ult[:7]).lower()}</span></p>')
 def saber_mas(f):
     # «Para saber más»: preguntas que no repiten la Ficha rápida (faq en fichas.py: p, r, url, fuente, fecha AAAA-MM-DD)
     if not f.get("faq"): return ""
@@ -427,7 +429,7 @@ def ficha(t):
             ("Dispositivos", esc(disp)),
             # con aviso del INTEF, la cuenta va en pequeño como las notas, y el aviso justo debajo
             ("Cuenta", (f"<small>{esc(cta)}.</small>" if t.get("intef") else esc(cta)) + "".join(f"<small>{n}</small>" for n in notas)),
-            # última revisión de la ficha: `rev` («AAAA-MM») en tools.js; sin él, la revisión general del catálogo
+            # última revisión de la ficha: `rev` («AAAA-MM-DD») en tools.js; sin él, la revisión general del catálogo
             ("Revisada", revisada(t.get("rev", REV)))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
     usos = "".join(f'<li>{ICO["check"]}<span>{esc(u)}</span></li>' for u in f["usos"])
@@ -626,7 +628,7 @@ def llms():
          "herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus "
          "condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales "
          "educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.", "",
-         f"Herramientas: {len(TOOLS)}. Última revisión: {revisada(max(rev(t) for t in TOOLS)).lower()}.", "",
+         f"Herramientas: {len(TOOLS)}. Última revisión: {revisada(max(rev(t) for t in TOOLS)[:7]).lower()}.", "",
          "## Páginas principales", "",
          f"- [Todas las herramientas]({SITE}{B}/todas/): listado completo con buscador y filtros por categoría y etapa",
          f"- [Sobre mí]({SITE}{B}/sobre-mi/): quién hace Didákora y cómo se revisa",
