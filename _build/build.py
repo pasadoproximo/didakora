@@ -179,6 +179,7 @@ def head(title, desc, path, cur="", ld=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="Yc7dog5FgiijAysig5OLHqYJhraIem9FlrTZtTM2qGk" />
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta property="og:title" content="{esc(title)}">
