@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Actualidad · Didákora</title>
+  <link>https://pasadoproximo.github.io/didakora/actualidad/</link>
+  <atom:link href="https://pasadoproximo.github.io/didakora/rss.xml" rel="self" type="application/rss+xml"/>
+  <description>Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.</description>
+  <language>es-ES</language>
+  <lastBuildDate>Fri, 23 Oct 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+   <title>5 apps STEAM para aprender experimentando.</title>
+   <link>https://pasadoproximo.github.io/didakora/actualidad/apps-steam-aprender-experimentando/</link>
+   <guid isPermaLink="true">https://pasadoproximo.github.io/didakora/actualidad/apps-steam-aprender-experimentando/</guid>
+   <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+   <description>Realidad aumentada, simulaciones y juegos para unir ciencia, tecnología, arte y matemáticas. Repasamos las cinco apps que propone Educación 3.0 y cómo sacarles partido en clase.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>Herramientas</category>
+  </item>
+  <item>
+   <title>Tutorías con familias sin cruzar correos.</title>
+   <link>https://pasadoproximo.github.io/didakora/actualidad/tutorias-familias-koalendar/</link>
+   <guid isPermaLink="true">https://pasadoproximo.github.io/didakora/actualidad/tutorias-familias-koalendar/</guid>
+   <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+   <description>Koalendar deja que las familias reserven su tutoría en los huecos que tú marcas. Te contamos qué ofrece gratis, cómo pedir el descuento para docentes y cómo dejar tu agenda lista.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>Herramientas</category>
+  </item>
+  <item>
+   <title>La IA, sus sesgos y la diversidad en clase.</title>
+   <link>https://pasadoproximo.github.io/didakora/actualidad/ia-sesgos-diversidad-clase/</link>
+   <guid isPermaLink="true">https://pasadoproximo.github.io/didakora/actualidad/ia-sesgos-diversidad-clase/</guid>
+   <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+   <description>EDUGENIA, del Instituto de las Mujeres, ayuda a trabajar en clase los sesgos de género de la IA. La reunimos con 23 prompts para adaptar tareas y atender a la diversidad.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>IA</category>
+  </item>
+  <item>
+   <title>La guía de IA del INTEF 2.0.</title>
+   <link>https://pasadoproximo.github.io/didakora/actualidad/guia-ia-intef-2-0/</link>
+   <guid isPermaLink="true">https://pasadoproximo.github.io/didakora/actualidad/guia-ia-intef-2-0/</guid>
+   <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+   <description>El INTEF publicó en septiembre la versión 2.0 de su guía sobre IA en educación. Con el curso en marcha, es buen momento para ver qué trae y cómo llevarla al aula este trimestre.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>IA</category>
+  </item>
+ </channel>
+</rss>

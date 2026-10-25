@@ -59,6 +59,8 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de
   `_build/miniatura.py` (foto con licencia y duotono navy y cielo, forma coral, aro blanco y gancho corto; o ilustración).
   Vista previa sin publicar: `python _build/build.py --vista <post.json> <carpeta>`.
+  Feed RSS 2.0 en `/didakora/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
+  la cabecera de todas las páginas mientras haya posts.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 

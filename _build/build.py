@@ -187,7 +187,7 @@ def head(title, desc, path, cur="", ld=None):
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{SITE}{B}{path}">
-<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
+{f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{SITE}{B}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{B}/marca/icono-180.png">
 <meta name="theme-color" content="#9FB3FF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -586,7 +586,38 @@ def actualidad():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Actualidad", "")])}<h1>Actualidad</h1></div><p>Noticias de educación digital: herramientas, inteligencia artificial, lo que publican el Ministerio y la Junta de Andalucía e ideas para aprovecharlo en clase.</p></div>
  <div class="pcg">{"".join(post_card(p) for p in reversed(POSTS))}</div>
 </main>'''
-    write("actualidad/index.html", head("Actualidad · Didákora", "Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.", "/actualidad/", "actualidad") + body + foot())
+    write("actualidad/index.html", head("Actualidad · Didákora", ACT_DESC, "/actualidad/", "actualidad") + body + foot())
+    rss()
+ACT_DESC = "Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase."
+def rss():
+    # feed RSS 2.0 de Actualidad (/rss.xml), del post más reciente al más antiguo; lo enlaza head() en todas las páginas.
+    # La hora no consta en los posts: van a las 00:00 GMT de su fecha. Autor en el formato de RSS 2.0, «correo (nombre)».
+    from email.utils import format_datetime
+    from datetime import datetime, timezone
+    rfc = lambda f: format_datetime(datetime(*(int(x) for x in f[:10].split("-")), tzinfo=timezone.utc))
+    x = lambda s: html.escape(str(s), quote=False)
+    items = "".join(f"""
+  <item>
+   <title>{x(bt_plano(p["titulo"]))}</title>
+   <link>{SITE}{B}/actualidad/{post_slug(p)}/</link>
+   <guid isPermaLink="true">{SITE}{B}/actualidad/{post_slug(p)}/</guid>
+   <pubDate>{rfc(p["fecha"])}</pubDate>
+   <description>{x(bt_plano(p["entradilla"]))}</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>{x(p["etiqueta"])}</category>
+  </item>""" for p in reversed(POSTS))
+    write("rss.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Actualidad · Didákora</title>
+  <link>{SITE}{B}/actualidad/</link>
+  <atom:link href="{SITE}{B}/rss.xml" rel="self" type="application/rss+xml"/>
+  <description>{x(ACT_DESC)}</description>
+  <language>es-ES</language>
+  <lastBuildDate>{rfc(max(p["fecha"] for p in POSTS))}</lastBuildDate>{items}
+ </channel>
+</rss>
+""")
 def vista(ruta_json, carpeta):
     """vista previa de un post sin publicarlo: escribe <carpeta>/index.html (dentro del repo, por ejemplo en agentes/)"""
     p = json.load(open(ruta_json, encoding="utf-8"))
