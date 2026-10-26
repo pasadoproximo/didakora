@@ -263,7 +263,7 @@ const TOOLS = [
     a:"Crea mundos 3D y de realidad virtual o aumentada y los programa con bloques.",
     i:["Recrear un espacio histórico en 3D","Museo virtual del alumnado","Escena interactiva"],
     c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"Código de clase" },
-  { id:"coppelia", rev:"2026-10-23", s:"aula", cat:"cienc", st:"vigente", n:"CoppeliaSim", url:"https://www.coppeliarobotics.com",
+  { id:"coppelia", rev:"2026-10-26", s:"aula", cat:"cienc", st:"vigente", n:"CoppeliaSim", url:"https://www.coppeliarobotics.com",
     a:"Simula robots y brazos robóticos y los programa en Python o Lua.",
     i:["Robótica sin robot físico","Programar un brazo articulado","Bachillerato tecnológico"],
     c:"4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita (versión educativa)" },
