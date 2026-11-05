@@ -1,0 +1,2 @@
+# Fin de línea: git guarda y deja LF en todos los archivos de texto; así el build no los marca como cambiados.
+* text=auto eol=lf
