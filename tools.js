@@ -310,6 +310,10 @@ const TOOLS = [
     a:"Escucha el texto en voz alta, lo traduce y lo ve separado en sílabas o por clases de palabras.",
     i:["Apoyo a la lectura","Traducir un texto al idioma familiar","Mejorar la comprensión lectora"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Integrado en Edge, Word y Teams" },
+  { id:"languagetool", rev:"2026-11-05", edad:"Desde 16 años", edadTxt:"16 años en Europa; hasta los 18, con permiso de la familia", edadUrl:"https://languagetool.org/es/legal/privacy", s:"aula", cat:"ia", st:"nueva", n:"LanguageTool", url:"https://languagetool.org/es",
+    a:"Corrige la ortografía, la gramática y el estilo de lo que escribe.",
+    i:["Revisar un trabajo antes de entregarlo","Repasar errores frecuentes de ortografía","Corregir una redacción en inglés"],
+    c:"Bachillerato", disp:"Uno por alumno", cta:"No necesita en la versión web", datos:"Úsalo sin registro y sin datos personales en el texto" },
   { id:"readwrite", rev:"2026-10-23", s:"aula", cat:"ia", st:"nueva", n:"Read&Write", url:"https://www.everway.com/products/read-and-write-education/",
     a:"Usa lectura en voz alta, dictado, predicción de palabras y diccionario con imágenes.",
     i:["Dictado para quien tiene dificultades de escritura","Leer documentos en voz alta","Diccionario visual"],
@@ -529,6 +533,7 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"languagetool", txt:"Corrige ortografía, gramática y estilo.", q:["corrector ortográfico", "corregir ortografía", "revisar gramática"] },
   { id:"kialo", txt:"Debates en clase con un mapa de argumentos.", q:["debate en clase", "argumentar", "pros y contras"] },
   { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
   { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes.", q:["prompts", "prompts gemini", "plantillas ia"] },

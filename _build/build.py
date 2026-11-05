@@ -62,7 +62,7 @@ CORTO = {"participar-y-repasar": "Cuestionarios y juegos", "crear-y-presentar": 
          "evaluacion-y-seguimiento": "Formularios y rúbricas", "gestion-del-aula": "Rutinas, cuaderno y familias",
          "aulas-virtuales": "Classroom, Teams y Moodle", "bancos-de-recursos": "Recursos e imágenes libres"}
 PROG = {"scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","tinkercad"}
-LECT = {"immersive","readwrite"}
+LECT = {"immersive","languagetool","readwrite"}
 SUITES = {"classroom","teams","moodle"}
 def place(t):
     s, c, i = t["s"], t["cat"], t["id"]
