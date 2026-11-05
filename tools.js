@@ -68,6 +68,10 @@ const TOOLS = [
     a:"Repasa preguntas en distintos modos de juego, por equipos o individualmente.",
     i:["Repaso gamificado de vocabulario","Competición entre grupos","Tarea de repaso en casa"],
     c:"1.º y 2.º ESO", disp:"Uno por alumno", cta:"No necesita para jugar en directo" },
+  { id:"wordwall", rev:"2026-11-05", s:"aula", cat:"part", st:"nueva", n:"Wordwall", url:"https://wordwall.net/es",
+    a:"Juega a actividades interactivas que prepara el docente con plantillas, también en versión imprimible.",
+    i:["Juego de repaso de vocabulario","Ficha imprimible de un tema","Tarea para hacer a su ritmo"],
+    c:"Toda la etapa", disp:"Uno por alumno o por equipo", cta:"Cuenta del docente para crear", datos:"Con menores, el centro necesita antes el consentimiento de las familias" },
   { id:"educaplay", rev:"2026-10-23", s:"aula", cat:"part", st:"vigente", n:"Educaplay", url:"https://es.educaplay.com",
     a:"Resuelve juegos interactivos: crucigramas, mapas para localizar, relacionar, ordenar.",
     i:["Mapas interactivos para localizar","Crucigramas de vocabulario del tema","Actividades autocorregibles de repaso"],
@@ -533,6 +537,7 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] },
   { id:"languagetool", txt:"Corrige ortografía, gramática y estilo.", q:["corrector ortográfico", "corregir ortografía", "revisar gramática"] },
   { id:"kialo", txt:"Debates en clase con un mapa de argumentos.", q:["debate en clase", "argumentar", "pros y contras"] },
   { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
