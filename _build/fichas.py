@@ -328,11 +328,7 @@ F = {
        dict(p="¿En qué sistemas funciona?", r="Hay versión para Windows, macOS (13 o posterior en Intel, 15 o posterior en Apple Silicon) y Ubuntu 22.04 o 24.04. En Windows hay también un paquete zip sin instalador.", url="https://www.coppeliarobotics.com/#download", fuente="página de descarga de CoppeliaSim", fecha="2026-10-23"),
        dict(p="¿Se pueden simular sensores, como cámaras o de proximidad?", r="Sí, simula sensores de proximidad y sensores de visión con opciones de procesamiento de imagen.", url="https://www.coppeliarobotics.com", fuente="web de CoppeliaSim", fecha="2026-10-23")]),
 "snatchbot": dict(q="SnatchBot es una plataforma para crear chatbots sin programar, con un editor visual de arrastrar y soltar. Está pensada para empresas: tiene una prueba gratuita de 14 días y después es de pago.",
-  fu=dict(t="SnatchBot ofrece una prueba gratuita de 14 días y después planes de pago desde 29 dólares al mes", url="https://snatchbot.me", fecha="2026-10-23", enlace="web oficial"),
-  usos=["Diseñar chatbots", "Entender cómo funciona un bot", "Trabajar por proyectos", "Iniciarse en la automatización"],
-  faq=[dict(p="¿Puede usarlo alumnado menor de 13 años?", r="No. Su política de privacidad dice que el servicio no está pensado para menores de 13 años.", url="https://snatchbot.me/privacy", fuente="política de privacidad de SnatchBot", fecha="2026-10-23"),
-       dict(p="¿Qué guarda de los bots que se crean?", r="Guarda los bots, su configuración, los datos de entrenamiento y los registros de las conversaciones. Los conserva mientras la cuenta siga activa.", url="https://snatchbot.me/privacy", fuente="política de privacidad de SnatchBot", fecha="2026-10-23"),
-       dict(p="¿Cuánto cuesta después de la prueba?", r="El plan más básico (Starter) cuesta 29 dólares al mes e incluye hasta 3 bots y 1.000 conversaciones al mes.", url="https://snatchbot.me/", fuente="web de SnatchBot", fecha="2026-10-23")]),
+  usos=["Diseñar chatbots", "Entender cómo funciona un bot", "Trabajar por proyectos", "Iniciarse en la automatización"]),
 
 # ---------------- Música y Arte
 "musescore": dict(q="MuseScore es un programa libre y gratuito para escribir, editar y reproducir partituras. Se escriben las notas con el ratón o el teclado y se pueden escuchar al momento con distintos instrumentos.",

@@ -267,10 +267,11 @@ const TOOLS = [
     a:"Simula robots y brazos robóticos y los programa en Python o Lua.",
     i:["Robótica sin robot físico","Programar un brazo articulado","Bachillerato tecnológico"],
     c:"4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita (versión educativa)" },
-  { id:"snatchbot", rev:"2026-10-23", s:"aula", cat:"cienc", st:"vigente", n:"SnatchBot", url:"https://snatchbot.me",
+  { id:"snatchbot", rev:"2026-11-05", s:"aula", cat:"cienc", st:"vigente", n:"SnatchBot", url:"https://snatchbot.me",
     a:"Diseña un chatbot sin programar.",
     i:["Chatbot de atención al cliente","Asistente de información del centro","Entender cómo funciona un bot"],
-    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta · prueba gratuita de 14 días" },
+    c:"4.º ESO y Bachillerato", disp:"Ordenador", cta:"Cuenta · prueba gratuita de 14 días",
+    datos:"La web oficial no abre desde el 5 de noviembre de 2026 y no consta ningún aviso de cierre" },
 
   // --- Música y Arte
   { id:"musescore", rev:"2026-10-23", s:"aula", cat:"arte", st:"vigente", n:"MuseScore", url:"https://musescore.org/es",
