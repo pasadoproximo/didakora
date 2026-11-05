@@ -1,0 +1,155 @@
+{
+  "slug": "habitos-fuentes-fiables",
+  "titulo": "3 hábitos para distinguir fuentes fiables en internet.",
+  "fecha": "2026-11-05",
+  "numero": 7,
+  "etiqueta": "Ideas",
+  "entradilla": "Una web bien diseñada no garantiza nada. Michael Yell propone en Edutopia tres hábitos para que el alumnado compruebe quién hay detrás de lo que lee y aquí te contamos cómo llevarlos a clase.",
+  "miniatura": {
+    "src": "img/miniatura.jpg"
+  },
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una mano sostiene una lupa sobre el teclado de un portátil.",
+    "credito": "Foto: Agence Olloweb · Licencia de Unsplash, modificada",
+    "url_credito": "https://unsplash.com/photos/magnifying-glass-near-gray-laptop-computer-d9ILr-dbEdg"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "La noticia",
+      "titulo": "Saber dónde hacer clic después",
+      "texto": "Michael Yell publicó el 27 de octubre en Edutopia un artículo, en inglés, sobre cómo ayudar al alumnado a encontrar fuentes fiables en internet. Parte de una idea realista. No controlamos lo que ven fuera del centro, pero en clase sí podemos enseñarles a orientarse.\n\nYell se apoya en Sam Wineburg y en **Civic Online Reasoning**, un programa de lecciones gratuitas basado en cómo trabajan los verificadores profesionales. Wineburg, profesor emérito de Stanford, sostiene que hasta las personas con muchos estudios pueden caer en un engaño en internet. Lo importante es saber dónde hacer clic después.\n\nA continuación van los tres hábitos de Yell. La sesión que encontrarás más abajo es una propuesta nuestra para llevarlos a clase.",
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/teaching-students-identify-credible-online-resources"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Las ideas",
+      "titulo": "Los 3 hábitos que propone Yell",
+      "items": [
+        {
+          "titulo": "Preguntar quién hay detrás",
+          "texto": "Yell avisa de que un nombre respetable puede tapar a un grupo marginal y de que una web con aspecto de noticias puede ser comercial o una granja de troles. La terminación .com o .org ya dice poco.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Leer en lateral, no en vertical",
+          "texto": "Muchos estudiantes y adultos se quedan dentro de la web, revisan su apartado «Quiénes somos» o buscan faltas. Los verificadores salen de ella, abren otras pestañas y leen lo que otros dicen de esa fuente.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Crear hábitos, no listas de comprobación",
+          "texto": "Las listas de siempre preguntan si la web es reciente, si parece profesional o si tiene errores. Para Yell son las preguntas equivocadas en la internet de hoy.",
+          "url": null,
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/teaching-students-identify-credible-online-resources"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "En detalle",
+      "titulo": "Qué hacer en las otras pestañas",
+      "texto": "Para leer en lateral, Yell da tres pistas concretas.\n\nLa primera es buscar el nombre de la web junto a «fact check» o «credibility check». Para búsquedas en español, nuestra sugerencia es probar con «bulo» o «verificación».\n\nLa segunda es abrir Wikipedia. «Wikipedia no es el enemigo», escribe Yell. Sus afirmaciones llevan notas al pie y sus ediciones quedan registradas, así que ayuda a averiguar qué organización hay detrás. No es el final de la búsqueda, pero sí un primer paso. En la versión en español, esas ediciones están en la pestaña [«Ver historial»](https://es.wikipedia.org/wiki/Ayuda:Historial).\n\nLa tercera es lo que se conoce como «click restraint», contenerse antes de hacer clic. Google no siempre pone primero lo más fiable. Los verificadores leen antes los resultados y sus descripciones. A menudo también pulsan los tres puntos que hay junto a un resultado para saber más de esa web.",
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/teaching-students-identify-credible-online-resources"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Paso a paso",
+      "titulo": "Una sesión de lectura lateral en 4 pasos",
+      "intro": "Una propuesta nuestra a partir de las ideas de Yell, para Secundaria y Bachillerato en cualquier materia. Haz tú antes las búsquedas con la web elegida.",
+      "pasos": [
+        {
+          "titulo": "Elige una web que el grupo no conozca",
+          "texto": "Busca una relacionada con lo que estáis viendo en clase, que parezca seria a primera vista y que haga alguna afirmación que merezca comprobarse."
+        },
+        {
+          "titulo": "Deja que la juzguen por dentro",
+          "texto": "Sin salir de la página, cada pareja decide si se fiaría y por qué. Anota sus razones en la pizarra. Si salen el diseño, la fecha o la falta de erratas, ya tienes la lista de comprobación que Yell pide dejar atrás."
+        },
+        {
+          "titulo": "Sal de la página",
+          "texto": "Cada pareja abre pestañas nuevas. Busca el nombre de la web con «bulo» o «verificación», consulta Wikipedia y lee los resultados antes de pulsar ninguno. Solo tiene que responder a una pregunta. ¿Quién hay detrás?"
+        },
+        {
+          "titulo": "Comparad las dos respuestas",
+          "texto": "Cada pareja vuelve a decidir si se fiaría y cuenta qué encontró fuera de la web. Cerrad con los tres gestos que resume Yell. Parar, abrir pestañas nuevas y preguntar quién hay detrás."
+        }
+      ],
+      "ejemplo": "En Biología, antes de un trabajo sobre alimentación, cada pareja comprueba quién hay detrás de la web de consejos que pensaba citar. Si la respalda una marca que vende suplementos, ya tiene algo que contar a la clase."
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para seguir",
+      "titulo": "Los 3 recursos que recomienda Yell",
+      "items": [
+        {
+          "titulo": "Civic Online Reasoning",
+          "texto": "Lecciones y evaluaciones gratuitas del Digital Inquiry Group. Puedes empezar por [Intro to Lateral Reading](https://cor.inquirygroup.org/curriculum/lessons/intro-to-lateral-reading/) y seguir con [Click Restraint](https://cor.inquirygroup.org/curriculum/lessons/click-restraint/).",
+          "url": "https://cor.inquirygroup.org/",
+          "ficha": null
+        },
+        {
+          "titulo": "Checkology",
+          "texto": "Aula virtual del News Literacy Project, gratuita para docentes y pensada para los cursos 5 a 12 de Estados Unidos. Yell aclara que no la ha usado con alumnado, aunque la considera muy fiable tras comprobarla con lectura lateral.",
+          "url": "https://newslit.org/our-checkology-virtual-classroom/",
+          "ficha": null
+        },
+        {
+          "titulo": "Verified",
+          "texto": "Libro de Mike Caulfield y Sam Wineburg, publicado en 2023 por University of Chicago Press. Yell lo recomienda por sus estrategias prácticas para docentes y familias.",
+          "url": "https://press.uchicago.edu/ucp/books/book/chicago/V/bo207015182.html",
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/teaching-students-identify-credible-online-resources"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Antes de empezar",
+      "titulo": "De la primera sesión al hábito",
+      "texto": "Las webs de Civic Online Reasoning y Checkology están en inglés. Si quieres traducir o adaptar una lección de Civic Online Reasoning, mira antes su licencia, porque [cada material lleva la suya](https://cor.inquirygroup.org/creative-commons/).\n\nCheckology pide registro al docente. Sus cuestionarios, carteles y planes de lección no exigen cuenta al alumnado, pero para asignar lecciones interactivas hay que registrar la clase. Consulta antes qué permite tu centro.\n\nUna sola sesión no crea un hábito. Yell defiende que no hace falta un currículo nuevo. Basta con enseñar al alumnado a parar, abrir pestañas nuevas y preguntar quién hay detrás de la información. Por eso conviene repetirlo cada vez que el grupo vaya a usar una fuente que no conoce."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Edutopia · 3 Habits Students Can Develop to Find Credible Online Resources (Michael Yell, 27-10-2026)",
+      "url": "https://www.edutopia.org/article/teaching-students-identify-credible-online-resources"
+    },
+    {
+      "nombre": "Digital Inquiry Group · Civic Online Reasoning",
+      "url": "https://cor.inquirygroup.org/"
+    },
+    {
+      "nombre": "News Literacy Project · Checkology",
+      "url": "https://newslit.org/our-checkology-virtual-classroom/"
+    },
+    {
+      "nombre": "Phi Delta Kappan · Why we need a new approach to teaching digital literacy (2018)",
+      "url": "https://kappanonline.org/breakstone-need-new-approach-teaching-digital-literacy/"
+    },
+    {
+      "nombre": "Digital Promise · From Digital Native to Digital Expert (2018)",
+      "url": "https://digitalpromise.org/2018/07/02/digital-native-digital-expert/"
+    },
+    {
+      "nombre": "University of Chicago Press · Verified",
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/V/bo207015182.html"
+    }
+  ]
+}
