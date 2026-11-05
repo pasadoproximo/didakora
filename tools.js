@@ -200,6 +200,10 @@ const TOOLS = [
     a:"Organiza el trabajo del equipo en tableros: pendiente, en curso, hecho.",
     i:["Gestionar un proyecto por equipos","Repartir tareas y plazos","Ver el avance del grupo"],
     c:"3.º, 4.º ESO y Bachillerato", disp:"Uno por alumno", cta:"Necesita cuenta" },
+  { id:"kialo", rev:"2026-11-05", s:"aula", cat:"equipo", st:"nueva", n:"Kialo Edu", url:"https://www.kialo-edu.com/?lang=es",
+    a:"Debate por escrito en un mapa de argumentos, con ideas a favor y en contra bajo las de sus compañeros.",
+    i:["Debate de Filosofía o Valores","Defender posturas ante un hecho histórico","Preparar un texto argumentativo"],
+    c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"No necesita: entra con el enlace del docente" },
 
   // --- Ciencias, Matemáticas y Tecnología
   { id:"geogebra", rev:"2026-10-23", s:"aula", cat:"cienc", st:"vigente", n:"GeoGebra", url:"https://www.geogebra.org",
@@ -525,6 +529,7 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"kialo", txt:"Debates en clase con un mapa de argumentos.", q:["debate en clase", "argumentar", "pros y contras"] },
   { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
   { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes.", q:["prompts", "prompts gemini", "plantillas ia"] },
   { id:"koalendar", txt:"Agenda para que las familias reserven tutoría.", q:["tutorías", "reservar cita", "citas familias", "agenda"] },

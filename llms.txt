@@ -2,7 +2,7 @@
 
 > Catálogo de herramientas digitales para docentes, sobre todo de Secundaria en España. Cada ficha explica qué es la herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.
 
-Herramientas: 120. Última revisión: noviembre de 2026.
+Herramientas: 121. Última revisión: noviembre de 2026.
 
 ## Páginas principales
 
@@ -60,6 +60,7 @@ Murales, mapas mentales, pizarras y herramientas para organizar recursos.
 - [Stormboard](https://pasadoproximo.github.io/didakora/stormboard/): Stormboard es una pizarra digital compartida con notas adhesivas.
 - [Microsoft Loop](https://pasadoproximo.github.io/didakora/loop/): Microsoft Loop es un espacio de trabajo compartido con listas de tareas, tablas y notas que se actualizan en tiempo real para todo el equipo.
 - [Trello](https://pasadoproximo.github.io/didakora/trello/): Trello organiza el trabajo en tableros con columnas, por ejemplo «pendiente», «en curso» y «hecho».
+- [Kialo Edu](https://pasadoproximo.github.io/didakora/kialo/): Kialo Edu es una plataforma para debatir por escrito en clase.
 - [Symbaloo](https://pasadoproximo.github.io/didakora/symbaloo/): Symbaloo organiza tus enlaces favoritos en escritorios visuales con forma de mosaico.
 - [Pearltrees](https://pasadoproximo.github.io/didakora/pearltrees/): Pearltrees sirve para guardar y organizar enlaces, documentos, imágenes y notas en colecciones con forma de árbol.
 - [Feedly](https://pasadoproximo.github.io/didakora/feedly/): Feedly reúne en un solo sitio las novedades de las webs, blogs y revistas que sigues, sin tener que visitarlas una a una.
