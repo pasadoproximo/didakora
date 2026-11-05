@@ -348,7 +348,7 @@ const TOOLS = [
     p:"Asistente de IA que trabaja bien con textos largos y crea pequeñas herramientas web interactivas.",
     i:["Mapas, líneas del tiempo o simuladores interactivos","Revisar documentos largos","Actividades y rúbricas desde tu programación"],
     coste:"Plan gratuito con límites", datos:"Cuenta personal: no introduzcas datos del alumnado" },
-  { id:"edugems", rev:"2026-10-23", s:"docente", cat:"ia", st:"nueva", n:"EduGems", url:"https://www.edugems.ai",
+  { id:"edugems", rev:"2026-11-05", s:"docente", cat:"ia", st:"nueva", n:"EduGems", url:"https://www.edugems.ai",
     p:"Más de 160 prompts listos para Gemini, pensados para docentes y ordenados por tareas.",
     i:["Planificar una unidad","Crear un juego de repaso","Adaptar una actividad a varios niveles"],
     datos:"No introduzcas datos personales del alumnado" },
