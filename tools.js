@@ -323,7 +323,7 @@ const TOOLS = [
     i:["Cuaderno por unidad con tus apuntes","Guías de estudio y preguntas de repaso","Revisar la programación frente al decreto"],
     coste:"Incluido en todas las ediciones de Workspace for Education, también en la gratuita (con límites diarios)", datos:"Con la cuenta del centro, Google indica que no se usa para entrenar sus modelos ni lo revisan personas",
     nota:"Con la cuenta del centro también la puede usar el alumnado." },
-  { id:"copilot", rev:"2026-10-23", s:"docente", cat:"ia", st:"nueva", n:"Microsoft Copilot Chat", url:"https://copilot.microsoft.com",
+  { id:"copilot", rev:"2026-11-05", s:"docente", cat:"ia", st:"nueva", n:"Microsoft Copilot Chat", url:"https://copilot.cloud.microsoft",
     p:"El asistente de IA de Microsoft, sin coste adicional en centros con Microsoft 365.",
     i:["Adaptar materiales dentro de Word o PowerPoint","Resumir documentos del centro","Preparar preguntas de un texto"],
     coste:"Sin coste adicional con Microsoft 365 Educación", datos:"Usa la cuenta del centro, no la personal",
