@@ -1,0 +1,147 @@
+{
+  "slug": "gems-gemini-pasan-a-skills",
+  "titulo": "Los Gems de Gemini pasan a ser skills.",
+  "fecha": "2026-11-05",
+  "numero": 6,
+  "etiqueta": "IA",
+  "entradilla": "Google sustituye los Gems por skills y el 17 de noviembre da el primer paso. En los centros educativos seguirán funcionando al menos hasta el 1 de junio de 2027 y conviene prepararse con calma.",
+  "miniatura": {
+    "src": "img/miniatura.jpg"
+  },
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Un grupo de adolescentes trabaja alrededor de dos portátiles en clase.",
+    "credito": "Foto: Max Fischer · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/a-children-looking-the-laptop-5212687/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "La noticia",
+      "titulo": "Un cambio que llega por fases",
+      "texto": "Si has creado un Gem para preparar rúbricas o lo has asignado a tu grupo en Classroom, esto te afecta. Google anunció el 30 de septiembre que los Gems de Gemini dejarán paso a los **skills**, que su ayuda en español llama habilidades. El 13 de octubre actualizó el anuncio.\n\nLo contamos ahora porque la primera fecha está cerca. El 17 de noviembre, en las cuentas de los centros, no desaparece nada. Los Gems cambian de sitio y pasan a Configuración, dentro de la app de Gemini. Se podrán seguir creando, editando y usando.\n\nUn skill es un conjunto de instrucciones reutilizables, como un Gem. La gran diferencia es que cada Gem funciona por separado, mientras que varios skills se pueden combinar en un mismo prompt. Por ejemplo, uno con tu modelo de rúbrica y otro con el nivel de lectura de tu grupo. Además siguen un estándar abierto, SKILL.md, que permite copiarlos desde otras plataformas.",
+      "fuente": {
+        "nombre": "Google Workspace Updates",
+        "url": "https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html"
+      }
+    },
+    {
+      "tipo": "destacado",
+      "etiqueta": "Fechas",
+      "titulo": "El calendario, de un vistazo",
+      "texto": "**17 de noviembre de 2026.** Los Gems pasan a Configuración en la app de Gemini. Con la cuenta del centro siguen funcionando.\n\n**1 de marzo de 2027, como pronto.** Es la fecha de las empresas, no la de los centros educativos.\n\n**1 de junio de 2027, como pronto.** Es la fecha de educación. Los Gems ya no se podrán crear, editar ni usar. Saldrán de Configuración, de Classroom y de las plataformas de aula conectadas con Gemini LTI. Los que queden se convertirán solos en skills en borrador.\n\n**Aviso previo.** Google dará los detalles de esa migración a los administradores al menos 30 días antes.",
+      "fuente": {
+        "nombre": "Ayuda de Google Workspace para administradores",
+        "url": "https://knowledge.workspace.google.com/p/gems-migration"
+      },
+      "tono": "hielo"
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para el aula",
+      "titulo": "4 casos y lo que te toca",
+      "items": [
+        {
+          "titulo": "Gems en la cuenta del centro",
+          "texto": "Sigues trabajando como hasta ahora. Eso sí, el 1 de junio cae antes de que acabe el curso. Si un Gem sostiene tus repasos finales, mejor tenerlo resuelto en mayo.",
+          "url": "https://knowledge.workspace.google.com/p/gems-migration",
+          "ficha": "gemini"
+        },
+        {
+          "titulo": "Gems en tu cuenta personal",
+          "texto": "Aquí el calendario corre más. Con 18 años o más, el 17 de noviembre pasan a solo lectura. Podrás verlos, pero no usarlos ni editarlos. El 17 de diciembre se eliminan, así que descarga antes sus archivos. Con menos de 18 años, el cambio llegará más adelante.",
+          "url": "https://support.google.com/gemini/answer/18560919?hl=es",
+          "ficha": null
+        },
+        {
+          "titulo": "Gems asignados en Classroom",
+          "texto": "Seguirán disponibles con la cuenta del centro hasta el 1 de junio de 2027, como pronto. Quien tenga un Gem asignado en una cuenta personal pierde el acceso el 17 de noviembre. Para después, Google recomienda Gemini Notebook (NotebookLM) y Guided Learning.",
+          "url": "https://support.google.com/edu/classroom?p=teacher_notebook_gems",
+          "ficha": "classroom"
+        },
+        {
+          "titulo": "Prompts de EduGems",
+          "texto": "La web anuncia que convertirá sus Gems en skills durante los próximos meses. Los prompts seguirán disponibles para copiarlos y usarlos donde quieras.",
+          "url": "https://www.edugems.ai",
+          "ficha": "edugems"
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Antes de cambiar",
+      "titulo": "Lo que conviene saber de los skills",
+      "texto": "**No se sincronizan.** Un skill creado en la app de Gemini no pasa solo a Workspace, ni al revés. Si lo quieres en los dos sitios, toca crearlo en cada uno.\n\n**En la app de Gemini, para todas las edades.** Es lo que indica Google para los skills de esa app.\n\n**En Workspace, con condiciones.** Dentro de apps como Docs o Gmail son solo para mayores de 18 años. En educación hace falta además el complemento Google AI Pro for Education. Con alumnado menor de edad, esta vía queda fuera.\n\n**Aún se están desplegando.** En la app de Gemini, Google prevé terminar a mediados de noviembre. En Workspace avisó de un retraso el 13 de octubre. Si hoy no los ves en tu cuenta, puede ser por eso.",
+      "fuente": {
+        "nombre": "Google Workspace Updates",
+        "url": "https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "etiqueta": "Paso a paso",
+      "titulo": "Prepara tus Gems en 4 pasos",
+      "intro": "Google aconseja no esperar a la migración automática. Con estos pasos llegas a junio con lo importante a salvo.",
+      "pasos": [
+        {
+          "titulo": "Haz la lista",
+          "texto": "Apunta qué Gems usas de verdad, en qué cuenta están y cuáles has asignado a tus grupos."
+        },
+        {
+          "titulo": "Mira sus archivos",
+          "texto": "Un skill admite hasta 100 MB. Audio, vídeo, archivos .doc, .xls o .ppt y comprimidos no pasan, así que guárdalos aparte."
+        },
+        {
+          "titulo": "Rehaz primero los importantes",
+          "texto": "Cuando tengas los skills en tu cuenta, copia el nombre, la descripción y las instrucciones del Gem en uno nuevo. Vuelve a subir los archivos y prueba si responde igual. No incluyas datos personales del alumnado."
+        },
+        {
+          "titulo": "Activa los borradores",
+          "texto": "Tras la migración, cada Gem restante aparecerá en tu lista de skills como borrador inactivo. Conservará el nombre, la descripción, las instrucciones y los archivos. Tendrás que revisarlo y activarlo antes de usarlo o compartirlo."
+        }
+      ],
+      "ejemplo": "Tienes un Gem que crea actividades de repaso de 3.º de ESO. Rehazlo como skill, pídele lo mismo a los dos sobre un tema que conozcas bien y compara los resultados. Así ves qué ajustar antes de que llegue junio.",
+      "fuente": {
+        "nombre": "Ayuda de Gemini",
+        "url": "https://support.google.com/gemini/answer/18560919?hl=es"
+      },
+      "tono": "hielo"
+    },
+    {
+      "tipo": "destacado",
+      "etiqueta": "En el centro",
+      "titulo": "Si llevas la cuenta de Workspace",
+      "texto": "Google pide a los administradores que avisen de la fecha que les corresponde, que activen los skills y que animen a rehacer antes los Gems prioritarios. En educación aconseja repartir su [guía de transición](https://services.google.com/fh/files/misc/gemini_gems_skills_transition_guide.pdf) entre docentes y personal.\n\nUn aviso breve al claustro ahora evita sustos en junio.",
+      "enlace": {
+        "url": "https://knowledge.workspace.google.com/p/gems-migration",
+        "texto": "Ver la guía para administradores"
+      },
+      "fuente": {
+        "nombre": "Ayuda de Google Workspace para administradores",
+        "url": "https://knowledge.workspace.google.com/p/gems-migration"
+      }
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Google Workspace Updates · Introducing skills in the Gemini app and Workspace, plus what's next for Gems",
+      "url": "https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html"
+    },
+    {
+      "nombre": "Ayuda de Google Workspace para administradores · Transición de Gems a skills",
+      "url": "https://knowledge.workspace.google.com/p/gems-migration"
+    },
+    {
+      "nombre": "Ayuda de Gemini · De Gems a habilidades",
+      "url": "https://support.google.com/gemini/answer/18560919?hl=es"
+    },
+    {
+      "nombre": "Ayuda de Google Classroom · Gemini Notebook y Gems para docentes",
+      "url": "https://support.google.com/edu/classroom?p=teacher_notebook_gems"
+    },
+    {
+      "nombre": "EduGems",
+      "url": "https://www.edugems.ai"
+    }
+  ]
+}

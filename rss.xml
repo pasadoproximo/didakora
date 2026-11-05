@@ -6,7 +6,16 @@
   <atom:link href="https://pasadoproximo.github.io/didakora/rss.xml" rel="self" type="application/rss+xml"/>
   <description>Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.</description>
   <language>es-ES</language>
-  <lastBuildDate>Fri, 23 Oct 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+   <title>Los Gems de Gemini pasan a ser skills.</title>
+   <link>https://pasadoproximo.github.io/didakora/actualidad/gems-gemini-pasan-a-skills/</link>
+   <guid isPermaLink="true">https://pasadoproximo.github.io/didakora/actualidad/gems-gemini-pasan-a-skills/</guid>
+   <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+   <description>Google sustituye los Gems por skills y el 17 de noviembre da el primer paso. En los centros educativos seguirán funcionando al menos hasta el 1 de junio de 2027 y conviene prepararse con calma.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>IA</category>
+  </item>
   <item>
    <title>5 apps STEAM para aprender experimentando.</title>
    <link>https://pasadoproximo.github.io/didakora/actualidad/apps-steam-aprender-experimentando/</link>

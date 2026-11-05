@@ -186,6 +186,7 @@ Situaciones de aprendizaje, formación, imágenes y recursos abiertos.
 
 ## Actualidad
 
+- [Los Gems de Gemini pasan a ser skills](https://pasadoproximo.github.io/didakora/actualidad/gems-gemini-pasan-a-skills/): Google sustituye los Gems por skills y el 17 de noviembre da el primer paso. En los centros educativos seguirán funcionando al menos hasta el 1 de junio de 2027 y conviene prepararse con calma.
 - [5 apps STEAM para aprender experimentando](https://pasadoproximo.github.io/didakora/actualidad/apps-steam-aprender-experimentando/): Realidad aumentada, simulaciones y juegos para unir ciencia, tecnología, arte y matemáticas. Repasamos las cinco apps que propone Educación 3.0 y cómo sacarles partido en clase.
 - [Tutorías con familias sin cruzar correos](https://pasadoproximo.github.io/didakora/actualidad/tutorias-familias-koalendar/): Koalendar deja que las familias reserven su tutoría en los huecos que tú marcas. Te contamos qué ofrece gratis, cómo pedir el descuento para docentes y cómo dejar tu agenda lista.
 - [La IA, sus sesgos y la diversidad en clase](https://pasadoproximo.github.io/didakora/actualidad/ia-sesgos-diversidad-clase/): EDUGENIA, del Instituto de las Mujeres, ayuda a trabajar en clase los sesgos de género de la IA. La reunimos con 23 prompts para adaptar tareas y atender a la diversidad.
