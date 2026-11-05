@@ -235,7 +235,7 @@ F = {
   faq=[dict(p="¿Desde qué edad se puede usar?", r="Sus debates son adecuados a partir de los ocho años.", url="https://www.kialo-edu.com/es/faqs", fuente="preguntas frecuentes de Kialo Edu", fecha="2026-11-05"),
        dict(p="¿Hace falta permiso para usarla con menores?", r="Sí. Quien necesite consentimiento según la ley de su país solo puede usarla si lo inscribe su tutor legal o su centro.", url="https://www.kialo-edu.com/terms", fuente="términos de Kialo Edu", fecha="2026-11-05"),
        dict(p="¿Dónde guarda los datos?", r="Se alojan en Fráncfort (Alemania) y todos se almacenan y procesan en Europa.", url="https://support.kialo-edu.com/en/hc/kialo-edu-data-security-and-privacy-plan/", fuente="plan de seguridad y privacidad de Kialo Edu", fecha="2026-11-05"),
-       dict(p="¿Se puede participar sin que se vea el nombre?", r="Sí. Tiene un modo de participación anónima para que el alumnado aporte sin identificarse.", url="https://www.kialo-edu.com/?lang=es", fuente="web de Kialo Edu", fecha="2026-11-05")]),
+       dict(p="¿Se puede participar sin que se vea el nombre?", r="Tiene un modo de participación anónima para el alumnado.", url="https://www.kialo-edu.com/?lang=es", fuente="web de Kialo Edu", fecha="2026-11-05")]),
 
 # ---------------- Ciencias, Matemáticas y Tecnología
 "geogebra": dict(q="GeoGebra es una aplicación de matemáticas dinámicas que une geometría, álgebra, funciones, estadística y cálculo. Al mover un punto o cambiar un valor, todo se actualiza al momento. Tiene además miles de actividades creadas por docentes.",
