@@ -570,7 +570,7 @@ F = {
   usos=["Explicar con dibujos y esquemas", "Compartir la pizarra", "Dibujar a la vez en grupo", "Hacer participar al alumnado"],
   disp="Cualquier dispositivo con navegador", cta="No necesita"),
 "koalendar": dict(q="Koalendar es una agenda en línea para que otras personas reserven cita contigo. Marcas los huecos libres, compartes tu página de reservas y las familias, el alumnado o los compañeros eligen hora en pocos clics. Se sincroniza con Google Calendar, Outlook e iCloud y cada reserva puede incluir un enlace de videollamada. Tiene un plan gratuito sin límite de tiempo.",
-  fu=dict(t="Koalendar mantiene un plan gratuito sin límite de tiempo, con reservas ilimitadas y sincronización de calendarios", url="https://koalendar.com/pricing", fecha="2026-10-23", enlace="página de precios"),
+  fu=dict(t="Koalendar mantiene un plan gratuito sin límite de tiempo, con reservas ilimitadas y sincronización de hasta 2 calendarios", url="https://koalendar.com/pricing", fecha="2026-11-05", enlace="página de precios"),
   usos=["Organizar tutorías", "Citar a las familias", "Reservar espacios y material", "Evitar correos de ida y vuelta"],
   faq=[dict(p="¿El plan gratuito manda recordatorios de la cita?", r="El plan gratuito solo incluye notificaciones básicas. Los recordatorios automáticos por correo o SMS son del plan Pro.", url="https://koalendar.com/es/precios", fuente="página de precios de Koalendar", fecha="2026-10-23"),
        dict(p="¿Puedo citar a varias familias a la vez?", r="Las sesiones grupales no están en el plan gratuito: forman parte del plan Pro.", url="https://koalendar.com/es/precios", fuente="página de precios de Koalendar", fecha="2026-10-23"),
