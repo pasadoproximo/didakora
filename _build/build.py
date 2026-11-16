@@ -281,7 +281,7 @@ def portada():
 {seccion_actualidad()}
 </main>'''
     write("index.html", head("Didákora · Herramientas digitales para docentes",
-        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en octubre de 2026, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/", ld=[{**SITIO, "@id": f"{SITE}{B}/#portada", "@type": "WebPage", "isPartOf": {"@id": SITIO["@id"]}, "potentialAction": {"@type": "SearchAction", "target": f"{SITE}{B}/todas/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}]) + body + foot())
+        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en {mes_revision()}, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/", ld=[{**SITIO, "@id": f"{SITE}{B}/#portada", "@type": "WebPage", "isPartOf": {"@id": SITIO["@id"]}, "potentialAction": {"@type": "SearchAction", "target": f"{SITE}{B}/todas/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}]) + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
 def todas():
@@ -373,7 +373,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en octubre de 2026.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{SITE}{B}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}{B}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}]) + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en {mes_revision()}.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{SITE}{B}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}{B}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}]) + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -390,12 +390,14 @@ def revisada(rev):
     # «AAAA-MM-DD» → «23 de octubre de 2026» (la ficha); «AAAA-MM» → «Octubre de 2026»
     if len(rev) > 7: return fecha_larga(rev)
     a, m = rev.split("-"); return f"{MESES[int(m) - 1].capitalize()} de {a}"
+def mes_revision():
+    # mes de la última revisión del catálogo, «noviembre de 2026» (autoría y meta descripciones de portada y categorías)
+    return revisada(max([REV] + [t.get("rev", REV) for t in TOOLS])[:7]).lower()
 def autoria():
     # bajo el hero de la portada: quién revisa, cuántas herramientas hay y el mes de la última revisión (se calculan solos)
-    ult = max([REV] + [t.get("rev", REV) for t in TOOLS])
     return (f'<p class="hero-a"><img src="{B}/img/jorge.jpg" alt="" width="32" height="32">'
             f'<span>Revisado a mano por <a href="{SITE}/">Jorge Delgado Aguilera</a> · {len(TOOLS)} herramientas · '
-            f'actualizado en {revisada(ult[:7]).lower()}</span></p>')
+            f'actualizado en {mes_revision()}</span></p>')
 def saber_mas(f):
     # «Para saber más»: preguntas que no repiten la Ficha rápida (faq en fichas.py: p, r, url, fuente, fecha AAAA-MM-DD)
     if not f.get("faq"): return ""
