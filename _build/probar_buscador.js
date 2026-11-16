@@ -18,7 +18,7 @@ let pruebas = 0;
 for (const t of TOOLS) {
   const m = t.n.match(/^(.+?)\s*\((.+)\)$/), nombre = m ? m[1] : t.n, alias = m ? m[2] : '';
   const casos = [[nombre, 'nombre', 3]];                                   // el nombre: entre los 3 primeros
-  if (alias) casos.push([alias.replace(/^antes\s+/i, ''), 'alias', 5]);
+  if (alias) casos.push([alias.replace(/^(antes|ahora)\s+/i, ''), 'alias', 5]);
   casos.push([nombre.slice(0, Math.min(4, nombre.length)), 'principio', 30]);
   norm(nombre).split(/[^a-z0-9ñ]+/).filter(w => w.length >= 3).forEach(w => casos.push([w, 'palabra «' + w + '»', 40]));
   const e = errata(norm(nombre).replace(/[^a-z0-9ñ ]/g, '').split(' ').sort((a, b) => b.length - a.length)[0]);
