@@ -61,7 +61,7 @@ CORTO = {"participar-y-repasar": "Cuestionarios y juegos", "crear-y-presentar": 
          "programacion-y-diseno-3d": "Bloques y diseño 3D", "inteligencia-artificial": "Asistentes para el aula",
          "evaluacion-y-seguimiento": "Formularios y rúbricas", "gestion-del-aula": "Rutinas, cuaderno y familias",
          "aulas-virtuales": "Classroom, Teams y Moodle", "bancos-de-recursos": "Recursos e imágenes libres"}
-PROG = {"scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","tinkercad"}
+PROG = {"scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","tinkercad","wokwi"}
 LECT = {"immersive","languagetool","readwrite"}
 SUITES = {"classroom","teams","moodle"}
 def place(t):

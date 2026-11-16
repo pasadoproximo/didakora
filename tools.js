@@ -242,6 +242,11 @@ const TOOLS = [
     a:"Diseña en 3D, monta circuitos y programa con bloques en el navegador.",
     i:["Piezas para imprimir en 3D","Simular circuitos","Iniciarse en Arduino"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Clase del docente (sin correo)" },
+  { id:"wokwi", rev:"2026-11-16", edad:"Desde 13 años", edadTxt:"13 años según sus condiciones; puede haber más límites en cada país", edadUrl:"https://wokwi.com/legal/terms", s:"aula", cat:"cienc", st:"nueva", n:"Wokwi", url:"https://wokwi.com",
+    a:"Monta circuitos con placas como Arduino, ESP32 o Raspberry Pi Pico, los programa y los simula en el navegador.",
+    i:["Lámpara automática con un sensor de luz","Estación meteorológica con pantalla LCD","Probar el código antes de usar la placa real"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador", cta:"No necesita para simular; cuenta para guardar",
+    datos:"En el plan gratuito, los proyectos guardados son públicos" },
   { id:"scratch", rev:"2026-10-23", s:"aula", cat:"cienc", st:"vigente", n:"Scratch", url:"https://scratch.mit.edu",
     a:"Programa con bloques juegos, animaciones e historias.",
     i:["Juego sobre contenidos de otra materia","Historia interactiva","Iniciación a la programación"],
@@ -537,6 +542,7 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"wokwi", txt:"Simula placas como Arduino o ESP32 en el navegador.", q:["simulador arduino", "simular circuitos", "programar placas", "practicar electrónica"] },
   { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] },
   { id:"languagetool", txt:"Corrige ortografía, gramática y estilo.", q:["corrector ortográfico", "corregir ortografía", "revisar gramática"] },
   { id:"kialo", txt:"Debates en clase con un mapa de argumentos.", q:["debate en clase", "argumentar", "pros y contras"] },
@@ -566,7 +572,7 @@ const CHANGES = [
 const AREAS = {
   geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay"] },
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
-  tecno: { n:"Tecnología y Programación", ids:["tinkercad","scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
+  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };
