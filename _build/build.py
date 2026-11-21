@@ -18,7 +18,8 @@ B = os.environ.get("DK_BASE", "").rstrip("/")  # base de todas las rutas
 SITE = "https://pasadoproximo.github.io"  # el portfolio de Jorge
 WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Didákora
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
-GOATCOUNTER = '<script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
+# Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
+GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 V = "69"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
