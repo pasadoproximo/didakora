@@ -44,7 +44,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
-  El `robots.txt` está en la raíz del dominio, es decir, en el repo del portfolio.
+  `robots.txt` en la raíz del repo (desde el 21-11-2026, con el dominio propio; antes lo ponía el portfolio). No lo genera `build.py`.
 - Portada: bajo el párrafo del hero, la autoría (`autoria()` en `build.py`, brief del portfolio v3): foto, «Revisado a mano por
   Jorge Delgado Aguilera» (enlaza al portfolio), el número de herramientas y el mes de la última revisión, calculados solos.
   Solo es verdad si Jorge ve cada cambio: los agentes proponen y él aprueba y publica.
