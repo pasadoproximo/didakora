@@ -6,16 +6,17 @@
 #   /categorias/           índice de categorías y /categorias/<slug>/ con sus apartados
 #   /<id>/                 una ficha por herramienta
 #   /actualidad/           el blog de noticias de educación digital y /actualidad/<slug>/ cada post (_build/actualidad/)
-# Todas las rutas cuelgan de BASE ("/didakora" en GitHub Pages; "" si algún día va en dominio propio:
-#   DK_BASE= python _build/build.py). Datos: tools.js. Logos de la marca: _build/marca.py → marca/.
+# Dominio propio desde el 21-11-2026: https://didakora.es (archivo CNAME en la raíz). Las rutas cuelgan de B
+#   ("" en el dominio; DK_BASE=/didakora solo si hubiera que volver a pasadoproximo.github.io/didakora/). Datos: tools.js. Logos de la marca: _build/marca.py → marca/.
 # Uso: python _build/build.py
 #      python _build/build.py --vista <post.json> <carpeta>   → solo la vista previa de un post (no toca la web)
 import json, os, re, subprocess, html, shutil, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
-B = os.environ.get("DK_BASE", "/didakora").rstrip("/")  # base de todas las rutas
-SITE = "https://pasadoproximo.github.io"
+B = os.environ.get("DK_BASE", "").rstrip("/")  # base de todas las rutas
+SITE = "https://pasadoproximo.github.io"  # el portfolio de Jorge
+WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Didákora
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 GOATCOUNTER = '<script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 V = "69"  # versión de didakora.css / didakora.js
@@ -165,7 +166,7 @@ def topbar(cur=""):
 PERSONA = {"@type": "Person", "@id": f"{SITE}/#jorge", "name": "Jorge Delgado Aguilera", "url": f"{SITE}/",
            "jobTitle": "Profesor de Geografía e Historia y diseñador de materiales educativos digitales",
            "sameAs": ["https://www.linkedin.com/in/jorgedelgadoaguilera", "https://www.instagram.com/pasadoproximo/"]}
-SITIO = {"@type": "WebSite", "@id": f"{SITE}{B}/#web", "name": "Didákora", "url": f"{SITE}{B}/", "inLanguage": "es",
+SITIO = {"@type": "WebSite", "@id": f"{WEB}/#web", "name": "Didákora", "url": f"{WEB}/", "inLanguage": "es",
          "description": "Catálogo de herramientas digitales para docentes revisado a mano.", "publisher": {"@id": PERSONA["@id"]}}
 def ld_html(nodos):
     if not nodos: return ""
@@ -186,11 +187,11 @@ def head(title, desc, path, cur="", ld=None):
 <meta name="description" content="{esc(desc)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{SITE}{B}/marca/og.png">
+<meta property="og:image" content="{WEB}/marca/og.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{SITE}{B}{path}">
-{f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{SITE}{B}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="{WEB}{path}">
+{f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{WEB}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{B}/marca/icono-180.png">
 <meta name="theme-color" content="#9FB3FF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -284,7 +285,7 @@ def portada():
 {seccion_actualidad()}
 </main>'''
     write("index.html", head("Didákora · Herramientas digitales para docentes",
-        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en {mes_revision()}, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/", ld=[{**SITIO, "@id": f"{SITE}{B}/#portada", "@type": "WebPage", "isPartOf": {"@id": SITIO["@id"]}, "potentialAction": {"@type": "SearchAction", "target": f"{SITE}{B}/todas/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}]) + body + foot())
+        f"{len(TOOLS)} herramientas digitales para docentes, revisadas en {mes_revision()}, con una ficha que explica qué es cada una, para qué sirve y qué necesita.", "/", ld=[{**SITIO, "@id": f"{WEB}/#portada", "@type": "WebPage", "isPartOf": {"@id": SITIO["@id"]}, "potentialAction": {"@type": "SearchAction", "target": f"{WEB}/todas/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}]) + body + foot())
 
 # ---------------------------------------------------------------- listado completo (lo pinta didakora.js)
 def todas():
@@ -318,7 +319,7 @@ def sobremi():
   </div>
  </section>
 </main>'''
-    write("sobre-mi/index.html", head("Sobre mí · Didákora", "Quién hace Didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre", ld=[{"@type": "ProfilePage", "url": f"{SITE}{B}/sobre-mi/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@id": PERSONA["@id"]}}]) + body + foot())
+    write("sobre-mi/index.html", head("Sobre mí · Didákora", "Quién hace Didákora: Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales.", "/sobre-mi/", "sobre", ld=[{"@type": "ProfilePage", "url": f"{WEB}/sobre-mi/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@id": PERSONA["@id"]}}]) + body + foot())
 
 # ---------------------------------------------------------------- destacadas
 def destacadas():
@@ -376,7 +377,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en {mes_revision()}.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{SITE}{B}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}{B}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}]) + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en {mes_revision()}.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{WEB}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{WEB}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}]) + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -461,11 +462,11 @@ def ficha(t):
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
 </main>'''
-    pagina = {"@type": "WebPage", "name": f"{nm} · Didákora", "url": f'{SITE}{B}/{t["id"]}/', "inLanguage": "es", "isPartOf": {"@id": SITIO["@id"]},
+    pagina = {"@type": "WebPage", "name": f"{nm} · Didákora", "url": f'{WEB}/{t["id"]}/', "inLanguage": "es", "isPartOf": {"@id": SITIO["@id"]},
               "author": {"@id": PERSONA["@id"]}, "dateModified": t.get("rev", REV),
               "about": {"@type": "Thing", "name": nm, "url": t["url"], "sameAs": t["url"],
                         "description": f["q"].split(". ")[0].rstrip(".") + "."}}
-    ld = [pagina] + ([{"@type": "FAQPage", "url": f'{SITE}{B}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
+    ld = [pagina] + ([{"@type": "FAQPage", "url": f'{WEB}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
     write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld) + body + foot())
 
 
@@ -571,9 +572,9 @@ def pagina_post(p, path):
 </main>'''
     # el texto de los posts va en Literata (letra de lectura en pantalla); los títulos, en la de la marca
     lectura = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">\n'
-    art = {"@type": "BlogPosting", "headline": bt_plano(p["titulo"]).rstrip("."), "description": bt_plano(p["entradilla"])[:300], "url": f"{SITE}{B}{path}",
+    art = {"@type": "BlogPosting", "headline": bt_plano(p["titulo"]).rstrip("."), "description": bt_plano(p["entradilla"])[:300], "url": f"{WEB}{path}",
            "datePublished": p["fecha"][:10], "inLanguage": "es", "author": {"@id": PERSONA["@id"]}, "publisher": {"@id": PERSONA["@id"]}, "isPartOf": {"@id": SITIO["@id"]}}
-    if (p.get("portada") or {}).get("src"): art["image"] = f'{SITE}{B}{path}{p["portada"]["src"]}'
+    if (p.get("portada") or {}).get("src"): art["image"] = f'{WEB}{path}{p["portada"]["src"]}'
     return head(f'{p["titulo"]} · Didákora', bt_plano(p["entradilla"])[:155], path, "actualidad", ld=[art]).replace("</head>", lectura + "</head>", 1) + body + foot()
 def seccion_actualidad():
     if not POSTS: return ""
@@ -605,8 +606,8 @@ def rss():
     items = "".join(f"""
   <item>
    <title>{x(bt_plano(p["titulo"]))}</title>
-   <link>{SITE}{B}/actualidad/{post_slug(p)}/</link>
-   <guid isPermaLink="true">{SITE}{B}/actualidad/{post_slug(p)}/</guid>
+   <link>{WEB}/actualidad/{post_slug(p)}/</link>
+   <guid isPermaLink="true">{WEB}/actualidad/{post_slug(p)}/</guid>
    <pubDate>{rfc(p["fecha"])}</pubDate>
    <description>{x(bt_plano(p["entradilla"]))}</description>
    <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
@@ -616,8 +617,8 @@ def rss():
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
   <title>Actualidad · Didákora</title>
-  <link>{SITE}{B}/actualidad/</link>
-  <atom:link href="{SITE}{B}/rss.xml" rel="self" type="application/rss+xml"/>
+  <link>{WEB}/actualidad/</link>
+  <atom:link href="{WEB}/rss.xml" rel="self" type="application/rss+xml"/>
   <description>{x(ACT_DESC)}</description>
   <language>es-ES</language>
   <lastBuildDate>{rfc(max(p["fecha"] for p in POSTS))}</lastBuildDate>{items}
@@ -652,7 +653,7 @@ def extras():
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
     NL = "\n"
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
-          + "".join(f"<url><loc>{SITE}{B}{u}</loc>{f'<lastmod>{d}</lastmod>' if d else ''}</url>{NL}" for u, d in urls) + "</urlset>" + NL)
+          + "".join(f"<url><loc>{WEB}{u}</loc>{f'<lastmod>{d}</lastmod>' if d else ''}</url>{NL}" for u, d in urls) + "</urlset>" + NL)
     llms()
 
 def llms():
@@ -667,15 +668,15 @@ def llms():
          "educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.", "",
          f"Herramientas: {len(TOOLS)}. Última revisión: {revisada(max(rev(t) for t in TOOLS)[:7]).lower()}.", "",
          "## Páginas principales", "",
-         f"- [Todas las herramientas]({SITE}{B}/todas/): listado completo con buscador y filtros por categoría y etapa",
-         f"- [Sobre mí]({SITE}{B}/sobre-mi/): quién hace Didákora y cómo se revisa",
+         f"- [Todas las herramientas]({WEB}/todas/): listado completo con buscador y filtros por categoría y etapa",
+         f"- [Sobre mí]({WEB}/sobre-mi/): quién hace Didákora y cómo se revisa",
          f"- [Portfolio de Jorge Delgado Aguilera]({SITE}/)"]
-    if POSTS: L.append(f"- [Actualidad]({SITE}{B}/actualidad/): noticias de educación digital para docentes")
+    if POSTS: L.append(f"- [Actualidad]({WEB}/actualidad/): noticias de educación digital para docentes")
     for c in CATS:
         L += ["", f"## {c[1]}", "", c[2], ""]
-        L += [f'- [{split_name(t["n"])[0]}]({SITE}{B}/{t["id"]}/): {pri(F[t["id"]]["q"])}' for t in TOOLS if t["cs"] == c[0]]
+        L += [f'- [{split_name(t["n"])[0]}]({WEB}/{t["id"]}/): {pri(F[t["id"]]["q"])}' for t in TOOLS if t["cs"] == c[0]]
     if POSTS:
-        L += ["", "## Actualidad", ""] + [f"- [{bt_plano(p['titulo']).rstrip('.')}]({SITE}{B}/actualidad/{post_slug(p)}/): {bt_plano(p['entradilla'])}"
+        L += ["", "## Actualidad", ""] + [f"- [{bt_plano(p['titulo']).rstrip('.')}]({WEB}/actualidad/{post_slug(p)}/): {bt_plano(p['entradilla'])}"
                                           for p in reversed(POSTS)]
     write("llms.txt", "\n".join(L) + "\n")
 

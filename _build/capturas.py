@@ -1,6 +1,6 @@
 # Capturas de fichas a 390 px de ancho con Edge sin ventana (perfil propio: no choca con otro navegador abierto).
 # Las usa el Auditor para revisar el móvil y el monasterio para enseñar a Jorge el antes y el después de cada cambio.
-#   python _build/capturas.py <carpeta> id1,id2[,portada]            → <id>-despues.png de la web local (127.0.0.1:8020)
+#   python _build/capturas.py <carpeta> id1,id2[,portada]            → <id>-despues.png de la web local (127.0.0.1:8021, la carpeta didakora servida)
 #   python _build/capturas.py <carpeta> id1,id2 --antes              → <id>-antes.png de la web publicada (GitHub Pages)
 # Una herramienta nueva no tiene «antes»: la publicada da 404 y no se guarda captura.
 # Escritorio y páginas largas: --ancho 1280 (por defecto 390, el móvil) y --alto 4000 (por defecto 1600).
@@ -9,7 +9,7 @@ import os, subprocess, sys, tempfile, urllib.request, urllib.error
 
 EDGE = next((p for p in [os.path.expandvars(r"%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"),
                          os.path.expandvars(r"%ProgramFiles%\Microsoft\Edge\Application\msedge.exe")] if os.path.exists(p)), None)
-LOCAL, PUBLICADA = "http://127.0.0.1:8020/didakora/", "https://pasadoproximo.github.io/didakora/"
+LOCAL, PUBLICADA = "http://127.0.0.1:8021/", "https://didakora.es/"
 
 def existe(url):
     try: urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=20); return True

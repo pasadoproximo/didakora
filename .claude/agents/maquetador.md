@@ -68,6 +68,6 @@ Mira en `decisiones.json` → `miniatura` la última decisión aprobada: su `min
    ```
 
    y haz `git commit -F <ruta>`. Añade solo `_build/actualidad/<slug>.json`, `actualidad/` y las páginas que regenera el build (`git add` con rutas, nunca `-A`). **Nunca hagas push, merge ni rebase**: publicar es de Jorge.
-5. Escribe `publicacion.md` en la carpeta del número: commit, archivos, resultado de cada comprobación y la dirección en la que se verá (`https://pasadoproximo.github.io/didakora/actualidad/<slug>/`) cuando Jorge haga `! git push`.
+5. Escribe `publicacion.md` en la carpeta del número: commit, archivos, resultado de cada comprobación y la dirección en la que se verá (`https://didakora.es/actualidad/<slug>/`) cuando Jorge haga `! git push`.
 
 Normas de texto: nunca coma antes de «y»; «Didákora» con mayúscula en el texto (en minúscula solo en el logo). Devuelve a la sesión principal un resumen breve.

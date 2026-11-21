@@ -1,13 +1,16 @@
 # Didákora · herramientas digitales para docentes
 
 Web estática de Jorge Delgado Aguilera (antes «Caja de herramientas digitales» del portfolio pasadoproximo.github.io).
-Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.github.io/didakora/ (hay `.nojekyll`).
+Se publica con GitHub Pages desde el repo `didakora` en su dominio propio, **https://didakora.es** (desde el 21-11-2026:
+archivo `CNAME` en la raíz; DNS en OVH con los cuatro A de GitHub Pages y `www` como CNAME de `pasadoproximo.github.io`).
+La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio. Hay `.nojekyll`.
 
 ## Estructura
 
 - `_build/build.py` → genera todas las páginas (portada, `todas/`, `destacadas/` (sin enlace en el menú ni en la portada desde el 22-10-2026), `categorias/`, una ficha por herramienta,
-  `sobre-mi/` y 404). **Las páginas son generadas: no editarlas a mano.** Las rutas cuelgan de `B` (`/didakora`);
-  para un dominio propio: `DK_BASE= python _build/build.py`.
+  `sobre-mi/` y 404). **Las páginas son generadas: no editarlas a mano.** Las rutas cuelgan de `B` (`""`: la raíz de
+  didakora.es) y las direcciones públicas, de `WEB` (`https://didakora.es`); `SITE` es el portfolio. Solo si hubiera que volver
+  a github.io: `DK_BASE=/didakora python _build/build.py`.
 - `tools.js` → los datos de las herramientas (`SECTIONS`, `TOOLS`, `RECIENTES`, `CHANGES`). `logos/` → logos de cada herramienta.
   `RECIENTES` = las últimas añadidas, de la más reciente a la más antigua (máximo 12, cada una con texto corto): salen en
   «Añadidas recientemente» de la portada (las 4 primeras, bajo las categorías) y en `/nuevas/` («Nuevas» en el menú).
@@ -58,7 +61,7 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de
   `_build/miniatura.py` (foto con licencia y duotono navy y cielo, forma coral, aro blanco y gancho corto; o ilustración).
   Vista previa sin publicar: `python _build/build.py --vista <post.json> <carpeta>`.
-  Feed RSS 2.0 en `/didakora/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
+  Feed RSS 2.0 en `/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
   la cabecera de todas las páginas mientras haya posts.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
@@ -66,8 +69,9 @@ Se publicará con GitHub Pages en el repo `didakora` → https://pasadoproximo.g
 ## Flujo
 
 1. `python _build/build.py` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
-2. Probar en local sirviendo la carpeta padre (`El pasado próximo`) para que exista `/didakora/`:
-   `python -m http.server 8020` → http://127.0.0.1:8020/didakora/ . Revisar escritorio y móvil (390 px).
+2. Probar en local sirviendo **la propia carpeta `didakora`** (las rutas van desde la raíz, como en didakora.es):
+   `python -m http.server 8021` dentro de `didakora` → http://127.0.0.1:8021/ . Revisar escritorio y móvil (390 px).
+   (El 8020 sigue siendo el servidor del monasterio, que sirve la carpeta padre.)
 3. Commit con autor `Jorge Delgado Aguilera <jorgedelagui@gmail.com>` y mensaje en español.
 
 ## Sistema de agentes

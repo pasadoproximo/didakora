@@ -6,190 +6,190 @@ Herramientas: 124. Última revisión: noviembre de 2026.
 
 ## Páginas principales
 
-- [Todas las herramientas](https://pasadoproximo.github.io/didakora/todas/): listado completo con buscador y filtros por categoría y etapa
-- [Sobre mí](https://pasadoproximo.github.io/didakora/sobre-mi/): quién hace Didákora y cómo se revisa
+- [Todas las herramientas](https://didakora.es/todas/): listado completo con buscador y filtros por categoría y etapa
+- [Sobre mí](https://didakora.es/sobre-mi/): quién hace Didákora y cómo se revisa
 - [Portfolio de Jorge Delgado Aguilera](https://pasadoproximo.github.io/)
-- [Actualidad](https://pasadoproximo.github.io/didakora/actualidad/): noticias de educación digital para docentes
+- [Actualidad](https://didakora.es/actualidad/): noticias de educación digital para docentes
 
 ## Participar y repasar
 
 Cuestionarios, juegos y concursos para participar en clase y repasar.
 
-- [Kahoot!](https://pasadoproximo.github.io/didakora/kahoot/): Kahoot! es una plataforma de cuestionarios en forma de concurso.
-- [Wayground](https://pasadoproximo.github.io/didakora/wayground/): Wayground, que antes se llamaba Quizizz, es una herramienta de cuestionarios y lecciones interactivas.
-- [Wooclap](https://pasadoproximo.github.io/didakora/wooclap/): Wooclap convierte la explicación en una conversación.
-- [Mentimeter](https://pasadoproximo.github.io/didakora/mentimeter/): Mentimeter es una herramienta de presentaciones interactivas.
-- [Plickers](https://pasadoproximo.github.io/didakora/plickers/): Plickers permite hacer preguntas rápidas a toda la clase sin que el alumnado use dispositivos.
-- [Blooket](https://pasadoproximo.github.io/didakora/blooket/): Blooket propone cuestionarios con distintos modos de juego, como carreras, torres o tiendas.
-- [Wordwall](https://pasadoproximo.github.io/didakora/wordwall/): Wordwall sirve para crear actividades interactivas e imprimibles a partir de plantillas.
-- [Educaplay](https://pasadoproximo.github.io/didakora/educaplay/): Educaplay sirve para crear y compartir actividades interactivas: crucigramas, sopas de letras, mapas interactivos, relacionar o completar frases.
-- [Edpuzzle](https://pasadoproximo.github.io/didakora/edpuzzle/): Edpuzzle convierte cualquier vídeo en una lección interactiva.
-- [Nearpod](https://pasadoproximo.github.io/didakora/nearpod/): Nearpod sincroniza una presentación con los dispositivos del alumnado.
-- [Deck.Toys](https://pasadoproximo.github.io/didakora/decktoys/): Deck.Toys organiza las actividades como un recorrido o un tablero de juego.
+- [Kahoot!](https://didakora.es/kahoot/): Kahoot! es una plataforma de cuestionarios en forma de concurso.
+- [Wayground](https://didakora.es/wayground/): Wayground, que antes se llamaba Quizizz, es una herramienta de cuestionarios y lecciones interactivas.
+- [Wooclap](https://didakora.es/wooclap/): Wooclap convierte la explicación en una conversación.
+- [Mentimeter](https://didakora.es/mentimeter/): Mentimeter es una herramienta de presentaciones interactivas.
+- [Plickers](https://didakora.es/plickers/): Plickers permite hacer preguntas rápidas a toda la clase sin que el alumnado use dispositivos.
+- [Blooket](https://didakora.es/blooket/): Blooket propone cuestionarios con distintos modos de juego, como carreras, torres o tiendas.
+- [Wordwall](https://didakora.es/wordwall/): Wordwall sirve para crear actividades interactivas e imprimibles a partir de plantillas.
+- [Educaplay](https://didakora.es/educaplay/): Educaplay sirve para crear y compartir actividades interactivas: crucigramas, sopas de letras, mapas interactivos, relacionar o completar frases.
+- [Edpuzzle](https://didakora.es/edpuzzle/): Edpuzzle convierte cualquier vídeo en una lección interactiva.
+- [Nearpod](https://didakora.es/nearpod/): Nearpod sincroniza una presentación con los dispositivos del alumnado.
+- [Deck.Toys](https://didakora.es/decktoys/): Deck.Toys organiza las actividades como un recorrido o un tablero de juego.
 
 ## Crear y presentar
 
 Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente.
 
-- [Canva para Educación](https://pasadoproximo.github.io/didakora/canva/): Canva es una herramienta de diseño gráfico con miles de plantillas.
-- [Genially](https://pasadoproximo.github.io/didakora/genially/): Genially sirve para crear contenidos interactivos: presentaciones, infografías, imágenes con puntos que se pueden pulsar, juegos y escape rooms.
-- [Book Creator](https://pasadoproximo.github.io/didakora/bookcreator/): Book Creator permite crear libros digitales combinando texto, imágenes, dibujos, audio y vídeo.
-- [Sway](https://pasadoproximo.github.io/didakora/sway/): Sway es la herramienta de Microsoft para crear presentaciones que se leen como una página web.
-- [Timetoast](https://pasadoproximo.github.io/didakora/timetoast/): Timetoast sirve para crear líneas del tiempo interactivas.
-- [StoryMap JS](https://pasadoproximo.github.io/didakora/storymap/): StoryMap JS es una herramienta gratuita para contar historias sobre un mapa.
-- [Stop Motion Studio](https://pasadoproximo.github.io/didakora/stopmotion/): Stop Motion Studio es una aplicación para hacer animaciones foto a foto.
-- [ChatterPix Kids](https://pasadoproximo.github.io/didakora/chatterpix/): ChatterPix Kids es una aplicación para hacer hablar a una imagen.
-- [CapCut](https://pasadoproximo.github.io/didakora/capcut/): CapCut es un editor de vídeo para móvil y ordenador con plantillas, efectos y subtítulos automáticos.
-- [Clipchamp](https://pasadoproximo.github.io/didakora/clipchamp/): Clipchamp es el editor de vídeo de Microsoft.
-- [Vocaroo](https://pasadoproximo.github.io/didakora/vocaroo/): Vocaroo es la forma más sencilla de grabar un audio: se pulsa un botón, se graba con el micrófono y se obtiene un enlace para compartirlo.
-- [Audacity](https://pasadoproximo.github.io/didakora/audacity/): Audacity es un programa libre y gratuito para grabar y editar audio.
-- [Zencastr](https://pasadoproximo.github.io/didakora/zencastr/): Zencastr permite grabar un pódcast con varias personas que están en lugares distintos.
-- [Suno](https://pasadoproximo.github.io/didakora/suno/): Suno es una herramienta de inteligencia artificial que crea canciones.
-- [eXeLearning](https://pasadoproximo.github.io/didakora/exelearning/): eXeLearning es un programa libre y gratuito para crear recursos educativos interactivos: unidades completas con textos, imágenes, vídeos y actividades autocorregibles.
-- [Gamma](https://pasadoproximo.github.io/didakora/gamma/): Gamma crea presentaciones, documentos y páginas web a partir de una idea o un texto con ayuda de la inteligencia artificial.
-- [Fliki](https://pasadoproximo.github.io/didakora/fliki/): Fliki crea vídeos con voz a partir de un guion o una idea.
-- [ElevenLabs](https://pasadoproximo.github.io/didakora/elevenlabs/): ElevenLabs convierte un texto escrito en audio con voces de inteligencia artificial muy naturales, en español y en muchos otros idiomas.
-- [Loom](https://pasadoproximo.github.io/didakora/loom/): Loom graba a la vez la pantalla del ordenador y la cámara y comparte el vídeo con un enlace al instante.
-- [PicsArt](https://pasadoproximo.github.io/didakora/picsart/): PicsArt es un editor de imágenes para móvil y web.
+- [Canva para Educación](https://didakora.es/canva/): Canva es una herramienta de diseño gráfico con miles de plantillas.
+- [Genially](https://didakora.es/genially/): Genially sirve para crear contenidos interactivos: presentaciones, infografías, imágenes con puntos que se pueden pulsar, juegos y escape rooms.
+- [Book Creator](https://didakora.es/bookcreator/): Book Creator permite crear libros digitales combinando texto, imágenes, dibujos, audio y vídeo.
+- [Sway](https://didakora.es/sway/): Sway es la herramienta de Microsoft para crear presentaciones que se leen como una página web.
+- [Timetoast](https://didakora.es/timetoast/): Timetoast sirve para crear líneas del tiempo interactivas.
+- [StoryMap JS](https://didakora.es/storymap/): StoryMap JS es una herramienta gratuita para contar historias sobre un mapa.
+- [Stop Motion Studio](https://didakora.es/stopmotion/): Stop Motion Studio es una aplicación para hacer animaciones foto a foto.
+- [ChatterPix Kids](https://didakora.es/chatterpix/): ChatterPix Kids es una aplicación para hacer hablar a una imagen.
+- [CapCut](https://didakora.es/capcut/): CapCut es un editor de vídeo para móvil y ordenador con plantillas, efectos y subtítulos automáticos.
+- [Clipchamp](https://didakora.es/clipchamp/): Clipchamp es el editor de vídeo de Microsoft.
+- [Vocaroo](https://didakora.es/vocaroo/): Vocaroo es la forma más sencilla de grabar un audio: se pulsa un botón, se graba con el micrófono y se obtiene un enlace para compartirlo.
+- [Audacity](https://didakora.es/audacity/): Audacity es un programa libre y gratuito para grabar y editar audio.
+- [Zencastr](https://didakora.es/zencastr/): Zencastr permite grabar un pódcast con varias personas que están en lugares distintos.
+- [Suno](https://didakora.es/suno/): Suno es una herramienta de inteligencia artificial que crea canciones.
+- [eXeLearning](https://didakora.es/exelearning/): eXeLearning es un programa libre y gratuito para crear recursos educativos interactivos: unidades completas con textos, imágenes, vídeos y actividades autocorregibles.
+- [Gamma](https://didakora.es/gamma/): Gamma crea presentaciones, documentos y páginas web a partir de una idea o un texto con ayuda de la inteligencia artificial.
+- [Fliki](https://didakora.es/fliki/): Fliki crea vídeos con voz a partir de un guion o una idea.
+- [ElevenLabs](https://didakora.es/elevenlabs/): ElevenLabs convierte un texto escrito en audio con voces de inteligencia artificial muy naturales, en español y en muchos otros idiomas.
+- [Loom](https://didakora.es/loom/): Loom graba a la vez la pantalla del ordenador y la cámara y comparte el vídeo con un enlace al instante.
+- [PicsArt](https://didakora.es/picsart/): PicsArt es un editor de imágenes para móvil y web.
 
 ## Colaborar y organizar
 
 Murales, mapas mentales, pizarras y herramientas para organizar recursos.
 
-- [Padlet](https://pasadoproximo.github.io/didakora/padlet/): Padlet es un muro digital compartido.
-- [Mindomo](https://pasadoproximo.github.io/didakora/mindomo/): Mindomo sirve para crear mapas mentales, mapas conceptuales y esquemas.
-- [Stormboard](https://pasadoproximo.github.io/didakora/stormboard/): Stormboard es una pizarra digital compartida con notas adhesivas.
-- [Microsoft Loop](https://pasadoproximo.github.io/didakora/loop/): Microsoft Loop es un espacio de trabajo compartido con listas de tareas, tablas y notas que se actualizan en tiempo real para todo el equipo.
-- [Trello](https://pasadoproximo.github.io/didakora/trello/): Trello organiza el trabajo en tableros con columnas, por ejemplo «pendiente», «en curso» y «hecho».
-- [Kialo Edu](https://pasadoproximo.github.io/didakora/kialo/): Kialo Edu es una plataforma para debatir por escrito en clase.
-- [Symbaloo](https://pasadoproximo.github.io/didakora/symbaloo/): Symbaloo organiza tus enlaces favoritos en escritorios visuales con forma de mosaico.
-- [Pearltrees](https://pasadoproximo.github.io/didakora/pearltrees/): Pearltrees sirve para guardar y organizar enlaces, documentos, imágenes y notas en colecciones con forma de árbol.
-- [Feedly](https://pasadoproximo.github.io/didakora/feedly/): Feedly reúne en un solo sitio las novedades de las webs, blogs y revistas que sigues, sin tener que visitarlas una a una.
-- [Wakelet](https://pasadoproximo.github.io/didakora/wakelet/): Wakelet permite crear colecciones de enlaces, vídeos, documentos e imágenes para organizar y compartir contenido.
-- [iLovePDF](https://pasadoproximo.github.io/didakora/ilovepdf/): iLovePDF es un conjunto de herramientas en línea para trabajar con PDF: unir, dividir, comprimir, convertir a Word u otros formatos, girar o numerar páginas.
+- [Padlet](https://didakora.es/padlet/): Padlet es un muro digital compartido.
+- [Mindomo](https://didakora.es/mindomo/): Mindomo sirve para crear mapas mentales, mapas conceptuales y esquemas.
+- [Stormboard](https://didakora.es/stormboard/): Stormboard es una pizarra digital compartida con notas adhesivas.
+- [Microsoft Loop](https://didakora.es/loop/): Microsoft Loop es un espacio de trabajo compartido con listas de tareas, tablas y notas que se actualizan en tiempo real para todo el equipo.
+- [Trello](https://didakora.es/trello/): Trello organiza el trabajo en tableros con columnas, por ejemplo «pendiente», «en curso» y «hecho».
+- [Kialo Edu](https://didakora.es/kialo/): Kialo Edu es una plataforma para debatir por escrito en clase.
+- [Symbaloo](https://didakora.es/symbaloo/): Symbaloo organiza tus enlaces favoritos en escritorios visuales con forma de mosaico.
+- [Pearltrees](https://didakora.es/pearltrees/): Pearltrees sirve para guardar y organizar enlaces, documentos, imágenes y notas en colecciones con forma de árbol.
+- [Feedly](https://didakora.es/feedly/): Feedly reúne en un solo sitio las novedades de las webs, blogs y revistas que sigues, sin tener que visitarlas una a una.
+- [Wakelet](https://didakora.es/wakelet/): Wakelet permite crear colecciones de enlaces, vídeos, documentos e imágenes para organizar y compartir contenido.
+- [iLovePDF](https://didakora.es/ilovepdf/): iLovePDF es un conjunto de herramientas en línea para trabajar con PDF: unir, dividir, comprimir, convertir a Word u otros formatos, girar o numerar páginas.
 
 ## Explorar por materias
 
 Herramientas propias de Geografía e Historia, Ciencias, Música y Arte o lectura.
 
-- [Google Arts & Culture](https://pasadoproximo.github.io/didakora/artsculture/): Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo.
-- [Visitas virtuales 360°](https://pasadoproximo.github.io/didakora/visitas/): Las visitas virtuales en 360° son recorridos por dentro de museos y monumentos que se hacen desde el aula, en la web de cada lugar.
-- [Google Earth](https://pasadoproximo.github.io/didakora/earth/): Google Earth es un globo terráqueo en 3D con imágenes de satélite de todo el planeta.
-- [GeaCron](https://pasadoproximo.github.io/didakora/geacron/): GeaCron es un atlas histórico interactivo.
-- [Historia Hispánica](https://pasadoproximo.github.io/didakora/rah/): Historia Hispánica es el portal de la Real Academia de la Historia.
-- [DelMundo](https://pasadoproximo.github.io/didakora/delmundo/): DelMundo es una enciclopedia digital y atlas geográfico.
-- [KGeography](https://pasadoproximo.github.io/didakora/kgeography/): KGeography es un programa libre para aprender geografía jugando.
-- [Ancient Earth](https://pasadoproximo.github.io/didakora/ancientearth/): Ancient Earth es un globo interactivo que muestra la posición de los continentes en distintos momentos de la historia de la Tierra.
-- [GeoGebra](https://pasadoproximo.github.io/didakora/geogebra/): GeoGebra es una aplicación de matemáticas dinámicas que une geometría, álgebra, funciones, estadística y cálculo.
-- [Desmos](https://pasadoproximo.github.io/didakora/desmos/): Desmos reúne calculadoras gráfica, geométrica y científica en línea.
-- [PhET](https://pasadoproximo.github.io/didakora/phet/): PhET, de la Universidad de Colorado, ofrece simulaciones interactivas y gratuitas de física, química, biología y matemáticas, traducidas al español.
-- [Gizmos](https://pasadoproximo.github.io/didakora/gizmos/): Gizmos es una colección de simulaciones de ciencias y matemáticas, en inglés, con guías de actividad para cada una.
-- [Anatomy 3D Atlas](https://pasadoproximo.github.io/didakora/anatomy3d/): Anatomy 3D Atlas es una aplicación con modelos anatómicos en 3D muy detallados.
-- [Vertebrados ibéricos](https://pasadoproximo.github.io/didakora/vertebrados/): Vertebrados ibéricos es una enciclopedia del CSIC con fichas de los anfibios, reptiles, aves y mamíferos de la Península, Baleares y Canarias.
-- [La Bolsa Virtual](https://pasadoproximo.github.io/didakora/bolsa/): La Bolsa Virtual es un simulador de bolsa gratuito con dinero ficticio.
-- [MuseScore](https://pasadoproximo.github.io/didakora/musescore/): MuseScore es un programa libre y gratuito para escribir, editar y reproducir partituras.
-- [Incredibox](https://pasadoproximo.github.io/didakora/incredibox/): Incredibox es una aplicación para crear música arrastrando sonidos sobre unos personajes animados.
-- [musictheory.net](https://pasadoproximo.github.io/didakora/musictheory/): musictheory.net ofrece lecciones y ejercicios gratuitos de lenguaje musical: lectura de notas, intervalos, escalas, acordes y entrenamiento auditivo.
-- [LibreCAD](https://pasadoproximo.github.io/didakora/librecad/): LibreCAD es un programa libre y gratuito de dibujo técnico en 2D.
-- [Lector inmersivo](https://pasadoproximo.github.io/didakora/immersive/): El Lector inmersivo es una herramienta gratuita de Microsoft integrada en Edge, Word, OneNote y Teams.
-- [LanguageTool](https://pasadoproximo.github.io/didakora/languagetool/): LanguageTool es un corrector de ortografía, gramática y estilo que funciona en varios idiomas, entre ellos el español y el inglés.
-- [Read&Write](https://pasadoproximo.github.io/didakora/readwrite/): Read&Write, de Everway (antes Texthelp), es una barra de herramientas de apoyo a la lectura y la escritura.
+- [Google Arts & Culture](https://didakora.es/artsculture/): Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo.
+- [Visitas virtuales 360°](https://didakora.es/visitas/): Las visitas virtuales en 360° son recorridos por dentro de museos y monumentos que se hacen desde el aula, en la web de cada lugar.
+- [Google Earth](https://didakora.es/earth/): Google Earth es un globo terráqueo en 3D con imágenes de satélite de todo el planeta.
+- [GeaCron](https://didakora.es/geacron/): GeaCron es un atlas histórico interactivo.
+- [Historia Hispánica](https://didakora.es/rah/): Historia Hispánica es el portal de la Real Academia de la Historia.
+- [DelMundo](https://didakora.es/delmundo/): DelMundo es una enciclopedia digital y atlas geográfico.
+- [KGeography](https://didakora.es/kgeography/): KGeography es un programa libre para aprender geografía jugando.
+- [Ancient Earth](https://didakora.es/ancientearth/): Ancient Earth es un globo interactivo que muestra la posición de los continentes en distintos momentos de la historia de la Tierra.
+- [GeoGebra](https://didakora.es/geogebra/): GeoGebra es una aplicación de matemáticas dinámicas que une geometría, álgebra, funciones, estadística y cálculo.
+- [Desmos](https://didakora.es/desmos/): Desmos reúne calculadoras gráfica, geométrica y científica en línea.
+- [PhET](https://didakora.es/phet/): PhET, de la Universidad de Colorado, ofrece simulaciones interactivas y gratuitas de física, química, biología y matemáticas, traducidas al español.
+- [Gizmos](https://didakora.es/gizmos/): Gizmos es una colección de simulaciones de ciencias y matemáticas, en inglés, con guías de actividad para cada una.
+- [Anatomy 3D Atlas](https://didakora.es/anatomy3d/): Anatomy 3D Atlas es una aplicación con modelos anatómicos en 3D muy detallados.
+- [Vertebrados ibéricos](https://didakora.es/vertebrados/): Vertebrados ibéricos es una enciclopedia del CSIC con fichas de los anfibios, reptiles, aves y mamíferos de la Península, Baleares y Canarias.
+- [La Bolsa Virtual](https://didakora.es/bolsa/): La Bolsa Virtual es un simulador de bolsa gratuito con dinero ficticio.
+- [MuseScore](https://didakora.es/musescore/): MuseScore es un programa libre y gratuito para escribir, editar y reproducir partituras.
+- [Incredibox](https://didakora.es/incredibox/): Incredibox es una aplicación para crear música arrastrando sonidos sobre unos personajes animados.
+- [musictheory.net](https://didakora.es/musictheory/): musictheory.net ofrece lecciones y ejercicios gratuitos de lenguaje musical: lectura de notas, intervalos, escalas, acordes y entrenamiento auditivo.
+- [LibreCAD](https://didakora.es/librecad/): LibreCAD es un programa libre y gratuito de dibujo técnico en 2D.
+- [Lector inmersivo](https://didakora.es/immersive/): El Lector inmersivo es una herramienta gratuita de Microsoft integrada en Edge, Word, OneNote y Teams.
+- [LanguageTool](https://didakora.es/languagetool/): LanguageTool es un corrector de ortografía, gramática y estilo que funciona en varios idiomas, entre ellos el español y el inglés.
+- [Read&Write](https://didakora.es/readwrite/): Read&Write, de Everway (antes Texthelp), es una barra de herramientas de apoyo a la lectura y la escritura.
 
 ## Programación y diseño 3D
 
 Pensamiento computacional, programación por bloques y diseño en 3D.
 
-- [Tinkercad](https://pasadoproximo.github.io/didakora/tinkercad/): Tinkercad es una herramienta gratuita de Autodesk para diseñar en 3D, montar y simular circuitos electrónicos y programar con bloques.
-- [Wokwi](https://pasadoproximo.github.io/didakora/wokwi/): Wokwi es un simulador de electrónica en línea: eliges una placa (Arduino Uno, Mega o Nano, ESP32, STM32 o Raspberry Pi Pico), le conectas componentes como LED, sensores o pantallas y la programas en el lenguaje de Arduino o en MicroPython para ver si funciona sin tener el material.
-- [Scratch](https://pasadoproximo.github.io/didakora/scratch/): Scratch, del MIT, es un lenguaje de programación por bloques para crear juegos, animaciones e historias interactivas.
-- [Snap!](https://pasadoproximo.github.io/didakora/snap/): Snap! es un lenguaje de programación por bloques de la Universidad de Berkeley, parecido a Scratch pero con conceptos más avanzados, como funciones propias, listas y recursividad.
-- [Blockly Games](https://pasadoproximo.github.io/didakora/blockly/): Blockly Games es una serie de juegos libres para aprender a programar con bloques.
-- [Code.org](https://pasadoproximo.github.io/didakora/codeorg/): Code.org ofrece cursos y actividades gratuitas de programación por niveles, con tutoriales de la Hora del Código y materiales para entender cómo funciona la inteligencia artificial.
-- [MIT App Inventor](https://pasadoproximo.github.io/didakora/appinventor/): MIT App Inventor permite crear aplicaciones para móviles Android e iPhone programando con bloques.
-- [Thunkable](https://pasadoproximo.github.io/didakora/thunkable/): Thunkable sirve para crear aplicaciones para iOS, Android y web sin escribir código, arrastrando componentes y bloques de lógica.
-- [Delightex Edu](https://pasadoproximo.github.io/didakora/cospaces/): Delightex Edu (antes CoSpaces Edu) permite crear mundos en 3D, realidad virtual y realidad aumentada y programar lo que ocurre en ellos con bloques.
-- [CoppeliaSim](https://pasadoproximo.github.io/didakora/coppelia/): CoppeliaSim es un simulador de robótica profesional.
-- [SnatchBot](https://pasadoproximo.github.io/didakora/snatchbot/): SnatchBot es una plataforma para crear chatbots sin programar, con un editor visual de arrastrar y soltar.
+- [Tinkercad](https://didakora.es/tinkercad/): Tinkercad es una herramienta gratuita de Autodesk para diseñar en 3D, montar y simular circuitos electrónicos y programar con bloques.
+- [Wokwi](https://didakora.es/wokwi/): Wokwi es un simulador de electrónica en línea: eliges una placa (Arduino Uno, Mega o Nano, ESP32, STM32 o Raspberry Pi Pico), le conectas componentes como LED, sensores o pantallas y la programas en el lenguaje de Arduino o en MicroPython para ver si funciona sin tener el material.
+- [Scratch](https://didakora.es/scratch/): Scratch, del MIT, es un lenguaje de programación por bloques para crear juegos, animaciones e historias interactivas.
+- [Snap!](https://didakora.es/snap/): Snap! es un lenguaje de programación por bloques de la Universidad de Berkeley, parecido a Scratch pero con conceptos más avanzados, como funciones propias, listas y recursividad.
+- [Blockly Games](https://didakora.es/blockly/): Blockly Games es una serie de juegos libres para aprender a programar con bloques.
+- [Code.org](https://didakora.es/codeorg/): Code.org ofrece cursos y actividades gratuitas de programación por niveles, con tutoriales de la Hora del Código y materiales para entender cómo funciona la inteligencia artificial.
+- [MIT App Inventor](https://didakora.es/appinventor/): MIT App Inventor permite crear aplicaciones para móviles Android e iPhone programando con bloques.
+- [Thunkable](https://didakora.es/thunkable/): Thunkable sirve para crear aplicaciones para iOS, Android y web sin escribir código, arrastrando componentes y bloques de lógica.
+- [Delightex Edu](https://didakora.es/cospaces/): Delightex Edu (antes CoSpaces Edu) permite crear mundos en 3D, realidad virtual y realidad aumentada y programar lo que ocurre en ellos con bloques.
+- [CoppeliaSim](https://didakora.es/coppelia/): CoppeliaSim es un simulador de robótica profesional.
+- [SnatchBot](https://didakora.es/snatchbot/): SnatchBot es una plataforma para crear chatbots sin programar, con un editor visual de arrastrar y soltar.
 
 ## Inteligencia artificial
 
 Asistentes y herramientas de IA para preparar clase y para el alumnado.
 
-- [SchoolAI](https://pasadoproximo.github.io/didakora/schoolai/): SchoolAI permite al docente crear espacios de conversación con un tutor de inteligencia artificial que sigue sus reglas y límites.
-- [Snorkl](https://pasadoproximo.github.io/didakora/snorkl/): Snorkl pide al alumnado que explique su razonamiento en voz alta y con dibujos sobre una pizarra.
-- [Gemini](https://pasadoproximo.github.io/didakora/gemini/): Gemini es el asistente de inteligencia artificial de Google.
-- [NotebookLM](https://pasadoproximo.github.io/didakora/notebooklm/): NotebookLM es una herramienta de Google que responde solo a partir de los documentos que le subes: apuntes, artículos, la programación o un vídeo.
-- [Microsoft Copilot Chat](https://pasadoproximo.github.io/didakora/copilot/): Microsoft Copilot Chat es el asistente de inteligencia artificial de Microsoft.
-- [ChatGPT](https://pasadoproximo.github.io/didakora/chatgpt/): ChatGPT, de OpenAI, es el asistente de inteligencia artificial más conocido.
-- [Claude](https://pasadoproximo.github.io/didakora/claude/): Claude, de Anthropic, es un asistente de inteligencia artificial que trabaja bien con documentos largos.
-- [EduGems](https://pasadoproximo.github.io/didakora/edugems/): EduGems reúne más de 160 prompts para Gemini pensados para docentes, de Eric Curts, autor del blog Control Alt Achieve.
-- [MagicSchool](https://pasadoproximo.github.io/didakora/magicschool/): MagicSchool reúne decenas de generadores de inteligencia artificial pensados para docentes: rúbricas, bancos de preguntas, adaptaciones de textos o comunicaciones a familias.
-- [Diffit](https://pasadoproximo.github.io/didakora/diffit/): Diffit convierte un tema, un texto o un enlace en una lectura adaptada al nivel que elijas, con vocabulario y preguntas de comprensión.
-- [Brisk Teaching](https://pasadoproximo.github.io/didakora/brisk/): Brisk Teaching es una extensión de Chrome que añade inteligencia artificial a Google Docs, Slides y a cualquier página web.
-- [ChatPDF](https://pasadoproximo.github.io/didakora/chatpdf/): ChatPDF permite subir un documento PDF y hacerle preguntas sobre su contenido.
-- [Lexica](https://pasadoproximo.github.io/didakora/lexica/): Lexica es un buscador de imágenes creadas con inteligencia artificial y un generador de imágenes propio.
+- [SchoolAI](https://didakora.es/schoolai/): SchoolAI permite al docente crear espacios de conversación con un tutor de inteligencia artificial que sigue sus reglas y límites.
+- [Snorkl](https://didakora.es/snorkl/): Snorkl pide al alumnado que explique su razonamiento en voz alta y con dibujos sobre una pizarra.
+- [Gemini](https://didakora.es/gemini/): Gemini es el asistente de inteligencia artificial de Google.
+- [NotebookLM](https://didakora.es/notebooklm/): NotebookLM es una herramienta de Google que responde solo a partir de los documentos que le subes: apuntes, artículos, la programación o un vídeo.
+- [Microsoft Copilot Chat](https://didakora.es/copilot/): Microsoft Copilot Chat es el asistente de inteligencia artificial de Microsoft.
+- [ChatGPT](https://didakora.es/chatgpt/): ChatGPT, de OpenAI, es el asistente de inteligencia artificial más conocido.
+- [Claude](https://didakora.es/claude/): Claude, de Anthropic, es un asistente de inteligencia artificial que trabaja bien con documentos largos.
+- [EduGems](https://didakora.es/edugems/): EduGems reúne más de 160 prompts para Gemini pensados para docentes, de Eric Curts, autor del blog Control Alt Achieve.
+- [MagicSchool](https://didakora.es/magicschool/): MagicSchool reúne decenas de generadores de inteligencia artificial pensados para docentes: rúbricas, bancos de preguntas, adaptaciones de textos o comunicaciones a familias.
+- [Diffit](https://didakora.es/diffit/): Diffit convierte un tema, un texto o un enlace en una lectura adaptada al nivel que elijas, con vocabulario y preguntas de comprensión.
+- [Brisk Teaching](https://didakora.es/brisk/): Brisk Teaching es una extensión de Chrome que añade inteligencia artificial a Google Docs, Slides y a cualquier página web.
+- [ChatPDF](https://didakora.es/chatpdf/): ChatPDF permite subir un documento PDF y hacerle preguntas sobre su contenido.
+- [Lexica](https://didakora.es/lexica/): Lexica es un buscador de imágenes creadas con inteligencia artificial y un generador de imágenes propio.
 
 ## Evaluación y seguimiento
 
 Formularios, rúbricas, itinerarios e insignias.
 
-- [CoRubrics](https://pasadoproximo.github.io/didakora/corubrics/): CoRubrics es un complemento gratuito de Hojas de cálculo de Google para evaluar con rúbricas.
-- [Doc to Form Quiz Maker](https://pasadoproximo.github.io/didakora/doctoform/): Doc to Form Quiz Maker es un complemento gratuito de Google Docs.
-- [Google Forms](https://pasadoproximo.github.io/didakora/gforms/): Google Forms sirve para crear cuestionarios, exámenes que se corrigen solos y encuestas.
-- [Microsoft Forms](https://pasadoproximo.github.io/didakora/msforms/): Microsoft Forms permite crear cuestionarios y encuestas que se corrigen solos.
-- [Jotform](https://pasadoproximo.github.io/didakora/jotform/): Jotform es un creador de formularios con muchos tipos de campo y plantillas.
-- [Symbaloo Learning Paths](https://pasadoproximo.github.io/didakora/learningpaths/): Learning Paths es una función de Symbaloo que convierte un webmix en un itinerario de aprendizaje.
-- [Open Badge Designer](https://pasadoproximo.github.io/didakora/badge/): Open Badge Designer es una herramienta gratuita para diseñar insignias digitales.
+- [CoRubrics](https://didakora.es/corubrics/): CoRubrics es un complemento gratuito de Hojas de cálculo de Google para evaluar con rúbricas.
+- [Doc to Form Quiz Maker](https://didakora.es/doctoform/): Doc to Form Quiz Maker es un complemento gratuito de Google Docs.
+- [Google Forms](https://didakora.es/gforms/): Google Forms sirve para crear cuestionarios, exámenes que se corrigen solos y encuestas.
+- [Microsoft Forms](https://didakora.es/msforms/): Microsoft Forms permite crear cuestionarios y encuestas que se corrigen solos.
+- [Jotform](https://didakora.es/jotform/): Jotform es un creador de formularios con muchos tipos de campo y plantillas.
+- [Symbaloo Learning Paths](https://didakora.es/learningpaths/): Learning Paths es una función de Symbaloo que convierte un webmix en un itinerario de aprendizaje.
+- [Open Badge Designer](https://didakora.es/badge/): Open Badge Designer es una herramienta gratuita para diseñar insignias digitales.
 
 ## Gestión del aula y familias
 
 Rutinas de clase, cuaderno del docente y comunicación con las familias.
 
-- [Additio](https://pasadoproximo.github.io/didakora/additio/): Additio es un cuaderno del profesor digital.
-- [iDoceo](https://pasadoproximo.github.io/didakora/idoceo/): iDoceo es un cuaderno del profesor muy completo para iPad, iPhone y Mac.
-- [ClassDojo](https://pasadoproximo.github.io/didakora/classdojo/): ClassDojo es una herramienta de gestión del aula y comunicación con familias.
-- [Classroomscreen](https://pasadoproximo.github.io/didakora/classroomscreen/): Classroomscreen es una pantalla para proyectar en clase con herramientas para gestionar la sesión: temporizador, semáforo, medidor de ruido, selector al azar, instrucciones de trabajo y mucho más.
-- [Fastboard](https://pasadoproximo.github.io/didakora/fastboard/): Fastboard es una pizarra en línea para dibujar y escribir a la vez con otras personas.
-- [Koalendar](https://pasadoproximo.github.io/didakora/koalendar/): Koalendar es una agenda en línea para que otras personas reserven cita contigo.
+- [Additio](https://didakora.es/additio/): Additio es un cuaderno del profesor digital.
+- [iDoceo](https://didakora.es/idoceo/): iDoceo es un cuaderno del profesor muy completo para iPad, iPhone y Mac.
+- [ClassDojo](https://didakora.es/classdojo/): ClassDojo es una herramienta de gestión del aula y comunicación con familias.
+- [Classroomscreen](https://didakora.es/classroomscreen/): Classroomscreen es una pantalla para proyectar en clase con herramientas para gestionar la sesión: temporizador, semáforo, medidor de ruido, selector al azar, instrucciones de trabajo y mucho más.
+- [Fastboard](https://didakora.es/fastboard/): Fastboard es una pizarra en línea para dibujar y escribir a la vez con otras personas.
+- [Koalendar](https://didakora.es/koalendar/): Koalendar es una agenda en línea para que otras personas reserven cita contigo.
 
 ## Aulas virtuales
 
 Plataformas para organizar el curso, las tareas y las entregas.
 
-- [Google Classroom](https://pasadoproximo.github.io/didakora/classroom/): Google Classroom es el aula virtual de Google.
-- [Microsoft Teams Educación](https://pasadoproximo.github.io/didakora/teams/): Microsoft Teams Educación es el aula virtual de Microsoft.
-- [Moodle](https://pasadoproximo.github.io/didakora/moodle/): Moodle es una plataforma libre de aulas virtuales que usan muchas administraciones educativas; en Andalucía, Moodle Centros.
+- [Google Classroom](https://didakora.es/classroom/): Google Classroom es el aula virtual de Google.
+- [Microsoft Teams Educación](https://didakora.es/teams/): Microsoft Teams Educación es el aula virtual de Microsoft.
+- [Moodle](https://didakora.es/moodle/): Moodle es una plataforma libre de aulas virtuales que usan muchas administraciones educativas; en Andalucía, Moodle Centros.
 
 ## Bancos de recursos e imágenes
 
 Situaciones de aprendizaje, formación, imágenes y recursos abiertos.
 
-- [Procomún](https://pasadoproximo.github.io/didakora/procomun/): Procomún es el repositorio de recursos educativos abiertos del Ministerio de Educación y las comunidades autónomas.
-- [REA/DUA Andalucía](https://pasadoproximo.github.io/didakora/readua/): El banco de Recursos Educativos Abiertos de la Junta de Andalucía ofrece situaciones de aprendizaje completas, con guía docente y enfoque de Diseño Universal para el Aprendizaje (DUA).
-- [Proyecto EDIA](https://pasadoproximo.github.io/didakora/edia/): El Proyecto EDIA, del CEDEC (INTEF), ofrece situaciones de aprendizaje abiertas con plantillas, guías y rúbricas, desde Infantil hasta Formación Profesional.
-- [Pixabay](https://pasadoproximo.github.io/didakora/pixabay/): Pixabay es un banco de imágenes, ilustraciones, vídeos y música que se pueden usar gratis, también en materiales educativos, sin necesidad de citar al autor.
-- [Magnific](https://pasadoproximo.github.io/didakora/magnific/): Magnific es el nuevo nombre de Freepik desde 2026.
-- [Unsplash](https://pasadoproximo.github.io/didakora/unsplash/): Unsplash es un banco de fotografías de alta calidad que se pueden usar gratis, también en materiales educativos, sin pedir permiso.
-- [Pexels](https://pasadoproximo.github.io/didakora/pexels/): Pexels ofrece fotos y vídeos gratuitos de buena calidad, muy útiles para presentaciones y montajes de vídeo del alumnado.
-- [Wikimedia Commons](https://pasadoproximo.github.io/didakora/wikicommons/): Wikimedia Commons es el banco de archivos de Wikipedia: millones de imágenes, mapas, audios y documentos históricos con licencia libre.
-- [Openverse](https://pasadoproximo.github.io/didakora/openverse/): Openverse es un buscador de imágenes y sonidos con licencias abiertas, impulsado por WordPress.
-- [Europeana](https://pasadoproximo.github.io/didakora/europeana/): Europeana es la gran biblioteca digital del patrimonio europeo.
-- [The Met · Open Access](https://pasadoproximo.github.io/didakora/metmuseum/): El Metropolitan Museum de Nueva York ofrece en acceso abierto imágenes en alta resolución de una gran parte de su colección.
-- [Flaticon](https://pasadoproximo.github.io/didakora/flaticon/): Flaticon es un banco de iconos y pegatinas, también animados, en muchos estilos.
-- [Sketchfab](https://pasadoproximo.github.io/didakora/sketchfab/): Sketchfab es una plataforma de modelos 3D: monumentos, piezas de museo, fósiles, objetos o personajes.
-- [Coolors](https://pasadoproximo.github.io/didakora/coolors/): Coolors es un generador de paletas de colores.
-- [INTEF](https://pasadoproximo.github.io/didakora/intef/): El INTEF es el Instituto Nacional de Tecnologías Educativas y de Formación del Profesorado.
-- [Educagob](https://pasadoproximo.github.io/didakora/educagob/): Educagob es el portal del Ministerio de Educación con información sobre el currículo, la normativa y recursos para el profesorado de todas las etapas.
-- [Educación 3.0](https://pasadoproximo.github.io/didakora/edu30/): Educación 3.0 es una revista sobre innovación educativa, tecnología y recursos para el aula, con experiencias de docentes y recopilaciones de herramientas.
-- [Profesor Productivo](https://pasadoproximo.github.io/didakora/profeprod/): Profesor Productivo es el proyecto de Guillermo Antón sobre inteligencia artificial para docentes.
-- [Blog de Rosa Liarte](https://pasadoproximo.github.io/didakora/rosaliarte/): El blog de Rosa Liarte, profesora de Geografía e Historia, comparte experiencias y recursos sobre tecnología y aprendizaje móvil en el aula.
-- [Academia Play](https://pasadoproximo.github.io/didakora/academiaplay/): Academia Play es un canal de divulgación en vídeo sobre Historia, Arte y Geografía, que también trata temas de actualidad.
+- [Procomún](https://didakora.es/procomun/): Procomún es el repositorio de recursos educativos abiertos del Ministerio de Educación y las comunidades autónomas.
+- [REA/DUA Andalucía](https://didakora.es/readua/): El banco de Recursos Educativos Abiertos de la Junta de Andalucía ofrece situaciones de aprendizaje completas, con guía docente y enfoque de Diseño Universal para el Aprendizaje (DUA).
+- [Proyecto EDIA](https://didakora.es/edia/): El Proyecto EDIA, del CEDEC (INTEF), ofrece situaciones de aprendizaje abiertas con plantillas, guías y rúbricas, desde Infantil hasta Formación Profesional.
+- [Pixabay](https://didakora.es/pixabay/): Pixabay es un banco de imágenes, ilustraciones, vídeos y música que se pueden usar gratis, también en materiales educativos, sin necesidad de citar al autor.
+- [Magnific](https://didakora.es/magnific/): Magnific es el nuevo nombre de Freepik desde 2026.
+- [Unsplash](https://didakora.es/unsplash/): Unsplash es un banco de fotografías de alta calidad que se pueden usar gratis, también en materiales educativos, sin pedir permiso.
+- [Pexels](https://didakora.es/pexels/): Pexels ofrece fotos y vídeos gratuitos de buena calidad, muy útiles para presentaciones y montajes de vídeo del alumnado.
+- [Wikimedia Commons](https://didakora.es/wikicommons/): Wikimedia Commons es el banco de archivos de Wikipedia: millones de imágenes, mapas, audios y documentos históricos con licencia libre.
+- [Openverse](https://didakora.es/openverse/): Openverse es un buscador de imágenes y sonidos con licencias abiertas, impulsado por WordPress.
+- [Europeana](https://didakora.es/europeana/): Europeana es la gran biblioteca digital del patrimonio europeo.
+- [The Met · Open Access](https://didakora.es/metmuseum/): El Metropolitan Museum de Nueva York ofrece en acceso abierto imágenes en alta resolución de una gran parte de su colección.
+- [Flaticon](https://didakora.es/flaticon/): Flaticon es un banco de iconos y pegatinas, también animados, en muchos estilos.
+- [Sketchfab](https://didakora.es/sketchfab/): Sketchfab es una plataforma de modelos 3D: monumentos, piezas de museo, fósiles, objetos o personajes.
+- [Coolors](https://didakora.es/coolors/): Coolors es un generador de paletas de colores.
+- [INTEF](https://didakora.es/intef/): El INTEF es el Instituto Nacional de Tecnologías Educativas y de Formación del Profesorado.
+- [Educagob](https://didakora.es/educagob/): Educagob es el portal del Ministerio de Educación con información sobre el currículo, la normativa y recursos para el profesorado de todas las etapas.
+- [Educación 3.0](https://didakora.es/edu30/): Educación 3.0 es una revista sobre innovación educativa, tecnología y recursos para el aula, con experiencias de docentes y recopilaciones de herramientas.
+- [Profesor Productivo](https://didakora.es/profeprod/): Profesor Productivo es el proyecto de Guillermo Antón sobre inteligencia artificial para docentes.
+- [Blog de Rosa Liarte](https://didakora.es/rosaliarte/): El blog de Rosa Liarte, profesora de Geografía e Historia, comparte experiencias y recursos sobre tecnología y aprendizaje móvil en el aula.
+- [Academia Play](https://didakora.es/academiaplay/): Academia Play es un canal de divulgación en vídeo sobre Historia, Arte y Geografía, que también trata temas de actualidad.
 
 ## Actualidad
 
-- [3 hábitos para distinguir fuentes fiables en internet](https://pasadoproximo.github.io/didakora/actualidad/habitos-fuentes-fiables/): Una web bien diseñada no garantiza nada. Michael Yell propone en Edutopia tres hábitos para que el alumnado compruebe quién hay detrás de lo que lee y aquí te contamos cómo llevarlos a clase.
-- [Los Gems de Gemini pasan a ser skills](https://pasadoproximo.github.io/didakora/actualidad/gems-gemini-pasan-a-skills/): Google sustituye los Gems por skills y el 17 de noviembre da el primer paso. En los centros educativos seguirán funcionando al menos hasta el 1 de junio de 2027 y conviene prepararse con calma.
-- [5 apps STEAM para aprender experimentando](https://pasadoproximo.github.io/didakora/actualidad/apps-steam-aprender-experimentando/): Realidad aumentada, simulaciones y juegos para unir ciencia, tecnología, arte y matemáticas. Repasamos las cinco apps que propone Educación 3.0 y cómo sacarles partido en clase.
-- [Tutorías con familias sin cruzar correos](https://pasadoproximo.github.io/didakora/actualidad/tutorias-familias-koalendar/): Koalendar deja que las familias reserven su tutoría en los huecos que tú marcas. Te contamos qué ofrece gratis, cómo pedir el descuento para docentes y cómo dejar tu agenda lista.
-- [La IA, sus sesgos y la diversidad en clase](https://pasadoproximo.github.io/didakora/actualidad/ia-sesgos-diversidad-clase/): EDUGENIA, del Instituto de las Mujeres, ayuda a trabajar en clase los sesgos de género de la IA. La reunimos con 23 prompts para adaptar tareas y atender a la diversidad.
-- [La guía de IA del INTEF 2.0](https://pasadoproximo.github.io/didakora/actualidad/guia-ia-intef-2-0/): El INTEF publicó en septiembre la versión 2.0 de su guía sobre IA en educación. Con el curso en marcha, es buen momento para ver qué trae y cómo llevarla al aula este trimestre.
+- [3 hábitos para distinguir fuentes fiables en internet](https://didakora.es/actualidad/habitos-fuentes-fiables/): Una web bien diseñada no garantiza nada. Michael Yell propone en Edutopia tres hábitos para que el alumnado compruebe quién hay detrás de lo que lee y aquí te contamos cómo llevarlos a clase.
+- [Los Gems de Gemini pasan a ser skills](https://didakora.es/actualidad/gems-gemini-pasan-a-skills/): Google sustituye los Gems por skills y el 17 de noviembre da el primer paso. En los centros educativos seguirán funcionando al menos hasta el 1 de junio de 2027 y conviene prepararse con calma.
+- [5 apps STEAM para aprender experimentando](https://didakora.es/actualidad/apps-steam-aprender-experimentando/): Realidad aumentada, simulaciones y juegos para unir ciencia, tecnología, arte y matemáticas. Repasamos las cinco apps que propone Educación 3.0 y cómo sacarles partido en clase.
+- [Tutorías con familias sin cruzar correos](https://didakora.es/actualidad/tutorias-familias-koalendar/): Koalendar deja que las familias reserven su tutoría en los huecos que tú marcas. Te contamos qué ofrece gratis, cómo pedir el descuento para docentes y cómo dejar tu agenda lista.
+- [La IA, sus sesgos y la diversidad en clase](https://didakora.es/actualidad/ia-sesgos-diversidad-clase/): EDUGENIA, del Instituto de las Mujeres, ayuda a trabajar en clase los sesgos de género de la IA. La reunimos con 23 prompts para adaptar tareas y atender a la diversidad.
+- [La guía de IA del INTEF 2.0](https://didakora.es/actualidad/guia-ia-intef-2-0/): El INTEF publicó en septiembre la versión 2.0 de su guía sobre IA en educación. Con el curso en marcha, es buen momento para ver qué trae y cómo llevarla al aula este trimestre.
