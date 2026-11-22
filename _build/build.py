@@ -177,7 +177,13 @@ def titulo_ficha(nm):
     # título para buscadores: lo que buscan los docentes («qué es», «para qué sirve en clase»); sin «!:» en Kahoot!
     return f'{nm}{" " if nm.endswith(("!", "?")) else ": "}{"Q" if nm.endswith(("!", "?")) else "q"}ué es y para qué sirve en clase · Didákora'
 
-def head(title, desc, path, cur="", ld=None):
+def migas(*pasos):
+    """Migas de pan para buscadores (BreadcrumbList): pasos = (nombre, ruta); solo van en los datos estructurados, no se ven."""
+    return {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": f"{WEB}{r}"} for i, (n, r) in enumerate(pasos)]}
+def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website"):
+    # img: imagen al compartir (dirección completa); sin ella, la general de la marca. Las de las fichas: _build/og.py → og/<id>.png
+    og_img = img or f"{WEB}/marca/og.png"; og_alt = img_alt or "Didákora: herramientas digitales para docentes, revisadas una a una"
+    medidas = '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' if not img or "/og/" in img else ""
     return f'''<!doctype html>
 <html lang="es">
 <head>
@@ -188,9 +194,15 @@ def head(title, desc, path, cur="", ld=None):
 <meta name="description" content="{esc(desc)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{WEB}/marca/og.png">
-<meta property="og:type" content="website">
+<meta property="og:url" content="{WEB}{path}">
+<meta property="og:site_name" content="Didákora">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="{esc(og_img)}">
+{medidas}<meta property="og:image:alt" content="{esc(og_alt)}">
+<meta property="og:type" content="{tipo}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{esc(og_img)}">
+<meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="{WEB}{path}">
 {f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{WEB}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{B}/marca/icono-180.png">
@@ -378,7 +390,7 @@ def categorias():
  {blocks}
  <section class="sec others" aria-labelledby="h-otras"><h2 id="h-otras">Otras categorías</h2><div class="oc">{others}</div></section>
 </main>'''
-        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en {mes_revision()}.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{WEB}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{WEB}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}]) + body + foot())
+        write(f"categorias/{c[0]}/index.html", head(f"{c[1]} · Didákora", f"{c[2]} {len(ts)} herramientas revisadas en {mes_revision()}.", f"/categorias/{c[0]}/", "categorias", ld=[{"@type": "CollectionPage", "name": c[1], "url": f"{WEB}/categorias/{c[0]}/", "isPartOf": {"@id": SITIO["@id"]}, "mainEntity": {"@type": "ItemList", "numberOfItems": len(ts), "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{WEB}/{x['id']}/", "name": split_name(x["n"])[0]} for i, x in enumerate(ts)]}}, migas(("Inicio", "/"), ("Categorías", "/categorias/"), (c[1], f"/categorias/{c[0]}/"))]) + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -467,8 +479,11 @@ def ficha(t):
               "author": {"@id": PERSONA["@id"]}, "dateModified": t.get("rev", REV),
               "about": {"@type": "Thing", "name": nm, "url": t["url"], "sameAs": t["url"],
                         "description": f["q"].split(". ")[0].rstrip(".") + "."}}
-    ld = [pagina] + ([{"@type": "FAQPage", "url": f'{WEB}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
-    write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld) + body + foot())
+    con_og = os.path.exists(os.path.join(H, "og", t["id"] + ".png"))
+    if con_og: pagina["primaryImageOfPage"] = {"@type": "ImageObject", "url": f'{WEB}/og/{t["id"]}.png', "width": 1200, "height": 630}
+    ld = [pagina, migas(("Inicio", "/"), (c[1], f"/categorias/{c[0]}/"), (nm, f'/{t["id"]}/'))] + ([{"@type": "FAQPage", "url": f'{WEB}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
+    write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld,
+          img=f'{WEB}/og/{t["id"]}.png' if con_og else None, img_alt=f"{nm}: qué es y para qué sirve en clase. Ficha de Didákora" if con_og else "") + body + foot())
 
 
 # ---------------------------------------------------------------- actualidad (blog)
@@ -576,7 +591,9 @@ def pagina_post(p, path):
     art = {"@type": "BlogPosting", "headline": bt_plano(p["titulo"]).rstrip("."), "description": bt_plano(p["entradilla"])[:300], "url": f"{WEB}{path}",
            "datePublished": p["fecha"][:10], "inLanguage": "es", "author": {"@id": PERSONA["@id"]}, "publisher": {"@id": PERSONA["@id"]}, "isPartOf": {"@id": SITIO["@id"]}}
     if (p.get("portada") or {}).get("src"): art["image"] = f'{WEB}{path}{p["portada"]["src"]}'
-    return head(f'{p["titulo"]} · Didákora', bt_plano(p["entradilla"])[:155], path, "actualidad", ld=[art]).replace("</head>", lectura + "</head>", 1) + body + foot()
+    mini_og = (p.get("miniatura") or {}).get("src")  # al compartir, la miniatura (16:9): la portada (21:9) se recorta en las redes
+    return head(f'{p["titulo"]} · Didákora', bt_plano(p["entradilla"])[:155], path, "actualidad", ld=[art, migas(("Inicio", "/"), ("Actualidad", "/actualidad/"), (bt_plano(p["titulo"]).rstrip("."), path))],
+                img=f'{WEB}{path}{mini_og}' if mini_og else art.get("image"), img_alt=bt_plano(p["titulo"]).rstrip(".") if art.get("image") else "", tipo="article").replace("</head>", lectura + "</head>", 1) + body + foot()
 def seccion_actualidad():
     if not POSTS: return ""
     return f'''
@@ -694,5 +711,8 @@ if __name__ == "__main__":
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
     datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad()
+    import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
+    n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
+    print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")
     for t in TOOLS: ficha(t)
     print("didakora:", len(TOOLS), "fichas,", len(CATS), "categorías")
