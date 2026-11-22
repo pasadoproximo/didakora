@@ -30,6 +30,12 @@ document.addEventListener('click',e=>{const b=e.target.closest('.brand');if(!b||
  e.preventDefault();b.classList.remove('tap');void b.offsetWidth;b.classList.add('tap');
  setTimeout(()=>{if(new URL(b.href).pathname!==location.pathname||location.search||location.hash)location.href=b.href;},480);
 });
+// fila «Compartir»: el botón del enlace lo copia y lo dice al lado
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-copia]');if(!b)return;
+ const ok=b.closest('.comp').querySelector('.comp-ok');
+ try{await navigator.clipboard.writeText(b.dataset.copia);ok.textContent='Enlace copiado';}catch(err){ok.textContent=b.dataset.copia;}
+ setTimeout(()=>{ok.textContent=''},2500);
+});
 // compartir la ficha: menú del sistema si existe; si no, se copia el enlace
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;
  const data={title:document.title,url:location.href};
