@@ -32,9 +32,11 @@ METAS = [("exp", "Explorar un tema", "Investigar, observar y comparar"), ("cre",
          ("equ", "Trabajar en equipo", "Debatir, organizarse o construir juntos"), ("rep", "Repasar", "Practicar lo ya visto"),
          ("eva", "Comprobar qué saben", "Antes, durante o al final"), ("*", "No lo tengo claro", "Proponme una clase completa")]
 
-ACTIVAR = {"t": "Activa lo que ya saben", "m": ["ini"], "alt": "Una pregunta de arranque en la pizarra: ¿qué sabéis ya de esto? Primero la piensa cada uno, luego la comentan por parejas y al final la pone en común el equipo."}
+ACTIVAR = {"t": "Activa lo que ya saben", "m": ["ini"], "alt": "Una pregunta de arranque en la pizarra: ¿qué sabéis ya de esto? Primero la piensa cada uno, luego la comentan por parejas y al final la pone en común el equipo.",
+           "inf": "En la asamblea, una pregunta de arranque: ¿qué sabéis de esto? Hablan por turnos y tú apuntas o dibujas en la pizarra lo que va saliendo."}
 SALIDA = "Una pregunta en un papel antes de salir. Lo que respondan te dice por dónde empezar mañana."
-TICKET = {"t": "Comprueba qué se llevan", "o": "eva", "m": ["fin"], "alt": SALIDA}
+SALIDA_I = "En la asamblea, antes de recoger: cada uno dice una cosa que ha aprendido o lo que más le ha gustado."
+TICKET = {"t": "Comprueba qué se llevan", "o": "eva", "m": ["fin"], "alt": SALIDA, "inf": SALIDA_I}
 
 RECETAS = {
     "*": {"n": "Una clase completa", "d": "Abrir, trabajar y cerrar: el esquema de casi cualquier sesión.",
@@ -43,10 +45,12 @@ RECETAS = {
             "pasos": [ACTIVAR, {"t": "Exploran el tema", "main": True}, TICKET]},
     "cre": {"n": "Crear un producto", "d": "Planifican antes de abrir la herramienta y al final lo enseñan. Lo normal es que ocupe más de una sesión.",
             "pasos": [{"t": "Planifican qué van a hacer", "ideas": ["Planificar un proyecto", "Lluvia de ideas por equipos", "Reparto de tareas de un proyecto"],
-                       "alt": "En papel, un guion corto: qué van a contar, en qué orden y quién hace cada parte."},
+                       "alt": "En papel, un guion corto: qué van a contar, en qué orden y quién hace cada parte.",
+                       "inf": "En la asamblea, cada uno cuenta qué va a hacer. Quien quiera lo dibuja antes en papel."},
                       {"t": "Lo crean", "main": True},
                       {"t": "Lo enseñan y lo valoran", "ideas": ["Valorar una exposición de compañeros"],
-                       "alt": "En galería: cada equipo enseña lo suyo y el resto apunta una cosa que le ha gustado y una pregunta."}]},
+                       "alt": "En galería: cada equipo enseña lo suyo y el resto apunta una cosa que le ha gustado y una pregunta.",
+                       "inf": "Cada uno enseña lo suyo al grupo y cuenta qué ha hecho. Los demás dicen una cosa que les ha gustado."}]},
     "equ/b": {"n": "Un debate", "d": "El debate se hace de viva voz: la tecnología va antes para preparar los argumentos y después para ver si alguien ha cambiado de opinión.",
               "pasos": [{"t": "Abre la pregunta", "ideas": ["Encuesta para abrir un debate"], "alt": "Lanza la pregunta y pide una primera postura a mano alzada. Apunta el recuento en la pizarra."},
                         {"t": "Preparan los argumentos", "main": True},
@@ -54,18 +58,21 @@ RECETAS = {
                         {"t": "Cierra: ¿alguien ha cambiado de opinión?", "ideas": ["Preguntas anónimas al final de la clase", "Pregunta de metacognición al cerrar"],
                          "alt": "Repite el recuento a mano alzada y pregunta a quien haya cambiado qué argumento le convenció."}]},
     "equ/o": {"n": "Organizar un proyecto", "d": "Dos pasos: primero salen todas las ideas y después se ordenan y se reparten.",
-              "pasos": [{"t": "Sacan todas las ideas", "ideas": ["Lluvia de ideas por equipos", "Lluvia de ideas para abrir un tema"], "alt": "Lluvia de ideas con notas adhesivas: una idea por nota y todas a la pared."},
+              "pasos": [{"t": "Sacan todas las ideas", "ideas": ["Lluvia de ideas por equipos", "Lluvia de ideas para abrir un tema"], "alt": "Lluvia de ideas con notas adhesivas: una idea por nota y todas a la pared.",
+                         "inf": "En la asamblea, cada uno dice una idea y tú las dibujas en un papel grande."},
                         {"t": "Se organizan y reparten", "main": True}]},
     "equ/c": {"n": "Construir algo juntos", "d": "El trabajo en común y una puesta en común corta para que todos vean lo de todos.",
               "pasos": [{"t": "Trabajan juntos", "main": True},
-                        {"t": "Puesta en común", "voz": "Cada equipo cuenta en un minuto qué ha hecho y qué le ha costado más. El resto puede hacer una pregunta."}]},
+                        {"t": "Puesta en común", "voz": "Cada equipo cuenta en un minuto qué ha hecho y qué le ha costado más. El resto puede hacer una pregunta.",
+                         "inf": "Cada equipo enseña lo que ha hecho y cuenta qué le ha costado más."}]},
     "rep/j": {"n": "Repasar jugando", "d": "El juego repasa y una comprobación corta te dice qué sigue flojo.",
-              "pasos": [{"t": "Juegan para repasar", "main": True}, {"t": "Comprueba qué sigue flojo", "o": "eva", "m": ["fin"], "alt": SALIDA}]},
+              "pasos": [{"t": "Juegan para repasar", "main": True}, {"t": "Comprueba qué sigue flojo", "o": "eva", "m": ["fin"], "alt": SALIDA, "inf": SALIDA_I}]},
     "rep/e": {"n": "Repasar por equipos", "d": "Compiten por equipos y después se corrige entre todos lo que más se ha fallado.",
               "pasos": [{"t": "Repasan por equipos", "main": True},
-                        {"t": "Corregid lo más fallado", "voz": "Vuelve a las dos o tres preguntas con más fallos y que un equipo que acertó explique por qué."}]},
+                        {"t": "Corregid lo más fallado", "voz": "Vuelve a las dos o tres preguntas con más fallos y que un equipo que acertó explique por qué.",
+                         "inf": "Repite las preguntas más falladas y que quien acertó cuente cómo lo sabía."}]},
     "rep/r": {"n": "Repasar a su ritmo", "d": "Cada uno practica lo que necesita y al final compruebas cómo ha ido.",
-              "pasos": [{"t": "Practican a su ritmo", "main": True}, {"t": "Comprueba cómo ha ido", "o": "eva", "m": ["fin"], "alt": SALIDA}]},
+              "pasos": [{"t": "Practican a su ritmo", "main": True}, {"t": "Comprueba cómo ha ido", "o": "eva", "m": ["fin"], "alt": SALIDA, "inf": SALIDA_I}]},
     "eva/ini": {"n": "Ver qué saben antes de empezar", "d": "Una sola herramienta. Lo importante es lo que haces después con lo que salga.",
                 "pasos": [{"t": "Pregunta antes de explicar", "main": True},
                           {"t": "Ajusta la clase", "voz": "Lo que casi todos saben, pásalo rápido. Dedica el tiempo a lo que ha salido flojo o equivocado."}]},

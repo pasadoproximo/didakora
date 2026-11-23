@@ -164,7 +164,7 @@ const TOOLS = [
   { id:"tuxpaint", rev:"2026-11-23", s:"aula", cat:"crear", st:"nueva", n:"Tux Paint", url:"https://tuxpaint.org/?lang=es_ES",
     a:"Dibuja con pinceles, sellos y efectos pensados para los más pequeños.",
     i:["Ilustrar un cuento entre toda la clase","Autorretrato con pinceles y sellos","Dibujar lo que más les ha gustado de la unidad"],
-    c:"Infantil y Primaria", disp:"Ordenador o tablet Android (se instala)", cta:"No necesita" },
+    c:"Infantil y Primaria", disp:"Uno por alumno o pareja (se instala)", cta:"No necesita" },
   { id:"capcut", rev:"2026-10-23", edad:"Desde 13 años", edadTxt:"13 años; con menos de 18, con permiso de la familia", edadUrl:"https://www.capcut.com/clause/terms-of-service", s:"aula", cat:"crear", st:"vigente", n:"CapCut", url:"https://www.capcut.com",
     a:"Edita vídeos con plantillas, subtítulos automáticos y efectos.",
     i:["Vídeo explicativo de un tema","Reel de una salida","Noticiario histórico"],

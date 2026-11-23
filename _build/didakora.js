@@ -214,7 +214,7 @@ function dkSesion(D){
  const tarjeta=x=>'<a class="ms-t" href="'+B+'/'+x.t+'/"><span class="lg">'+(x.l?'<img src="'+B+'/logos/'+x.t+'.png?v=3" alt="" width="26" height="26">':'<b>'+esc(x.n[0])+'</b>')+'</span><span><b>'+esc(x.n)+'</b><small>'+esc(x.dt)+' · '+esc(x.ct)+'</small></span></a>';
  // dibuja la sesión con lo que haya en «vista»: un paso que se queda sin idea se hace sin pantalla (su «alt») o no sale
  const dibuja=()=>{const R=receta(),P=R.pasos,im=P.findIndex(p=>p.main);
-  const pasos=P.map((p,i)=>({p:(!p.voz&&!vista[i]&&p.alt)?{t:p.t,voz:p.alt}:p,i:i,x:vista[i]})).filter(s=>s.p.voz||s.x);
+  const inf=st.e==='I';const pasos=P.map((p,i)=>({p:(!p.voz&&!vista[i]&&p.alt)?{t:p.t,voz:(inf&&p.inf)||p.alt}:(p.voz&&inf&&p.inf?Object.assign({},p,{voz:p.inf}):p),i:i,x:vista[i]})).filter(s=>s.p.voz||s.x);
   const nh=new Set(pasos.filter(s=>s.x).map(s=>s.x.t)).size;
   const otras=pool(st).filter(x=>x!==vista[im]).slice(0,9);
   $r.hidden=false;

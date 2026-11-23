@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "72"  # versión de didakora.css / didakora.js
+V = "73"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -87,6 +87,9 @@ REPO_P = {"chatterpix","stopmotion","suno","canva","genially","padlet","vocaroo"
 REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
 # altas del 23-11-2026 para Infantil (edades de la web oficial de cada una); las de SOLO_IP no son de Secundaria
 REPO_I |= {"gcompris","tuxpaint","musiclab","scratchjr"}; REPO_P |= {"gcompris","tuxpaint","musiclab","scratchjr"}
+# revisión de etapas del 23-11-2026 (Jorge): sin cuenta del alumnado o dirigidas por el docente, sin edad mínima y sin aviso del INTEF
+REPO_I |= {"wordwall","visitas","artsculture","earth","incredibox","stopmotion","bookcreator","vocaroo","padlet"}
+REPO_P |= {"wordwall","visitas","artsculture","earth","incredibox","wayground","ancientearth","vertebrados","kgeography","tinkercad","cospaces","immersive"}
 SOLO_IP = {"gcompris","tuxpaint","scratchjr"}
 def etapas(t):
     if t["s"] != "aula": return ["I", "P", "S"]  # herramientas del docente y recursos: para el profesorado de cualquier etapa
@@ -248,7 +251,9 @@ def foot(scripts=""):
 </body>
 </html>
 '''
+EN_PRUEBAS = {"sesion/index.html", "plan-b/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
 def write(rel, content):
+    if rel in EN_PRUEBAS: content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8", newline="\n").write(content)
 def crumbs(items):
@@ -443,11 +448,22 @@ def aula(): return [t for t in TOOLS if t["s"] == "aula"]
 def sesion():
     """«Monta tu sesión»: un árbol de preguntas (didakora.js, dkSesion) que acaba en una receta de sesión con los pasos que le convienen.
     El árbol y las recetas están en _build/sesion_recetas.py; el reparto de las ideas, en _build/sesion_ideas.py."""
-    from sesion_ideas import RAMA
+    from sesion_ideas import RAMA, ETAPA, EXTRA
     from sesion_recetas import RAMAS, METAS, RECETAS, FUENTES
     ideas = [{"t": t["id"], "n": split_name(t["n"])[0], "l": t["id"] in LOGOS, "i": i, "m": momento(i, t), "o": objetivo(t, i), "k": RAMA.get(t["id"], {}).get(i, ""),
               "e": "".join(t["et"]), "d": "p" if D_PROFE.search(t["disp"]) else "e" if D_EQUIPO.search(t["disp"]) else "a", "r": 0 if SIN_REG.search(t["cta"]) else 1,
               "s": MATERIA.get(t["sub"], ""), "x": 1 if t.get("intef") else 0, "dt": t["disp"], "ct": t["cta"]} for t in aula() for i in t["i"] if momento(i, t)]
+    for x in ideas:   # etapas idea a idea: una idea pensada para Secundaria no sale en Infantil aunque la herramienta sí valga
+        e = ETAPA.get(x["t"], {}).get(x["i"])
+        if e is not None: x["e"] = "".join(c for c in x["e"] if c in e)
+    porid = {t["id"]: t for t in aula()}
+    for tid, ex in EXTRA.items():   # ideas solo de «Monta tu sesión» (no salen en la ficha): propuestas para las etapas sin idea propia
+        t = porid[tid]; base = next((x for x in ideas if x["t"] == tid), None)
+        for d in ex:
+            ideas.append({"t": tid, "n": split_name(t["n"])[0], "l": tid in LOGOS, "i": d["i"], "m": SES_M[d["c"][0]], "o": {"E": "exp", "K": "cre", "Q": "equ", "R": "rep", "V": "eva"}[d["c"][1]],
+                          "k": d.get("k", ""), "e": "".join(c for c in "".join(t["et"]) if c in d["e"]), "d": d.get("d") or ("p" if D_PROFE.search(t["disp"]) else "e" if D_EQUIPO.search(t["disp"]) else "a"),
+                          "r": 0 if SIN_REG.search(t["cta"]) else 1, "s": MATERIA.get(t["sub"], ""), "x": 1 if t.get("intef") else 0, "dt": t["disp"], "ct": t["cta"]})
+    ideas = [x for x in ideas if x["e"]]
     sin = [(t["id"], i) for t in aula() for i in t["i"] if i not in SES.get(t["id"], {})]
     if sin: print(f"· sesión: {len(sin)} ideas sin revisar en _build/sesion_ideas.py (repartidas por palabras): {sin[:3]}")
     textos = {x["i"] for x in ideas}

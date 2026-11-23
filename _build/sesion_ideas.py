@@ -132,3 +132,36 @@ RAMA = {
  "snorkl": {"Practicar la expresión oral": "r"},
  "languagetool": {"Revisar un trabajo antes de entregarlo": "r", "Repasar errores frecuentes de ortografía": "r", "Corregir una redacción en inglés": "r"},
 }
+
+
+# Etapas idea a idea (I = Infantil, P = Primaria, S = Secundaria y Bachillerato). Sin entrada, la idea vale para todas las etapas
+# de su herramienta. Revisión del 23-11-2026: propuesta para que Jorge la apruebe.
+ETAPA = {
+ "chatterpix": {"Un personaje histórico se presenta": "PS", "Un monumento cuenta su historia": "PS", "Resumen de la unidad con un avatar": "PS"},
+ "stopmotion": {"Recrear un proceso histórico": "PS", "Animar un concepto de Geografía": "PS", "Reproducir un estilo artístico": "PS"},
+ "padlet": {"Rutinas de pensamiento": "PS", "Línea del tiempo colaborativa": "PS", "Debate con respuestas en vídeo": "S"},
+ "vocaroo": {"Lectura en voz alta": "PS", "Explicación oral de un mapa": "PS", "Respuesta de audio a una pregunta": "PS"},
+ "bookcreator": {"Cómic histórico": "PS", "Portfolio del trimestre": "PS"},
+ "codeorg": {"Entender cómo funciona la IA": "PS"},
+ "educaplay": {"Mapas interactivos para localizar": "PS", "Crucigramas de vocabulario del tema": "PS", "Actividades autocorregibles de repaso": "PS"},
+ "kahoot": {"Repaso por equipos antes del examen": "PS"},
+ "wordwall": {"Tarea para hacer a su ritmo": "PS"},
+ "artsculture": {"Visita virtual a un monumento antes de estudiarlo": "PS", "Juegos de arte para repasar estilos": "PS"},
+ "earth": {"Comparar paisajes agrarios y urbanos": "PS", "Ver cómo cambia un lugar con las imágenes históricas": "PS", "Crear la ruta de un explorador": "PS"},
+ "incredibox": {"Trabajar textura y capas musicales": "PS", "Introducción a la composición": "PS"},
+ "ancientearth": {"Tectónica de placas": "S", "Formación del relieve peninsular": "S"},
+ "tinkercad": {"Iniciarse en Arduino": "S"},
+}
+# Ideas solo de «Monta tu sesión» (no salen en la ficha), para las herramientas que valen en Infantil y no tenían ninguna idea
+# para esa etapa. c = momento + objetivo (como en SES), k = rama, e = etapas, d = "p" si basta el dispositivo del docente.
+# Son propuestas: Jorge las revisa.
+EXTRA = {
+ "chatterpix": [dict(i="Hacer hablar a la mascota de la clase", c="CK", k="d", e="IP")],
+ "stopmotion": [dict(i="Animar un cuento con plastilina o juguetes", c="CK", k="d", e="IP")],
+ "padlet": [dict(i="Mural con las fotos de una salida", c="CQ", k="c", e="IP", d="p")],
+ "vocaroo": [dict(i="Grabar una canción o una adivinanza de la clase", c="CK", k="a", e="IP", d="p")],
+ "educaplay": [dict(i="Juego de memoria con imágenes en la pizarra digital", c="CR", k="j", e="I", d="p")],
+ "kahoot": [dict(i="Concurso de imágenes por equipos", c="CR", k="e", e="I")],
+ "earth": [dict(i="Viajar desde el colegio hasta otro lugar del mundo", c="CE", e="IP", d="p")],
+ "visitas": [dict(i="Paseo por un museo desde la asamblea", c="CE", e="IP")],
+}
