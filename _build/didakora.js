@@ -73,7 +73,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  const SUBJ={geogebra:'matematicas geometria',desmos:'matematicas',phet:'ciencias fisica quimica biologia matematicas',gizmos:'ciencias fisica quimica biologia matematicas',
   bodymaps:'ciencias biologia anatomia',anatomy3d:'ciencias biologia anatomia',vertebrados:'ciencias biologia',bolsa:'economia',
   tinkercad:PROG+' robotica arduino',scratch:PROG,snap:PROG,blockly:PROG,codeorg:PROG,appinventor:PROG,cospaces:PROG,coppelia:PROG+' robotica',thunkable:'tecnologia informatica',snatchbot:'tecnologia informatica',
-  musescore:'musica',incredibox:'musica',musictheory:'musica',librecad:'dibujo tecnico tecnologia'};
+  musescore:'musica',incredibox:'musica',musiclab:'musica componer melodia cancion',scratchjr:PROG+' infantil tableta tablet',gcompris:'infantil letras numeros colores logica juegos educativos',tuxpaint:'infantil dibujo dibujar pintar plastica',musictheory:'musica',librecad:'dibujo tecnico tecnologia'};
  const IDX={};
  const flat=s=>' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';
  const joinPh=s=>{let r=' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return r.trim();};
@@ -157,6 +157,107 @@ function cajaListado(){
 (()=>{const mq=matchMedia('(max-width:560px)'),els=[...document.querySelectorAll('#hq,#lq')];
  const f=()=>els.forEach(e=>{e.dataset.ph=e.dataset.ph||e.placeholder;e.placeholder=mq.matches?'Busca una herramienta o tarea…':e.dataset.ph;});
  f();mq.addEventListener('change',f);})();
+
+// Monta tu sesión: un árbol de preguntas que se adapta (solo pregunta lo que cambia el resultado) y acaba en una receta de sesión
+// con los pasos que le convienen: la idea que buscaba el docente, otras del catálogo que la acompañan y pasos sin pantalla.
+// Datos: _build/sesion_ideas.py (ideas) y _build/sesion_recetas.py (metas, ramas y recetas).
+function dkSesion(D){
+ const B=window.DK_BASE||'',IDEAS=D.ideas,$q=document.getElementById('ar'),$r=document.getElementById('ar-r');
+ const ORDEN=['o','k','e','d','r','x'],st={},vista={};let recordadas={};
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const FIJAS={e:['¿Con qué etapa?',[['S','Secundaria y Bachillerato'],['P','Primaria'],['I','Infantil']]],
+  d:['¿Qué dispositivos hay en el aula?',[['a','Uno por alumno'],['e','Uno por pareja o por equipo'],['p','Solo el mío y el proyector']]],
+  r:['¿El alumnado puede usar una cuenta?',[['1','Sí, propia o del centro'],['0','No: tiene que ser sin cuenta']]],
+  x:['Entre las que encajan hay herramientas que la guía de protección de datos del INTEF marca en rojo. ¿Las quito?',[['1','Sí, quítalas'],['0','Déjalas']]]};
+ const pregunta=q=>q==='o'?['¿Qué quieres hacer en clase?',D.metas.map(m=>[m[0],m[1],m[2]])]:q==='k'?D.ramas[st.o]:FIJAS[q];
+ // ¿cabe la idea con lo contestado sobre el aula?
+ const cabe=(x,s)=>(!s.e||x.e.includes(s.e))&&(!s.d||s.d==='a'||(s.d==='e'?x.d!=='a':x.d==='p'))&&(!s.r||s.r==='1'||x.r===0)&&(s.x!=='1'||!x.x);
+ // ¿es una idea de las que buscaba el docente, según la meta y su rama?
+ const esMain=(x,s)=>{const o=s.o,k=s.k;if(!o||o==='*')return x.m==='des';if(x.o!==o)return false;
+  if(o==='exp')return x.m==='des'&&(k==null||x.s===k);if(o==='eva')return k==null||x.m===k;
+  return x.m!=='ini'&&(k==null||x.k===k);};
+ const pool=s=>IDEAS.filter(x=>esMain(x,s)&&cabe(x,s));
+ const con=(q,v)=>Object.assign({},st,{[q]:v});
+ // la siguiente pregunta que cambia algo; las del aula se saltan si todas las opciones dejan las mismas ideas
+ const siguiente=()=>{
+  for(const q of ['x','r','d','e','k'])if(st.o&&!pool(st).length&&st[q]!=null)delete st[q];   // una combinación sin ideas (un enlace antiguo): se deshace desde la última respuesta
+  if(st.o&&!pool(st).length)delete st.o;
+  for(const q of ORDEN){if(st[q]!=null)continue;
+   if(q==='k'&&st.o==='*'){st.k='*';continue;}
+   const ops=pregunta(q)[1].map(o=>({v:o[0],t:o[1],s:o[2]||'',n:pool(con(q,o[0])).length}));
+   if(q==='x'){if(!pool(st).some(x=>x.x)||ops[0].n===0){st.x='0';continue;}}
+   else if('edr'.includes(q)){if(ops.every(o=>o.n===ops[0].n)){st[q]='-';continue;}
+    const g=recordadas[q];if(g&&ops.some(o=>o.v===g&&o.n>0)){st[q]=g;continue;}}
+   return {q:q,ops:ops};}
+  return null;};
+ const limpia=s=>{const c={};for(const q in s)if(s[q]!=='-')c[q]=s[q];return c;};
+ const etiqueta=(q,v)=>{if(v==='-'||v==null||(q==='k'&&v==='*')||(q==='x'&&v==='0'))return '';
+  if(q==='x')return 'Sin las de INTEF en rojo';const o=pregunta(q)[1].find(o=>o[0]===v);return o?o[1]:'';};
+ const guarda=()=>{try{localStorage.setItem('dk-sesion',JSON.stringify({e:st.e,d:st.d,r:st.r}));}catch(e){}
+  const h=ORDEN.filter(q=>st[q]!=null&&st[q]!=='-').map(q=>q+'='+encodeURIComponent(st[q])).join('&');
+  try{history.replaceState(null,'',h?'#'+h:location.pathname);}catch(e){}};
+ const camino=()=>{const c=ORDEN.map(q=>[q,etiqueta(q,st[q])]).filter(p=>p[1]);if(!c.length)return '';
+  return '<div class="ar-c"><span class="lab">Tus respuestas</span>'+c.map(p=>'<button type="button" data-volver="'+p[0]+'" title="Cambiar esta respuesta">'+esc(p[1])+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>').join('')+
+   '<button type="button" class="ar-z" data-volver="o">Empezar de nuevo</button></div>';};
+ // ---- la receta
+ const receta=()=>D.recetas[st.o+'/'+st.k]||D.recetas[st.o]||D.recetas['*'];
+ const candidatas=(p,i)=>{const otras=Object.keys(vista).filter(k=>k!=='main'&&+k!==i).map(k=>vista[k]).filter(Boolean);
+  let c=p.main?pool(st):IDEAS.filter(x=>cabe(x,st)&&(p.ideas?p.ideas.includes(x.i):(!p.o||x.o===p.o)&&(!p.k||x.k===p.k)&&(!p.m||p.m.includes(x.m))));
+  c=c.filter(x=>!otras.includes(x));
+  if(p.main){const d=c.filter(x=>x.m==='des');if(d.length&&st.o!=='eva')c=d;}
+  else{const pr=vista.main;const sc=pr?pr.s:'';const g=c.filter(x=>!x.s||x.s===sc);if(g.length)c=g;}   // lo que acompaña, general o de la misma materia
+  return {c:c,otras:otras};};
+ const elige=(p,i)=>{const r=candidatas(p,i);let c=r.c;if(!c.length)return null;
+  const nuevas=c.filter(x=>x!==vista[i]);if(nuevas.length)c=nuevas;
+  const libres=c.filter(x=>!r.otras.some(o=>o.t===x.t));if(libres.length)c=libres;
+  return c[Math.floor(Math.random()*c.length)];};
+ const tarjeta=x=>'<a class="ms-t" href="'+B+'/'+x.t+'/"><span class="lg">'+(x.l?'<img src="'+B+'/logos/'+x.t+'.png?v=3" alt="" width="26" height="26">':'<b>'+esc(x.n[0])+'</b>')+'</span><span><b>'+esc(x.n)+'</b><small>'+esc(x.dt)+' · '+esc(x.ct)+'</small></span></a>';
+ // dibuja la sesión con lo que haya en «vista»: un paso que se queda sin idea se hace sin pantalla (su «alt») o no sale
+ const dibuja=()=>{const R=receta(),P=R.pasos,im=P.findIndex(p=>p.main);
+  const pasos=P.map((p,i)=>({p:(!p.voz&&!vista[i]&&p.alt)?{t:p.t,voz:p.alt}:p,i:i,x:vista[i]})).filter(s=>s.p.voz||s.x);
+  const nh=new Set(pasos.filter(s=>s.x).map(s=>s.x.t)).size;
+  const otras=pool(st).filter(x=>x!==vista[im]).slice(0,9);
+  $r.hidden=false;
+  $r.innerHTML='<header class="ar-rh"><span class="lab">Tu sesión</span><h2>'+esc(R.n)+'</h2><p>'+esc(R.d)+'</p><p class="ar-n">'+pasos.length+(pasos.length===1?' paso':' pasos')+' · '+nh+(nh===1?' herramienta':' herramientas')+'</p></header>'+
+   '<ol class="ms" style="--n:'+pasos.length+'">'+pasos.map((s,k)=>{const x=s.x,n=x?candidatas(s.p,s.i).c.length:0;
+    return '<li class="ms-p'+(s.p.voz?' voz':'')+(s.p.main?' main':'')+'"><span class="ms-n">'+(k+1)+'</span><div class="ms-c"><span class="lab">'+esc(s.p.t)+'</span>'+
+     (s.p.voz?'<p class="ms-v">'+esc(s.p.voz)+'</p><span class="ms-sp">Sin pantalla</span>'
+      :'<h3>'+esc(x.i)+'</h3>'+tarjeta(x)+(n>1?'<button type="button" class="ms-o" data-paso="'+s.i+'">Otra idea</button>':''))+'</div></li>';}).join('')+'</ol>'+
+   (otras.length?'<section class="ar-o" aria-labelledby="h-otras2"><h3 id="h-otras2">También encajan con lo que buscas</h3><ul>'+otras.map(x=>'<li><button type="button" data-usar="'+IDEAS.indexOf(x)+'"><b>'+esc(x.i)+'</b><small>'+esc(x.n)+'</small></button></li>').join('')+'</ul></section>':'');};
+ // elige las ideas: todas (sin argumentos), solo un paso («Otra idea») o con una idea principal fijada («También encajan»)
+ const resultado=(solo,fija)=>{const P=receta().pasos,im=P.findIndex(p=>p.main);
+  if(solo==null){for(const k in vista)delete vista[k];vista[im]=fija||elige(P[im],im);vista.main=vista[im];P.forEach((p,i)=>{if(i!==im&&!p.voz)vista[i]=elige(p,i);});}
+  else{vista[solo]=elige(P[solo],solo);if(solo===im)vista.main=vista[im];}
+  dibuja();};
+ // ---- pintar
+ const pinta=()=>{const s=siguiente();guarda();
+  if(!s){$q.innerHTML=camino();$q.classList.add('hecho');resultado();return;}
+  $q.classList.remove('hecho');$r.hidden=true;$r.innerHTML='';
+  const tot=pool(st).length,pr=pregunta(s.q)[0],grande=s.q==='o'||s.q==='k';
+  $q.innerHTML=camino()+'<div class="ar-p"><h2>'+esc(pr)+'</h2>'+(st.o?'<p class="ar-n">'+tot+(tot===1?' idea encaja':' ideas encajan')+' de momento</p>':'')+
+   '<div class="ar-ops'+(grande?' g':'')+'">'+s.ops.map(o=>'<button type="button" data-q="'+s.q+'" data-v="'+esc(o.v)+'"'+(o.n?'':' disabled')+'><b>'+esc(o.t)+'</b>'+(o.s?'<small>'+esc(o.s)+'</small>':'')+
+    '<span>'+(o.n?o.n+(o.n===1?' idea':' ideas'):'Sin ideas todavía')+'</span></button>').join('')+'</div></div>';};
+ const foco=()=>{const h=($r.hidden?$q:$r).querySelector('h2');if(h){h.tabIndex=-1;try{h.focus({preventScroll:true});}catch(e){}h.scrollIntoView({block:'nearest',behavior:'smooth'});}};
+ const volver=q=>{const i=ORDEN.indexOf(q);ORDEN.forEach((k,n)=>{if(n>=i||st[k]==='-')delete st[k];});
+  if('edr'.includes(q)){delete recordadas[q];}if(q==='o'||q==='k'){/* las del aula se conservan como recordadas */}pinta();};
+ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.q){st[b.dataset.q]=b.dataset.v;if('edr'.includes(b.dataset.q))recordadas[b.dataset.q]=b.dataset.v;pinta();foco();}
+  else if(b.dataset.volver){const q=b.dataset.volver;if('edr'.includes(q)||q==='x'){delete st[q];delete recordadas[q];ORDEN.forEach(k=>{if(st[k]==='-')delete st[k];});if(q!=='x')delete st.x;pinta();}else volver(q);foco();}
+  else if(b.dataset.paso){resultado(+b.dataset.paso);}
+  else if(b.dataset.usar){resultado(null,IDEAS[+b.dataset.usar]);$r.scrollIntoView({block:'start',behavior:'smooth'});}});
+ // ---- arranque: lo que venga en el enlace manda; si no, se recuerdan las respuestas sobre el aula de la última vez
+ try{recordadas=JSON.parse(localStorage.getItem('dk-sesion')||'{}')||{};}catch(e){recordadas={};}
+ for(const q in recordadas)if(!recordadas[q]||recordadas[q]==='-')delete recordadas[q];
+ new URLSearchParams(location.hash.slice(1)).forEach((v,q)=>{if(ORDEN.includes(q)){st[q]=v;if('edr'.includes(q))recordadas[q]=v;}});
+ // solo valores que existan; lo que no cuadre se descarta y se vuelve a preguntar
+ if(st.o!=null&&!D.metas.some(m=>m[0]===st.o)){for(const q of ORDEN)delete st[q];}
+ if(st.o==null){for(const q of ORDEN)delete st[q];}
+ else{if(st.o==='*')delete st.k;else if(st.k!=null&&!D.ramas[st.o][1].some(o=>o[0]===st.k))delete st.k;
+  for(const q of ['e','d','r','x'])if(st[q]!=null&&!FIJAS[q][1].some(o=>o[0]===st[q]))delete st[q];}
+ for(const q of ['e','d','r'])if(recordadas[q]&&!FIJAS[q][1].some(o=>o[0]===recordadas[q]))delete recordadas[q];
+ pinta();
+ return {st:st,vista:vista,pool:pool,cabe:cabe,receta:receta};   // para _build/probar_sesion.js
+}
 
 // Agentation (anotar la página para Claude Code): solo en local
 if(["127.0.0.1","localhost"].includes(location.hostname))import((window.DK_BASE||"")+"/agentation-local.js").catch(()=>{});

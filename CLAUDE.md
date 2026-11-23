@@ -40,7 +40,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 16-11-2026 las llevan 121 de las 124 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 125 de las 128 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
@@ -70,6 +70,20 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   Feed RSS 2.0 en `/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
   la cabecera de todas las páginas mientras haya posts.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
+- **Monta tu sesión** (`/sesion/`, EN PRUEBAS desde el 23-11-2026: sin enlace en el menú ni en la portada hasta que Jorge lo apruebe): un árbol de
+  preguntas que acaba en una sesión paso a paso con herramientas del catálogo. `sesion()` en `build.py` y `dkSesion` en `didakora.js`.
+  Tres archivos de datos: `_build/sesion_ideas.py` (cada idea `i` de las herramientas del alumnado con su momento, su meta y su rama, revisadas
+  una a una; «X» = no sirve para una sesión), `_build/sesion_recetas.py` (metas, segunda pregunta de cada meta y recetas: los pasos de cada
+  tipo de sesión, de 2 a 4, con pasos «sin pantalla»; arriba, las fuentes en que se basa) y los datos de siempre de `tools.js` (etapas,
+  dispositivos, cuenta, INTEF). El árbol solo pregunta lo que cambia el resultado, enseña cuántas ideas quedan, deja volver atrás, guarda las
+  respuestas en el enlace (`#o=…`) y recuerda las del aula en el navegador. Al añadir una herramienta del alumnado, añade sus ideas a
+  `sesion_ideas.py` (el build avisa de las que falten). Los textos de las recetas son una propuesta: Jorge los revisa.
+  **Tras tocar las ideas, las recetas o `dkSesion`: `node _build/probar_sesion.js`** (recorre todos los caminos del árbol y comprueba que cada
+  sesión cumple lo contestado, que no repite ideas y que los enlaces rotos no dan error).
+  `/plan-b/` (también en pruebas): herramientas para cuando faltan dispositivos o cuentas (`planb()`).
+- Etapas (`etapas()` en `build.py`): las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
+  Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
+  en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y van sin logo hasta que Jorge los añada a `logos/`.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
 ## Flujo

@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "70"  # versión de didakora.css / didakora.js
+V = "72"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -65,7 +65,7 @@ CORTO = {"participar-y-repasar": "Cuestionarios y juegos", "crear-y-presentar": 
          "programacion-y-diseno-3d": "Bloques y diseño 3D", "inteligencia-artificial": "Asistentes para el aula",
          "evaluacion-y-seguimiento": "Formularios y rúbricas", "gestion-del-aula": "Rutinas, cuaderno y familias",
          "aulas-virtuales": "Classroom, Teams y Moodle", "bancos-de-recursos": "Recursos e imágenes libres"}
-PROG = {"scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","tinkercad","wokwi"}
+PROG = {"scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","tinkercad","wokwi"}
 LECT = {"immersive","languagetool","readwrite"}
 SUITES = {"classroom","teams","moodle"}
 def place(t):
@@ -85,9 +85,12 @@ def place(t):
 REPO_P = {"chatterpix","stopmotion","suno","canva","genially","padlet","vocaroo","bookcreator","codeorg","blockly","classdojo",
           "nearpod","badge","educaplay","exelearning","kahoot","plickers","edpuzzle","loom","scratch","phet","gizmos","geogebra","classroomscreen","fastboard"}
 REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
+# altas del 23-11-2026 para Infantil (edades de la web oficial de cada una); las de SOLO_IP no son de Secundaria
+REPO_I |= {"gcompris","tuxpaint","musiclab","scratchjr"}; REPO_P |= {"gcompris","tuxpaint","musiclab","scratchjr"}
+SOLO_IP = {"gcompris","tuxpaint","scratchjr"}
 def etapas(t):
     if t["s"] != "aula": return ["I", "P", "S"]  # herramientas del docente y recursos: para el profesorado de cualquier etapa
-    i = t["id"]; return [e for e, ok in (("I", i in REPO_I), ("P", i in REPO_P), ("S", True)) if ok]
+    i = t["id"]; return [e for e, ok in (("I", i in REPO_I), ("P", i in REPO_P), ("S", i not in SOLO_IP)) if ok]
 ETN = {"I": "Infantil", "P": "Primaria", "S": "Secundaria y Bachillerato"}
 for t in TOOLS:
     t["cs"], t["sub"] = place(t); t["et"] = etapas(t)
@@ -411,6 +414,85 @@ def compartir(titulo, path, cls=""):
     a += f'<button type="button" data-copia="{esc(url)}" aria-label="Copiar enlace" title="Copiar enlace"><svg class="ln" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>'
     return f'<div class="comp{" " + cls if cls else ""}"><span class="lab">Compartir</span><div class="comp-i">{a}</div><span class="comp-ok" role="status" aria-live="polite"></span></div>'
 
+# ---------------------------------------------------------------- Monta tu sesión y Plan B (22-11-2026, EN PRUEBAS: sin enlace en el menú)
+# Las dos salen solo de los datos de las herramientas del alumnado (Aula): sus ideas de actividad (`i`), dispositivos y cuenta.
+# No inventan nada: si una combinación no tiene ideas, la página lo dice.
+# Momento y objetivo de cada idea: `_build/sesion_ideas.py`, revisadas una a una; las reglas por palabras de aquí solo cubren una idea nueva.
+M_INI = re.compile(r"ideas previas|abrir|al empezar|para empezar|motivar|lluvia de ideas|introduc", re.I)
+M_FIN = re.compile(r"cerrar|cierre|repas|comprobar|examen|metacogn|evalua|ticket|resum|al final", re.I)
+D_EQUIPO = re.compile(r"pareja|equipo|proyectad|del profesor", re.I)     # vale con un dispositivo por pareja o por equipo
+D_PROFE = re.compile(r"proyectad|solo el móvil del profesor", re.I)       # vale solo con el del docente
+# el alumnado no crea cuenta: entra con un código o un enlace, o la cuenta solo la necesita el docente («Cuenta del docente para crear»).
+# «Cuenta Microsoft del centro» o «Cuenta de Google» cuentan como cuenta: sin ella no se puede usar.
+SIN_REG = re.compile(r"^no necesita|^código|^entra con el enlace|^solo para guardar|sin correo|código sin cuenta|del docente|^integrado|^extensión", re.I)
+MATERIA = {"Geografía e Historia": "gh", "Ciencias y Matemáticas": "cm", "Música y Arte": "ma", "Lectura y accesibilidad": "ll", "Programación y diseño 3D": "tp"}  # por apartado; el resto vale para cualquier materia
+# Objetivo de cada idea («¿Qué quieres hacer?»): primero por palabras y, si no, por la categoría de su herramienta (provisional, como el momento)
+O_PAL = [("rep", re.compile(r"repas|vocabulario|estudiar", re.I)), ("eva", re.compile(r"comprobar|evalua|examen|ticket|ideas previas|informe|autocorreg", re.I)),
+         ("equ", re.compile(r"equipo|cooperat|colabor|debate|lluvia de ideas|entre todos|compartid", re.I))]
+O_CAT = {"crear-y-presentar": "cre", "programacion-y-diseno-3d": "cre", "colaborar-y-organizar": "equ", "explorar-por-materias": "exp", "participar-y-repasar": "rep", "inteligencia-artificial": "exp"}
+from sesion_ideas import SES   # el reparto bueno, idea a idea (23-11-2026); lo de arriba solo cubre una idea que aún no esté ahí
+SES_M = {"I": "ini", "C": "des", "F": "fin", "X": None}; SES_O = {"E": "exp", "K": "cre", "Q": "equ", "R": "rep", "V": "eva"}
+def objetivo(t, idea):
+    c = SES.get(t["id"], {}).get(idea)
+    return SES_O[c[1]] if c else next((k for k, r in O_PAL if r.search(idea)), O_CAT[t["cs"]])
+def momento(idea, t=None):
+    """ini, des o fin; None = la idea no sirve para montar una sesión (tarea para casa, función de la herramienta…)"""
+    c = SES.get(t["id"], {}).get(idea) if t else None
+    return SES_M[c[0]] if c else "ini" if M_INI.search(idea) else "fin" if M_FIN.search(idea) else "des"
+def aula(): return [t for t in TOOLS if t["s"] == "aula"]
+def sesion():
+    """«Monta tu sesión»: un árbol de preguntas (didakora.js, dkSesion) que acaba en una receta de sesión con los pasos que le convienen.
+    El árbol y las recetas están en _build/sesion_recetas.py; el reparto de las ideas, en _build/sesion_ideas.py."""
+    from sesion_ideas import RAMA
+    from sesion_recetas import RAMAS, METAS, RECETAS, FUENTES
+    ideas = [{"t": t["id"], "n": split_name(t["n"])[0], "l": t["id"] in LOGOS, "i": i, "m": momento(i, t), "o": objetivo(t, i), "k": RAMA.get(t["id"], {}).get(i, ""),
+              "e": "".join(t["et"]), "d": "p" if D_PROFE.search(t["disp"]) else "e" if D_EQUIPO.search(t["disp"]) else "a", "r": 0 if SIN_REG.search(t["cta"]) else 1,
+              "s": MATERIA.get(t["sub"], ""), "x": 1 if t.get("intef") else 0, "dt": t["disp"], "ct": t["cta"]} for t in aula() for i in t["i"] if momento(i, t)]
+    sin = [(t["id"], i) for t in aula() for i in t["i"] if i not in SES.get(t["id"], {})]
+    if sin: print(f"· sesión: {len(sin)} ideas sin revisar en _build/sesion_ideas.py (repartidas por palabras): {sin[:3]}")
+    textos = {x["i"] for x in ideas}
+    for k, r in RECETAS.items():   # una idea citada en una receta que ya no exista (o esté marcada «no sirve») se avisa: el paso se quedaría sin ella
+        for p in r["pasos"]:
+            for i in p.get("ideas", []):
+                if i not in textos: print(f"· sesión: la receta «{k}» cita una idea que no está: {i}")
+    for o, (preg, ops) in RAMAS.items():   # cada opción del árbol tiene que llevar a alguna idea y a una receta
+        for v, lab in ops:
+            n = sum(1 for x in ideas if x["o"] == o and (x["s"] == v and x["m"] == "des" if o == "exp" else x["m"] == v if o == "eva" else x["k"] == v and x["m"] != "ini"))
+            if not n: print(f"· sesión: la opción «{lab}» de «{preg}» no tiene ninguna idea")
+            if f"{o}/{v}" not in RECETAS and o not in RECETAS: print(f"· sesión: falta la receta de «{o}/{v}»")
+    fu = "".join(f'<li><a href="{esc(u)}" rel="noopener" target="_blank">{esc(n)}</a>: {esc(d)}.</li>' for n, u, d in FUENTES)
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Contesta unas pocas preguntas y te propongo una clase con herramientas del catálogo: los pasos justos, en su orden.</p></div>
+ <section class="ar" id="ar" aria-live="polite"></section>
+ <section class="ar-r" id="ar-r" hidden></section>
+ <noscript><p class="count">Esta página necesita JavaScript. Mientras tanto, tienes <a href="{B}/todas/">todas las herramientas</a>.</p></noscript>
+ <aside class="ar-b" aria-labelledby="h-base"><h2 id="h-base">En qué se basa</h2>
+  <p>Las ideas de actividad son las de cada ficha, repartidas una a una. El orden de los pasos sigue estos marcos:</p><ul>{fu}</ul>
+  <p>No todos los pasos llevan pantalla: la tecnología va donde aporta algo.</p></aside>
+</main>'''
+    datos = {"ideas": ideas, "metas": METAS, "ramas": RAMAS, "recetas": RECETAS}
+    datos_js = json.dumps(datos, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    write("sesion/index.html", head("Monta tu sesión · Didákora", "Contesta unas preguntas (qué quieres hacer, con qué etapa y con qué dispositivos) y Didákora te propone una clase paso a paso con herramientas digitales.", "/sesion/")
+          + body + foot(f'\n<script>window.dkS=dkSesion({datos_js})</script>'))
+
+def planb():
+    A = aula()
+    casos = [("solo-el-proyector", "Solo tengo mi ordenador y el proyector", "Herramientas que funcionan proyectadas, sin que el alumnado toque ningún dispositivo.", [t for t in A if D_PROFE.search(t["disp"])]),
+             ("no-hay-para-todos", "No hay dispositivos para todos", "Con uno por pareja o por equipo es suficiente.", [t for t in A if D_EQUIPO.search(t["disp"]) and not D_PROFE.search(t["disp"])]),
+             ("sin-cuentas", "El alumnado no tiene correo ni cuentas", "Entran con un código o un enlace, o no hace falta registrarse.", [t for t in A if SIN_REG.search(t["cta"])])]
+    nav = "".join(f'<a href="#{k}">{esc(h)} <span>{len(ts)}</span></a>' for k, h, d, ts in casos) + '<a href="#se-ha-caido">La herramienta no carga</a>'
+    blocks = "".join(f'<section class="sub" aria-labelledby="{k}"><h2 id="{k}">{esc(h)} <span>{len(ts)}</span></h2><p class="pb-d">{esc(d)}</p><div class="tcg">{"".join(card(t, False) for t in ts)}</div></section>' for k, h, d, ts in casos)
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Plan B", "")])}<h1>Plan B</h1></div><p>Para cuando la clase no sale como estaba prevista: faltan dispositivos, nadie tiene cuenta o la herramienta no carga.</p></div>
+ <nav class="subnav" aria-label="Situaciones">{nav}</nav>
+ {blocks}
+ <section class="sub" aria-labelledby="se-ha-caido"><h2 id="se-ha-caido">La herramienta no carga</h2><p class="pb-d">Cada ficha termina con sus «Herramientas alternativas»: otras que sirven para lo mismo. Busca la que ibas a usar y baja hasta el final.</p>
+  <p class="more" style="justify-content:flex-start;margin-top:14px"><a class="btn solid" href="{B}/todas/">Buscar la herramienta {ICO["arrow"]}</a></p></section>
+</main>'''
+    write("plan-b/index.html", head("Plan B: cuando la tecnología falla en clase · Didákora", "Qué herramientas usar si faltan dispositivos, si el alumnado no tiene cuentas o si la que ibas a usar no carga.", "/plan-b/") + body + foot())
+
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
 faltan = [t["id"] for t in TOOLS if t["id"] not in F]
@@ -730,7 +812,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); planb()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")

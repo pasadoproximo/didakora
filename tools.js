@@ -90,6 +90,10 @@ const TOOLS = [
     c:"ESO", disp:"Uno por alumno", cta:"Código de clase" },
 
   // --- Explorar Geografía e Historia
+  { id:"gcompris", rev:"2026-11-23", s:"aula", cat:"part", st:"nueva", n:"GCompris", url:"https://gcompris.net/index-es.html",
+    a:"Juega con actividades de letras, números, colores y lógica.",
+    i:["Reconocer letras en la pizarra digital","Contar objetos por turnos","Mezclar colores antes de pintar"],
+    c:"Infantil y Primaria", disp:"Uno por pareja o proyectado (se instala)", cta:"No necesita" },
   { id:"artsculture", rev:"2026-10-23", s:"aula", cat:"geohis", st:"vigente", n:"Google Arts & Culture", url:"https://artsandculture.google.com",
     a:"Explora colecciones de museos en alta resolución, visitas virtuales e historias.",
     i:["Analizar una obra con todo detalle","Visita virtual a un monumento antes de estudiarlo","Juegos de arte para repasar estilos"],
@@ -157,6 +161,10 @@ const TOOLS = [
     a:"Hace hablar a una imagen: dibuja una boca sobre un retrato y graba su voz.",
     i:["Un personaje histórico se presenta","Un monumento cuenta su historia","Resumen de la unidad con un avatar"],
     c:"1.º y 2.º ESO", disp:"Tablet o móvil por equipo", cta:"No necesita" },
+  { id:"tuxpaint", rev:"2026-11-23", s:"aula", cat:"crear", st:"nueva", n:"Tux Paint", url:"https://tuxpaint.org/?lang=es_ES",
+    a:"Dibuja con pinceles, sellos y efectos pensados para los más pequeños.",
+    i:["Ilustrar un cuento entre toda la clase","Autorretrato con pinceles y sellos","Dibujar lo que más les ha gustado de la unidad"],
+    c:"Infantil y Primaria", disp:"Ordenador o tablet Android (se instala)", cta:"No necesita" },
   { id:"capcut", rev:"2026-10-23", edad:"Desde 13 años", edadTxt:"13 años; con menos de 18, con permiso de la familia", edadUrl:"https://www.capcut.com/clause/terms-of-service", s:"aula", cat:"crear", st:"vigente", n:"CapCut", url:"https://www.capcut.com",
     a:"Edita vídeos con plantillas, subtítulos automáticos y efectos.",
     i:["Vídeo explicativo de un tema","Reel de una salida","Noticiario histórico"],
@@ -251,6 +259,10 @@ const TOOLS = [
     a:"Programa con bloques juegos, animaciones e historias.",
     i:["Juego sobre contenidos de otra materia","Historia interactiva","Iniciación a la programación"],
     c:"1.º y 2.º ESO", disp:"Uno por alumno o pareja", cta:"Solo para guardar (cuentas de clase)" },
+  { id:"scratchjr", rev:"2026-11-23", s:"aula", cat:"cienc", st:"nueva", n:"ScratchJr", url:"https://www.scratchjr.org",
+    a:"Programa historias y juegos uniendo bloques con dibujos.",
+    i:["Animar un personaje para contar un cuento","Llevar a un personaje hasta su casa paso a paso","Primer juego: tocar al personaje para que se mueva"],
+    c:"Infantil (5 años) y primer ciclo de Primaria", disp:"Tablet por pareja", cta:"No necesita" },
   { id:"snap", rev:"2026-10-23", s:"aula", cat:"cienc", st:"vigente", n:"Snap!", url:"https://snap.berkeley.edu",
     a:"Programa con bloques como en Scratch, con conceptos más avanzados.",
     i:["Paso de Scratch a programación avanzada","Funciones y listas","Proyectos de datos"],
@@ -295,6 +307,10 @@ const TOOLS = [
     a:"Crea música combinando voces y sonidos de personajes animados.",
     i:["Trabajar textura y capas musicales","Crear un ritmo en grupo","Introducción a la composición"],
     c:"1.º y 2.º ESO", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"musiclab", rev:"2026-11-23", s:"aula", cat:"arte", st:"nueva", n:"Chrome Music Lab", url:"https://musiclab.chromeexperiments.com",
+    a:"Experimenta con la música en el navegador y compone melodías con Song Maker.",
+    i:["Componer una melodía entre todos con Song Maker","Ver la música: grave y agudo en la cuadrícula","Poner música a un cuento"],
+    c:"Infantil, Primaria, 1.º y 2.º ESO", disp:"Uno por pareja o proyectado", cta:"No necesita" },
   { id:"musictheory", rev:"2026-10-23", s:"aula", cat:"arte", st:"nueva", n:"musictheory.net", url:"https://www.musictheory.net",
     a:"Practica lectura, intervalos, escalas y acordes con ejercicios de oído.",
     i:["Entrenamiento auditivo","Repaso de lenguaje musical","Ejercicios a su ritmo"],
@@ -542,6 +558,10 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] },
+  { id:"tuxpaint", txt:"Dibujo con pinceles y sellos para los más pequeños.", q:["dibujar infantil", "programa de dibujo", "pintar"] },
+  { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] },
+  { id:"scratchjr", txt:"Primeros pasos de programación con bloques, en tablet.", q:["programar infantil", "scratch jr", "programación tablet"] },
   { id:"wokwi", txt:"Simula placas como Arduino o ESP32 en el navegador.", q:["simulador arduino", "simular circuitos", "programar placas", "practicar electrónica"] },
   { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] },
   { id:"languagetool", txt:"Corrige ortografía, gramática y estilo.", q:["corrector ortográfico", "corregir ortografía", "revisar gramática"] },
@@ -572,7 +592,7 @@ const CHANGES = [
 const AREAS = {
   geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay"] },
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
-  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
-  arte: { n:"Música y Arte", ids:["musescore","incredibox","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
+  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
+  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://didakora.es/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://didakora.es/todas/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://didakora.es/destacadas/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://didakora.es/nuevas/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://didakora.es/categorias/</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://didakora.es/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/todas/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/destacadas/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/nuevas/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/categorias/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/sobre-mi/</loc></url>
-<url><loc>https://didakora.es/categorias/participar-y-repasar/</loc><lastmod>2026-11-05</lastmod></url>
-<url><loc>https://didakora.es/categorias/crear-y-presentar/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://didakora.es/categorias/participar-y-repasar/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/categorias/crear-y-presentar/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/categorias/colaborar-y-organizar/</loc><lastmod>2026-11-05</lastmod></url>
-<url><loc>https://didakora.es/categorias/explorar-por-materias/</loc><lastmod>2026-11-05</lastmod></url>
-<url><loc>https://didakora.es/categorias/programacion-y-diseno-3d/</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://didakora.es/categorias/explorar-por-materias/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://didakora.es/categorias/programacion-y-diseno-3d/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/categorias/inteligencia-artificial/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://didakora.es/categorias/evaluacion-y-seguimiento/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/categorias/gestion-del-aula/</loc><lastmod>2026-11-05</lastmod></url>
@@ -27,6 +27,7 @@
 <url><loc>https://didakora.es/edpuzzle/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/nearpod/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/decktoys/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://didakora.es/gcompris/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/artsculture/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/visitas/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/earth/</loc><lastmod>2026-10-23</lastmod></url>
@@ -43,6 +44,7 @@
 <url><loc>https://didakora.es/storymap/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/stopmotion/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/chatterpix/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://didakora.es/tuxpaint/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/capcut/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/clipchamp/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/vocaroo/</loc><lastmod>2026-10-23</lastmod></url>
@@ -65,6 +67,7 @@
 <url><loc>https://didakora.es/tinkercad/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/wokwi/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://didakora.es/scratch/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://didakora.es/scratchjr/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/snap/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/blockly/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/codeorg/</loc><lastmod>2026-10-23</lastmod></url>
@@ -75,6 +78,7 @@
 <url><loc>https://didakora.es/snatchbot/</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://didakora.es/musescore/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/incredibox/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://didakora.es/musiclab/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://didakora.es/musictheory/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/librecad/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://didakora.es/schoolai/</loc><lastmod>2026-10-23</lastmod></url>
