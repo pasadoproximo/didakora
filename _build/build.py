@@ -61,7 +61,7 @@ CATS = [
 CAT = {c[0]: c for c in CATS}
 # texto corto de las tarjetas de categoría (la página de cada categoría usa el largo)
 CORTO = {"participar-y-repasar": "Cuestionarios y juegos", "crear-y-presentar": "Presentaciones, vídeo y audio",
-         "colaborar-y-organizar": "Murales, mapas y pizarras", "explorar-por-materias": "Herramientas de cada materia",
+         "colaborar-y-organizar": "Murales, mapas y pizarras", "explorar-por-materias": "Historia, Ciencias, Idiomas, Música…",
          "programacion-y-diseno-3d": "Bloques y diseño 3D", "inteligencia-artificial": "Asistentes para el aula",
          "evaluacion-y-seguimiento": "Formularios y rúbricas", "gestion-del-aula": "Rutinas, cuaderno y familias",
          "aulas-virtuales": "Classroom, Teams y Moodle", "bancos-de-recursos": "Recursos e imágenes libres"}
@@ -812,7 +812,7 @@ def llms():
     rev = lambda t: t.get("rev", REV)
     pri = lambda q: q.split(". ")[0].rstrip(".") + "."
     L = ["# Didákora", "",
-         "> Catálogo de herramientas digitales para docentes, sobre todo de Secundaria en España. Cada ficha explica qué es la "
+         "> Catálogo de herramientas digitales para docentes de Infantil, Primaria, Secundaria y Bachillerato en España. Cada ficha explica qué es la "
          "herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus "
          "condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales "
          "educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.", "",
@@ -821,6 +821,7 @@ def llms():
          f"- [Todas las herramientas]({WEB}/todas/): listado completo con buscador y filtros por categoría y etapa",
          f"- [Sobre mí]({WEB}/sobre-mi/): quién hace Didákora y cómo se revisa",
          f"- [Portfolio de Jorge Delgado Aguilera]({SITE}/)"]
+    if SES_PUB: L.insert(len(L) - 2, f"- [Monta tu sesión]({WEB}/sesion/): unas preguntas (qué quieres hacer, etapa y dispositivos) y una propuesta de clase paso a paso con herramientas del catálogo")
     if POSTS: L.append(f"- [Actualidad]({WEB}/actualidad/): noticias de educación digital para docentes")
     for c in CATS:
         L += ["", f"## {c[1]}", "", c[2], ""]
