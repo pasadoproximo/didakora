@@ -40,7 +40,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 131 de las 134 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 133 de las 136 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
@@ -86,9 +86,9 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
-- **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Seis fichas: LearnEnglish Kids y Teens
-  (British Council; sin logo: su web no deja descargarlo, pedírselo a Jorge), Write & Improve, Forvo, DeepL y Dicta2.0 (las tres últimas, en verde en la guía del INTEF, sección
-  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor, Apertium, Google Translate y TV5MONDE.
+- **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Ocho fichas: LearnEnglish Kids y Teens
+  (British Council; sin logo: su web no deja descargarlo, pedírselo a Jorge), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
+  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 

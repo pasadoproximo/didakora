@@ -32,7 +32,7 @@ METAS = [("exp", "Explorar un tema", "Investigar, observar y comparar"), ("cre",
          ("equ", "Trabajar en equipo", "Debatir, organizarse o construir juntos"), ("rep", "Repasar", "Practicar lo ya visto"),
          ("eva", "Comprobar qué saben", "Antes, durante o al final"), ("*", "No lo tengo claro", "Proponme una clase completa")]
 
-ACTIVAR = {"t": "Activa lo que ya saben", "m": ["ini"], "alt": "Una pregunta de arranque en la pizarra: ¿qué sabéis ya de esto? Primero la piensa cada uno, luego la comentan por parejas y al final la pone en común el equipo.",
+ACTIVAR = {"t": "Activa lo que ya saben", "m": ["ini"], "alt": "Una pregunta de arranque en la pizarra: ¿qué sabéis ya de esto? Primero la piensa cada uno, luego la comentan por parejas y al final la ponen en común en equipo.",
            "inf": "En la asamblea, una pregunta de arranque: ¿qué sabéis de esto? Hablan por turnos y tú apuntas o dibujas en la pizarra lo que va saliendo."}
 SALIDA = "Una pregunta en un papel antes de salir. Lo que respondan te dice por dónde empezar mañana."
 SALIDA_I = "En la asamblea, antes de recoger: cada uno dice una cosa que ha aprendido o lo que más le ha gustado."
@@ -63,13 +63,13 @@ RECETAS = {
                         {"t": "Se organizan y reparten", "main": True}]},
     "equ/c": {"n": "Construir algo juntos", "d": "El trabajo en común y una puesta en común corta para que todos vean lo de todos.",
               "pasos": [{"t": "Trabajan juntos", "main": True},
-                        {"t": "Puesta en común", "voz": "Cada equipo cuenta en un minuto qué ha hecho y qué le ha costado más. El resto puede hacer una pregunta.",
+                        {"t": "Puesta en común", "voz": "Cada equipo cuenta en pocas palabras qué ha hecho y qué le ha costado más. El resto puede hacer una pregunta.",
                          "inf": "Cada equipo enseña lo que ha hecho y cuenta qué le ha costado más."}]},
     "rep/j": {"n": "Repasar jugando", "d": "El juego repasa y una comprobación corta te dice qué sigue flojo.",
               "pasos": [{"t": "Juegan para repasar", "main": True}, {"t": "Comprueba qué sigue flojo", "o": "eva", "m": ["fin"], "alt": SALIDA, "inf": SALIDA_I}]},
     "rep/e": {"n": "Repasar por equipos", "d": "Compiten por equipos y después se corrige entre todos lo que más se ha fallado.",
               "pasos": [{"t": "Repasan por equipos", "main": True},
-                        {"t": "Corregid lo más fallado", "voz": "Vuelve a las dos o tres preguntas con más fallos y que un equipo que acertó explique por qué.",
+                        {"t": "Corrige lo más fallado", "voz": "Vuelve a las preguntas con más fallos y que un equipo que acertó explique por qué.",
                          "inf": "Repite las preguntas más falladas y que quien acertó cuente cómo lo sabía."}]},
     "rep/r": {"n": "Repasar a su ritmo", "d": "Cada uno practica lo que necesita y al final compruebas cómo ha ido.",
               "pasos": [{"t": "Practican a su ritmo", "main": True}, {"t": "Comprueba cómo ha ido", "o": "eva", "m": ["fin"], "alt": SALIDA, "inf": SALIDA_I}]},

@@ -346,6 +346,14 @@ const TOOLS = [
     a:"Escucha un dictado en el idioma elegido, lo escribe y lo corrige al momento.",
     i:["Dictado de cinco minutos al empezar la clase","Dictado con el vocabulario del tema","Practicar la ortografía en otro idioma"],
     c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"gtranslate", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Traductor de Google", url:"https://translate.google.com/?hl=es",
+    a:"Traduce textos, imágenes, documentos y sitios web entre idiomas.",
+    i:["Comparar dos traductores con el mismo texto","Traducir la imagen de un texto real","Dictar una frase y ver su traducción"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"apertium", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Apertium", url:"https://www.apertium.org/index.spa.html",
+    a:"Traduce textos, documentos y páginas web con un traductor libre.",
+    i:["Traducir un texto al gallego o al catalán","Buscar los fallos de una traducción automática","Comparar su traducción con la de otro traductor"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
   { id:"schoolai", rev:"2026-10-23", s:"aula", cat:"ia", st:"nueva", n:"SchoolAI", url:"https://schoolai.com",
     a:"Conversa con un tutor de IA que sigue las reglas y límites que pone el docente.",
     i:["Tutor para repasar un tema","Ticket de salida conversado","Ver en directo quién se atasca"],
@@ -583,6 +591,8 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"gtranslate", txt:"Traduce texto, imágenes, documentos y webs sin cuenta.", q:["traductor de google", "google translate", "traducir una imagen"] },
+  { id:"apertium", txt:"Traductor libre, con catalán y gallego.", q:["traductor libre", "traducir al gallego", "traducir al catalán"] },
   { id:"deepl", txt:"Traductor con IA que se usa sin cuenta.", q:["traductor", "traducir un texto", "traducción"] },
   { id:"dicta", txt:"Dictados en seis idiomas que se corrigen solos.", q:["dictado", "dictados en inglés", "ortografía"] },
   { id:"lekids", txt:"Juegos, canciones y cuentos para aprender inglés en Primaria.", q:["inglés primaria", "canciones en inglés", "cuentos en inglés"] },
@@ -592,9 +602,7 @@ const RECIENTES = [
   { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] },
   { id:"tuxpaint", txt:"Dibujo con pinceles y sellos para los más pequeños.", q:["dibujar infantil", "programa de dibujo", "pintar"] },
   { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] },
-  { id:"scratchjr", txt:"Primeros pasos de programación con bloques, en tablet.", q:["programar infantil", "scratch jr", "programación tablet"] },
-  { id:"wokwi", txt:"Simula placas como Arduino o ESP32 en el navegador.", q:["simulador arduino", "simular circuitos", "programar placas", "practicar electrónica"] },
-  { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] }
+  { id:"scratchjr", txt:"Primeros pasos de programación con bloques, en tablet.", q:["programar infantil", "scratch jr", "programación tablet"] }
 ];
 
 const CHANGES = [
@@ -619,6 +627,6 @@ const AREAS = {
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
-  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","forvo","deepl","dicta","languagetool","immersive"] },
+  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

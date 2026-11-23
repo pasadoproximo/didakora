@@ -3,6 +3,8 @@
 #        + objetivo (E = explorar un tema, K = que creen algo, Q = trabajar en equipo, R = repasar, V = comprobar qué saben).
 # Una idea que no esté aquí (nueva o con el texto cambiado) se reparte por palabras en build.py: añádela con su clave.
 SES = {
+ "gtranslate": {"Comparar dos traductores con el mismo texto": "CE", "Traducir la imagen de un texto real": "CE", "Dictar una frase y ver su traducción": "CE"},
+ "apertium": {"Traducir un texto al gallego o al catalán": "CE", "Buscar los fallos de una traducción automática": "CE", "Comparar su traducción con la de otro traductor": "CE"},
  "deepl": {"Comparar su traducción con la del traductor": "CE", "Detectar errores en una traducción automática": "CE", "Entender un texto difícil antes de trabajarlo": "IE"},
  "dicta": {"Dictado de cinco minutos al empezar la clase": "CR", "Dictado con el vocabulario del tema": "CR", "Practicar la ortografía en otro idioma": "CR"},
  "lekids": {"Canción para abrir la clase de inglés": "IE", "Cuento con actividades de comprensión": "CE", "Juego de vocabulario del tema": "CR"},
