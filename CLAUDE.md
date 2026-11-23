@@ -40,7 +40,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 125 de las 128 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 131 de las 134 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
@@ -61,7 +61,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   `_build/actualidad/<slug>.json` (secciones `texto`, `destacado`, `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`;
   ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
   artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
-  (en el móvil, con poco ancho, quedan Todas, Actualidad y Sobre mí) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  (en el móvil, con poco ancho, quedan Todas, Sesión y Sobre mí; Actualidad sigue en la portada) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
   Diseño fijado por Jorge el 22-10-2026: post con volver arriba a la izquierda, título, tema y fecha, entradilla, portada
   21:9 a todo el ancho (16:9 en el móvil), texto en Literata en una columna centrada de 820 px y botones a la derecha;
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de
@@ -70,7 +70,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   Feed RSS 2.0 en `/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
   la cabecera de todas las páginas mientras haya posts.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
-- **Monta tu sesión** (`/sesion/`, EN PRUEBAS desde el 23-11-2026: publicada sin enlace en el menú ni en la portada, fuera del sitemap y con `noindex` (`EN_PRUEBAS` en `build.py`), hasta que Jorge lo apruebe): un árbol de
+- **Monta tu sesión** (`/sesion/`, publicada el 23-11-2026 con el visto bueno de Jorge: en el menú («Monta tu sesión»; «Sesión» en pantallas estrechas) y con un bloque en la portada bajo las categorías, `bloque_sesion()`; `SES_PUB` en `build.py`, `DK_SESION=0` la esconde): un árbol de
   preguntas que acaba en una sesión paso a paso con herramientas del catálogo. `sesion()` en `build.py` y `dkSesion` en `didakora.js`.
   Tres archivos de datos: `_build/sesion_ideas.py` (cada idea `i` de las herramientas del alumnado con su momento, su meta y su rama, revisadas
   una a una; «X» = no sirve para una sesión), `_build/sesion_recetas.py` (metas, segunda pregunta de cada meta y recetas: los pasos de cada
@@ -82,10 +82,14 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   para las etapas sin idea propia (`EXTRA`); los pasos sin pantalla tienen versión de Infantil (`inf` en `sesion_recetas.py`). Todo ello, propuestas por revisar.
   **Tras tocar las ideas, las recetas o `dkSesion`: `node _build/probar_sesion.js`** (recorre todos los caminos del árbol y comprueba que cada
   sesión cumple lo contestado, que no repite ideas y que los enlaces rotos no dan error).
-  `/plan-b/` (también en pruebas): herramientas para cuando faltan dispositivos o cuentas (`planb()`).
+  `/plan-b/` (en pruebas: publicada sin enlace, fuera del sitemap y con `noindex`, `EN_PRUEBAS` en `build.py`): herramientas para cuando faltan dispositivos o cuentas (`planb()`).
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
+- **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Seis fichas: LearnEnglish Kids y Teens
+  (British Council; sin logo: su web no deja descargarlo, pedírselo a Jorge), Write & Improve, Forvo, DeepL y Dicta2.0 (las tres últimas, en verde en la guía del INTEF, sección
+  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor, Apertium, Google Translate y TV5MONDE.
+  Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
 ## Flujo

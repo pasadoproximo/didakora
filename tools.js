@@ -16,6 +16,7 @@ const SECTIONS = {
       equipo: "Trabajar en equipo",
       cienc: "Ciencias, Matemáticas y Tecnología",
       arte: "Música y Arte",
+      idiomas: "Idiomas",
       ia: "IA y apoyo al aprendizaje"
     }
   },
@@ -321,6 +322,30 @@ const TOOLS = [
     c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita" },
 
   // --- IA y apoyo al aprendizaje
+  { id:"lekids", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"LearnEnglish Kids", url:"https://learnenglishkids.britishcouncil.org",
+    a:"Practica inglés con juegos, canciones, cuentos y vídeos del British Council.",
+    i:["Canción para abrir la clase de inglés","Cuento con actividades de comprensión","Juego de vocabulario del tema"],
+    c:"Infantil (5 años) y Primaria", disp:"Uno por pareja o proyectado", cta:"No necesita" },
+  { id:"leteens", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"LearnEnglish Teens", url:"https://learnenglishteens.britishcouncil.org",
+    a:"Practica inglés por destrezas y niveles con vídeos, audios, textos y ejercicios.",
+    i:["Listening por niveles con ejercicios","Repasar un punto de gramática","Preparar un examen de inglés"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"writeimprove", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Write & Improve", url:"https://writeandimprove.com",
+    a:"Escribe en inglés y recibe al momento una corrección y su nivel orientativo.",
+    i:["Redacción con corrección al momento","Reescribir un texto hasta mejorarlo","Practicar el writing de un examen"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Uno por alumno", cta:"No necesita" },
+  { id:"forvo", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Forvo", url:"https://forvo.com",
+    a:"Escucha cómo pronuncian una palabra hablantes nativos de cada idioma.",
+    i:["Comprobar la pronunciación de una palabra","Comparar acentos de un mismo idioma","Preparar una lectura en voz alta"],
+    c:"Toda la etapa", disp:"Uno por pareja o proyectado", cta:"No necesita" },
+  { id:"deepl", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"DeepL", url:"https://www.deepl.com/es/translator",
+    a:"Traduce textos entre idiomas con IA y compara su versión con la propia.",
+    i:["Comparar su traducción con la del traductor","Detectar errores en una traducción automática","Entender un texto difícil antes de trabajarlo"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"dicta", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Dicta2.0", url:"https://recursosdidacticos.es/dictados/index.php",
+    a:"Escucha un dictado en el idioma elegido, lo escribe y lo corrige al momento.",
+    i:["Dictado de cinco minutos al empezar la clase","Dictado con el vocabulario del tema","Practicar la ortografía en otro idioma"],
+    c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"No necesita" },
   { id:"schoolai", rev:"2026-10-23", s:"aula", cat:"ia", st:"nueva", n:"SchoolAI", url:"https://schoolai.com",
     a:"Conversa con un tutor de IA que sigue las reglas y límites que pone el docente.",
     i:["Tutor para repasar un tema","Ticket de salida conversado","Ver en directo quién se atasca"],
@@ -558,18 +583,18 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"deepl", txt:"Traductor con IA que se usa sin cuenta.", q:["traductor", "traducir un texto", "traducción"] },
+  { id:"dicta", txt:"Dictados en seis idiomas que se corrigen solos.", q:["dictado", "dictados en inglés", "ortografía"] },
+  { id:"lekids", txt:"Juegos, canciones y cuentos para aprender inglés en Primaria.", q:["inglés primaria", "canciones en inglés", "cuentos en inglés"] },
+  { id:"leteens", txt:"Inglés por destrezas y niveles para adolescentes.", q:["inglés secundaria", "listening", "gramática inglesa"] },
+  { id:"writeimprove", txt:"Corrección al momento de redacciones en inglés.", q:["writing", "corregir redacción en inglés", "redacción inglés"] },
+  { id:"forvo", txt:"Palabras pronunciadas por hablantes nativos.", q:["pronunciación", "cómo se pronuncia", "pronunciar francés"] },
   { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] },
   { id:"tuxpaint", txt:"Dibujo con pinceles y sellos para los más pequeños.", q:["dibujar infantil", "programa de dibujo", "pintar"] },
   { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] },
   { id:"scratchjr", txt:"Primeros pasos de programación con bloques, en tablet.", q:["programar infantil", "scratch jr", "programación tablet"] },
   { id:"wokwi", txt:"Simula placas como Arduino o ESP32 en el navegador.", q:["simulador arduino", "simular circuitos", "programar placas", "practicar electrónica"] },
-  { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] },
-  { id:"languagetool", txt:"Corrige ortografía, gramática y estilo.", q:["corrector ortográfico", "corregir ortografía", "revisar gramática"] },
-  { id:"kialo", txt:"Debates en clase con un mapa de argumentos.", q:["debate en clase", "argumentar", "pros y contras"] },
-  { id:"doctoform", txt:"Convierte un documento en un cuestionario de Forms.", q:["cuestionario desde documento", "convertir documento en cuestionario", "examen forms", "cuestionario"] },
-  { id:"edugems", txt:"Prompts para Gemini ordenados por tareas docentes.", q:["prompts", "prompts gemini", "plantillas ia"] },
-  { id:"koalendar", txt:"Agenda para que las familias reserven tutoría.", q:["tutorías", "reservar cita", "citas familias", "agenda"] },
-  { id:"elevenlabs", txt:"Convierte textos en audio con voces naturales.", q:["texto a voz", "voz", "locución", "audio ia"] }
+  { id:"wordwall", txt:"Actividades interactivas e imprimibles con plantillas.", q:["juegos de repaso", "actividades imprimibles", "crear actividades interactivas"] }
 ];
 
 const CHANGES = [
@@ -594,5 +619,6 @@ const AREAS = {
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","snatchbot","librecad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
+  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","forvo","deepl","dicta","languagetool","immersive"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

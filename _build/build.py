@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "73"  # versión de didakora.css / didakora.js
+V = "75"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -50,7 +50,7 @@ CATS = [
  ("participar-y-repasar", "Participar y repasar", "Cuestionarios, juegos y concursos para participar en clase y repasar.", "participar"),
  ("crear-y-presentar", "Crear y presentar", "Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente.", "crear"),
  ("colaborar-y-organizar", "Colaborar y organizar", "Murales, mapas mentales, pizarras y herramientas para organizar recursos.", "colaborar"),
- ("explorar-por-materias", "Explorar por materias", "Herramientas propias de Geografía e Historia, Ciencias, Música y Arte o lectura.", "materias"),
+ ("explorar-por-materias", "Explorar por materias", "Herramientas propias de Geografía e Historia, Ciencias, Idiomas, Música y Arte o lectura.", "materias"),
  ("programacion-y-diseno-3d", "Programación y diseño 3D", "Pensamiento computacional, programación por bloques y diseño en 3D.", "programar"),
  ("inteligencia-artificial", "Inteligencia artificial", "Asistentes y herramientas de IA para preparar clase y para el alumnado.", "ia"),
  ("evaluacion-y-seguimiento", "Evaluación y seguimiento", "Formularios, rúbricas, itinerarios e insignias.", "evaluar"),
@@ -75,7 +75,7 @@ def place(t):
     if i in SUITES: return ("aulas-virtuales", "Aulas virtuales")
     return {("aula","part"):("participar-y-repasar","Cuestionarios y juegos"), ("aula","geohis"):("explorar-por-materias","Geografía e Historia"),
             ("aula","crear"):("crear-y-presentar","Lo crea el alumnado"), ("aula","equipo"):("colaborar-y-organizar","Trabajar en equipo"),
-            ("aula","cienc"):("explorar-por-materias","Ciencias y Matemáticas"), ("aula","arte"):("explorar-por-materias","Música y Arte"),
+            ("aula","cienc"):("explorar-por-materias","Ciencias y Matemáticas"), ("aula","arte"):("explorar-por-materias","Música y Arte"), ("aula","idiomas"):("explorar-por-materias","Idiomas"),
             ("aula","ia"):("inteligencia-artificial","IA para el alumnado"), ("docente","ia"):("inteligencia-artificial","IA para preparar clase"),
             ("docente","crear"):("crear-y-presentar","Materiales del docente"), ("docente","gestion"):("gestion-del-aula","Gestión del aula"),
             ("docente","eval"):("evaluacion-y-seguimiento","Evaluar y motivar"), ("docente","org"):("colaborar-y-organizar","Organizar recursos"),
@@ -88,9 +88,10 @@ REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
 # altas del 23-11-2026 para Infantil (edades de la web oficial de cada una); las de SOLO_IP no son de Secundaria
 REPO_I |= {"gcompris","tuxpaint","musiclab","scratchjr"}; REPO_P |= {"gcompris","tuxpaint","musiclab","scratchjr"}
 # revisión de etapas del 23-11-2026 (Jorge): sin cuenta del alumnado o dirigidas por el docente, sin edad mínima y sin aviso del INTEF
+REPO_I |= {"lekids"}; REPO_P |= {"lekids","forvo","dicta"}   # altas de Idiomas del 23-11-2026 (LearnEnglish Kids: de 5 a 12 años según su web)
 REPO_I |= {"wordwall","visitas","artsculture","earth","incredibox","stopmotion","bookcreator","vocaroo","padlet"}
 REPO_P |= {"wordwall","visitas","artsculture","earth","incredibox","wayground","ancientearth","vertebrados","kgeography","tinkercad","cospaces","immersive"}
-SOLO_IP = {"gcompris","tuxpaint","scratchjr"}
+SOLO_IP = {"gcompris","tuxpaint","scratchjr","lekids"}
 def etapas(t):
     if t["s"] != "aula": return ["I", "P", "S"]  # herramientas del docente y recursos: para el profesorado de cualquier etapa
     i = t["id"]; return [e for e, ok in (("I", i in REPO_I), ("P", i in REPO_P), ("S", i not in SOLO_IP)) if ok]
@@ -157,11 +158,13 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
+SES_PUB = os.environ.get("DK_SESION") != "0"   # «Monta tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
+    if SES_PUB: nav.append(("sesion", "Monta tu sesión", "/sesion/"))
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
-    links = "".join(f'<a href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>' for k, t, h in nav)
+    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>'.replace('>Monta tu sesión<', '><span class="nl">Monta tu sesión</span><span class="ns">Sesión</span><') for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="didákora · inicio">{LOGO}</a>
@@ -251,7 +254,7 @@ def foot(scripts=""):
 </body>
 </html>
 '''
-EN_PRUEBAS = {"sesion/index.html", "plan-b/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
+EN_PRUEBAS = {"plan-b/index.html"} if SES_PUB else {"sesion/index.html", "plan-b/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
 def write(rel, content):
     if rel in EN_PRUEBAS: content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -279,6 +282,16 @@ def etapas_html(fid, cls=""):
             f'<ul class="dd-l" id="{fid}-l" role="listbox" aria-label="Etapa" tabindex="-1" hidden>{li}</ul></div>')
 
 # ---------------------------------------------------------------- portada
+def bloque_sesion():
+    """portada: entrada a «Monta tu sesión», con una sesión de ejemplo en pequeño"""
+    pasos = [("voz", "Activa lo que ya saben", "Sin pantalla"), ("main", "La actividad de la clase", "Con una herramienta del catálogo"), ("", "Comprueba qué se llevan", "Un ticket de salida")]
+    li = "".join(f'<li class="ps-p {c}"><span class="ps-n">{k}</span><span class="ps-t"><b>{esc(t)}</b><small>{esc(d)}</small></span></li>' for k, (c, t, d) in enumerate(pasos, 1))
+    return f'''<section class="sec ps" aria-labelledby="h-ses">
+  <div class="ps-a"><span class="lab">Nuevo</span><h2 id="h-ses">Monta tu sesión</h2>
+   <p>Dime qué quieres hacer en clase, con qué etapa y con qué dispositivos. Te propongo los pasos justos, en su orden, con herramientas del catálogo.</p>
+   <p class="more"><a class="btn solid" href="{B}/sesion/">Montar una sesión {ICO["arrow"]}</a></p></div>
+  <ol class="ps-l" aria-label="Ejemplo de sesión">{li}</ol>
+ </section>'''
 def portada():
     body = f'''
 <main>
@@ -301,6 +314,7 @@ def portada():
   <div class="ccg c4">{"".join(catcard(c) for c in CATS[:4])}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/">Ver categorías {ICO["arrow"]}</a></p>
  </section>
+ {bloque_sesion() if SES_PUB else ""}
 
 {seccion_nuevas()}
 {seccion_actualidad()}
@@ -430,7 +444,7 @@ D_PROFE = re.compile(r"proyectad|solo el móvil del profesor", re.I)       # val
 # el alumnado no crea cuenta: entra con un código o un enlace, o la cuenta solo la necesita el docente («Cuenta del docente para crear»).
 # «Cuenta Microsoft del centro» o «Cuenta de Google» cuentan como cuenta: sin ella no se puede usar.
 SIN_REG = re.compile(r"^no necesita|^código|^entra con el enlace|^solo para guardar|sin correo|código sin cuenta|del docente|^integrado|^extensión", re.I)
-MATERIA = {"Geografía e Historia": "gh", "Ciencias y Matemáticas": "cm", "Música y Arte": "ma", "Lectura y accesibilidad": "ll", "Programación y diseño 3D": "tp"}  # por apartado; el resto vale para cualquier materia
+MATERIA = {"Geografía e Historia": "gh", "Ciencias y Matemáticas": "cm", "Música y Arte": "ma", "Lectura y accesibilidad": "ll", "Idiomas": "id", "Programación y diseño 3D": "tp"}  # por apartado; el resto vale para cualquier materia
 # Objetivo de cada idea («¿Qué quieres hacer?»): primero por palabras y, si no, por la categoría de su herramienta (provisional, como el momento)
 O_PAL = [("rep", re.compile(r"repas|vocabulario|estudiar", re.I)), ("eva", re.compile(r"comprobar|evalua|examen|ticket|ideas previas|informe|autocorreg", re.I)),
          ("equ", re.compile(r"equipo|cooperat|colabor|debate|lluvia de ideas|entre todos|compartid", re.I))]
@@ -783,7 +797,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"]] + [("/sobre-mi/", "")]
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] if SES_PUB else [])] + [("/sobre-mi/", "")]
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]

@@ -20,7 +20,7 @@
 
 # Segunda pregunta según la meta: (pregunta, [(valor, etiqueta)]). En «exp» el valor es la materia; en «eva», el momento.
 RAMAS = {
-    "exp": ("¿De qué materia?", [("gh", "Geografía e Historia"), ("cm", "Ciencias y Matemáticas"), ("ma", "Música y Arte"), ("tp", "Tecnología y programación"),
+    "exp": ("¿De qué materia?", [("gh", "Geografía e Historia"), ("cm", "Ciencias y Matemáticas"), ("ma", "Música y Arte"), ("id", "Idiomas"), ("tp", "Tecnología y programación"),
                                  ("ll", "Lengua y lectura"), ("", "Vale para cualquier materia")]),
     "cre": ("¿Qué van a crear?", [("v", "Un póster, una presentación o un libro"), ("m", "Un mapa o una línea del tiempo"), ("d", "Un vídeo o una animación"),
                                   ("a", "Un audio o una canción"), ("p", "Un programa, una app o un robot"), ("t", "Un objeto o un espacio en 3D")]),

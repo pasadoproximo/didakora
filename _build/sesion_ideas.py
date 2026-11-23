@@ -3,6 +3,12 @@
 #        + objetivo (E = explorar un tema, K = que creen algo, Q = trabajar en equipo, R = repasar, V = comprobar qué saben).
 # Una idea que no esté aquí (nueva o con el texto cambiado) se reparte por palabras en build.py: añádela con su clave.
 SES = {
+ "deepl": {"Comparar su traducción con la del traductor": "CE", "Detectar errores en una traducción automática": "CE", "Entender un texto difícil antes de trabajarlo": "IE"},
+ "dicta": {"Dictado de cinco minutos al empezar la clase": "CR", "Dictado con el vocabulario del tema": "CR", "Practicar la ortografía en otro idioma": "CR"},
+ "lekids": {"Canción para abrir la clase de inglés": "IE", "Cuento con actividades de comprensión": "CE", "Juego de vocabulario del tema": "CR"},
+ "leteens": {"Listening por niveles con ejercicios": "CE", "Repasar un punto de gramática": "CR", "Preparar un examen de inglés": "CR"},
+ "writeimprove": {"Redacción con corrección al momento": "CR", "Reescribir un texto hasta mejorarlo": "CR", "Practicar el writing de un examen": "CR"},
+ "forvo": {"Comprobar la pronunciación de una palabra": "CE", "Comparar acentos de un mismo idioma": "CE", "Preparar una lectura en voz alta": "CE"},
  "gcompris": {"Reconocer letras en la pizarra digital": "CR", "Contar objetos por turnos": "CR", "Mezclar colores antes de pintar": "IE"},
  "tuxpaint": {"Ilustrar un cuento entre toda la clase": "CK", "Autorretrato con pinceles y sellos": "CK", "Dibujar lo que más les ha gustado de la unidad": "FK"},
  "musiclab": {"Componer una melodía entre todos con Song Maker": "CK", "Ver la música: grave y agudo en la cuadrícula": "CE", "Poner música a un cuento": "CK"},
@@ -80,6 +86,10 @@ SES = {
 #   repasar (R): j = con un juego · e = por equipos · r = cada uno a su ritmo
 #   equipo (Q):  b = debatir · o = organizar un proyecto · c = pensar y construir juntos
 RAMA = {
+ "dicta": {"Dictado de cinco minutos al empezar la clase": "r", "Dictado con el vocabulario del tema": "r", "Practicar la ortografía en otro idioma": "r"},
+ "lekids": {"Juego de vocabulario del tema": "j"},
+ "leteens": {"Repasar un punto de gramática": "r", "Preparar un examen de inglés": "r"},
+ "writeimprove": {"Redacción con corrección al momento": "r", "Reescribir un texto hasta mejorarlo": "r", "Practicar el writing de un examen": "r"},
  "gcompris": {"Reconocer letras en la pizarra digital": "j", "Contar objetos por turnos": "j"},
  "tuxpaint": {"Ilustrar un cuento entre toda la clase": "v", "Autorretrato con pinceles y sellos": "v", "Dibujar lo que más les ha gustado de la unidad": "v"},
  "musiclab": {"Componer una melodía entre todos con Song Maker": "a", "Poner música a un cuento": "a"},
