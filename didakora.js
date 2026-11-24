@@ -8,7 +8,7 @@ if(mb){
  document.querySelector('.mm-v').addEventListener('click',()=>pon(false));
  nav.addEventListener('click',e=>{if(e.target.closest('a'))pon(false);});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ab())pon(false,true);});
- nav.addEventListener('focusout',e=>{if(ab()&&e.relatedTarget&&e.relatedTarget!==mb&&!nav.contains(e.relatedTarget))pon(false);});
+ mb.parentNode.addEventListener('focusout',e=>{if(ab()&&e.relatedTarget&&e.relatedTarget!==mb&&!nav.contains(e.relatedTarget))pon(false);});
  addEventListener('pageshow',()=>pon(false));
  matchMedia('(max-width:840px)').addEventListener('change',()=>pon(false));
 }
@@ -46,7 +46,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('.brand');if(!b||
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-copia]');if(!b)return;
  const ok=b.closest('.comp').querySelector('.comp-ok');
  try{await navigator.clipboard.writeText(b.dataset.copia);ok.textContent='Enlace copiado';}catch(err){ok.textContent=b.dataset.copia;}
- setTimeout(()=>{ok.textContent=''},2500);
+ clearTimeout(ok.dkT);ok.dkT=setTimeout(()=>{ok.textContent=''},2500);
 });
 // compartir la ficha: menú del sistema si existe; si no, se copia el enlace
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;
@@ -63,6 +63,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const stem=w=>w.length>4&&w.endsWith('ces')?w.slice(0,-3)+'z':w.length>4&&w.endsWith('es')?w.slice(0,-2):w.length>3&&w.endsWith('s')?w.slice(0,-1):w;
  const STOP=new Set('de la el los las un una unos unas y o a en con para por del al que se su sus mi me lo como'.split(' '));
+ const FLOJAS=new Set('sin no quiero hacer puedo algo herramienta herramientas alumno alumnos alumnado clase educacion aprendizaje'.split(' '));  // no mandan si hay otra palabra
  const SYN={evaluacion:['evaluar','rubrica','calificar','corregir'],evaluar:['evaluacion','rubrica','calificar','corregir'],rubrica:['evaluacion','evaluar'],
   cuestionario:['quiz','test','preguntas','encuesta'],quiz:['cuestionario','test','preguntas'],test:['cuestionario','quiz','preguntas'],
   video:['audiovisual','grabar'],mapa:['cartografia'],imagen:['foto','fotografia','ilustracion'],foto:['imagen','fotografia'],podcast:['audio','radio'],
@@ -76,8 +77,10 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
   diversidad:['dislexia','lectura en voz alta','dictado','accesibilidad','dificultades','inclusion'],inclusion:['diversidad','accesibilidad','dislexia','dificultades'],
   planificar:['programacion','planificacion','preparar'],traducir:['traduccion','idiomas'],
   voz:['locucion','narrar','narracion','leer en voz alta'],locucion:['voz','narrar','narracion'],narrar:['narracion','locucion','voz','relato'],narracion:['narrar','locucion','voz','relato'],
+  sociales:['historia','geografia'],votar:['vota','votacion','encuesta'],votacion:['vota','votar','encuesta'],electricidad:['circuito','electronica'],nee:['diversidad','accesibilidad','pictogramas','dificultades'],tdah:['diversidad','accesibilidad','pictogramas','dificultades'],cronometro:['temporizador'],
   doblaje:['doblar','idiomas','locucion'],doblar:['doblaje','idiomas'],audiolibro:['leer en voz alta','narrar','locucion','audio']};
- const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['educacion fisica','educacionfisica'],['voz en off','locucion'],['texto a voz','locucion']];
+ const PHRASES=[['atencion a la diversidad','diversidad'],['inteligencia artificial','ia'],['realidad aumentada','ra'],['tres dimensiones','3d'],['no necesita cuenta','nocuenta'],['sin cuenta','nocuenta'],['sin registro','nocuenta'],['sin registrarse','nocuenta'],['no necesite registro','nocuenta'],['no necesite cuenta','nocuenta'],['no pida cuenta','nocuenta'],['educacion fisica','educacionfisica'],['ef','educacionfisica'],['mates','matematicas'],['educacion plastica','plastica'],['sin dispositivos','sindisp'],['sin ordenadores','sindisp'],['sin moviles','sindisp'],['sin tabletas','sindisp'],['ciencias sociales','sociales'],['sin internet','sinred'],['sin conexion','sinred'],['sin wifi','sinred'],['voz en off','locucion'],['texto a voz','locucion']];
+ const MATERIAS=new Set('ingles frances aleman idiomas matematicas fisica quimica biologia ciencias economia musica plastica arte tecnologia astronomia geografia historia literatura robotica'.split(' ').map(stem));
  const SYNS=Object.fromEntries(Object.entries(SYN).map(([k,v])=>[stem(k),v]));
  const words=s=>norm(s).split(/[^a-z0-9ñ]+/).filter(Boolean);
  const CATKW={'aula:ia':'apoyo al aprendizaje','aula:cienc':'','aula:arte':''};
@@ -98,41 +101,49 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  cervantes:"biblioteca virtual miguel de cervantes literatura lengua castellana libros obras clasicos poesia teatro novela autores biografias lectura siglo de oro hemeroteca historia infantil juvenil catalan gallego",
  bnescolar:"bnescolar bne biblioteca nacional de espana fuentes primarias historicas documentos hemeroteca secuencias didacticas talleres desafios videos historia lengua literatura patrimonio situaciones de aprendizaje",
  dwdeutsch:'idiomas aleman lengua extranjera video comprension oral',duolingo:'idiomas lengua extranjera vocabulario',
-  tv5monde:'idiomas frances lengua extranjera video comprension oral',gtranslate:'idiomas ingles frances aleman traductor traducir traduccion google translate imagen',apertium:'idiomas traductor traducir traduccion libre catalan gallego euskera software libre',deepl:'idiomas ingles frances aleman traductor traducir traduccion',dicta:'idiomas lengua ingles frances aleman dictado dictados ortografia escuchar',lekids:'ingles idiomas english primaria infantil canciones cuentos',leteens:'ingles idiomas english listening reading gramatica examen',writeimprove:'ingles idiomas english writing redaccion escribir corregir',forvo:'idiomas ingles frances aleman pronunciacion pronunciar acento',musescore:'musica',incredibox:'musica',musiclab:'musica componer melodia cancion',scratchjr:PROG+' infantil tableta tablet',gcompris:'infantil letras numeros colores logica juegos educativos',tuxpaint:'infantil dibujo dibujar pintar plastica',musictheory:'musica',librecad:'dibujo tecnico tecnologia'};
+  tv5monde:'idiomas frances lengua extranjera video comprension oral',gtranslate:'idiomas ingles frances aleman traductor traducir traduccion google translate imagen',apertium:'idiomas traductor traducir traduccion libre catalan gallego euskera software libre',deepl:'idiomas ingles frances aleman traductor traducir traduccion',dicta:'idiomas lengua ingles frances aleman dictado dictados ortografia escuchar',lekids:'ingles idiomas english primaria infantil canciones cuentos',leteens:'ingles idiomas english listening reading gramatica examen',writeimprove:'ingles idiomas english writing redaccion escribir corregir',forvo:'idiomas ingles frances aleman pronunciacion pronunciar acento',musescore:'musica',incredibox:'musica',musiclab:'musica componer melodia cancion',scratchjr:PROG+' infantil tableta tablet',gcompris:'infantil letras numeros colores logica juegos educativos',tuxpaint:'infantil dibujo dibujar pintar plastica',musictheory:'musica',librecad:'dibujo tecnico tecnologia cad planos'};
  const IDX={};
  const flat=s=>' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';
  const joinPh=s=>{let r=' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return r.trim();};
  const ETN={I:'infantil',P:'primaria',S:'secundaria bachillerato eso'};
  TOOLS.forEach(t=>{const k=t.s+':'+t.cat,c=CAJA.t[t.id];
-  const core=norm([t.d,t.a,t.p,SECTIONS[t.s].n,k in CATKW?CATKW[k]:SECTIONS[t.s].cats[t.cat],CAJA.cats[c[0]][0],c[3],SUBJ[t.id],c[1].map(e=>ETN[e]).join(' '),t.c,t.nota,t.coste,t.cta,t.s==='aula'&&/^no necesita/i.test(t.cta)?'nocuenta':''].filter(Boolean).join(' '));
+  const core=norm([t.d,t.a,t.p,SECTIONS[t.s].n,k in CATKW?CATKW[k]:SECTIONS[t.s].cats[t.cat],CAJA.cats[c[0]][0],c[3],SUBJ[t.id],c[1].map(e=>ETN[e]).join(' '),t.c,t.nota,t.coste,t.cta,t.s==='aula'&&/^no necesita/i.test(t.cta)?'nocuenta':'',/^ningun/i.test(t.disp||'')?'sindisp':'',/se instala/i.test(t.disp||'')?'sinred':''].filter(Boolean).join(' '));
   const ideas=joinPh(norm((t.i||[]).join(' ')+' '+(c[4]||''))),coreJ=joinPh(core),name=joinPh(norm(t.n));
-  IDX[t.id]={nc:norm(t.n.replace(/\s*\(.*\)/,'')).replace(/[^a-z0-9ñ]/g,''),nt:flat(name),ct:flat(coreJ),it:flat(ideas),nw:words(name),cwl:words(coreJ),cw:new Set(words(coreJ).map(stem)),iw:new Set(words(ideas).map(stem))};});
+  IDX[t.id]={nc:norm(t.n.replace(/\s*\(.*\)/,'')).replace(/[^a-z0-9ñ]/g,''),nt:flat(name),ct:flat(coreJ),it:flat(ideas),nw:words(name),cwl:words(coreJ),sw:new Set(words(joinPh(norm(SUBJ[t.id]||''))).map(stem)),cw:new Set(words(coreJ).map(stem)),iw:new Set(words(ideas).map(stem))};});
  const forms=w=>[w,...(SYNS[stem(w)]||[])];
  // ¿se parecen con una sola letra de diferencia (sobra, falta o cambia)?
- const near=(a,b)=>{if(Math.abs(a.length-b.length)>1||a===b)return a===b;let i=0,j=0,e=0;
+ const near=(a,b)=>{if(a.length===b.length&&a!==b){const d=[];for(let k=0;k<a.length&&d.length<3;k++)if(a[k]!==b[k])d.push(k);if(d.length===2&&d[1]===d[0]+1&&a[d[0]]===b[d[1]]&&a[d[1]]===b[d[0]])return true;}
+  if(Math.abs(a.length-b.length)>1||a===b)return a===b;let i=0,j=0,e=0;
   while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;continue;}if(++e>1)return false;
    if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}}
   return e+(a.length-i)+(b.length-j)<=1;};
  const wordScore=(X,w)=>{let best=0;const sw=stem(w);
   if(X.nw.some(x=>x===w||stem(x)===sw))best=10;
-  else if(X.nw.some(x=>x.startsWith(w))||(w.length>=3&&X.nc.startsWith(w)))best=8;
+  else if(X.nw.some(x=>x.startsWith(w))||(w.length>=3&&X.nc.startsWith(w)))best=w.length>3?8:4.8;  // «tea» no es «Teams»
   if(best<10&&w.length>=4&&w===X.nc)best=10;
   if(best<5){const fs=forms(w);for(let k=0;k<fs.length;k++){const f=fs[k],ok=f.includes(' ')?(X.nt.includes(' '+f+' ')||X.ct.includes(' '+f+' ')):X.cw.has(stem(f));
    if(ok){best=Math.max(best,k===0?5:Math.max(3,4-k*.15));break;}}}
   if(best<4.5&&w.length>=4&&(X.nw.some(x=>x.length>=4&&near(x,w))||near(X.nc,w)))best=4.5;
-  if(best<3&&w.length>=3&&X.cwl.some(x=>x.startsWith(w)))best=3;
+  if(best<3&&w.length>=4&&X.cwl.some(x=>x.startsWith(w)))best=3;
   if(best<2&&forms(w).some(f=>f.includes(' ')?X.it.includes(' '+f+' '):(stem(f).length>3&&X.iw.has(stem(f)))))best=2;
   if(best<1&&w.length>=5&&X.cwl.some(x=>x.length>=5&&near(x,w)))best=1;
   // desempate: si además aparecen términos relacionados («voz» → locución, narrar…), la herramienta va más centrada en el tema
   if(best>0){const extra=forms(w).slice(1).filter(f=>f.includes(' ')?(X.ct.includes(' '+f+' ')||X.it.includes(' '+f+' ')):(X.cw.has(stem(f))||X.iw.has(stem(f)))).length;best+=Math.min(.9,extra*.3);}
+  if(best>=5&&best<8&&MATERIAS.has(sw)&&X.sw.has(sw))best+=1;  // la materia de la herramienta manda sobre una mención suelta
   return best;};
- const query=raw=>{let r=' '+norm(raw).replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});return words(r).filter(w=>!STOP.has(w));};
+ const query=raw=>{let r=' '+norm(raw).replace(/[^a-z0-9ñ]+/g,' ')+' ';PHRASES.forEach(([a,b])=>{r=r.split(' '+a+' ').join(' '+b+' ')});const q=words(r).filter(w=>!STOP.has(w)),f=q.filter(w=>!FLOJAS.has(w));return f.some(w=>w.length>2)?f:q;};
  // devuelve {exactas, parecidas}: exactas = tienen todas las palabras; parecidas = alguna (solo si no hay exactas)
  const buscar=(raw,pool)=>{const qs=query(raw);pool=pool||TOOLS;if(!qs.length)return {qs,exactas:pool,parecidas:[]};
-  const sc=pool.map(t=>{const X=IDX[t.id],v=qs.map(w=>wordScore(X,w));return {t,hits:v.filter(Boolean).length,sum:v.reduce((a,b)=>a+b,0)};});
+  const sc=pool.map(t=>{const X=IDX[t.id],v=qs.map(w=>wordScore(X,w));return {t,v,hits:v.filter(Boolean).length,sum:v.reduce((a,b)=>a+b,0)};});
   const by=(a,b)=>b.sum-a.sum;
+  // en las parecidas pesa más la palabra rara («matemáticas») que la que tienen casi todas («infantil»)
+  const pes=qs.map(w=>1/Math.log2(2+pool.filter(t=>wordScore(IDX[t.id],w)).length));
   const exactas=sc.filter(x=>x.hits===qs.length).sort(by).map(x=>x.t);
-  const parecidas=exactas.length?[]:sc.filter(x=>x.hits>0).sort((a,b)=>b.hits-a.hits||by(a,b)).map(x=>x.t);
+  const val=x=>x.v.reduce((a,n,i)=>a+n*pes[i],0);
+  let parecidas=exactas.length?[]:sc.filter(x=>x.hits>0).sort((a,b)=>val(b)-val(a)).map(x=>x.t);
+  // nombre escrito separado: «chat gpt», «notebook lm»
+  const jun=norm(raw).replace(/[^a-z0-9ñ]/g,''),t0=jun.length>4&&pool.find(t=>IDX[t.id].nc===jun);
+  if(t0)return {qs,exactas:[t0,...exactas.filter(t=>t!==t0)],parecidas:[]};
   return {qs,exactas,parecidas};};
  return {buscar,query};
 }
@@ -157,7 +168,8 @@ function cajaListado(){
 
  const P=new URLSearchParams(location.search);
  const st={q:P.get('q')||'',nivel:P.get('nivel')||'',cat:P.get('cat')||''};
- const qEl=$('lq'),nEl=$('lnv');qEl.value=st.q;
+ if(!['I','P','S'].includes(st.nivel))st.nivel='';if(!Object.prototype.hasOwnProperty.call(CAJA.cats,st.cat))st.cat='';st.q=st.q.slice(0,120);
+ const qEl=$('lq'),nEl=$('lnv');qEl.maxLength=120;qEl.value=st.q;
  const setNv=v=>nEl.dkSet(v);setNv(st.nivel);
  const NV={I:'Infantil',P:'Primaria',S:'Secundaria y Bachillerato'};
  function render(){
@@ -167,7 +179,7 @@ function cajaListado(){
   $('lgrid').innerHTML=list.length?note+list.map(card).join(''):`<div class="empty"><p>No hay resultados${st.q?` para «${esc(st.q)}»`:''}.</p><p>Prueba con otra palabra o con lo que quieres hacer, por ejemplo «evaluar» o «vídeo»${st.nivel||st.cat?', o quita los filtros':''}.</p><button type="button" class="btn solid" data-reset>Ver todas</button></div>`;
   document.querySelectorAll('#lcats button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.cat===st.cat));
   const extra=st.nivel?NV[st.nivel]:'';
-  $('lcount').textContent=`${list.length} ${list.length===1?'herramienta':'herramientas'}${aprox?' parecidas':''}${extra?' · '+extra:''}`;
+  $('lcount').textContent=`${list.length} ${list.length===1?'herramienta':'herramientas'}${aprox?(list.length===1?' parecida':' parecidas'):''}${extra?' · '+extra:''}`;
   const u=new URLSearchParams();if(st.q)u.set('q',st.q);if(st.nivel)u.set('nivel',st.nivel);if(st.cat)u.set('cat',st.cat);
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
  }
@@ -176,10 +188,11 @@ function cajaListado(){
  $('lcats').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.cat=b.dataset.cat;render();});
  document.addEventListener('click',e=>{if(e.target.closest('[data-reset]')){Object.assign(st,{q:'',nivel:'',cat:''});qEl.value='';setNv('');render();qEl.focus();}});
  render();
+ const ch=$('lcats').querySelector('[aria-pressed=true]');if(ch&&st.cat)$('lcats').scrollLeft+=ch.getBoundingClientRect().left-$('lcats').getBoundingClientRect().left-16;
 }
 
 // en pantallas estrechas, el texto de ayuda del buscador corto para que no se corte
-(()=>{const mq=matchMedia('(max-width:560px)'),els=[...document.querySelectorAll('#hq,#lq')];
+(()=>{const mq=matchMedia('(max-width:560px)'),els=[...document.querySelectorAll('#hq,#lq,#eq')];
  const f=()=>els.forEach(e=>{e.dataset.ph=e.dataset.ph||e.placeholder;e.placeholder=mq.matches?'Busca una herramienta…':e.dataset.ph;});
  f();mq.addEventListener('change',f);})();
 
@@ -188,19 +201,18 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').for
 
 // Mi caja: herramientas (h) y sesiones (s) guardadas en este navegador; /mi-caja/ las enseña y las comparte con ?h=…&s=…
 (()=>{const B=window.DK_BASE||'',K='dk-caja',$=i=>document.getElementById(i);
- const lee=()=>{try{const d=JSON.parse(localStorage.getItem(K))||{};return {h:d.h||[],s:d.s||[]}}catch(e){return {h:[],s:[]}}};
+ const lee=()=>{try{const d=JSON.parse(localStorage.getItem(K))||{},l=a=>Array.isArray(a)?a.filter(x=>typeof x==='string'):[];return {h:l(d.h),s:l(d.s)}}catch(e){return {h:[],s:[]}}};
  const guarda=d=>{try{localStorage.setItem(K,JSON.stringify(d));pill();return true}catch(e){return false}};
  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- // la caja del logo con el número dentro: abajo a la izquierda en ordenador y como casilla del menú en el móvil (Jorge, 24-11-2026)
- const cj=n=>'<svg class="cj" viewBox="2 11 44 34" aria-hidden="true"><path d="M3 13h17l4 8H7z" fill="#9FB3FF"/><path d="M45 13H28l-4 8h17z" fill="#FF8A6B"/><path d="M8 21h32v17a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5z" fill="#061033"/><text x="24" y="37.6" text-anchor="middle"'+(n>99?' style="font-size:13px"':'')+'>'+(n>99?'99+':n)+'</text></svg>';
- const pill=()=>{const d=lee(),n=d.h.length+d.s.length,nav=$('menu'),mb=document.querySelector('.mm-b'),t='Mi caja, '+n+(n===1?' guardada':' guardadas');
-  const pon=(sel,cls,padre,html,hay)=>{let p=document.querySelector(sel);if(!hay){if(p)p.remove();return}if(!p){p=document.createElement('a');p.className=cls;p.href=B+'/mi-caja/';padre.appendChild(p)}p.innerHTML=html;p.setAttribute('aria-label',t);if($('mc')&&cls==='mm-c')p.setAttribute('aria-current','page');else p.title='Mi caja'};
-  pon('a.mc-v','mc-v',document.body,cj(n),n&&!$('mc'));
-  if(nav)pon('a.mm-c','mm-c',nav,cj(n)+'Mi caja',n);
+ // la caja del logo con el número dentro: en la barra en ordenador y como casilla del menú en el móvil (Jorge, 24-11-2026)
+ const cj=n=>'<svg class="cj" viewBox="2 11 44 34" aria-hidden="true"><path d="M3 13h17l4 8H7z" fill="#9FB3FF"/><path d="M45 13H28l-4 8h17z" fill="#FF8A6B"/><path d="M8 21h32v17a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5z" fill="#061033"/>'+(n?'<text x="24" y="37.6" text-anchor="middle"'+(n>99?' style="font-size:13px"':'')+'>'+(n>99?'99+':n)+'</text>':'<rect x="19" y="27" width="10" height="4" rx="2" fill="#9FB3FF"/>')+'</svg>';
+ const pill=()=>{const d=lee(),n=d.h.length+d.s.length,p=document.querySelector('.mm-c'),mb=document.querySelector('.mm-b');
+  if(p){p.classList.toggle('hay',!!n);p.querySelector('.cj-h').innerHTML=cj(n);p.setAttribute('aria-label',n?'Mi caja, '+n+(n===1?' guardada':' guardadas'):'Mi caja')}
   if(mb)mb.classList.toggle('hay',!!n)};
+ const pintas=[],otra=()=>{pill();pintas.forEach(f=>f())};addEventListener('pageshow',e=>{if(e.persisted)otra()});addEventListener('storage',e=>{if(e.key===K||e.key===null)otra()});
  document.querySelectorAll('[data-gc]').forEach(b=>{const [k,i]=b.dataset.gc.split(':');
   const pinta=()=>{const si=lee()[k].includes(i);b.setAttribute('aria-pressed',si);b.textContent=si?'En mi caja':'Guardar en mi caja'};
-  b.hidden=false;pinta();b.addEventListener('click',()=>{const d=lee();d[k]=d[k].includes(i)?d[k].filter(x=>x!==i):[...d[k],i];if(guarda(d)){pinta();pill()}else b.textContent='Tu navegador no deja guardar'})});
+  b.hidden=false;pinta();pintas.push(pinta);b.addEventListener('click',()=>{const d=lee();d[k]=d[k].includes(i)?d[k].filter(x=>x!==i):[...d[k],i];if(guarda(d)){pinta();pill()}else b.textContent='Tu navegador no deja guardar'})});
  pill();
  const el=$('mc'),D=window.DK_CAJA;if(!el||!D)return;
  const U=new URLSearchParams(location.search),val=(k,a)=>[...new Set(a)].filter(i=>Object.prototype.hasOwnProperty.call(D[k],i));
@@ -212,10 +224,11 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').for
   const blo=(k,t)=>d[k].length?'<h2 class="mc-h">'+t+'</h2><ul class="mc-l">'+d[k].map(i=>fila(k,i)).join('')+'</ul>':'';
   el.innerHTML='<p class="mc-a">'+(ver?'<button type="button" class="btn solid" data-a="todo">Guardarlo en mi caja</button><a class="btn line" href="'+B+'/mi-caja/">Ver la mía</a>':'<button type="button" class="btn solid" data-a="copia">'+(aviso||'Copiar el enlace')+'</button><button type="button" class="btn line" data-a="vacia">Vaciar</button>')+'</p>'+blo('h','Herramientas')+blo('s','Sesiones')}
  el.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.q){const [k,i]=b.dataset.q.split(':'),d=lee();d[k]=d[k].filter(x=>x!==i);guarda(d);pinta()}
-  else if(b.dataset.a==='copia'){const d=lee(),p=[];['h','s'].forEach(k=>{if(d[k].length)p.push(k+'='+d[k].join(','))});const u=location.origin+B+'/mi-caja/?'+p.join('&');try{await navigator.clipboard.writeText(u);pinta('Enlace copiado')}catch(x){history.replaceState(null,'','?'+p.join('&'));pinta('El enlace está en la barra de direcciones')}}
-  else if(b.dataset.a==='vacia'){if(b.dataset.ok){guarda({h:[],s:[]});pinta()}else{b.dataset.ok=1;b.textContent='¿Seguro? Pulsa otra vez'}}
-  else if(b.dataset.a==='todo'){const d=lee();if(guarda({h:[...new Set([...d.h,...comp.h])],s:[...new Set([...d.s,...comp.s])]})){ver=false;history.replaceState(null,'',location.pathname);pinta()}}});
+  if(b.dataset.q){const [k,i]=b.dataset.q.split(':'),d=lee(),n=[...el.querySelectorAll('[data-q]')].indexOf(b);d[k]=d[k].filter(x=>x!==i);guarda(d);pinta();const r=[...el.querySelectorAll('[data-q]')];(r[Math.min(n,r.length-1)]||el.querySelector('a')).focus()}
+  else if(b.dataset.a==='copia'){const d=lee(),p=[];['h','s'].forEach(k=>{if(d[k].length)p.push(k+'='+d[k].join(','))});const u=location.origin+B+'/mi-caja/?'+p.join('&');try{await navigator.clipboard.writeText(u);b.textContent='Enlace copiado'}catch(x){history.replaceState(null,'','?'+p.join('&'));b.textContent='El enlace está en la barra de direcciones'}}
+  else if(b.dataset.a==='vacia'){if(b.dataset.ok){guarda({h:[],s:[]});pinta();el.querySelector('a').focus()}else{b.dataset.ok=1;b.textContent='¿Seguro? Pulsa otra vez';setTimeout(()=>{delete b.dataset.ok;b.textContent='Vaciar'},4000)}}
+  else if(b.dataset.a==='todo'){const d=lee();if(guarda({h:[...new Set([...d.h,...comp.h])],s:[...new Set([...d.s,...comp.s])]})){ver=false;history.replaceState(null,'',location.pathname);pinta()}else b.textContent='Tu navegador no deja guardar'}});
+ pintas.push(()=>pinta());if(!ver){const d=lee(),v={h:val('h',d.h),s:val('s',d.s)};if(v.h.length!==d.h.length||v.s.length!==d.s.length)guarda(v)}  // fuera lo que ya no está en el catálogo
  pinta();
 })();
 

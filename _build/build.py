@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "124"  # versión de didakora.css / didakora.js
+V = "126"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -172,7 +172,10 @@ def topbar(cur=""):
     if SES_PUB: nav.append(("sesion", "Elige tu sesión", "/sesion/"))
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
-    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'><svg viewBox="0 0 24 24" aria-hidden="true">{MENU_I[k]}</svg>{t}</a>' for k, t, h in nav)
+    # en ordenador (desde 841 px): Herramientas, Elige tu sesión, Actualidad, Mi caja y Sobre mí. En el móvil, el panel con todas (Jorge, 24-11-2026)
+    CAJA_A = f'<a data-k="caja" class="mm-c" href="{B}/mi-caja/"' + (' aria-current="page"' if cur == "caja" else "") + '><span class="cj-h"></span>Mi caja</a>'
+    nom = lambda k, t: '<span class="n-pc">Herramientas</span><span class="n-mv">Todas</span>' if k == "todas" else t
+    links = "".join((CAJA_A if k == "sobre" else "") + f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'><svg viewBox="0 0 24 24" aria-hidden="true">{MENU_I[k]}</svg>{nom(k, t)}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="didákora · inicio">{LOGO}</a>
@@ -210,7 +213,7 @@ def migas(*pasos):
 def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website"):
     # img: imagen al compartir (dirección completa); sin ella, la general de la marca. Las de las fichas: _build/og.py → og/<id>.png
     og_img = img or f"{WEB}/marca/og.png"; og_alt = img_alt or "Didákora: herramientas digitales para docentes, revisadas una a una"
-    medidas = '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' if not img or "/og/" in img else ""
+    medidas = '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' if not img or "/og/" in img else ('<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="675">\n' if "/actualidad/" in img else "")
     return f'''<!doctype html>
 <html lang="es">
 <head>
@@ -277,6 +280,7 @@ def foot(scripts=""):
 EN_PRUEBAS = set() if SES_PUB else {"sesion/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
 def write(rel, content):
     if rel in EN_PRUEBAS or rel == "404.html": content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
+    if 'content="noindex' in content: content = content.replace('<meta name="robots" content="max-image-preview:large">\n', "", 1)
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8", newline="\n").write(content)
 def crumbs(items):
@@ -386,7 +390,7 @@ def mi_caja():
  <noscript><p>Mi caja necesita JavaScript.</p></noscript>
 </main>
 <script>window.DK_CAJA={json.dumps(D, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")}</script>"""
-    write("mi-caja/index.html", head("Mi caja: tus herramientas y sesiones guardadas · Didákora", "Guarda las herramientas y sesiones que usas en clase y llévalas a otro equipo con un enlace, sin registro.", "/mi-caja/").replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1) + body + foot())
+    write("mi-caja/index.html", head("Mi caja: tus herramientas y sesiones guardadas · Didákora", "Guarda las herramientas y sesiones que usas en clase y llévalas a otro equipo con un enlace, sin registro.", "/mi-caja/", "caja").replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1) + body + foot())
 
 # ---------------------------------------------------------------- sobre mí
 def sobremi():
@@ -521,7 +525,7 @@ def sesion():
   {filtro("o", "Qué buscas", "Todo", METAS_S)}
   {filtro("s", "Materia", "Todas", MATERIAS_S)}
  </form>
- <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
+ <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr" aria-live="polite"></span><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
  <h2 class="sr">Sesiones</h2>
  <section class="cp-l xa-l n3" id="sg">{cards}</section>
  <div class="xley" id="sy"><i></i>Con la herramienta<i class="off"></i>Sin pantalla</div>
@@ -749,11 +753,11 @@ def comparar():
 <script>
 (function(){{
  var D={json.dumps(D, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")},MS={json.dumps(ms, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")},B="{B}";
- var by={{}};D.forEach(function(t){{by[t.id]=t}});
+ var by=Object.create(null);D.forEach(function(t){{by[t.id]=t}});
  var sels=[].slice.call(document.querySelectorAll("#cp-f select")),out=document.getElementById("cp");
  function esc(s){{return String(s).replace(/[&<>"]/g,function(c){{return {{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}}[c]}})}}
  function lg(t,s){{return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=6" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}}
- function leer(){{var m=/[?&]c=([a-z0-9,]+)/.exec(location.search),ids=m?m[1].split(","):[];return ids.filter(function(i,k){{return by[i]&&ids.indexOf(i)===k}}).slice(0,3)}}
+ function leer(){{var ids=(new URLSearchParams(location.search).get("c")||"").toLowerCase().split(",").map(function(x){{return x.trim()}});return ids.filter(function(i,k){{return by[i]&&ids.indexOf(i)===k}}).slice(0,3)}}
  function pinta(ids,empuja){{
   sels.forEach(function(s,i){{s.value=ids[i]||""}});
   if(empuja){{try{{history.replaceState(null,"",ids.length?"?c="+ids.join(","):location.pathname)}}catch(e){{}}}}
@@ -816,6 +820,7 @@ def colecciones():
         body = f'''
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Colecciones", f"{B}/colecciones/"), (c["t"], "")])}<h1>{esc(c["t"])}</h1></div><p>{esc(c["d"])}</p></div>
+ <h2 class="sr">Herramientas de la colección</h2>
  <ul class="g-l co-l">{items}</ul>
  <p class="more"><a class="btn line" href="{B}/colecciones/">Ver todas las colecciones {ICO["arrow"]}</a></p>
 </main>'''
