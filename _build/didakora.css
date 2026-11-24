@@ -608,3 +608,4 @@ a.tag:hover{background:var(--coral3)}
 .se-a .se-h{margin-bottom:20px}.se-a .se-h .sp-h{min-height:38px}
 .se-b{display:flex;gap:8px;max-width:360px;border-top:1px solid rgba(255,255,255,.16);padding-top:20px}.se-a .se-b .btn,.se-a .se-b .btn.line.gc{margin:0;min-height:42px;padding:7px 12px;justify-content:center;white-space:nowrap}.se-b .btn:first-child{flex:0 0 78px}.se-b .gc{flex:1 1 auto}
 @media (max-width:960px){.se-b{max-width:none}.se-a .se-b .gc{flex:0 1 260px}}
+.al-l .more{justify-content:flex-end;text-align:right}.al-o .btn{display:flex;width:fit-content;margin-left:auto}
