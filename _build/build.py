@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "93"  # versión de didakora.css / didakora.js
+V = "94"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -516,7 +516,7 @@ def sesion():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Elige tu sesión", f"{B}/sesion/"), (x["t"], "")])}<h1>{esc(x["t"])}</h1></div><p>{esc(x["r"])}</p></div>
  <div class="se-g">
   <aside class="se-a"><dl><div><dt>Duración</dt><dd>{x["min"]} minutos</dd></div><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Ejemplo</dt><dd>{esc(x["ej"])}</dd></div></dl>
-   <div class="se-h">{hs}</div><button type="button" class="btn solid" onclick="print()">Imprimir o PDF</button></aside>
+   <div class="se-h">{hs}<button type="button" class="btn" aria-label="Guardar la sesión en PDF" onclick="print()">PDF</button></div></aside>
   <div><section class="se-p"><h2>Antes de empezar</h2><p>{esc(x["prep"])}</p></section>
    <section><h2 class="se-t">La sesión</h2><ol class="se-l">{li}</ol></section>
    <div class="se-x"><section><h2>Si falla el wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
