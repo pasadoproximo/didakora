@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "106"  # versión de didakora.css / didakora.js
+V = "107"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -472,7 +472,7 @@ def compartir(titulo, path, cls=""):
     a = "".join(f'<a href="{esc(h.format(u=u, t=t, tu=tu))}" rel="noopener" target="_blank" aria-label="Compartir en {n}" title="{n}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="{RED_PATH[k]}"/></svg></a>' for k, (n, h) in RED.items())
     a += f'<a href="mailto:?subject={t}&amp;body={tu}" aria-label="Enviar por correo" title="Correo"><svg class="ln" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></a>'
     a += f'<button type="button" data-copia="{esc(url)}" aria-label="Copiar enlace" title="Copiar enlace"><svg class="ln" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>'
-    return f'<div class="comp{" " + cls if cls else ""}"><span class="lab">Compartir</span><div class="comp-i">{a}</div><span class="comp-ok" role="status" aria-live="polite"></span></div>'
+    return f'<div class="comp{" " + cls if cls else ""}"><span class="comp-ok" role="status" aria-live="polite"></span><div class="comp-i" role="group" aria-label="Compartir">{a}</div></div>'
 
 # ---------------------------------------------------------------- Elige tu sesión y Plan B (22-11-2026, EN PRUEBAS: sin enlace en el menú)
 # Las dos salen solo de los datos de las herramientas del alumnado (Aula): sus ideas de actividad (`i`), dispositivos y cuenta.
