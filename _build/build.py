@@ -11,6 +11,7 @@
 # Uso: python _build/build.py
 #      python _build/build.py --vista <post.json> <carpeta>   → solo la vista previa de un post (no toca la web)
 import json, os, re, subprocess, html, shutil, sys
+CORREO = os.environ["DK_CORREO"]   # el correo de contacto no se escribe en el código
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = ROOT
@@ -236,7 +237,7 @@ def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website
 {topbar(cur)}
 '''
 CONTACTO = [
- ("mail", "Correo", "jorgedelagui@gmail.com", "mailto:jorgedelagui@gmail.com"),
+ ("mail", "Correo", CORREO, "mailto:" + CORREO),
  ("in", "LinkedIn", "jorgedelgadoaguilera", "https://www.linkedin.com/in/jorgedelgadoaguilera"),
  ("ig", "Instagram", "@pasadoproximo · divulgación histórica", "https://www.instagram.com/pasadoproximo/"),
 ]
@@ -356,7 +357,7 @@ def todas():
 def privacidad():
     """lo que dicen las fuentes oficiales de cada servicio, abiertas el 24-11-2026: si la web cambia de contador, letras o alojamiento, hay que cambiar esto"""
     a = lambda u, t: f'<a href="{u}" target="_blank" rel="noopener">{t}</a>'
-    S = [("Quién está detrás", f'Didákora es un proyecto personal de Jorge Delgado Aguilera. Para cualquier duda, escribe a {a("mailto:jorgedelagui@gmail.com", "jorgedelagui@gmail.com")}.'),
+    S = [("Quién está detrás", f'Didákora es un proyecto personal de Jorge Delgado Aguilera. Para cualquier duda, escribe a {a("mailto:" + CORREO, CORREO)}.'),
          ("Qué no hace esta web", "No pide registro, no tiene formularios ni publicidad y no pone cookies propias. Lo que buscas o eliges en sus páginas no se guarda."),
          ("Las visitas", f'Se cuentan con GoatCounter, que no usa cookies ni guarda la dirección IP. Registra la página, la hora, de dónde llegas, el navegador, el sistema, el idioma, el ancho de la pantalla y el país, sin unirlos entre sí. Para no contarte dos veces, mantiene tu IP y tu navegador en memoria hasta ocho horas. {a("https://www.goatcounter.com/help/privacy", "Su política")}.'),
          ("El alojamiento", f'La web está en GitHub Pages, que registra la dirección IP de quien la visita por seguridad. {a("https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages", "Más información")}.'),
@@ -928,7 +929,7 @@ def rss():
    <guid isPermaLink="true">{WEB}/actualidad/{post_slug(p)}/</guid>
    <pubDate>{rfc(p["fecha"])}</pubDate>
    <description>{x(bt_plano(p["entradilla"]))}</description>
-   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <author>{CORREO} (Jorge Delgado Aguilera)</author>
    <category>{x(p["etiqueta"])}</category>
   </item>""" for p in reversed(POSTS))
     write("rss.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
