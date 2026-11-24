@@ -189,10 +189,15 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').for
 // Mi caja: herramientas (h) y sesiones (s) guardadas en este navegador; /mi-caja/ las enseña y las comparte con ?h=…&s=…
 (()=>{const B=window.DK_BASE||'',K='dk-caja',$=i=>document.getElementById(i);
  const lee=()=>{try{const d=JSON.parse(localStorage.getItem(K))||{};return {h:d.h||[],s:d.s||[]}}catch(e){return {h:[],s:[]}}};
- const guarda=d=>{try{localStorage.setItem(K,JSON.stringify(d));return true}catch(e){return false}};
+ const guarda=d=>{try{localStorage.setItem(K,JSON.stringify(d));pill();return true}catch(e){return false}};
  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- const pill=()=>{const d=lee(),n=d.h.length+d.s.length;let p=document.querySelector('.mc-v');if(!n||$('mc')){if(p)p.remove();return}
-  if(!p){p=document.createElement('a');p.className='mc-v';p.href=B+'/mi-caja/';document.body.appendChild(p)}p.innerHTML='Mi caja <b>'+n+'</b>'};
+ // la caja del logo con el número dentro: abajo a la izquierda en ordenador y como casilla del menú en el móvil (Jorge, 24-11-2026)
+ const cj=n=>'<svg class="cj" viewBox="2 11 44 34" aria-hidden="true"><path d="M3 13h17l4 8H7z" fill="#9FB3FF"/><path d="M45 13H28l-4 8h17z" fill="#FF8A6B"/><path d="M8 21h32v17a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5z" fill="#061033"/><text x="24" y="37.6" text-anchor="middle"'+(n>99?' style="font-size:13px"':'')+'>'+(n>99?'99+':n)+'</text></svg>';
+ const pill=()=>{const d=lee(),n=d.h.length+d.s.length,nav=$('menu'),mb=document.querySelector('.mm-b'),t='Mi caja, '+n+(n===1?' guardada':' guardadas');
+  const pon=(sel,cls,padre,html,hay)=>{let p=document.querySelector(sel);if(!hay){if(p)p.remove();return}if(!p){p=document.createElement('a');p.className=cls;p.href=B+'/mi-caja/';padre.appendChild(p)}p.innerHTML=html;p.setAttribute('aria-label',t);if($('mc')&&cls==='mm-c')p.setAttribute('aria-current','page');else p.title='Mi caja'};
+  pon('a.mc-v','mc-v',document.body,cj(n),n&&!$('mc'));
+  if(nav)pon('a.mm-c','mm-c',nav,cj(n)+'Mi caja',n);
+  if(mb)mb.classList.toggle('hay',!!n)};
  document.querySelectorAll('[data-gc]').forEach(b=>{const [k,i]=b.dataset.gc.split(':');
   const pinta=()=>{const si=lee()[k].includes(i);b.setAttribute('aria-pressed',si);b.textContent=si?'En mi caja':'Guardar en mi caja'};
   b.hidden=false;pinta();b.addEventListener('click',()=>{const d=lee();d[k]=d[k].includes(i)?d[k].filter(x=>x!==i):[...d[k],i];if(guarda(d)){pinta();pill()}else b.textContent='Tu navegador no deja guardar'})});
