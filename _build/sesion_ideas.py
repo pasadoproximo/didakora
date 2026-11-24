@@ -173,7 +173,6 @@ EXTRA = {
  "padlet": [dict(i="Mural con lo que han aprendido en una salida", c="CQ", k="c", e="IP", d="p"),
             dict(i="Muro de razones a favor y en contra, escrito entre todos", c="CQ", k="b", e="P", d="p"),
             dict(i="Tablero de tareas por columnas: por hacer, en marcha y hecho", c="CQ", k="o", e="P", d="p")],
- "plickers": [dict(i="Votar la postura antes y después del debate", c="CQ", k="b", e="P", d="p")],
  "vocaroo": [dict(i="Grabar una canción o una adivinanza de la clase", c="CK", k="a", e="IP", d="p")],
  "educaplay": [dict(i="Juego de memoria con imágenes en la pizarra digital", c="CR", k="j", e="I", d="p")],
  "kahoot": [dict(i="Concurso de imágenes por equipos", c="CR", k="e", e="I", d="p")],

@@ -202,7 +202,7 @@ function dkSesion(D){
  // ---- la receta
  const receta=()=>D.recetas[st.o+'/'+st.k]||D.recetas[st.o]||D.recetas['*'];
  const candidatas=(p,i)=>{const otras=Object.keys(vista).filter(k=>k!=='main'&&+k!==i).map(k=>vista[k]).filter(Boolean);
-  let c=p.main?pool(st):IDEAS.filter(x=>cabe(x,st)&&(p.ideas?p.ideas.includes(x.i):(!p.o||x.o===p.o)&&(!p.k||x.k===p.k)&&(!p.m||p.m.includes(x.m))));
+  let c=p.main?pool(st):IDEAS.filter(x=>cabe(x,st)&&!x.x&&(p.ideas?p.ideas.includes(x.i):(!p.o||x.o===p.o)&&(!p.k||x.k===p.k)&&(!p.m||p.m.includes(x.m))));
   c=c.filter(x=>!otras.includes(x));
   if(p.main){const d=c.filter(x=>x.m==='des');if(d.length&&st.o!=='eva')c=d;}
   else{const pr=vista.main;const sc=pr?pr.s:'';const g=c.filter(x=>!x.s||x.s===sc);if(g.length)c=g;}   // lo que acompaña, general o de la misma materia
