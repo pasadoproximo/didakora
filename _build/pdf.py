@@ -90,7 +90,7 @@ def documento(x, d, APA, MAT, MET, ETN, nombre, url):
     bar = "".join(f'<i style="flex:{p[0]}"{" class=h" if p[4] else ""}></i>' for p in x["pasos"])
     tic = "".join(f'<b style="left:{100 * m / x["min"]:.2f}%">{m}{" min" if m == x["min"] and x["pasos"][-1][0] / m > .13 else ""}</b>' for m in [0] + [r[1] for r in rango])
     plan = "".join(f'<li><b>{i + 1}</b><b>{e(p[2])}</b><span>{e(p[1])}</span><span>{e(con(p))}</span><span>{p[0]} min</span></li>' for i, p in enumerate(x["pasos"]))
-    dat = [("Duración", f'{x["min"]} minutos'), ("Etapa", " · ".join(ETN[k] for k in x["e"])), ("Herramienta", " y ".join(nombre(h) for h in dict.fromkeys(" ".join(p[4] for p in x["pasos"]).split()))),
+    dat = [("Duración", f'{x["min"]} minutos'), ("Etapa", d.get("etapa") or " · ".join(ETN[k] for k in x["e"])), ("Herramienta", " y ".join(nombre(h) for h in dict.fromkeys(" ".join(p[4] for p in x["pasos"]).split()))),
            ("Dispositivos", {"p": "Tu ordenador y el proyector"}.get(x["d"], APA[x["d"]]))]
     pp = [pag(1, f'<h1>{e(x["t"])}</h1><p class="lead">{e(d["lead"])}</p><dl class="datos">' + "".join(f"<div><dt>{a}</dt><dd>{e(b)}</dd></div>" for a, b in dat) + "</dl>"
               + sec("Qué van a aprender", lis(d["obj"])) + sec("La sesión de un vistazo", f'<div><div class="bar">{bar}</div><div class="tic">{tic}</div><ul class="plan">{plan}</ul><p class="ley"><span><i class="h"></i>Con pantalla</span><span><i></i>Sin pantalla</span></p></div>'), "p1"),
