@@ -4,7 +4,7 @@
 # ALTERNATIVAS[id] = [(id de la alternativa, «Mejor si …»)], en el orden en que se enseñan.
 # El comparador reutiliza estas frases cuando se comparan dos herramientas que aparecen juntas aquí.
 ALTERNATIVAS = {
- "kahoot": [("plickers", "no hay dispositivos: responden levantando una tarjeta de papel"),
+ "kahoot": [("plickers", "quieres saber qué responde cada uno sin que usen dispositivos"),
             ("wayground", "quieres que cada uno vaya a su ritmo, en clase o en casa"),
             ("blooket", "buscas varios modos de juego con las mismas preguntas"),
             ("mentimeter", "prefieres respuestas anónimas en vez de un concurso"),
@@ -33,7 +33,7 @@ ALTERNATIVAS = {
              ("blockly", "prefieres retos guiados que no piden cuenta"),
              ("codeorg", "quieres cursos completos con un código de clase"),
              ("snap", "ya dominan Scratch y necesitan conceptos más avanzados")],
- "wordwall": [("educaplay", "quieres crucigramas y mapas para localizar"),
+ "wordwall": [("educaplay", "quieres mapas para localizar o sopas de letras"),
               ("kahoot", "buscas un concurso en directo con toda la clase"),
               ("gcompris", "son de Infantil o de los primeros cursos de Primaria")],
  "deepl": [("gtranslate", "hay que traducir una imagen, un documento o una web"),
@@ -49,7 +49,7 @@ ALTERNATIVAS = {
 # TITULARES[(con cuál se compara, herramienta)]: lo mismo en corto para el comparador, en dos líneas como mucho (40 letras)
 # y sin repetir lo que ya dice la descripción que va debajo.
 TITULARES = {
- ("kahoot", "plickers"): "Si no hay dispositivos", ("kahoot", "wayground"): "Si prefieres que no haya prisa", ("kahoot", "blooket"): "Si buscas más variedad de juego",
+ ("kahoot", "plickers"): "Si quieres la respuesta de cada uno", ("kahoot", "wayground"): "Si prefieres que no haya prisa", ("kahoot", "blooket"): "Si buscas más variedad de juego",
  ("kahoot", "mentimeter"): "Si no quieres un concurso", ("kahoot", "wooclap"): "Si quieres preguntar mientras explicas",
  ("canva", "genially"): "Si quieres que participen", ("canva", "bookcreator"): "Si el resultado es un libro", ("canva", "sway"): "Si tu centro usa Microsoft",
  ("genially", "canva"): "Si lo que cuenta es el diseño", ("genially", "bookcreator"): "Si el resultado es un libro", ("genially", "exelearning"): "Si el recurso lo preparas tú",
@@ -73,6 +73,7 @@ COLECCIONES = [
  dict(slug="aula-sin-dispositivos", t="Aula sin dispositivos", s="Sin pantallas para el alumnado",
       d="El alumnado no toca ninguna pantalla. Todo se hace desde tu ordenador, proyectado, o con tu móvil.",
       items=[("plickers", "Responden con tarjetas de papel y tú las lees con el móvil."),
+             ("kahoot", "Un concurso proyectado con su modo Unplugged, sin dispositivos."),
              ("visitas", "Recorréis un museo o un monumento entre todos."),
              ("geacron", "Un mapa del mundo que avanza año a año, para comentar en grupo."),
              ("musiclab", "Componéis una melodía entre toda la clase."),
@@ -111,6 +112,6 @@ COLECCIONES = [
              ("writeimprove", "Corrección inmediata de redacciones en inglés."),
              ("leteens", "Vídeos, audios y ejercicios por niveles, para Secundaria."),
              ("tv5monde", "Vídeos y ejercicios de francés por niveles."),
-             ("lekids", "Juegos, canciones y cuentos, para Primaria."),
+             ("lekids", "Juegos, canciones y cuentos, para Infantil (5 años) y Primaria."),
              ("deepl", "Para comparar su traducción con la del traductor.")]),
 ]

@@ -172,7 +172,7 @@ SESIONES = [
          (6, I, "La duda que queda", "Escriben en un papel lo más confuso. Empieza por ahí la próxima clase.", "")],
   b="Tarjetas A, B, C y D o una pizarra pequeña por pareja.", otra="Guarda las tres preguntas: sirven para abrir el repaso antes del examen."),
  dict(id="capas-de-musica", t="Capas de música", e="PS", o="cre", s=["mu"], d="e", min=50, r="Reconocen las capas de una pieza y crean otra.", ej="Textura musical",
-  prep="Prueba Incredibox con auriculares o con turnos de sonido.",
+  prep="Prueba la demo de la web de Incredibox, con auriculares o con turnos de sonido.",
   pasos=[(8, T, "Con el cuerpo", "Un grupo marca el pulso, otro un ritmo y otro una frase. Entran y salen a tu señal.", ""),
          (10, G, "Exploramos", "Prueban sonidos y los clasifican en una hoja: ritmo, efecto, melodía o voz.", "incredibox"),
          (20, G, "Componemos", "Crean una pieza con principio, parte llena y final. Dibujan en papel cuándo entra cada capa.", "incredibox"),

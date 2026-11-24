@@ -74,7 +74,7 @@ Murales, mapas mentales, pizarras y herramientas para organizar recursos.
 
 ## Explorar por materias
 
-Herramientas propias de Geografía e Historia, Ciencias, Idiomas, Música y Arte o lectura.
+Herramientas propias de Geografía e Historia, Ciencias, Idiomas, Educación Física, Música y Arte o lectura.
 
 - [Google Arts & Culture](https://didakora.es/artsculture/): Google Arts & Culture reúne las colecciones de miles de museos y archivos de todo el mundo.
 - [Visitas virtuales 360°](https://didakora.es/visitas/): Las visitas virtuales en 360° son recorridos por dentro de museos y monumentos que se hacen desde el aula, en la web de cada lugar.
