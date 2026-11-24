@@ -79,7 +79,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
 - **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Nueve fichas (la de TV5MONDE, del 24-11-2026) y, del 23-11-2026: LearnEnglish Kids y Teens
   (British Council, con su logo), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
-  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
+  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo y Language Reactor.
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
   `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; diseño elegido por Jorge el 24-11-2026: una columna de color por herramienta, con el «Si…» de `ALTERNATIVAS` en grande (o qué hace, si no hay), solo los datos que cambian y debajo en qué coinciden),
@@ -90,7 +90,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 
 ## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)
 
-- Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta; sin logo: su web no deja descargarlo). RFI Français Facile, dudosa: su política dice que no
+- Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta. Logo: el de su aplicación oficial). RFI Français Facile, dudosa: su política dice que no
   se dirige a menores sin autorización. Duolingo, pendiente de ver qué deja hacer sin registro (Duolingo for Schools cierra el 31-7-2027 y no admite
   cuentas nuevas). Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
 - «Qué ha cambiado» (página con `CHANGES`): se probó el 24-11-2026 y Jorge la descartó. No volver a proponerla.
