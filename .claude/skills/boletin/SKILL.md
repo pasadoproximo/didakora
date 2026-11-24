@@ -50,7 +50,7 @@ Lee `numeros/<id>/estado.json` y haz **el siguiente paso** según la fase (con `
 `until node -e "const e=require('./agentes/boletin/numeros/<id>/estado.json');process.exit(String(e.fase).startsWith('decidido-')?0:1)"; do sleep 5; done; echo decidido`
 y termina el turno. Sigue cuando Jorge responda o acabe la espera. Una respuesta ambigua no es una aprobación: pregunta.
 
-**Cierre de un post**: título, commit, lo que ha aprendido Fray Custodio y que para publicarlo en la web Jorge escribe él `! git -C "C:/Users/USER/Desktop/El pasado próximo/didakora" push origin rediseno-2026-10:main` (el push está bloqueado para los agentes).
+**Cierre de un post**: título, commit, lo que ha aprendido Fray Custodio y que para publicarlo en la web Jorge escribe él `! git -C "C:/Users/USER/Desktop/El pasado próximo/didakora" push origin main:main` (el push está bloqueado para los agentes).
 
 Si un agente falla, márcalo `error` con la nota en el estado de tu trabajo, cuéntaselo a Jorge y pregunta si seguir.
 
@@ -60,6 +60,6 @@ Te ha lanzado el servidor del monasterio sin interfaz (`/boletin monasterio busc
 
 - Haz **solo un paso** (hasta la siguiente consulta) y termina **sin espera en segundo plano**. No encargues posts ni toques otros posts ni la búsqueda si te han lanzado para un post.
 - **No compruebes `git status` al arrancar**: puede haber otro post publicando. Solo al publicar, con el turno pedido.
-- Actualiza los JSON con Read, Edit y Write (no con `node -e`). Python se llama `python` a secas y el monasterio ya sirve la web en el puerto 8020: díselo al Maquetador.
+- Actualiza los JSON con Read, Edit y Write (no con `node -e`). Python se llama `python` a secas y la web se ve en el puerto 8021 (`python -m http.server 8021` dentro de `didakora`; el 8020 del monasterio sirve la carpeta padre y ahí sale sin estilos): díselo al Maquetador.
 - Donde el flujo normal pregunta, **no preguntes**: si un agente falla, pon tu trabajo en `interrumpido` (o el agente en `error`) con una `nota` que explique qué debe hacer Jorge. Después, termina.
 - Tu último mensaje, en una o dos frases (queda en el registro del monasterio).

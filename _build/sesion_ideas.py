@@ -170,10 +170,10 @@ ETAPA = {
 EXTRA = {
  "chatterpix": [dict(i="Hacer hablar a la mascota de la clase", c="CK", k="d", e="IP")],
  "stopmotion": [dict(i="Animar un cuento con plastilina o juguetes", c="CK", k="d", e="IP")],
- "padlet": [dict(i="Mural con las fotos de una salida", c="CQ", k="c", e="IP", d="p")],
+ "padlet": [dict(i="Mural con lo que han aprendido en una salida", c="CQ", k="c", e="IP", d="p")],
  "vocaroo": [dict(i="Grabar una canción o una adivinanza de la clase", c="CK", k="a", e="IP", d="p")],
  "educaplay": [dict(i="Juego de memoria con imágenes en la pizarra digital", c="CR", k="j", e="I", d="p")],
- "kahoot": [dict(i="Concurso de imágenes por equipos", c="CR", k="e", e="I")],
+ "kahoot": [dict(i="Concurso de imágenes por equipos", c="CR", k="e", e="I", d="p")],
  "earth": [dict(i="Viajar desde el colegio hasta otro lugar del mundo", c="CE", e="IP", d="p")],
  "visitas": [dict(i="Paseo por un museo desde la asamblea", c="CE", e="IP")],
 }

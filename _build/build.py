@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "77"  # versión de didakora.css / didakora.js
+V = "78"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -254,7 +254,7 @@ def foot(scripts=""):
 </body>
 </html>
 '''
-EN_PRUEBAS = {"plan-b/index.html"} if SES_PUB else {"sesion/index.html", "plan-b/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
+EN_PRUEBAS = set() if SES_PUB else {"sesion/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
 def write(rel, content):
     if rel in EN_PRUEBAS: content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -507,23 +507,6 @@ def sesion():
     write("sesion/index.html", head("Monta tu sesión · Didákora", "Contesta unas preguntas (qué quieres hacer, con qué etapa y con qué dispositivos) y Didákora te propone una clase paso a paso con herramientas digitales.", "/sesion/")
           + body + foot(f'\n<script>window.dkS=dkSesion({datos_js})</script>'))
 
-def planb():
-    A = aula()
-    casos = [("solo-el-proyector", "Solo tengo mi ordenador y el proyector", "Herramientas que funcionan proyectadas, sin que el alumnado toque ningún dispositivo.", [t for t in A if D_PROFE.search(t["disp"])]),
-             ("no-hay-para-todos", "No hay dispositivos para todos", "Con uno por pareja o por equipo es suficiente.", [t for t in A if D_EQUIPO.search(t["disp"]) and not D_PROFE.search(t["disp"])]),
-             ("sin-cuentas", "El alumnado no tiene correo ni cuentas", "Entran con un código o un enlace, o no hace falta registrarse.", [t for t in A if SIN_REG.search(t["cta"])])]
-    nav = "".join(f'<a href="#{k}">{esc(h)} <span>{len(ts)}</span></a>' for k, h, d, ts in casos) + '<a href="#se-ha-caido">La herramienta no carga</a>'
-    blocks = "".join(f'<section class="sub" aria-labelledby="{k}"><h2 id="{k}">{esc(h)} <span>{len(ts)}</span></h2><p class="pb-d">{esc(d)}</p><div class="tcg">{"".join(card(t, False) for t in ts)}</div></section>' for k, h, d, ts in casos)
-    body = f'''
-<main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Plan B", "")])}<h1>Plan B</h1></div><p>Para cuando la clase no sale como estaba prevista: faltan dispositivos, nadie tiene cuenta o la herramienta no carga.</p></div>
- <nav class="subnav" aria-label="Situaciones">{nav}</nav>
- {blocks}
- <section class="sub" aria-labelledby="se-ha-caido"><h2 id="se-ha-caido">La herramienta no carga</h2><p class="pb-d">Cada ficha termina con sus «Herramientas alternativas»: otras que sirven para lo mismo. Busca la que ibas a usar y baja hasta el final.</p>
-  <p class="more" style="justify-content:flex-start;margin-top:14px"><a class="btn solid" href="{B}/todas/">Buscar la herramienta {ICO["arrow"]}</a></p></section>
-</main>'''
-    write("plan-b/index.html", head("Plan B: cuando la tecnología falla en clase · Didákora", "Qué herramientas usar si faltan dispositivos, si el alumnado no tiene cuentas o si la que ibas a usar no carga.", "/plan-b/") + body + foot())
-
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
 faltan = [t["id"] for t in TOOLS if t["id"] not in F]
@@ -710,7 +693,7 @@ def alternativas():
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Alternativas", "")])}<h1>Alternativas a…</h1></div><p>Parte de la herramienta que ya conoces y mira cuáles sirven para lo mismo, con el motivo para elegir cada una.</p></div>
  <div class="al-g">{cards}</div>
- <p class="g-n">¿No está la que buscas? Cada ficha termina con sus herramientas alternativas, y en <a href="{B}/comparar/">Comparar</a> puedes enfrentar las que quieras.</p>
+ <p class="g-n">¿No está la que buscas? Cada ficha termina con sus herramientas alternativas y en <a href="{B}/comparar/">Comparar</a> puedes enfrentar las que quieras.</p>
 </main>'''
     write("alternativas/index.html", head("Alternativas a las herramientas más usadas en clase · Didákora", "Alternativas a Kahoot!, Canva, Padlet, Google Forms y otras herramientas conocidas, con el motivo para elegir cada una.", "/alternativas/") + body + foot())
 
@@ -968,7 +951,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); planb(); comparar(); alternativas(); colecciones()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")

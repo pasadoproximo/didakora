@@ -61,7 +61,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   `_build/actualidad/<slug>.json` (secciones `texto`, `destacado`, `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`;
   ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
   artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
-  (en el móvil, con poco ancho, quedan Todas, Sesión y Sobre mí; Actualidad sigue en la portada) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  (el menú se acorta en pantallas estrechas: sin «Nuevas» hasta 680 px, sin «Categorías» hasta 600 y, hasta 510, solo Todas, Sesión y Sobre mí; Actualidad sigue en la portada) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
   Diseño fijado por Jorge el 22-10-2026: post con volver arriba a la izquierda, título, tema y fecha, entradilla, portada
   21:9 a todo el ancho (16:9 en el móvil), texto en Literata en una columna centrada de 820 px y botones a la derecha;
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de
@@ -82,54 +82,27 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   para las etapas sin idea propia (`EXTRA`); los pasos sin pantalla tienen versión de Infantil (`inf` en `sesion_recetas.py`). Todo ello, propuestas por revisar.
   **Tras tocar las ideas, las recetas o `dkSesion`: `node _build/probar_sesion.js`** (recorre todos los caminos del árbol y comprueba que cada
   sesión cumple lo contestado, que no repite ideas y que los enlaces rotos no dan error).
-  `/plan-b/` (en pruebas: publicada sin enlace, fuera del sitemap y con `noindex`, `EN_PRUEBAS` en `build.py`): herramientas para cuando faltan dispositivos o cuentas (`planb()`).
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
 - **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Ocho fichas: LearnEnglish Kids y Teens
-  (British Council; sin logo: su web no deja descargarlo, pedírselo a Jorge), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
+  (British Council, con su logo), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
   «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
   `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; en el móvil no hay columnas: un bloque por dato con una línea por herramienta),
   `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
-  `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B). Entradas: tres tarjetas en la portada (`bloque_guias()`)
+  `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B, retirada el 24-11-2026). Entradas: tres tarjetas en la portada (`bloque_guias()`)
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
-## Traspaso de la sesión en la nube (21 al 24-11-2026): revisar
+## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)
 
-Trabajo hecho por Claude desde el móvil de Jorge, sin acceso a su equipo ni a `agentes/`. Todo está publicado en `main` salvo lo que se
-indica. Jorge aprobó cada bloque viendo capturas, pero **no ha leído los textos uno a uno**. Borra esta sección cuando esté revisada.
-
-Hecho y publicado:
-- Dominio propio didakora.es, SEO/GEO (migas, tarjeta al compartir, `og/<id>.png`) y fila «Compartir».
-- 16 altas (de 120 a 136): GCompris, Tux Paint, Chrome Music Lab y ScratchJr (Infantil y Primaria); LearnEnglish Kids y Teens, Write & Improve,
-  Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (Idiomas). Etapas ampliadas (`REPO_I`, `REPO_P`).
-- «Monta tu sesión» en el menú y la portada. Comparar, Alternativas y Colecciones (`_build/guias.py`).
-- Las altas no pasaron por `/ciclo`: no están en `agentes/estado.json` ni en `tareas.json`. Ponlo al día.
-
-Pendiente de revisar (textos escritos por Claude, ya a la vista del público):
-- `_build/sesion_recetas.py` (recetas y versiones `inf`) y `EXTRA` y `ETAPA` de `_build/sesion_ideas.py`.
-- `_build/guias.py`: cada «Mejor si…» y qué herramientas entran en cada colección.
-- «Cuenta: No necesita» en GCompris, Tux Paint, ScratchJr y LearnEnglish Kids: deducido, sus webs no lo dicen de forma expresa.
-- Logos recortados de capturas (64 px): `musiclab` (carita de Song Maker, no tiene logo propio), `scratchjr`, `writeimprove`, `dicta`, `apertium`;
-  `lekids` y `leteens` llevan el del British Council (Wikimedia Commons). Cámbialos si hay mejores.
-- La portada dice «Revisado a mano por Jorge»: solo será verdad cuando repase lo anterior.
-
-Sin hacer:
-- **Portfolio**: sigue diciendo «120 herramientas» (2 sitios en su `_build/build.py`, 3 en `_build/data.py`; en «Lo que puedo afirmar», además,
-  octubre → noviembre de 2026). Su CV enlaza aún a pasadoproximo.github.io/didakora. La ficha de Didákora no menciona lo nuevo; su vídeo enseña 120.
-- `/plan-b/`: Jorge no le ve utilidad. Lo útil pasó a la colección «Aula sin dispositivos». Decidir si se retira (`planb()`, `EN_PRUEBAS`).
-- En el móvil «Actualidad» salió del menú al entrar «Sesión» (caben tres enlaces). Jorge no ha decidido si lo cambia por «Sobre mí».
-- Infantil en «Monta tu sesión»: ocho opciones del árbol sin ideas. Primaria: dos (debatir y organizar un proyecto).
-- Idiomas sin añadir por no poder leer su fuente oficial: Duolingo (edad mínima; posible cierre de la versión para centros), Language Reactor y
-  TV5MONDE (francés no tiene herramienta propia).
-- NotebookLM: Google lo llama «Gemini Notebook» en anuncios de noviembre de 2026. Comprobar y actualizar la ficha (`fu`).
-- Actualidad: Jorge descartó un borrador sobre Google (Gemini apagado por defecto para el alumnado, anuncio del 3-11-2026). Sigue sin post nuevo.
-- Otras ideas de la investigación, sin empezar: «Qué ha cambiado» (con `CHANGES`), herramientas por área de la competencia digital docente,
-  «Mi caja» (guardar y compartir sin cuenta) y semáforo de privacidad con la guía del INTEF.
-- Documento y hoja de revisión que se pasaron a Jorge (recetas e ideas) están desfasados respecto al código: manda el código.
+- Infantil en «Monta tu sesión»: opciones del árbol sin ideas. Primaria: debatir y organizar un proyecto.
+- Idiomas sin añadir por no poder leer su fuente oficial: Duolingo, Language Reactor y TV5MONDE (francés no tiene herramienta propia).
+- SnatchBot: Jorge dejó la retirada para el siguiente ciclo (T-20261116-01). El 24-11-2026 su dominio sigue sin existir.
+- Ideas sin empezar: «Qué ha cambiado» (con `CHANGES`), herramientas por área de la competencia digital docente, «Mi caja» y semáforo
+  de privacidad con la guía del INTEF.
 
 ## Flujo
 
