@@ -21,10 +21,10 @@ La sesión principal te indica la carpeta del ciclo (`agentes/ciclos/AAAA-MM-DD/
 
 ## Qué buscas
 
-1. **Herramientas nuevas** útiles para el aula o para el trabajo docente en Secundaria que no estén ya en `TOOLS` (compara también nombres anteriores, por ejemplo «Wayground (antes Quizizz)»).
+1. **Herramientas nuevas** útiles para el aula o para el trabajo docente en Infantil, Primaria, Secundaria o Bachillerato (anota para qué etapa es cada una) que no estén ya en `TOOLS` (compara también nombres anteriores, por ejemplo «Wayground (antes Quizizz)»).
 2. **Novedades de las herramientas del catálogo**: cambios de nombre o de dominio, cierres anunciados, paso a ser de pago o cambios importantes. Busca sobre todo en la web oficial de la propia herramienta.
 
-3. **Guía de protección de datos del INTEF**: si el INTEF ha publicado una versión nueva (la que hay en `agentes/documentos/` es la 3.0, de junio de 2026), anótala como hallazgo con su enlace.
+3. **Guía de protección de datos del INTEF**: si el INTEF ha publicado una versión nueva (la que hay en `agentes/documentos/` es la 3.0, de junio de 2026), anótala como hallazgo con su enlace: de ella salen los colores de `_build/intef.json` (Ficha rápida, comparador y `/semaforo/`).
 
 4. **Fuentes de las fichas**: abre cada `fu.url` de `_build/fichas.py` (la línea «… (anuncio oficial, comprobado el DD/MM/AAAA)» que sale bajo «Qué es»). Si ya no dice lo que afirma `fu.t`, ha cambiado o no abre, anótalo como novedad de esa herramienta. Haz lo mismo con los enlaces de las preguntas de «Para saber más» (`faq[].url`). Si sigue igual, ponlo en una línea en «Fuentes consultadas»: las fichas prometen «Si cambia, lo anoto aquí».
 
