@@ -6,7 +6,16 @@
   <atom:link href="https://didakora.es/rss.xml" rel="self" type="application/rss+xml"/>
   <description>Noticias de educación digital para docentes: herramientas, IA, recomendaciones oficiales e ideas para clase.</description>
   <language>es-ES</language>
-  <lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+   <title>IA y bulos, pensar antes del clic.</title>
+   <link>https://didakora.es/actualidad/ia-bulos-pensar-antes-clic/</link>
+   <guid isPermaLink="true">https://didakora.es/actualidad/ia-bulos-pensar-antes-clic/</guid>
+   <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+   <description>La IA ayuda a quien ya quiere aprender y puede restar al resto. Reunimos cinco usos que conviene pensarse, cuatro medidas para evaluar y cinco claves contra los bulos.</description>
+   <author>jorgedelagui@gmail.com (Jorge Delgado Aguilera)</author>
+   <category>IA</category>
+  </item>
   <item>
    <title>3 hábitos para distinguir fuentes fiables en internet.</title>
    <link>https://didakora.es/actualidad/habitos-fuentes-fiables/</link>

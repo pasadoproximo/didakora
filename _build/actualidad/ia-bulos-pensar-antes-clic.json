@@ -1,0 +1,233 @@
+{
+  "slug": "ia-bulos-pensar-antes-clic",
+  "titulo": "IA y bulos, pensar antes del clic.",
+  "fecha": "2026-11-24",
+  "numero": 8,
+  "etiqueta": "IA",
+  "entradilla": "La IA ayuda a quien ya quiere aprender y puede restar al resto. Reunimos cinco usos que conviene pensarse, cuatro medidas para evaluar y cinco claves contra los bulos.",
+  "miniatura": {
+    "src": "img/miniatura.jpg"
+  },
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una mano detiene la caída en cadena de una fila de fichas de madera.",
+    "credito": "Foto: Atlantic Ambience · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/hand-stopping-domino-effect-12955678/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "La idea común",
+      "titulo": "Que el alumnado no se salte lo importante",
+      "texto": "Pedir un resumen a la IA y compartir un vídeo llamativo se parecen más de lo que creemos. En los dos casos se puede llegar al final sin haber pensado.\n\nTres artículos recientes lo cuentan desde sitios distintos. El 20 de noviembre, Edutopia publicó uno, en inglés, que defiende que **la IA impulsa a los mejores estudiantes y probablemente perjudica al resto**. El 16 de octubre, el mismo medio había señalado **cinco usos de la IA** que parecen buenos para el alumnado y no lo son. El 21 de noviembre, Educación 3.0 reunió **cinco claves para detectar bulos** y no compartirlos.\n\nLeídos juntos dan un camino para clase. Primero, saber a quién ayuda la IA. Después, decidir cuándo dejarla y cómo evaluar. Por último, aplicar el mismo freno a lo que llega por las redes.",
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/does-ai-help-students-learn"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Los datos",
+      "titulo": "La IA no ayuda a todos por igual",
+      "texto": "Edutopia recoge datos de Common Sense Media, una organización de Estados Unidos. **El 85 % del alumnado de 9 a 17 años que usa IA recurre a ella para las tareas de clase.** Cerca del 16 % de quienes la usan para los deberes reconoce que le cuesta empezarlos o acabarlos sin ella.\n\nLa diferencia está en el para qué. Hay quien le pide preguntas de examen y luego las responde por su cuenta. Hay quien le pide el trabajo hecho. El artículo recoge la idea de que la IA puede agrandar la distancia entre el alumnado motivado y el que ya iba a lo mínimo.\n\nTampoco basta con ofrecer una IA que no da las respuestas. Un [estudio del NBER](https://www.nber.org/papers/w35620) de agosto de 2026 siguió durante dos años a alumnado de 18 centros de Tennessee con el tutor Khanmigo en sesiones de refuerzo de matemáticas. Mejoró un poco, pero parecido a practicar en Khan Academy sin IA. El estudiante medio solo escribió al tutor uno de cada tres días de práctica.\n\nEn enero, [Brookings](https://www.brookings.edu/articles/a-new-direction-for-students-in-an-ai-world-prosper-prepare-protect/) concluyó que, por ahora, los riesgos de la IA generativa en la educación pesan más que sus beneficios. Conviene mirar, entonces, en qué tareas estorba.",
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/does-ai-help-students-learn"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Con la IA",
+      "titulo": "5 usos de la IA que conviene pensarse",
+      "items": [
+        {
+          "titulo": "La lluvia de ideas",
+          "texto": "La IA da muchas ideas en segundos. El alumnado deja de practicar la paciencia de tener ideas a medio hacer y elegir la mejor. En clase, primero las suyas.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "La tesis de un trabajo",
+          "texto": "Parece un paso previo, pero ya es pensar. Edutopia pidió a Gemini cinco tesis sobre un soneto de Shakespeare y salieron parecidas y superficiales. Pide a cada estudiante que escriba y defienda la suya.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "La búsqueda de fuentes",
+          "texto": "Valorar una fuente exige esfuerzo y es fácil saltárselo. Un docente de instituto deja usar la IA para encontrar puntos débiles en un argumento, pero exige exponer el trabajo y responder preguntas.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Los resúmenes para estudiar",
+          "texto": "Releer un resumen ajeno puede dar una falsa sensación de saber. Edutopia recoge un estudio de 2021 en el que rindió mucho más quien resumió un texto difícil con sus palabras que quien leyó un resumen ya hecho.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "El primer borrador",
+          "texto": "Si empieza la IA, el alumnado tiende a seguir su razonamiento. Puede ayudar después, con comentarios sobre un borrador propio. Los grupos de escritura entre iguales, sin IA, animan a traer un texto propio.",
+          "url": null,
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/5-good-ai-use-cases-that-are-actually-bad-for-students"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "Para decidir",
+      "titulo": "Una pregunta antes de abrir la IA",
+      "texto": "El artículo de octubre recoge una pregunta que sirve para los cinco casos. **¿Hacer esta tarea por sí mismo forma parte de lo que el alumnado debe aprender?** Si la respuesta es sí, la IA puede esperar.\n\nTambién importa el momento. Pedirle una lluvia de ideas antes de pensar no es lo mismo que comparar sus ideas con las tuyas. Lo segundo obliga a juzgar.\n\nDecidir cuándo se usa es la mitad del trabajo. La otra mitad es que la evaluación lo tenga en cuenta."
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para evaluar",
+      "titulo": "4 medidas para evaluar con la IA a mano",
+      "items": [
+        {
+          "titulo": "Volver al papel y a la voz",
+          "texto": "Hay docentes que recuperan los exámenes escritos a mano y los orales. Te sirven para ver qué sabe cada estudiante sin ayuda.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Decir cuánta IA vale en cada tarea",
+          "texto": "Un docente de Ciencias marca en cada trabajo el uso de IA que acepta, que puede ser ninguno. Así nadie tiene que adivinarlo.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Declarar el uso de IA",
+          "texto": "Ese mismo docente pide una [nota de uso](https://www.edutopia.org/article/8-classroom-ai-policies-developed-by-teachers) con la herramienta, el prompt y cómo influyó en el trabajo. Puedes copiar la idea con tres líneas al final de cada entrega.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Diseñar tareas que hagan pensar",
+          "texto": "Ninguna tarea está a salvo de la IA, pero [unas son más vulnerables que otras](https://www.edutopia.org/article/assignments-deter-ai-use/). Explicar el ciclo del agua lo es más que proponer una medida de ahorro justificada con varias fuentes.",
+          "url": null,
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Edutopia",
+        "url": "https://www.edutopia.org/article/does-ai-help-students-learn"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Ante un bulo",
+      "titulo": "5 claves para detectar bulos en clase",
+      "intro": "Justificar con fuentes exige saber cuáles merecen confianza. La IA también crea textos, imágenes y vídeos falsos, así que el hábito de parar a pensar hace falta igual fuera de los deberes.",
+      "items": [
+        {
+          "titulo": "Hacerse preguntas",
+          "texto": "Quién lo ha creado, qué busca y qué pruebas da. Proyecta varias publicaciones y que el grupo señale su propósito, sus evidencias y las dudas que dejan.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Sospechar de lo hecho con IA",
+          "texto": "Un vídeo ya no demuestra por sí solo que algo haya pasado. Comparad imágenes reales con otras generadas o manipuladas y comentad lo difícil que resulta distinguirlas.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Entender los algoritmos",
+          "texto": "Las redes eligen lo que vemos según nuestros intereses. Comparar las recomendaciones de distintos perfiles ayuda a ver que una afirmación repetida no es por eso cierta.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Contrastar con otras fuentes",
+          "texto": "Es la lectura lateral. Con una noticia viral, el alumnado busca quién más la publica, si hay fuentes independientes que la confirmen y qué documentos la respaldan. En [3 hábitos para distinguir fuentes fiables](https://didakora.es/actualidad/habitos-fuentes-fiables/) tienes una sesión en cuatro pasos.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Parar antes de compartir",
+          "texto": "Sobre todo si da miedo, enfado o sorpresa. Con casos reales, cada estudiante analiza por qué querría compartirlo y qué comprobaría antes.",
+          "url": null,
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Educación 3.0",
+        "url": "https://www.educaciontrespuntocero.com/recursos/como-evitar-compartir-fake-news-detectar-bulos/"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "En detalle",
+      "titulo": "SIFT, el método para no olvidarlas",
+      "texto": "Educación 3.0 cita el método **SIFT**, de Mike Caulfield. Son cuatro movimientos que caben en un cartel para clase.\n\n**Para.** ¿Conoces la fuente y te fías de ella?\n\n**Investiga la fuente.** Abre otras pestañas y mira quién está detrás.\n\n**Busca una cobertura mejor.** Lo que importa es si la afirmación es cierta.\n\n**Llega al origen.** Comprueba si la cita, la foto o el vídeo se han sacado de contexto.\n\nLo explica en español [LibreTexts](https://espanol.libretexts.org/Bookshelves/Humanidades/Investigacion_y_Alfabetizacion_Informacional/Introduccion_a_la_investigacion_universitaria_(Butler_Sargent_y_Smith%29/04%3A_Comprobacion_de_hechos/4.02%3A_El_Metodo_SIFT), con licencia CC BY 4.0.",
+      "fuente": {
+        "nombre": "LibreTexts Español",
+        "url": "https://espanol.libretexts.org/Bookshelves/Humanidades/Investigacion_y_Alfabetizacion_Informacional/Introduccion_a_la_investigacion_universitaria_(Butler_Sargent_y_Smith%29/04%3A_Comprobacion_de_hechos/4.02%3A_El_Metodo_SIFT"
+      }
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Paso a paso",
+      "titulo": "Una sesión con las tres ideas en 4 pasos",
+      "intro": "Una propuesta nuestra para Secundaria y Bachillerato en cualquier materia. La IA la consultas tú y la proyectas, así que el alumnado no necesita cuenta.",
+      "pasos": [
+        {
+          "titulo": "Primero, sin pantallas",
+          "texto": "Enseña una noticia viral que hayas comprobado antes. Di ya en qué momento habrá IA. Cada pareja escribe qué afirma, qué le hace sentir y tres dudas."
+        },
+        {
+          "titulo": "Comprobad fuera de la noticia",
+          "texto": "Las parejas buscan quién más la publica y cuál es el origen. Anotan dos fuentes y por qué se fían de ellas."
+        },
+        {
+          "titulo": "Ahora, pregunta a la IA",
+          "texto": "Proyecta la respuesta de un chatbot a la misma noticia. El grupo busca qué falta, qué no lleva fuente y qué contradice lo que ha encontrado."
+        },
+        {
+          "titulo": "Cerrad a mano y en voz alta",
+          "texto": "Cada estudiante escribe su conclusión en papel, sin IA. Añade una nota con lo que le aportó la respuesta proyectada. Una pareja la defiende ante la clase y responde preguntas."
+        }
+      ],
+      "ejemplo": "En Geografía e Historia, una foto antigua circula con un pie llamativo. Las parejas buscan su origen y su fecha. Después comparan lo que han encontrado con la respuesta del chatbot y cada estudiante escribe un pie de foto correcto con su nota de uso."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Edutopia · AI Is Supercharging Your Top Students and Probably Harming the Rest (Paige Tutt, 20-11-2026)",
+      "url": "https://www.edutopia.org/article/does-ai-help-students-learn"
+    },
+    {
+      "nombre": "Edutopia · 5 ‘Good’ AI Use Cases That Are Actually Bad for Students (Paige Tutt y Stephen Merrill, 16-10-2026)",
+      "url": "https://www.edutopia.org/article/5-good-ai-use-cases-that-are-actually-bad-for-students"
+    },
+    {
+      "nombre": "Educación 3.0 · Detectar bulos: Cinco claves para enseñar al alumnado a detectarlos (Silvia Rodríguez, 21-11-2026)",
+      "url": "https://www.educaciontrespuntocero.com/recursos/como-evitar-compartir-fake-news-detectar-bulos/"
+    },
+    {
+      "nombre": "NBER · One Click Away: AI Tutoring with Khanmigo in a Two-Year School Experiment (Philip Oreopoulos y Nina Low, agosto de 2026)",
+      "url": "https://www.nber.org/papers/w35620"
+    },
+    {
+      "nombre": "Brookings · A New Direction for Students in an AI World (14-01-2026)",
+      "url": "https://www.brookings.edu/articles/a-new-direction-for-students-in-an-ai-world-prosper-prepare-protect/"
+    },
+    {
+      "nombre": "Edutopia · 8 Classroom AI Policies Developed by Teachers (Paige Tutt, 10-07-2026)",
+      "url": "https://www.edutopia.org/article/8-classroom-ai-policies-developed-by-teachers"
+    },
+    {
+      "nombre": "Edutopia · Is Your Assignment Vulnerable to AI? (Andrew Miller, 28-07-2026)",
+      "url": "https://www.edutopia.org/article/assignments-deter-ai-use/"
+    },
+    {
+      "nombre": "LibreTexts Español · El método SIFT (Butler, Sargent y Smith, a partir de Mike Caulfield)",
+      "url": "https://espanol.libretexts.org/Bookshelves/Humanidades/Investigacion_y_Alfabetizacion_Informacional/Introduccion_a_la_investigacion_universitaria_(Butler_Sargent_y_Smith%29/04%3A_Comprobacion_de_hechos/4.02%3A_El_Metodo_SIFT"
+    }
+  ]
+}
