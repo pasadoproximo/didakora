@@ -124,13 +124,13 @@ Pensamiento computacional, programación por bloques y diseño en 3D.
 
 - [Tinkercad](https://didakora.es/tinkercad/): Tinkercad es una herramienta gratuita de Autodesk para diseñar en 3D, montar y simular circuitos electrónicos y programar con bloques.
 - [Wokwi](https://didakora.es/wokwi/): Wokwi es un simulador de electrónica en línea: eliges una placa (Arduino Uno, Mega o Nano, ESP32, STM32 o Raspberry Pi Pico), le conectas componentes como LED, sensores o pantallas y la programas en el lenguaje de Arduino o en MicroPython para ver si funciona sin tener el material.
-- [Scratch](https://didakora.es/scratch/): Scratch, del MIT, es un lenguaje de programación por bloques para crear juegos, animaciones e historias interactivas.
+- [Scratch](https://didakora.es/scratch/): Scratch es un lenguaje de programación por bloques para crear juegos, animaciones e historias interactivas.
 - [ScratchJr](https://didakora.es/scratchjr/): ScratchJr es una app para que niños de 5 a 7 años programen sus propias historias y juegos uniendo bloques gráficos.
 - [Snap!](https://didakora.es/snap/): Snap! es un lenguaje de programación por bloques de la Universidad de Berkeley, parecido a Scratch pero con conceptos más avanzados, como funciones propias, listas y recursividad.
 - [Blockly Games](https://didakora.es/blockly/): Blockly Games es una serie de juegos libres para aprender a programar con bloques.
-- [Code.org](https://didakora.es/codeorg/): Code.org ofrece cursos y actividades gratuitas de programación por niveles, con tutoriales de la Hora del Código y materiales para entender cómo funciona la inteligencia artificial.
+- [Code.org](https://didakora.es/codeorg/): Code.org ofrece cursos y actividades gratuitas de programación por niveles, con actividades de una hora y materiales para entender cómo funciona la inteligencia artificial.
 - [MIT App Inventor](https://didakora.es/appinventor/): MIT App Inventor permite crear aplicaciones para móviles Android e iPhone programando con bloques.
-- [Thunkable](https://didakora.es/thunkable/): Thunkable sirve para crear aplicaciones para iOS, Android y web sin escribir código, arrastrando componentes y bloques de lógica.
+- [Thunkable](https://didakora.es/thunkable/): Thunkable sirve para crear aplicaciones para iOS, Android y web sin escribir código.
 - [Delightex Edu](https://didakora.es/cospaces/): Delightex Edu (antes CoSpaces Edu) permite crear mundos en 3D, realidad virtual y realidad aumentada y programar lo que ocurre en ellos con bloques.
 - [CoppeliaSim](https://didakora.es/coppelia/): CoppeliaSim es un simulador de robótica profesional.
 - [MakeCode micro:bit](https://didakora.es/makecode/): MakeCode es el editor de Microsoft para programar la placa micro:bit.

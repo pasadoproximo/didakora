@@ -13,7 +13,7 @@ ALTERNATIVAS = {
            ("bookcreator", "el producto final es un libro con texto, audio y vídeo"),
            ("sway", "tu centro trabaja con cuentas de Microsoft")],
  "genially": [("canva", "lo que necesitan es diseñar: pósteres, infografías y vídeos"),
-              ("bookcreator", "van a escribir un libro digital entre varios"),
+              ("bookcreator", "van a escribir un libro digital"),
               ("exelearning", "eres tú quien prepara el recurso y lo quieres libre")],
  "padlet": [("mindomo", "quieres que ordenen las ideas en un mapa mental y tienen la edad o la cuenta del centro"),
             ("stormboard", "vais a votar las ideas después de reunirlas"),
