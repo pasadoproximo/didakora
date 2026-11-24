@@ -2,7 +2,7 @@
 
 > Catálogo de herramientas digitales para docentes de Infantil, Primaria, Secundaria y Bachillerato en España. Cada ficha explica qué es la herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.
 
-Herramientas: 135. Última revisión: noviembre de 2026.
+Herramientas: 136. Última revisión: noviembre de 2026.
 
 ## Páginas principales
 
@@ -98,6 +98,7 @@ Herramientas propias de Geografía e Historia, Ciencias, Idiomas, Música y Arte
 - [LearnEnglish Kids](https://didakora.es/lekids/): LearnEnglish Kids es la web gratuita del British Council para niños de 5 a 12 años que aprenden inglés.
 - [LearnEnglish Teens](https://didakora.es/leteens/): LearnEnglish Teens es la web gratuita del British Council para estudiantes de 13 a 17 años que aprenden inglés.
 - [Write & Improve](https://didakora.es/writeimprove/): Write & Improve es una herramienta gratuita de la Universidad de Cambridge para practicar la escritura en inglés.
+- [TV5MONDE](https://didakora.es/tv5monde/): TV5MONDE es la cadena internacional en francés.
 - [Forvo](https://didakora.es/forvo/): Forvo es una guía de pronunciación: se busca una palabra y se escucha dicha por hablantes nativos de ese idioma.
 - [DeepL](https://didakora.es/deepl/): DeepL es un traductor automático basado en IA.
 - [Dicta2.0](https://didakora.es/dicta/): Dicta2.0 es una web para hacer dictados: lee una oración en voz alta, el alumno la escribe y al pulsar «Corregir» ve la oración correcta.

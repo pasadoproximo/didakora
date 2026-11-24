@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "79"  # versión de didakora.css / didakora.js
+V = "83"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -556,7 +556,7 @@ def ficha(t):
     if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
     # aviso de la guía de protección de datos del INTEF: punto rojo y explicación corta (intef: "rojo" o "ver")
     if t.get("intef"): notas.insert(0, '<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'
-                                    + ('; puede ver lo que crea el docente sin registrarse' if t["intef"] == "ver" else '') + '.</span>')
+                                    + (', pero puede ver lo que crea el docente sin registrarse' if t["intef"] == "ver" else '') + '.</span>')
     if t.get("datos") and not re.match(r"(con|trabaja con|usa) la cuenta del centro", t["datos"], re.I): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
@@ -651,12 +651,15 @@ def comparar():
   var T=ids.map(function(i){{return by[i]}}),n=T.length;
   var filas=[["Qué hace","q",0],["Para quién","p",1],["Etapas","e",1],["Dispositivos","d",1],["Cuenta","c",1],["Categoría","k",1]];
   var h='<div class="cp-g n'+n+'"><div class="cp-r cp-h"><span></span>'+T.map(function(t){{return '<div class="cp-c">'+lg(t,34)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></div>'}}).join("")+'</div>';
+  var dif=[],eq="";
   filas.forEach(function(f){{
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
-   h+='<div class="cp-r'+(f[2]&&!ig?" dif":"")+'"><h3>'+f[0]+(f[2]?'<i>'+(ig?"Igual":"Distinto")+'</i>':"")+'</h3>'+(f[2]&&ig?'<div class="cp-c eq"><p>'+esc(v[0])+'</p></div>':T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+esc(t[f[1]])+'</p></div>'}}).join(""))+'</div>';
+   var r='<div class="cp-r'+(f[2]&&!ig?" dif":"")+'"><h3>'+f[0]+(f[2]?'<i>'+(ig?"Igual":"Distinto")+'</i>':"")+'</h3>'+(f[2]&&ig?'<div class="cp-c eq"><p>'+esc(v[0])+'</p></div>':T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+esc(t[f[1]])+'</p></div>'}}).join(""))+'</div>';
+   if(f[2]&&ig)eq+=r;else dif.push(r);
   }});
-  if(T.some(function(t){{return t.x}})) h+='<div class="cp-r dif"><h3>Guía del INTEF</h3>'+T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+(t.x?"<b class=\\"cp-x\\">En rojo:</b> no la recomienda para el alumnado":"Sin aviso")+'</p></div>'}}).join("")+'</div>';
-  h+='</div>';
+  if(T.some(function(t){{return t.x}})) dif.push('<div class="cp-r dif"><h3>Guía del INTEF</h3>'+T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+(t.x?"<b class=\\"cp-x\\">En rojo:</b> no la recomienda para el alumnado":"Sin aviso")+'</p></div>'}}).join("")+'</div>');
+  dif[dif.length-1]=dif[dif.length-1].replace('class="cp-r','class="cp-r cp-ult');
+  h+=dif.join("")+(eq?'<div class="cp-eq"><b>En lo que coinciden</b>'+eq+'</div>':"")+'</div>';
   var fr=[];T.forEach(function(a){{T.forEach(function(b){{if(a!==b&&MS[a.id]&&MS[a.id][b.id])fr.push('<li>'+lg(b,22)+'<span><b>'+esc(b.n)+'.</b> '+esc(MS[a.id][b.id])+'</span></li>')}})}});
   if(fr.length) h+='<div class="cp-v"><h3>Para decidir</h3><ul>'+fr.filter(function(x,i){{return fr.indexOf(x)===i}}).join("")+'</ul></div>';
   out.innerHTML=h;out.hidden=false;

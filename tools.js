@@ -328,6 +328,11 @@ const TOOLS = [
     a:"Escribe en inglés y recibe al momento una corrección y su nivel orientativo.",
     i:["Redacción con corrección al momento","Reescribir un texto hasta mejorarlo","Practicar el writing de un examen"],
     c:"3.º, 4.º ESO y Bachillerato", disp:"Uno por alumno", cta:"No necesita" },
+  { id:"tv5monde", rev:"2026-11-24", s:"aula", cat:"idiomas", st:"nueva", n:"TV5MONDE", url:"https://apprendre.tv5monde.com/fr",
+    a:"Practica francés por niveles con vídeos y ejercicios de comprensión.",
+    i:["Comprensión oral con un vídeo de su nivel","Test de nivel al empezar el curso","Repasar francés con ejercicios de su nivel"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+
   { id:"forvo", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Forvo", url:"https://forvo.com",
     a:"Escucha cómo pronuncian una palabra hablantes nativos de cada idioma.",
     i:["Comprobar la pronunciación de una palabra","Comparar acentos de un mismo idioma","Preparar una lectura en voz alta"],
@@ -585,6 +590,7 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"tv5monde", txt:"Francés por niveles con vídeos y ejercicios.", q:["francés", "aprender francés", "ejercicios de francés"] },
   { id:"gtranslate", txt:"Traduce texto, imágenes, documentos y webs sin cuenta.", q:["traductor de google", "google translate", "traducir una imagen"] },
   { id:"apertium", txt:"Traductor libre, con catalán y gallego.", q:["traductor libre", "traducir al gallego", "traducir al catalán"] },
   { id:"deepl", txt:"Traductor con IA que se usa sin cuenta.", q:["traductor", "traducir un texto", "traducción"] },
@@ -595,8 +601,7 @@ const RECIENTES = [
   { id:"forvo", txt:"Palabras pronunciadas por hablantes nativos.", q:["pronunciación", "cómo se pronuncia", "pronunciar francés"] },
   { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] },
   { id:"tuxpaint", txt:"Dibujo con pinceles y sellos para los más pequeños.", q:["dibujar infantil", "programa de dibujo", "pintar"] },
-  { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] },
-  { id:"scratchjr", txt:"Primeros pasos de programación con bloques, en tablet.", q:["programar infantil", "scratch jr", "programación tablet"] }
+  { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] }
 ];
 
 const CHANGES = [
@@ -622,6 +627,6 @@ const AREAS = {
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
-  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
+  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

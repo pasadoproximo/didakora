@@ -92,6 +92,7 @@ COLECCIONES = [
              ("dicta", "Dictados que se corrigen al momento."),
              ("writeimprove", "Corrección inmediata de redacciones en inglés."),
              ("leteens", "Vídeos, audios y ejercicios por niveles, para Secundaria."),
+             ("tv5monde", "Vídeos y ejercicios de francés por niveles."),
              ("lekids", "Juegos, canciones y cuentos, para Primaria."),
              ("deepl", "Para comparar su traducción con la del traductor.")]),
 ]

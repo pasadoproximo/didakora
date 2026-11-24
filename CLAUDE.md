@@ -40,7 +40,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 133 de las 135 fichas (sin ellas: Stormboard y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 134 de las 136 fichas (sin ellas: Stormboard y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
@@ -85,7 +85,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
-- **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Ocho fichas: LearnEnglish Kids y Teens
+- **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Monta tu sesión». Nueve fichas (la de TV5MONDE, del 24-11-2026) y, del 23-11-2026: LearnEnglish Kids y Teens
   (British Council, con su logo), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
   «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
@@ -98,9 +98,12 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 
 ## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)
 
-- Infantil en «Monta tu sesión»: opciones del árbol sin ideas. Primaria: debatir y organizar un proyecto.
-- Idiomas sin añadir por no poder leer su fuente oficial: Duolingo, Language Reactor y TV5MONDE (francés no tiene herramienta propia).
-- Ideas sin empezar: «Qué ha cambiado» (con `CHANGES`), herramientas por área de la competencia digital docente, «Mi caja» y semáforo
+- Infantil en «Monta tu sesión»: las opciones sin ideas ya no salen como botón, se nombran debajo (24-11-2026). Primaria ya tiene debatir y organizar un proyecto.
+- Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta; sin logo: su web no deja descargarlo). RFI Français Facile, dudosa: su política dice que no
+  se dirige a menores sin autorización. Duolingo, pendiente de ver qué deja hacer sin registro (Duolingo for Schools cierra el 31-7-2027 y no admite
+  cuentas nuevas). Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
+- «Qué ha cambiado» (página con `CHANGES`): se probó el 24-11-2026 y Jorge la descartó. No volver a proponerla.
+- Ideas sin empezar: herramientas por área de la competencia digital docente, «Mi caja» y semáforo
   de privacidad con la guía del INTEF.
 
 ## Flujo

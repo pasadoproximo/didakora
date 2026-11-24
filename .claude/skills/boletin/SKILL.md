@@ -50,7 +50,7 @@ Lee `numeros/<id>/estado.json` y haz **el siguiente paso** según la fase (con `
 `until node -e "const e=require('./agentes/boletin/numeros/<id>/estado.json');process.exit(String(e.fase).startsWith('decidido-')?0:1)"; do sleep 5; done; echo decidido`
 y termina el turno. Sigue cuando Jorge responda o acabe la espera. Una respuesta ambigua no es una aprobación: pregunta.
 
-**Cierre de un post**: título, commit, lo que ha aprendido Fray Custodio y que para publicarlo en la web Jorge escribe él `! git -C "C:/Users/USER/Desktop/El pasado próximo/didakora" push origin main:main` (el push está bloqueado para los agentes).
+**Cierre de un post**: título, commit, lo que ha aprendido Fray Custodio y que para publicarlo en la web Jorge escribe él `! git -C "C:/Users/USER/Desktop/El pasado próximo/didakora" push origin rediseno-2026-10:main` (el push está bloqueado para los agentes).
 
 Si un agente falla, márcalo `error` con la nota en el estado de tu trabajo, cuéntaselo a Jorge y pregunta si seguir.
 
