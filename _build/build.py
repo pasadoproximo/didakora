@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "75"  # versión de didakora.css / didakora.js
+V = "76"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -315,6 +315,7 @@ def portada():
   <p class="more"><a class="btn solid" href="{B}/categorias/">Ver categorías {ICO["arrow"]}</a></p>
  </section>
  {bloque_sesion() if SES_PUB else ""}
+ {bloque_guias()}
 
 {seccion_nuevas()}
 {seccion_actualidad()}
@@ -590,6 +591,9 @@ def ficha(t):
         i = group.index(t); return [group[(i + k) % len(group)] for k in range(1, len(group))]
     same = ring([o for o in TOOLS if o["sub"] == t["sub"] and o["cs"] == t["cs"]])
     alts = (same + [o for o in ring([o for o in TOOLS if o["cs"] == t["cs"]]) if o not in same])[:3]
+    from guias import ALTERNATIVAS as _ALT   # con página propia de alternativas, se enlaza; si no, al comparador con la primera
+    alt_mas = (f'<a class="btn line" href="{B}/alternativas/{t["id"]}/">Cuándo elegir cada una {ICO["arrow"]}</a>' if t["id"] in _ALT
+               else f'<a class="btn line" href="{B}/comparar/?c={t["id"]},{alts[0]["id"]}">Comparar {ICO["arrow"]}</a>')
     body = f'''
 <main class="pg">
  <section class="fh">
@@ -604,7 +608,7 @@ def ficha(t):
  </div>
  <p class="go"><a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Ir a {esc(nm)} {ICO["ext"]}</a></p>{saber_mas(f)}
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
-  <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a></p></section>
+  <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a>{alt_mas}</p></section>
 </main>'''
     pagina = {"@type": "WebPage", "name": f"{nm} · Didákora", "url": f'{WEB}/{t["id"]}/', "inLanguage": "es", "isPartOf": {"@id": SITIO["@id"]},
               "author": {"@id": PERSONA["@id"]}, "dateModified": t.get("rev", REV),
@@ -616,6 +620,126 @@ def ficha(t):
     write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld,
           img=f'{WEB}/og/{t["id"]}.png' if con_og else None, img_alt=f"{nm}: qué es y para qué sirve en clase. Ficha de Didákora" if con_og else "") + body + foot())
 
+
+# ---------------------------------------------------------------- comparador, alternativas y colecciones
+# Datos en _build/guias.py. Tres páginas que usan lo que ya dice cada ficha (qué hace, dispositivos, cuenta y etapas).
+from guias import ALTERNATIVAS, FRECUENTES, COLECCIONES
+def campos(t):
+    """lo que se compara de una herramienta: nombre, qué hace, para quién, etapas, dispositivos y cuenta"""
+    a = t["s"] == "aula"; f = F[t["id"]]
+    return dict(id=t["id"], n=split_name(t["n"])[0], q=lead(t) or f["q"].split(". ")[0] + ".",
+                p="La usa el alumnado" if a else "La usa el docente" if t["s"] == "docente" else "Recurso para preparar clases",
+                e=" · ".join(ETN[e] for e in t["et"]), d=t["disp"] if a else f["disp"], c=t["cta"] if a else f["cta"],
+                x=1 if t.get("intef") else 0, l=1 if t["id"] in LOGOS else 0, k=CAT[t["cs"]][1])
+def g_tags(c): return f'<span><b>Cuenta:</b> {esc(c["c"][0].lower() + c["c"][1:])}</span><span><b>Dispositivos:</b> {esc(c["d"][0].lower() + c["d"][1:])}</span>' + ('<span class="r">En rojo en la guía del INTEF</span>' if c["x"] else "")
+NOM_CORTO = {"canva": "Canva", "classroom": "Classroom", "teams": "Teams", "gforms": "Google Forms", "msforms": "Microsoft Forms", "gtranslate": "Traductor de Google"}
+def corto(i): return NOM_CORTO.get(i) or split_name(BYID[i]["n"])[0]
+def g_item(t, txt, extra=""):
+    c = campos(t)
+    return (f'<li class="g-it"><span class="lg">{logo(t, 30)}</span><div class="g-tx"><h3><a href="{B}/{t["id"]}/">{esc(c["n"])}</a></h3>'
+            f'<p>{txt}</p><p class="g-tgs">{g_tags(c)}</p></div>{extra}</li>')
+def comparar():
+    D = [campos(t) for t in TOOLS]
+    ms = {a: {b: "Mejor si " + x + "." for b, x in alts} for a, alts in ALTERNATIVAS.items()}
+    grupos = "".join(f'<optgroup label="{esc(c[1])}">' + "".join(f'<option value="{t["id"]}">{esc(split_name(t["n"])[0])}</option>' for t in TOOLS if t["cs"] == c[0]) + "</optgroup>" for c in CATS)
+    sel = "".join(f'<label class="cp-s"><span>{lab}</span><select data-i="{i}"><option value="">{"Elige una herramienta" if i < 2 else "Añadir otra (opcional)"}</option>{grupos}</select></label>'
+                  for i, lab in enumerate(("Primera", "Segunda", "Tercera")))
+    frec = "".join(f'<a href="{B}/comparar/?c={a},{b}">{esc(corto(a))} y {esc(corto(b))}</a>' for a, b in FRECUENTES)
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Comparar", "")])}<h1>Comparar herramientas</h1></div><p>Elige dos o tres y mira en qué se diferencian: qué hacen, qué dispositivos piden y qué cuenta necesitan.</p></div>
+ <form class="cp-f" id="cp-f" onsubmit="return false">{sel}</form>
+ <p class="cp-fr"><b>Las más comparadas</b>{frec}</p>
+ <section class="cp" id="cp" aria-live="polite" hidden></section>
+ <noscript><p class="cp-v">El comparador necesita JavaScript. Mientras tanto, puedes abrir las fichas desde <a href="{B}/todas/">todas las herramientas</a>.</p></noscript>
+</main>
+<script>
+(function(){{
+ var D={json.dumps(D, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")},MS={json.dumps(ms, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")},B="{B}";
+ var by={{}};D.forEach(function(t){{by[t.id]=t}});
+ var sels=[].slice.call(document.querySelectorAll("#cp-f select")),out=document.getElementById("cp");
+ function esc(s){{return String(s).replace(/[&<>"]/g,function(c){{return {{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}}[c]}})}}
+ function lg(t,s){{return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=3" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}}
+ function leer(){{var m=/[?&]c=([a-z0-9,]+)/.exec(location.search),ids=m?m[1].split(","):[];return ids.filter(function(i,k){{return by[i]&&ids.indexOf(i)===k}}).slice(0,3)}}
+ function pinta(ids,empuja){{
+  sels.forEach(function(s,i){{s.value=ids[i]||""}});
+  if(empuja){{try{{history.replaceState(null,"",ids.length?"?c="+ids.join(","):location.pathname)}}catch(e){{}}}}
+  if(ids.length<2){{out.hidden=true;out.innerHTML="";return}}
+  var T=ids.map(function(i){{return by[i]}}),n=T.length;
+  var filas=[["Qué hace","q",0],["Para quién","p",1],["Etapas","e",1],["Dispositivos","d",1],["Cuenta","c",1],["Categoría","k",1]];
+  var h='<div class="cp-g n'+n+'"><div class="cp-r cp-h"><span></span>'+T.map(function(t){{return '<div class="cp-c">'+lg(t,34)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></div>'}}).join("")+'</div>';
+  filas.forEach(function(f){{
+   var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
+   h+='<div class="cp-r'+(f[2]&&!ig?" dif":"")+'"><h3>'+f[0]+(f[2]?'<i>'+(ig?"Igual":"Distinto")+'</i>':"")+'</h3>'+(f[2]&&ig?'<div class="cp-c eq"><p>'+esc(v[0])+'</p></div>':T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+esc(t[f[1]])+'</p></div>'}}).join(""))+'</div>';
+  }});
+  if(T.some(function(t){{return t.x}})) h+='<div class="cp-r dif"><h3>Guía del INTEF</h3>'+T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+(t.x?"<b class=\\"cp-x\\">En rojo:</b> no la recomienda para el alumnado":"Sin aviso")+'</p></div>'}}).join("")+'</div>';
+  h+='</div>';
+  var fr=[];T.forEach(function(a){{T.forEach(function(b){{if(a!==b&&MS[a.id]&&MS[a.id][b.id])fr.push('<li>'+lg(b,22)+'<span><b>'+esc(b.n)+'.</b> '+esc(MS[a.id][b.id])+'</span></li>')}})}});
+  if(fr.length) h+='<div class="cp-v"><h3>Para decidir</h3><ul>'+fr.filter(function(x,i){{return fr.indexOf(x)===i}}).join("")+'</ul></div>';
+  out.innerHTML=h;out.hidden=false;
+ }}
+ sels.forEach(function(s){{s.addEventListener("change",function(){{var ids=[];sels.forEach(function(x){{if(x.value&&ids.indexOf(x.value)<0)ids.push(x.value)}});pinta(ids,true)}})}});
+ pinta(leer(),false);
+}})();
+</script>'''
+    write("comparar/index.html", head("Comparar herramientas digitales para clase · Didákora", "Compara dos o tres herramientas lado a lado: qué hacen, qué dispositivos piden, qué cuenta necesita el alumnado y para qué etapas sirven.", "/comparar/") + body + foot())
+
+def alternativas():
+    cards = ""
+    for i, alts in ALTERNATIVAS.items():
+        t = BYID[i]; c = campos(t); nm = c["n"]
+        items = "".join(g_item(BYID[a], "<b>Mejor si</b> " + esc(x) + ".", f'<a class="g-cmp" href="{B}/comparar/?c={i},{a}">Comparar</a>') for a, x in alts)
+        body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Alternativas", f"{B}/alternativas/"), (nm, "")])}<h1>Alternativas a {esc(nm)}</h1></div><p>Otras herramientas que sirven para lo mismo y cuándo conviene cada una. Aquí nadie paga por aparecer.</p></div>
+ <div class="al">
+  <aside class="al-o"><p class="al-k">La que ya conoces</p><div class="al-n"><span class="lg">{logo(t, 34)}</span><h2>{esc(nm)}</h2></div><p>{esc(c["q"])}</p>
+   <dl><div><dt>Dispositivos</dt><dd>{esc(c["d"])}</dd></div><div><dt>Cuenta</dt><dd>{esc(c["c"])}</dd></div><div><dt>Etapas</dt><dd>{esc(c["e"])}</dd></div></dl>
+   <a class="btn line" href="{B}/{i}/">Ver su ficha {ICO["arrow"]}</a></aside>
+  <section class="al-l" aria-labelledby="h-al"><h2 id="h-al">{len(alts)} alternativas</h2><ul class="g-l">{items}</ul>
+   <p class="more"><a class="btn solid" href="{B}/comparar/?c={i},{alts[0][0]}">Comparar lado a lado {ICO["arrow"]}</a></p></section>
+ </div>
+</main>'''
+        ld = [migas(("Inicio", "/"), ("Alternativas", "/alternativas/"), (nm, f"/alternativas/{i}/")),
+              {"@type": "ItemList", "name": f"Alternativas a {nm}", "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": split_name(BYID[a]["n"])[0], "url": f"{WEB}/{a}/"} for k, (a, x) in enumerate(alts)]}]
+        nombres = ", ".join(split_name(BYID[a]["n"])[0] for a, x in alts[:-1]) + " y " + split_name(BYID[alts[-1][0]]["n"])[0]
+        write(f"alternativas/{i}/index.html", head(f"Alternativas a {nm} para clase · Didákora", f"{nombres}: cuándo conviene cada una en lugar de {nm}, con sus dispositivos y su cuenta.", f"/alternativas/{i}/", ld=ld) + body + foot())
+        cards += (f'<a class="al-c" href="{B}/alternativas/{i}/"><span class="lg">{logo(t, 30)}</span><span class="al-ct"><small>Alternativas a</small><b>{esc(nm)}</b></span>'
+                  f'<span class="al-cl">{"".join(logo(BYID[a], 20) for a, x in alts[:4])}</span></a>')
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Alternativas", "")])}<h1>Alternativas a…</h1></div><p>Parte de la herramienta que ya conoces y mira cuáles sirven para lo mismo, con el motivo para elegir cada una.</p></div>
+ <div class="al-g">{cards}</div>
+ <p class="g-n">¿No está la que buscas? Cada ficha termina con sus herramientas alternativas, y en <a href="{B}/comparar/">Comparar</a> puedes enfrentar las que quieras.</p>
+</main>'''
+    write("alternativas/index.html", head("Alternativas a las herramientas más usadas en clase · Didákora", "Alternativas a Kahoot!, Canva, Padlet, Google Forms y otras herramientas conocidas, con el motivo para elegir cada una.", "/alternativas/") + body + foot())
+
+def colecciones():
+    cards = ""
+    for k, c in enumerate(COLECCIONES, 1):
+        ts = [(BYID[i], x) for i, x in c["items"]]
+        items = "".join(g_item(t, esc(x)) for t, x in ts)
+        body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Colecciones", f"{B}/colecciones/"), (c["t"], "")])}<h1>{esc(c["t"])}</h1></div><p>{esc(c["d"])}</p></div>
+ <ul class="g-l co-l">{items}</ul>
+ <p class="more"><a class="btn line" href="{B}/colecciones/">Ver todas las colecciones {ICO["arrow"]}</a></p>
+</main>'''
+        ld = [migas(("Inicio", "/"), ("Colecciones", "/colecciones/"), (c["t"], f'/colecciones/{c["slug"]}/')),
+              {"@type": "ItemList", "name": c["t"], "itemListElement": [{"@type": "ListItem", "position": n + 1, "name": split_name(t["n"])[0], "url": f'{WEB}/{t["id"]}/'} for n, (t, x) in enumerate(ts)]}]
+        write(f'colecciones/{c["slug"]}/index.html', head(f'{c["t"]}: herramientas para clase · Didákora', f'{c["d"]} {len(ts)} herramientas elegidas y por qué.', f'/colecciones/{c["slug"]}/', ld=ld) + body + foot())
+        cards += (f'<a class="co-c" href="{B}/colecciones/{c["slug"]}/"><i>{k:02d}</i><span class="co-t"><b>{esc(c["t"])}</b><small>{esc(c["s"])}</small></span>'
+                  f'<span class="co-g">{"".join(logo(t, 22) for t, x in ts[:5])}</span></a>')
+    body = f'''
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Colecciones", "")])}<h1>Colecciones</h1></div><p>Pocas herramientas, elegidas para una situación concreta del curso.</p></div>
+ <div class="co-gr">{cards}</div>
+</main>'''
+    write("colecciones/index.html", head("Colecciones de herramientas para cada momento del curso · Didákora", "Listas cortas para una situación concreta: aula sin dispositivos, primer día de clase, evaluar sin examen, tutoría con familias o clase de idiomas.", "/colecciones/") + body + foot())
+def bloque_guias():
+    """portada: entrada a comparar, alternativas y colecciones"""
+    c = [("comparar", "Comparar", "Dos o tres herramientas, lado a lado."), ("alternativas", "Alternativas a…", "Parte de la que ya conoces."), ("colecciones", "Colecciones", "Elegidas para cada momento del curso.")]
+    return ('<section class="sec g3" aria-label="Más formas de elegir">' + "".join(f'<a href="{B}/{k}/"><b>{t}</b><span>{d}</span>{ICO["arrow"]}</a>' for k, t, d in c) + "</section>")
 
 # ---------------------------------------------------------------- actualidad (blog)
 # Cada post es un JSON (_build/actualidad/<slug>.json) que deja el Maquetador cuando Jorge aprueba el diseño:
@@ -783,6 +907,7 @@ def vista(ruta_json, carpeta):
     print("vista previa:", f"{rel}/index.html")
 
 # ---------------------------------------------------------------- datos para el listado
+GUIAS_URL = ["/comparar/", "/alternativas/", "/colecciones/"] + [f"/alternativas/{i}/" for i in ALTERNATIVAS] + [f'/colecciones/{c["slug"]}/' for c in COLECCIONES]
 def extras():
     """página de error 404 (GitHub Pages la sirve sola) y mapa del sitio (robots.txt solo cuenta en la raíz del dominio)"""
     body = f'''
@@ -797,7 +922,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] if SES_PUB else [])] + [("/sobre-mi/", "")]
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")]
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
@@ -843,7 +968,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); planb()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); planb(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")

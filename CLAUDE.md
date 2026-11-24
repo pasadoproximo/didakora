@@ -90,6 +90,11 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   (British Council; sin logo: su web no deja descargarlo, pedírselo a Jorge), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
   «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
+- **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
+  `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; en el móvil no hay columnas: un bloque por dato con una línea por herramienta),
+  `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
+  `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B). Entradas: tres tarjetas en la portada (`bloque_guias()`)
+  y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
 ## Flujo
