@@ -625,7 +625,7 @@ a.tag:hover{background:var(--coral3)}
 }
 @media (min-width:841px){.bar nav .n-mv,.bar nav a[data-k="categorias"],.bar nav a[data-k="nuevas"]{display:none}
  .bar nav a.mm-c{position:relative}.bar nav a.mm-c .cj-h{display:none}.bar nav a.mm-c.hay{padding-right:24px}
- .cj-n{position:absolute;top:2px;right:5px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:var(--coral);color:var(--navy);font:800 12px/18px var(--f-body);text-align:center}.cj-n:empty{display:none}
+ .cj-n{position:absolute;top:2px;right:5px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:var(--navy);color:#fff;font:800 12px/18px var(--f-body);text-align:center}.cj-n:empty{display:none}
  .bar nav:has(a:is([data-k="categorias"],[data-k="nuevas"])[aria-current]) a[data-k="todas"]{background:var(--bg);font-weight:700}}
 /* repaso del 24-11-2026 */
 .hs,.ls{grid-template-columns:minmax(0,1fr)}.empty,.aprox{overflow-wrap:anywhere}.xa-n button{flex:none}.ft-pv{padding:6px 0}
