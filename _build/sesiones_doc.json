@@ -1556,7 +1556,7 @@
      ]
     ],
     [
-     "Se compromete",
+     "Se reparte",
      [
       "217",
       "Economía y Emprendimiento",
@@ -1564,9 +1564,9 @@
       "2.1"
      ],
      [
-      "Sale sin saber qué le toca hacer.",
-      "Sabe su tarea pero no la fecha ni quién avisa.",
-      "Dice qué hará, para cuándo y quién avisa si el equipo se atasca."
+      "El equipo sale sin repartir el primer paso.",
+      "Reparte el primer paso, sin fecha ni quién avisa.",
+      "Reparte el primer paso con fecha y decide quién avisa si se atasca."
      ]
     ]
    ]
@@ -1682,20 +1682,6 @@
       "Usa términos del tema cuando se los recuerdas.",
       "Explica la obra a otras parejas con los términos del tema."
      ]
-    ],
-    [
-     "Revisa su idea",
-     [
-      "217",
-      "Geografía e Historia",
-      "Cursos primero y segundo",
-      "3.1"
-     ],
-     [
-      "Repite su primera respuesta sin relacionarla con las obras.",
-      "Cambia la respuesta pero no dice qué le ha hecho cambiar.",
-      "Dice qué pista confirma o cambia su primera respuesta."
-     ]
     ]
    ]
   },
@@ -1777,7 +1763,7 @@
   "wifi": "Usa los mapas históricos del libro o de un atlas. Elige cinco mapas de fechas distintas y sigue igual: en cada uno escriben qué ha cambiado y una causa posible.",
   "otra": "Sirve para cualquier imperio o para las fronteras del siglo XX. El orden no cambia: hipótesis en el mapa mudo, cinco fechas, pruebas en el libro y párrafo final.",
   "rub": {
-   "curso": "1.º y 2.º de ESO",
+   "curso": "1.º y 2.º de ESO, Geografía e Historia",
    "nota": "Rellénala con la tabla de fechas, el mapa y el párrafo final de cada alumno.",
    "niv": [
     "Está empezando",
@@ -2095,7 +2081,7 @@
      [
       "Escribe su postura sin fundamentarla.",
       "Fundamenta su postura con una razón sobre los derechos.",
-      "Revisa su postura y explica qué mantiene y qué cambia."
+      "La fundamenta en los derechos y explica qué mantiene y qué cambia."
      ]
     ]
    ]
@@ -2322,7 +2308,7 @@
   "otra": "En inglés, el mismo esquema con LearnEnglish Teens. El orden no cambia: anticipar, ver sin sonido, ver y responder, diálogo y frase final.",
   "rub": {
    "curso": "1.º y 2.º de ESO (Francés, segunda lengua extranjera)",
-   "nota": "Los criterios son los de Lengua Extranjera. Mira los ejercicios, el diálogo y las frases finales.",
+   "nota": "Segunda Lengua Extranjera usa como referente los criterios de Lengua Extranjera. Ajusta el nivel a tu grupo.",
    "niv": [
     "Está empezando",
     "En proceso",
@@ -3100,27 +3086,13 @@
   "otra": "Repítela al empezar cada trimestre. Empieza por revisar los tres acuerdos anteriores: cuáles se cumplen y cuál hay que cambiar.",
   "rub": {
    "curso": "ESO, con Valores Cívicos y Éticos como referencia",
-   "nota": "Es una guía de observación, sin nota. Mira cómo se presentan, escuchan y acuerdan.",
+   "nota": "Es una guía de observación, sin nota. Mira cómo escuchan y cómo acuerdan.",
    "niv": [
     "Está empezando",
     "En proceso",
     "Lo consigue"
    ],
    "filas": [
-    [
-     "Comparte",
-     [
-      "217",
-      "Educación en Valores Cívicos y Éticos",
-      "única",
-      "1.2"
-     ],
-     [
-      "Escucha a su pareja sin contar nada de sí.",
-      "Cuenta sus dos verdades y su deseo.",
-      "Los cuenta y presenta a su pareja con respeto."
-     ]
-    ],
     [
      "Escucha",
      [
@@ -3131,7 +3103,7 @@
      ],
      [
       "Se ríe de alguna respuesta o busca quién la escribió.",
-      "Lee las respuestas de los demás en silencio y con respeto.",
+      "Lee las respuestas sin buscar quién las ha escrito.",
       "Recoge una preocupación ajena en la norma que propone."
      ]
     ],
@@ -3401,7 +3373,7 @@
       "7.2"
      ],
      [
-      "Cambia de respuesta para coincidir con la mayoría.",
+      "Cambia de respuesta sin dar ninguna razón.",
       "Mantiene o cambia su respuesta tras escuchar a su pareja.",
       "Explica en qué se equivocó y qué ha entendido ahora."
      ]

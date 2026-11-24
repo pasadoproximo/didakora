@@ -158,6 +158,7 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
+PRIV_PUB = os.environ.get("DK_PRIVACIDAD") == "1"   # página de privacidad: en espera de que Jorge la lea. DK_PRIVACIDAD=1 la genera
 SES_PUB = os.environ.get("DK_SESION") != "0"   # «Elige tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
@@ -243,6 +244,8 @@ CONTACTO = [
 CICO = {"mail": '<rect x="3" y="4" width="18" height="16" rx="3.5"/><path d="m4 7 8 6.5 8-6.5"/>',
         "in": '<rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.5V16.5M8 7.6v.1M11.8 16.5v-6M11.8 13.2c0-1.7 1.1-2.8 2.5-2.8s2.3 1 2.3 2.8v3.3"/>',
         "ig": '<rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.3 6.7v.1"/>'}
+PIE_PRIV = f' <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>
+' if PRIV_PUB else ''
 def foot(scripts=""):
     """bloque final de todas las páginas: invitación a proponer herramientas, centrada, con los contactos debajo"""
     cont = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto:") else ' rel="noopener" target="_blank"') +
@@ -254,8 +257,7 @@ def foot(scripts=""):
 </aside>
 <footer class="ft">
  <p>Jorge Delgado Aguilera</p>
- <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>
- <a class="ft-cc" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
+{PIE_PRIV} <a class="ft-cc" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
 </footer>
 </div>
 <script>window.DK_BASE="{B}"</script>
@@ -965,7 +967,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", ""), ("/privacidad/", "")]
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")] + ([("/privacidad/", "")] if PRIV_PUB else [])
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
@@ -1011,7 +1013,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); privacidad(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); PRIV_PUB and privacidad(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")
