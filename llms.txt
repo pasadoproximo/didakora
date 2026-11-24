@@ -46,7 +46,7 @@ Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente
 - [Clipchamp](https://didakora.es/clipchamp/): Clipchamp es el editor de vídeo de Microsoft.
 - [Vocaroo](https://didakora.es/vocaroo/): Vocaroo es la forma más sencilla de grabar un audio: se pulsa un botón, se graba con el micrófono y se obtiene un enlace para compartirlo.
 - [Audacity](https://didakora.es/audacity/): Audacity es un programa libre y gratuito para grabar y editar audio.
-- [Zencastr](https://didakora.es/zencastr/): Zencastr permite grabar un pódcast con varias personas que están en lugares distintos.
+- [Zencastr](https://didakora.es/zencastr/): Zencastr sirve para grabar un pódcast con varias personas que están en lugares distintos.
 - [Suno](https://didakora.es/suno/): Suno es una herramienta de inteligencia artificial que crea canciones.
 - [eXeLearning](https://didakora.es/exelearning/): eXeLearning es un programa libre y gratuito para crear recursos educativos interactivos: unidades completas con textos, imágenes, vídeos y actividades autocorregibles.
 - [Gamma](https://didakora.es/gamma/): Gamma crea presentaciones, documentos y páginas web a partir de una idea o un texto con ayuda de la inteligencia artificial.
@@ -69,7 +69,7 @@ Murales, mapas mentales, pizarras y herramientas para organizar recursos.
 - [Symbaloo](https://didakora.es/symbaloo/): Symbaloo organiza tus enlaces favoritos en escritorios visuales con forma de mosaico.
 - [Pearltrees](https://didakora.es/pearltrees/): Pearltrees sirve para guardar y organizar enlaces, documentos, imágenes y notas en colecciones con forma de árbol.
 - [Feedly](https://didakora.es/feedly/): Feedly reúne en un solo sitio las novedades de las webs, blogs y revistas que sigues, sin tener que visitarlas una a una.
-- [Wakelet](https://didakora.es/wakelet/): Wakelet permite crear colecciones de enlaces, vídeos, documentos e imágenes para organizar y compartir contenido.
+- [Wakelet](https://didakora.es/wakelet/): Wakelet sirve para crear colecciones de enlaces, vídeos, documentos e imágenes para organizar y compartir contenido.
 - [iLovePDF](https://didakora.es/ilovepdf/): iLovePDF es un conjunto de herramientas en línea para trabajar con PDF: unir, dividir, comprimir, convertir a Word u otros formatos, girar o numerar páginas.
 
 ## Explorar por materias
@@ -139,7 +139,7 @@ Pensamiento computacional, programación por bloques y diseño en 3D.
 
 Asistentes y herramientas de IA para preparar clase y para el alumnado.
 
-- [SchoolAI](https://didakora.es/schoolai/): SchoolAI permite al docente crear espacios de conversación con un tutor de inteligencia artificial que sigue sus reglas y límites.
+- [SchoolAI](https://didakora.es/schoolai/): SchoolAI sirve para que el docente cree espacios de conversación con un tutor de inteligencia artificial que sigue sus reglas y límites.
 - [Snorkl](https://didakora.es/snorkl/): Snorkl pide al alumnado que explique su razonamiento en voz alta y con dibujos sobre una pizarra.
 - [LearningML](https://didakora.es/learningml/): LearningML es una plataforma educativa para entender cómo aprende una inteligencia artificial.
 - [Gemini](https://didakora.es/gemini/): Gemini es el asistente de inteligencia artificial de Google.
