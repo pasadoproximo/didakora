@@ -1,0 +1,119 @@
+{
+  "slug": "kahoot-modos-sin-dispositivos",
+  "titulo": "Kahoot! estrena modos sin dispositivos.",
+  "fecha": "2026-11-24",
+  "numero": 10,
+  "etiqueta": "Herramientas",
+  "entradilla": "Con Kahoot! Unplugged basta la pantalla del aula para jugar. El alumnado habla, responde con tarjetas o gestos y el docente marca la respuesta.",
+  "miniatura": {
+    "src": "img/miniatura.jpg"
+  },
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una mano coloca un círculo de cartulina junto a un rectángulo y otras formas recortadas.",
+    "credito": "Foto: cottonbro studio · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/person-holding-red-and-black-paper-4965822/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "La novedad",
+      "titulo": "Un kahoot sin móviles ni PIN",
+      "texto": "[Kahoot!](https://didakora.es/kahoot/) tiene una forma nueva de jugar. Se llama **Unplugged** y el alumnado no necesita ningún dispositivo. Las preguntas salen en la pantalla del aula y solo el docente toca el suyo.\n\nLa empresa lo anunció el 3 de septiembre, entre sus novedades para la vuelta al cole. Lo dirige a aulas con pocos dispositivos y a docentes que quieren reducir el tiempo de pantalla.\n\nNo hay que crear nada. Abres cualquier kahoot que ya tengas y lo lanzas como sesión Unplugged. Nadie teclea un PIN ni espera a conectarse. Tu dispositivo, eso sí, necesita conexión a internet.",
+      "fuente": {
+        "nombre": "Kahoot!",
+        "url": "https://kahoot.com/press/2026/09/03/kahoot-launches-new-experiences-to-boost-engagement-and-help-improve-learning-outcomes-this-back-to-school-season/"
+      }
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Cómo se juega",
+      "titulo": "Los 2 modos de Kahoot! Unplugged",
+      "items": [
+        {
+          "titulo": "Classic: Unplugged",
+          "texto": "El kahoot de siempre, en una sola pantalla. La clase o los equipos discuten cada pregunta, muestran su respuesta con gestos o tarjetas de colores y tú marcas la acordada. No hay cuenta atrás. Sirve para repasar entre todos con tiempo para razonar.",
+          "url": null,
+          "ficha": null
+        },
+        {
+          "titulo": "Team Tiles: Unplugged",
+          "texto": "Un concurso por turnos. Cada equipo elige una casilla numerada del tablero y descubre una pregunta. Los equipos responden con tarjetas, gestos o pizarras y tú marcas si aciertan. Los puntos se acumulan hasta el podio final. Sirve para un repaso con más juego.",
+          "url": null,
+          "ficha": null
+        }
+      ],
+      "fuente": {
+        "nombre": "Kahoot! Unplugged",
+        "url": "https://kahoot.com/schools/unplugged/"
+      }
+    },
+    {
+      "tipo": "texto",
+      "tono": "hielo",
+      "etiqueta": "Los planes",
+      "titulo": "Qué modo tienes con tu cuenta",
+      "texto": "El modo clásico está en todos los planes individuales para docentes. El de casillas depende de cuál tengas.\n\n**Classic: Unplugged.** Incluido en el plan gratuito (Kahoot! Go) y en los de pago.\n\n**Team Tiles: Unplugged.** De prueba en Go y en Kahoot!+ Bronze. Incluido en Kahoot!+ Silver, Kahoot!+ Gold y Kahoot! One.\n\nEs lo que indica la página de planes a 24 de noviembre de 2026.",
+      "fuente": {
+        "nombre": "Planes de Kahoot!",
+        "url": "https://kahoot.com/schools/plans/"
+      }
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "En clase",
+      "titulo": "Menos prisa y más conversación",
+      "texto": "En el Kahoot! clásico gana puntos quien acierta antes. En el modo clásico sin dispositivos no corre el reloj, así que el grupo puede pararse a discutir por qué una respuesta es mejor que otra.\n\nA cambio, ese modo no puntúa a cada estudiante. Cuenta los aciertos del conjunto. Viene bien para repasar o para conocer las ideas previas del grupo. Si quieres saber qué ha respondido cada uno sin darles un dispositivo, [Plickers](https://didakora.es/plickers/) lo registra con tarjetas de papel."
+    },
+    {
+      "tipo": "pasos",
+      "tono": "hielo",
+      "etiqueta": "Paso a paso",
+      "titulo": "Un repaso sin dispositivos en 4 pasos",
+      "intro": "Una propuesta nuestra con Classic: Unplugged, para Primaria y Secundaria en cualquier materia.",
+      "pasos": [
+        {
+          "titulo": "Elige un kahoot que ya tengas",
+          "texto": "Con 8 o 10 preguntas basta, porque cada una dará para hablar. Mejor si alguna suele fallarse."
+        },
+        {
+          "titulo": "Prepara las tarjetas",
+          "texto": "Cada equipo recorta cuatro cartulinas con los colores y las formas de las respuestas. Así también se distinguen sin depender del color."
+        },
+        {
+          "titulo": "Primero se habla y luego se levanta",
+          "texto": "Lee la pregunta en voz alta y deja un minuto para acordar la respuesta. A tu señal, todos los equipos levantan la tarjeta a la vez."
+        },
+        {
+          "titulo": "Pide razones antes de marcar",
+          "texto": "Si no coinciden, un equipo de cada opción explica la suya. Después votad de nuevo y marca la que gane."
+        }
+      ],
+      "ejemplo": "En Matemáticas, la pregunta es qué fracción es mayor, 3/4 o 5/8. Un equipo levanta la tarjeta de 5/8 porque sus números son más grandes. Otro lo rebate dibujando las dos fracciones en la pizarra y la clase vuelve a votar."
+    },
+    {
+      "tipo": "destacado",
+      "etiqueta": "Para seguir",
+      "titulo": "Si en tu aula no hay pantallas para todos",
+      "texto": "La página de Kahoot! Unplugged enlaza un curso gratuito para aprender a dirigir estas partidas. Si buscas más herramientas que se usen solo desde tu ordenador o tu móvil, las tienes reunidas en nuestra colección [Aula sin dispositivos](https://didakora.es/colecciones/aula-sin-dispositivos/).",
+      "enlace": {
+        "url": "https://kahoot.com/schools/unplugged/",
+        "texto": "Ver Kahoot! Unplugged"
+      }
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Kahoot! · Nota de prensa de la vuelta al cole (03-09-2026)",
+      "url": "https://kahoot.com/press/2026/09/03/kahoot-launches-new-experiences-to-boost-engagement-and-help-improve-learning-outcomes-this-back-to-school-season/"
+    },
+    {
+      "nombre": "Kahoot! · Unplugged (consultada el 24-11-2026)",
+      "url": "https://kahoot.com/schools/unplugged/"
+    },
+    {
+      "nombre": "Kahoot! · Planes para docentes (consultada el 24-11-2026)",
+      "url": "https://kahoot.com/schools/plans/"
+    }
+  ]
+}
