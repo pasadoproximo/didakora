@@ -244,8 +244,7 @@ CONTACTO = [
 CICO = {"mail": '<rect x="3" y="4" width="18" height="16" rx="3.5"/><path d="m4 7 8 6.5 8-6.5"/>',
         "in": '<rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.5V16.5M8 7.6v.1M11.8 16.5v-6M11.8 13.2c0-1.7 1.1-2.8 2.5-2.8s2.3 1 2.3 2.8v3.3"/>',
         "ig": '<rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.3 6.7v.1"/>'}
-PIE_PRIV = f' <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>
-' if PRIV_PUB else ''
+PIE_PRIV = (f' <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>' + chr(10)) if PRIV_PUB else ""
 def foot(scripts=""):
     """bloque final de todas las páginas: invitación a proponer herramientas, centrada, con los contactos debajo"""
     cont = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto:") else ' rel="noopener" target="_blank"') +
