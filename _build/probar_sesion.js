@@ -1,4 +1,4 @@
-// Prueba «Monta tu sesión» (después de python _build/build.py): node _build/probar_sesion.js
+// Prueba «Elige tu sesión» (después de python _build/build.py): node _build/probar_sesion.js
 // Comprueba cada combinación de filtros, que no haya páginas sin generar y que los pasos sumen los minutos anunciados.
 const fs = require('fs'), path = require('path'), R = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(R, 'sesion/index.html'), 'utf8'), fallos = [];

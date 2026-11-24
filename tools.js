@@ -212,7 +212,7 @@ const TOOLS = [
   { id:"trello", rev:"2026-11-24", edad:"Desde 16 años", edadTxt:"16 años", edadUrl:"https://www.atlassian.com/legal/atlassian-customer-agreement", s:"aula", cat:"equipo", st:"vigente", n:"Trello", url:"https://trello.com",
     a:"Organiza el trabajo del equipo en tableros: pendiente, en curso, hecho.",
     i:["Gestionar un proyecto por equipos","Repartir tareas y plazos","Ver el avance del grupo"],
-    c:"3.º, 4.º ESO y Bachillerato", disp:"Uno por alumno", cta:"Necesita cuenta" },
+    c:"Bachillerato", disp:"Uno por alumno", cta:"Necesita cuenta" },
   { id:"kialo", rev:"2026-11-24", s:"aula", cat:"equipo", st:"nueva", n:"Kialo Edu", url:"https://www.kialo-edu.com/?lang=es",
     a:"Debate por escrito en un mapa de argumentos, con ideas a favor y en contra bajo las de sus compañeros.",
     i:["Debate de Filosofía o Valores","Defender posturas ante un hecho histórico","Preparar un texto argumentativo"],

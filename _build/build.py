@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "91"  # versión de didakora.css / didakora.js
+V = "93"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -158,13 +158,13 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
-SES_PUB = os.environ.get("DK_SESION") != "0"   # «Monta tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
+SES_PUB = os.environ.get("DK_SESION") != "0"   # «Elige tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
-    if SES_PUB: nav.append(("sesion", "Monta tu sesión", "/sesion/"))
+    if SES_PUB: nav.append(("sesion", "Elige tu sesión", "/sesion/"))
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
-    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>'.replace('>Monta tu sesión<', '><span class="nl">Monta tu sesión</span><span class="ns">Sesión</span><') for k, t, h in nav)
+    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>'.replace('>Elige tu sesión<', '><span class="nl">Elige tu sesión</span><span class="ns">Sesión</span><') for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="didákora · inicio">{LOGO}</a>
@@ -283,13 +283,13 @@ def etapas_html(fid, cls=""):
 
 # ---------------------------------------------------------------- portada
 def bloque_sesion():
-    """portada: entrada a «Monta tu sesión», con una sesión de ejemplo en pequeño"""
+    """portada: entrada a «Elige tu sesión», con una sesión de ejemplo en pequeño"""
     pasos = [("voz", "Empieza por lo que ya saben", "Una pregunta, una votación o una hipótesis"), ("main", "La actividad de la clase", "Con una o dos herramientas del catálogo"), ("", "Comprueba qué se llevan", "Una frase, una regla o una segunda votación")]
     li = "".join(f'<li class="ps-p {c}"><span class="ps-n">{k}</span><span class="ps-t"><b>{esc(t)}</b><small>{esc(d)}</small></span></li>' for k, (c, t, d) in enumerate(pasos, 1))
     return f'''<section class="sec ps" aria-labelledby="h-ses">
-  <div class="ps-a"><span class="lab">Nuevo</span><h2 id="h-ses">Monta tu sesión</h2>
+  <div class="ps-a"><span class="lab">Nuevo</span><h2 id="h-ses">Elige tu sesión</h2>
    <p>Elige etapa, dispositivos y lo que buscas. Te enseño sesiones completas, con minutos, preparación y un plan sin wifi.</p>
-   <p class="more"><a class="btn solid" href="{B}/sesion/">Montar una sesión {ICO["arrow"]}</a></p></div>
+   <p class="more"><a class="btn solid" href="{B}/sesion/">Elegir una sesión {ICO["arrow"]}</a></p></div>
   <ol class="ps-l" aria-label="Ejemplo de sesión">{li}</ol>
  </section>'''
 def portada():
@@ -435,12 +435,12 @@ def compartir(titulo, path, cls=""):
     a += f'<button type="button" data-copia="{esc(url)}" aria-label="Copiar enlace" title="Copiar enlace"><svg class="ln" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>'
     return f'<div class="comp{" " + cls if cls else ""}"><span class="lab">Compartir</span><div class="comp-i">{a}</div><span class="comp-ok" role="status" aria-live="polite"></span></div>'
 
-# ---------------------------------------------------------------- Monta tu sesión y Plan B (22-11-2026, EN PRUEBAS: sin enlace en el menú)
+# ---------------------------------------------------------------- Elige tu sesión y Plan B (22-11-2026, EN PRUEBAS: sin enlace en el menú)
 # Las dos salen solo de los datos de las herramientas del alumnado (Aula): sus ideas de actividad (`i`), dispositivos y cuenta.
 # No inventan nada: si una combinación no tiene ideas, la página lo dice.
 from sesiones import SESIONES, METAS as METAS_S, MATERIAS as MATERIAS_S, APARATOS as APARATOS_S
 def sesion():
-    """«Monta tu sesión»: /sesion/ filtra sesiones escritas (_build/sesiones.py) y cada una tiene su página, /sesion/<id>/."""
+    """«Elige tu sesión»: /sesion/ filtra sesiones escritas (_build/sesiones.py) y cada una tiene su página, /sesion/<id>/."""
     MET, MAT, APA = dict(METAS_S), dict(MATERIAS_S), dict(APARATOS_S)
     def datos_s(x): return f'{x["min"]} min', " · ".join(ETN[e] for e in x["e"]), APA[x["d"]]
     for x in SESIONES:
@@ -466,7 +466,7 @@ def sesion():
         ix += f'<a href="{B}/sesion/{x["id"]}/" data-id="{x["id"]}">{esc(x["t"])}</a>'
     body = f"""
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime etapa, dispositivos y qué buscas. Te enseño las sesiones de tres en tres, lado a lado, para que elijas comparando.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Elige tu sesión", "")])}<h1>Elige tu sesión</h1></div><p>Dime etapa, dispositivos y qué buscas. Te enseño las sesiones de tres en tres, lado a lado, para que elijas comparando.</p></div>
  <form class="cp-f xa-f" id="sf" onsubmit="return false">
   {filtro("e", "Etapa", "Todas", [("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")])}
   {filtro("d", "Dispositivos", "Los que haya", APARATOS_S)}
@@ -502,7 +502,7 @@ def sesion():
  pinta(false);
 }})();
 </script>"""
-    write("sesion/index.html", head("Monta tu sesión: clases completas con herramientas digitales · Didákora", "Sesiones de Infantil, Primaria y Secundaria con sus minutos, lo que hay que preparar, las herramientas y un plan sin wifi.", "/sesion/", "sesion") + body + foot())
+    write("sesion/index.html", head("Elige tu sesión: clases completas con herramientas digitales · Didákora", "Sesiones de Infantil, Primaria y Secundaria con sus minutos, lo que hay que preparar, las herramientas y un plan sin wifi.", "/sesion/", "sesion") + body + foot())
     for x in SESIONES:
         mi, et, ap = datos_s(x)
         li = "".join(f'<li class="sp{"" if h else " sin"}"><span class="sp-m">{m}<small>min</small></span><div><span class="lab">{esc(g)}</span><h3>{esc(t)}</h3><p>{esc(d)}</p>'
@@ -512,10 +512,11 @@ def sesion():
         hs = "".join(f'<a class="sp-h" href="{B}/{h}/">{logo(BYID[h], 22)}{esc(corto(h))}</a>' for h in x["h"])
         body = f"""
 <main class="pg se">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", f"{B}/sesion/"), (x["t"], "")])}<h1>{esc(x["t"])}</h1></div><p>{esc(x["r"])}</p></div>
+ <p class="se-pie">{WEB.split("//")[1]}/sesion/{x["id"]}/ · Jorge Delgado Aguilera · CC BY-NC-SA 4.0</p>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Elige tu sesión", f"{B}/sesion/"), (x["t"], "")])}<h1>{esc(x["t"])}</h1></div><p>{esc(x["r"])}</p></div>
  <div class="se-g">
   <aside class="se-a"><dl><div><dt>Duración</dt><dd>{x["min"]} minutos</dd></div><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Ejemplo</dt><dd>{esc(x["ej"])}</dd></div></dl>
-   <div class="se-h">{hs}</div><button type="button" class="btn solid" onclick="print()">Imprimir</button></aside>
+   <div class="se-h">{hs}</div><button type="button" class="btn solid" onclick="print()">Imprimir o PDF</button></aside>
   <div><section class="se-p"><h2>Antes de empezar</h2><p>{esc(x["prep"])}</p></section>
    <section><h2 class="se-t">La sesión</h2><ol class="se-l">{li}</ol></section>
    <div class="se-x"><section><h2>Si falla el wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
@@ -523,7 +524,7 @@ def sesion():
  <section class="se-o"><h2 class="se-t">Otras sesiones</h2><div class="sg">{"".join(f"""<a class="sc" href="{B}/sesion/{y["id"]}/"><span class="sc-k">{y["min"]} min · {esc(MET[y["o"]])}</span><b>{esc(y["t"])}</b><span class="sc-r">{esc(y["r"])}</span></a>""" for y in otras[:3])}</div></section>
 </main>"""
         write(f'sesion/{x["id"]}/index.html', head(f'{x["t"]}: sesión de {x["min"]} minutos · Didákora', f'{x["r"]} Sesión de {x["min"]} minutos con {" y ".join(corto(h) for h in x["h"])}, paso a paso.', f'/sesion/{x["id"]}/', "sesion",
-              ld=[migas(("Inicio", "/"), ("Monta tu sesión", "/sesion/"), (x["t"], f'/sesion/{x["id"]}/'))]) + body + foot())
+              ld=[migas(("Inicio", "/"), ("Elige tu sesión", "/sesion/"), (x["t"], f'/sesion/{x["id"]}/'))]) + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -624,11 +625,18 @@ def ficha(t):
 
 # ---------------------------------------------------------------- comparador, alternativas y colecciones
 # Datos en _build/guias.py. Tres páginas que usan lo que ya dice cada ficha (qué hace, dispositivos, cuenta y etapas).
-from guias import ALTERNATIVAS, FRECUENTES, COLECCIONES
+from guias import ALTERNATIVAS, TITULARES, FRECUENTES, COLECCIONES
+assert set(TITULARES) == {(a, b) for a, l in ALTERNATIVAS.items() for b, _ in l}, "guias.py: TITULARES y ALTERNATIVAS no coinciden"
+assert all(len(x) <= 40 for x in TITULARES.values()), "guias.py: un titular del comparador pasa de 40 letras"
+def titular(t, q):
+    """el uso de la ficha que menos repite la descripción: titular corto de la herramienta cuando no hay uno escrito para esa pareja"""
+    pal = lambda x: {w[:5] for w in re.findall(r"\w{4,}", x.lower())}
+    return min(F[t["id"]]["usos"], key=lambda u: (len(pal(u) & pal(q)), len(u) > 34))
 def campos(t):
     """lo que se compara de una herramienta: nombre, qué hace, para quién, etapas, dispositivos y cuenta"""
     a = t["s"] == "aula"; f = F[t["id"]]
-    return dict(id=t["id"], n=split_name(t["n"])[0], q=lead(t) or f["q"].split(". ")[0] + ".",
+    q = lead(t) or f["q"].split(". ")[0] + "."
+    return dict(id=t["id"], n=split_name(t["n"])[0], q=q, u=titular(t, q),
                 p="La usa el alumnado" if a else "La usa el docente" if t["s"] == "docente" else "Recurso para preparar clases",
                 e=" · ".join(ETN[e] for e in t["et"]), d=t["disp"] if a else f["disp"], c=t["cta"] if a else f["cta"],
                 x=1 if t.get("intef") else 0, l=1 if t["id"] in LOGOS else 0, k=CAT[t["cs"]][1])
@@ -641,7 +649,7 @@ def g_item(t, txt, extra=""):
             f'<p>{txt}</p><p class="g-tgs">{g_tags(c)}</p></div>{extra}</li>')
 def comparar():
     D = [campos(t) for t in TOOLS]
-    ms = {a: {b: "Si " + x + "." for b, x in alts} for a, alts in ALTERNATIVAS.items()}
+    ms = {a: {b: TITULARES[a, b] for b, x in alts} for a, alts in ALTERNATIVAS.items()}
     grupos = "".join(f'<optgroup label="{esc(c[1])}">' + "".join(f'<option value="{t["id"]}">{esc(split_name(t["n"])[0])}</option>' for t in TOOLS if t["cs"] == c[0]) + "</optgroup>" for c in CATS)
     sel = "".join(f'<label class="cp-s"><span>{lab}</span><select data-i="{i}"><option value="">{"Elige una herramienta" if i < 2 else "Añadir otra (opcional)"}</option>{grupos}</select></label>'
                   for i, lab in enumerate(("Primera", "Segunda", "Tercera")))
@@ -676,7 +684,7 @@ def comparar():
   }});
   var h='<div class="cp-l">'+T.map(function(t){{
    var si=[];T.forEach(function(a){{var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)}});
-   return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.q)+'</p><p class="cp-sm">'+(si[0]?esc(si.slice(1).concat(t.q).join(" ")):"")+'</p>'+
+   return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.u)+'</p><p class="cp-sm">'+esc(t.q)+'</p>'+
     (dif.length?'<dl>'+dif.map(function(f){{return '<div><dt>'+f[0]+'</dt><dd'+(f[1]==="g"&&t.x?' class="cp-x"':"")+'>'+esc(t[f[1]])+'</dd></div>'}}).join("")+'</dl>':"")+'</article>'}}).join("")+'</div>'+
    (com.length?'<p class="cp-co"><b>Coinciden en:</b> '+com.join(" | ")+'</p>':"");
   out.innerHTML=h;out.hidden=false;
@@ -949,7 +957,7 @@ def llms():
          f"- [Todas las herramientas]({WEB}/todas/): listado completo con buscador y filtros por categoría y etapa",
          f"- [Sobre mí]({WEB}/sobre-mi/): quién hace Didákora y cómo se revisa",
          f"- [Portfolio de Jorge Delgado Aguilera]({SITE}/)"]
-    if SES_PUB: L.insert(len(L) - 2, f"- [Monta tu sesión]({WEB}/sesion/): sesiones completas por etapa, dispositivos y materia, con minutos, preparación y plan sin wifi")
+    if SES_PUB: L.insert(len(L) - 2, f"- [Elige tu sesión]({WEB}/sesion/): sesiones completas por etapa, dispositivos y materia, con minutos, preparación y plan sin wifi")
     if POSTS: L.append(f"- [Actualidad]({WEB}/actualidad/): noticias de educación digital para docentes")
     for c in CATS:
         L += ["", f"## {c[1]}", "", c[2], ""]

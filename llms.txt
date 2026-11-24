@@ -7,7 +7,7 @@ Herramientas: 136. Última revisión: noviembre de 2026.
 ## Páginas principales
 
 - [Todas las herramientas](https://didakora.es/todas/): listado completo con buscador y filtros por categoría y etapa
-- [Monta tu sesión](https://didakora.es/sesion/): sesiones completas por etapa, dispositivos y materia, con minutos, preparación y plan sin wifi
+- [Elige tu sesión](https://didakora.es/sesion/): sesiones completas por etapa, dispositivos y materia, con minutos, preparación y plan sin wifi
 - [Sobre mí](https://didakora.es/sobre-mi/): quién hace Didákora y cómo se revisa
 - [Portfolio de Jorge Delgado Aguilera](https://pasadoproximo.github.io/)
 - [Actualidad](https://didakora.es/actualidad/): noticias de educación digital para docentes

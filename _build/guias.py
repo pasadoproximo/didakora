@@ -46,6 +46,24 @@ ALTERNATIVAS = {
             ("stopmotion", "quieres animación foto a foto y sin cuentas")],
 }
 
+# TITULARES[(con cuál se compara, herramienta)]: lo mismo en corto para el comparador, en dos líneas como mucho (40 letras)
+# y sin repetir lo que ya dice la descripción que va debajo.
+TITULARES = {
+ ("kahoot", "plickers"): "Si no hay dispositivos", ("kahoot", "wayground"): "Si prefieres que no haya prisa", ("kahoot", "blooket"): "Si buscas más variedad de juego",
+ ("kahoot", "mentimeter"): "Si no quieres un concurso", ("kahoot", "wooclap"): "Si quieres preguntar mientras explicas",
+ ("canva", "genially"): "Si quieres que participen", ("canva", "bookcreator"): "Si el resultado es un libro", ("canva", "sway"): "Si tu centro usa Microsoft",
+ ("genially", "canva"): "Si lo que cuenta es el diseño", ("genially", "bookcreator"): "Si el resultado es un libro", ("genially", "exelearning"): "Si el recurso lo preparas tú",
+ ("padlet", "mindomo"): "Si hay que ordenar las ideas", ("padlet", "stormboard"): "Si después hay que decidir", ("padlet", "kialo"): "Si lo que buscas es un debate", ("padlet", "wakelet"): "Si eres tú quien reúne el material",
+ ("gforms", "msforms"): "Si tu centro usa Microsoft", ("gforms", "wayground"): "Si lo quieres en formato de juego", ("gforms", "plickers"): "Si no hay dispositivos", ("gforms", "jotform"): "Si se te queda corto",
+ ("classroom", "teams"): "Si tu centro usa Microsoft", ("classroom", "moodle"): "Si tu centro ya la ofrece",
+ ("chatgpt", "gemini"): "Si tu centro usa Google", ("chatgpt", "copilot"): "Si tu centro usa Microsoft", ("chatgpt", "notebooklm"): "Si partes de tus materiales", ("chatgpt", "claude"): "Si trabajas con documentos largos",
+ ("scratch", "scratchjr"): "Si son pequeños y usan tablet", ("scratch", "blockly"): "Si no quieres crear cuentas", ("scratch", "codeorg"): "Si quieres un curso completo", ("scratch", "snap"): "Si Scratch se les queda corto",
+ ("wordwall", "educaplay"): "Si buscas otros tipos de juego", ("wordwall", "kahoot"): "Si juega toda la clase a la vez", ("wordwall", "gcompris"): "Si son de Infantil o empiezan Primaria",
+ ("deepl", "gtranslate"): "Si no es solo texto", ("deepl", "apertium"): "Si necesitas catalán o gallego",
+ ("unsplash", "pexels"): "Si también necesitas vídeos", ("unsplash", "pixabay"): "Si no te bastan las fotos", ("unsplash", "wikicommons"): "Si das Historia", ("unsplash", "openverse"): "Si quieres buscar en varios bancos",
+ ("capcut", "clipchamp"): "Si tu centro usa Microsoft", ("capcut", "stopmotion"): "Si quieres animar objetos",
+}
+
 # Parejas que se ofrecen como atajo en el comparador
 FRECUENTES = [("kahoot", "wayground"), ("canva", "genially"), ("gforms", "msforms"), ("classroom", "teams"),
               ("chatgpt", "gemini"), ("deepl", "gtranslate")]
