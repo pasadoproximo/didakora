@@ -40,7 +40,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   cambia el texto del enlace). Solo con enlace oficial abierto; lo que dice `fu` no se repite en `q`. El Rastreador vuelve a abrir
   cada `fu.url` en cada ciclo. Primera: NotebookLM (23-10-2026).
   «Para saber más» (bajo «Ir a…»): `faq=[dict(p, r, url, fuente, fecha)]` en `fichas.py` (`saber_mas()`), de 3 a 5 preguntas que
-  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 133 de las 136 fichas (sin ellas: Stormboard, SnatchBot y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
+  no repiten la Ficha rápida, cada una con su fuente oficial y fecha. Desde el 23-11-2026 las llevan 133 de las 135 fichas (sin ellas: Stormboard y Fastboard). Las altas nuevas las traen propuestas por el Coordinador y aprobadas por Jorge.
 - SEO y GEO (todo generado por `build.py`, no editar a mano): título de cada ficha «Nombre: qué es y para qué sirve en clase ·
   Didákora» (`titulo_ficha()`); datos estructurados JSON-LD en cada página (`ld_html()`: web, Jorge, ficha con la herramienta como
   `Thing` (no `SoftwareApplication`: Google exige precio o valoraciones, que no tenemos), preguntas con `FAQPage`, categorías, posts y «Sobre mí»); `sitemap.xml` con `lastmod` y `llms.txt`.
@@ -100,7 +100,6 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 
 - Infantil en «Monta tu sesión»: opciones del árbol sin ideas. Primaria: debatir y organizar un proyecto.
 - Idiomas sin añadir por no poder leer su fuente oficial: Duolingo, Language Reactor y TV5MONDE (francés no tiene herramienta propia).
-- SnatchBot: Jorge dejó la retirada para el siguiente ciclo (T-20261116-01). El 24-11-2026 su dominio sigue sin existir.
 - Ideas sin empezar: «Qué ha cambiado» (con `CHANGES`), herramientas por área de la competencia digital docente, «Mi caja» y semáforo
   de privacidad con la guía del INTEF.
 
