@@ -611,4 +611,4 @@ a.tag:hover{background:var(--coral3)}
 .al-l .more{justify-content:flex-end;text-align:right}.al-o .btn{display:flex;width:fit-content;margin-left:auto}
 .sem-p,.sem-s{padding-left:40px;padding-right:40px}.sem-p p{margin-left:0;margin-right:0}@media (max-width:760px){.sem-p,.sem-s{padding-left:22px;padding-right:22px}}
 .lg-p .lg-s{padding-left:40px;padding-right:40px}.lg-p>p{padding-left:40px;padding-right:40px;margin-left:0}@media (max-width:760px){.lg-p .lg-s,.lg-p>p{padding-left:22px;padding-right:22px}}
-.lg-p{max-width:none}.lg-p .lg-s p,.lg-p .lg-s ul{max-width:none}
+.lg-p .lg-s{border-top:0;padding-top:22px;padding-bottom:22px}.lg-p{max-width:none}.lg-p .lg-s p,.lg-p .lg-s ul{max-width:none}
