@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "104"  # versión de didakora.css / didakora.js
+V = "105"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -501,7 +501,7 @@ def sesion():
                   f'<p class="cp-si">{esc(x["r"])}</p><p class="cp-sm">{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</p><div class="xbar" role="img" aria-label="{len(x["pasos"])} pasos, {con} de {x["min"]} minutos con la herramienta">{bar}</div>'
                   f'<dl><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Con</dt><dd class="xa-c">{"".join(f"<span>{logo(BYID[h], 20)}{esc(corto(h))}</span>" for h in x["h"])}</dd></div><div><dt>Pasos</dt><dd>{len(x["pasos"])}</dd></div></dl>'
                   f'<span class="xgo">Ver la sesión {ICO["arrow"]}</span></article>')
-        ix += f'<a href="{B}/sesion/{x["id"]}/" data-id="{x["id"]}">{esc(x["t"])}</a>'
+        ix += f'<li data-id="{x["id"]}"><a href="{B}/sesion/{x["id"]}/"><span>{x["min"]} min</span><b>{esc(x["t"])}</b></a></li>'
     body = f"""
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Elige tu sesión", "")])}<h1>Elige tu sesión</h1></div><p>Dime etapa, dispositivos y qué buscas. Te enseño las sesiones de tres en tres, lado a lado, para que elijas comparando.</p></div>
@@ -516,20 +516,20 @@ def sesion():
  <section class="cp-l xa-l n3" id="sg">{cards}</section>
  <div class="xley" id="sy"><i></i>Con la herramienta<i class="off"></i>Sin pantalla</div>
  <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" class="btn line" id="sz">Quitar los filtros</button></p>
- <p class="cp-fr xa-ix" id="sx"><b>Todas las que encajan</b>{ix}</p>
+ <section class="xa-m" id="sx"><h2>También encajan</h2><ul>{ix}</ul></section>
 </main>
 <script>
 (function(){{
  var $=function(i){{return document.getElementById(i)}},st={{e:"",d:"",o:"",s:""}},pg=0,ORD="pea";
- var C=[].slice.call(document.querySelectorAll(".xa")),X=[].slice.call(document.querySelectorAll("#sx a")),Se=[].slice.call(document.querySelectorAll("#sf select"));
+ var C=[].slice.call(document.querySelectorAll(".xa")),X=[].slice.call(document.querySelectorAll("#sx li")),Se=[].slice.call(document.querySelectorAll("#sf select"));
  function cabe(c,f){{var x=c.dataset;return(!f.e||x.e.indexOf(f.e)>-1)&&(!f.o||x.o===f.o)&&(!f.d||ORD.indexOf(x.d)<=ORD.indexOf(f.d))&&(!f.s||(f.s==="*"?x.s.split(" ").indexOf("*")>-1:x.s.split(" ").some(function(m){{return m===f.s||m==="*"}})))}}
  function n(f){{return C.filter(function(c){{return cabe(c,f)}}).length}}
  function pinta(g){{
   var L=C.filter(function(c){{return cabe(c,st)}}),k=L.length,P=Math.ceil(k/3)||1;pg=(pg+P)%P;var V=L.slice(pg*3,pg*3+3);
   C.forEach(function(c){{c.hidden=V.indexOf(c)<0}});V.forEach(function(c,i){{c.className="xa c"+(i+1)}});
-  X.forEach(function(a){{a.hidden=!L.some(function(c){{return c.dataset.id===a.dataset.id}});a.classList.toggle("ya",V.some(function(c){{return c.dataset.id===a.dataset.id}}))}});
+  X.forEach(function(a){{function es(c){{return c.dataset.id===a.dataset.id}}a.hidden=!L.some(es)||V.some(es)}});
   Se.forEach(function(s){{var q=s.dataset.k;s.value=st[q];[].forEach.call(s.options,function(o){{var f=Object.assign({{}},st);f[q]=o.value;o.disabled=!n(f)}})}});
-  $("sg").className="cp-l xa-l n"+V.length;$("sg").hidden=$("sy").hidden=$("sx").hidden=!k;$("sv").hidden=k>0;
+  $("sg").className="cp-l xa-l n"+V.length;$("sx").hidden=k<4||!(st.e||st.d||st.o||st.s);$("sg").hidden=$("sy").hidden=!k;$("sv").hidden=k>0;
   $("sn").textContent=k===1?"1 sesión":k+" sesiones";$("sr").textContent=k>3?"De la "+(pg*3+1)+" a la "+(pg*3+V.length):"";$("sa").hidden=$("sd").hidden=k<4;
   if(g){{var q=Object.keys(st).filter(function(x){{return st[x]}}).map(function(x){{return x+"="+encodeURIComponent(st[x])}}).join("&");try{{history.replaceState(null,"",q?"?"+q:location.pathname)}}catch(e){{}}}}
  }}
