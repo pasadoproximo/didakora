@@ -124,7 +124,7 @@ function cajaListado(){
  const EXT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
  const lead=t=>t.s==='aula'?t.a:t.s==='docente'?t.p:t.d;
  const card=t=>{const m=t.n.match(/^(.+?)\s*\((.+)\)$/),nm=m?m[1]:t.n,[cs,,hasLogo]=CAJA.t[t.id],[cn,ci]=CAJA.cats[cs];
-  const lg=hasLogo?`<img src="${B}/logos/${t.id}.png?v=5" alt="" width="26" height="26" loading="lazy">`:`<b aria-hidden="true">${esc(t.n[0])}</b>`;
+  const lg=hasLogo?`<img src="${B}/logos/${t.id}.png?v=6" alt="" width="26" height="26" loading="lazy">`:`<b aria-hidden="true">${esc(t.n[0])}</b>`;
   const go=`<a class="td-x" href="${esc(t.url)}" rel="noopener" target="_blank">${EXT}<span class="sr">Abrir ${esc(nm)} (se abre en otra pestaña)</span></a>`;
   const head=`<div class="tc-h"><span class="lg">${lg}</span><h3><a class="tc-a" href="${B}/${t.id}/">${esc(nm)}</a>${m?`<small>${esc(m[2])}</small>`:''}</h3>${st.cat?go:''}</div><p>${esc(lead(t))}</p>`;
   // con una categoría elegida no se repite la etiqueta: la flecha sube junto al nombre
@@ -179,7 +179,7 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').for
  function pinta(aviso){const m=lee(),d=ver?comp:{h:val('h',m.h),s:val('s',m.s)},n=d.h.length+d.s.length;
   $('mc-t').textContent=ver?'Una caja compartida':'Mi caja';
   if(!n){el.innerHTML='<p style="font-size:18px">Todavía no has guardado nada. Pulsa «Guardar en mi caja» en una herramienta o en una sesión.</p><p class="mc-a" style="margin-top:18px"><a class="btn solid" href="'+B+'/todas/">Ver herramientas</a><a class="btn line" href="'+B+'/sesion/">Elegir una sesión</a></p>';return}
-  const fila=(k,i)=>{const x=D[k][i];return '<li><span class="lg">'+(k==='s'?x[2]+'′':x[2]?'<img src="'+B+'/logos/'+i+'.png?v=5" alt="">':esc(x[0][0]))+'</span><div><a href="'+B+(k==='s'?'/sesion/':'/')+i+'/">'+esc(x[0])+'</a><p>'+esc(x[1])+'</p></div>'+(ver?'':'<button type="button" data-q="'+k+':'+i+'" aria-label="Quitar '+esc(x[0])+'">Quitar</button>')+'</li>'};
+  const fila=(k,i)=>{const x=D[k][i];return '<li><span class="lg">'+(k==='s'?x[2]+'′':x[2]?'<img src="'+B+'/logos/'+i+'.png?v=6" alt="">':esc(x[0][0]))+'</span><div><a href="'+B+(k==='s'?'/sesion/':'/')+i+'/">'+esc(x[0])+'</a><p>'+esc(x[1])+'</p></div>'+(ver?'':'<button type="button" data-q="'+k+':'+i+'" aria-label="Quitar '+esc(x[0])+'">Quitar</button>')+'</li>'};
   const blo=(k,t)=>d[k].length?'<h2 class="mc-h">'+t+'</h2><ul class="mc-l">'+d[k].map(i=>fila(k,i)).join('')+'</ul>':'';
   el.innerHTML='<p class="mc-a">'+(ver?'<button type="button" class="btn solid" data-a="todo">Guardarlo en mi caja</button><a class="btn line" href="'+B+'/mi-caja/">Ver la mía</a>':'<button type="button" class="btn solid" data-a="copia">'+(aviso||'Copiar el enlace')+'</button><button type="button" class="btn line" data-a="vacia">Vaciar</button>')+'</p>'+blo('h','Herramientas')+blo('s','Sesiones')}
  el.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
