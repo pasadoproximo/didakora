@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "97"  # versión de didakora.css / didakora.js
+V = "98"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -460,7 +460,7 @@ def sesion():
         mi, et, ap = datos_s(x); con = sum(p[0] for p in x["pasos"] if p[4])
         bar = "".join(f'<i class="{"on" if p[4] else "off"}" style="flex:{p[0]} 1 0"></i>' for p in x["pasos"])
         cards += (f'<article class="xa c{k % 3 + 1}" data-id="{x["id"]}" data-e="{x["e"]}" data-o="{x["o"]}" data-s="{" ".join(x["s"])}" data-d="{x["d"]}"{" hidden" if k > 2 else ""}><h3><span class="lg">{x["min"]}<small>min</small></span><a href="{B}/sesion/{x["id"]}/">{esc(x["t"])}</a></h3>'
-                  f'<p class="cp-si">{esc(x["r"])}</p><p class="cp-sm">{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</p><div class="xb"><div class="xbar" aria-hidden="true">{bar}</div><p><span class="on"><b>{con} min</b> con pantalla</span><span><b>{x["min"] - con} min</b> sin ella</span></p></div>'
+                  f'<p class="cp-si">{esc(x["r"])}</p><p class="cp-sm">{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</p><div class="xbar" role="img" aria-label="{len(x["pasos"])} pasos, {con} de {x["min"]} minutos con la herramienta">{bar}</div>'
                   f'<dl><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Con</dt><dd class="xa-c">{"".join(f"<span>{logo(BYID[h], 20)}{esc(corto(h))}</span>" for h in x["h"])}</dd></div><div><dt>Pasos</dt><dd>{len(x["pasos"])}</dd></div></dl>'
                   f'<span class="xgo">Ver la sesión {ICO["arrow"]}</span></article>')
         ix += f'<a href="{B}/sesion/{x["id"]}/" data-id="{x["id"]}">{esc(x["t"])}</a>'
@@ -473,7 +473,7 @@ def sesion():
   {filtro("o", "Qué buscas", "Todo", METAS_S)}
   {filtro("s", "Materia", "Todas", MATERIAS_S)}
  </form>
- <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
+ <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><div class="xley" id="sy"><i></i>Con la herramienta<i class="off"></i>Sin pantalla</div><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
  <h2 class="sr">Sesiones</h2>
  <section class="cp-l xa-l n3" id="sg">{cards}</section>
  <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" class="btn line" id="sz">Quitar los filtros</button></p>
@@ -490,7 +490,7 @@ def sesion():
   C.forEach(function(c){{c.hidden=V.indexOf(c)<0}});V.forEach(function(c,i){{c.className="xa c"+(i+1)}});
   X.forEach(function(a){{a.hidden=!L.some(function(c){{return c.dataset.id===a.dataset.id}});a.classList.toggle("ya",V.some(function(c){{return c.dataset.id===a.dataset.id}}))}});
   Se.forEach(function(s){{var q=s.dataset.k;s.value=st[q];[].forEach.call(s.options,function(o){{var f=Object.assign({{}},st);f[q]=o.value;o.disabled=!n(f)}})}});
-  $("sg").className="cp-l xa-l n"+V.length;$("sg").hidden=$("sx").hidden=!k;$("sv").hidden=k>0;
+  $("sg").className="cp-l xa-l n"+V.length;$("sg").hidden=$("sy").hidden=$("sx").hidden=!k;$("sv").hidden=k>0;
   $("sn").textContent=k===1?"1 sesión":k+" sesiones";$("sr").textContent=k>3?"De la "+(pg*3+1)+" a la "+(pg*3+V.length):"";$("sa").hidden=$("sd").hidden=k<4;
   if(g){{var q=Object.keys(st).filter(function(x){{return st[x]}}).map(function(x){{return x+"="+encodeURIComponent(st[x])}}).join("&");try{{history.replaceState(null,"",q?"?"+q:location.pathname)}}catch(e){{}}}}
  }}

@@ -523,7 +523,9 @@ a.tag:hover{background:var(--coral3)}
 .cp-l.xa-l .c1{background:var(--sky)}.cp-l.xa-l .c2{background:var(--coral2)}.cp-l.xa-l .c3{background:var(--ice)}
 .xa-l .lg{display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 25px/1 var(--f-disp);letter-spacing:-.03em;color:var(--navy)}.xa-l .lg small{font:700 11.5px/1 var(--f-body);letter-spacing:.04em;margin-top:2px}
 .xa-l h3 a::after{content:"";position:absolute;inset:0;border-radius:30px}.cp-l.xa-l h3 a:hover{text-decoration:none}.xa-l article:hover{box-shadow:inset 0 0 0 2px var(--navy)}.xa-l h3 a:focus-visible{outline:0}.xa-l h3 a:focus-visible::after{outline:3px solid var(--navy3);outline-offset:2px}
-.xbar{display:flex;gap:3px;height:10px}.xa-l .xb{margin-bottom:18px}.xb p{display:flex;flex-wrap:wrap;gap:2px 16px;margin-top:8px;font-size:15px;line-height:1.3;color:var(--navy)}.xb p span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:rgba(6,16,51,.2);margin-right:7px}.xb p .on::before{background:var(--navy)}
+.xbar{display:flex;gap:3px;height:10px}.xbar{display:flex;gap:3px;height:10px}.xa-l .xbar{margin-bottom:20px}.xbar i{display:block;min-width:4px;border-radius:99px;background:var(--navy)}.xbar i.off{background:rgba(6,16,51,.2)}
+.xley{display:flex;align-items:center;gap:8px;font-size:16px;color:var(--navy);margin-right:8px}.xley[hidden]{display:none}.xley i{flex:none;width:26px;height:10px;border-radius:99px;background:var(--navy)}.xley i.off{background:rgba(6,16,51,.2);margin-left:12px}
+@media (max-width:760px){.xa-n{flex-wrap:wrap}.xley{order:5;flex-basis:100%;font-size:15px;margin:0}}
 .xa-c span{display:flex;align-items:center;gap:7px}.xa-c img,.xa-c .lg-f{width:20px;height:20px;border-radius:5px}.xa-c .lg-f{background:#fff;display:grid;place-items:center;font:800 12px var(--f-disp)}
 .xgo{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font:700 16.5px var(--f-body);color:var(--navy)}.xgo svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .cp-l.n1,.cp-l.n2{grid-auto-columns:minmax(0,calc((100% - 28px)/3))}
