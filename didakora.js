@@ -1,5 +1,17 @@
 // Didákora: comportamiento común de todas sus páginas y listado con buscador (/todas/)
 (()=>{
+// menú del móvil: se abre con el botón y se cierra al elegir, al tocar fuera, con la X, con Esc o al salir con el tabulador
+const mb=document.querySelector('.mm-b');
+if(mb){
+ const nav=document.getElementById('menu'),pon=(v,f)=>{mb.setAttribute('aria-expanded',v);mb.setAttribute('aria-label',v?'Cerrar el menú':'Menú');if(f)mb.focus();},ab=()=>mb.getAttribute('aria-expanded')==='true';
+ mb.addEventListener('click',()=>pon(!ab()));
+ document.querySelector('.mm-v').addEventListener('click',()=>pon(false));
+ nav.addEventListener('click',e=>{if(e.target.closest('a'))pon(false);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ab())pon(false,true);});
+ nav.addEventListener('focusout',e=>{if(ab()&&e.relatedTarget&&e.relatedTarget!==mb&&!nav.contains(e.relatedTarget))pon(false);});
+ addEventListener('pageshow',()=>pon(false));
+ matchMedia('(max-width:840px)').addEventListener('change',()=>pon(false));
+}
 // desplegable de etapa a medida: ratón, teclado (flechas, Inicio, Fin, Intro, Esc) y lector de pantalla (listbox)
 document.querySelectorAll('.dd').forEach(dd=>{
  const btn=dd.querySelector('.dd-b'),list=dd.querySelector('.dd-l'),val=dd.querySelector('.dd-v'),inp=dd.querySelector('input'),ops=[...list.querySelectorAll('[role=option]')];

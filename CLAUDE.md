@@ -63,7 +63,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   `_build/actualidad/<slug>.json` (secciones `texto`, `destacado`, `lista`, `pasos`, `oficial`, `video`, `imagen` y `cita`;
   ver la sección «actualidad» de `build.py`) con sus imágenes en `actualidad/<slug>/img/`. Se lee de corrido como un
   artículo (no en tarjetas). Mientras no hay ningún post, la web no cambia; con el primero aparecen «Actualidad» en el menú
-  (el menú se acorta en pantallas estrechas: sin «Nuevas» hasta 680 px, sin «Categorías» hasta 600 y, hasta 510, solo Todas, Sesión y Sobre mí; Actualidad sigue en la portada) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
+  (hasta 840 px el menú es un botón en la barra que abre un panel abajo con todas las secciones e iconos, `MENU_I`, diseño D elegido por Jorge el 24-11-2026) y los últimos posts en la portada. Los vídeos van como enlace, sin reproductor.
   Diseño fijado por Jorge el 22-10-2026: post con volver arriba a la izquierda, título, tema y fecha, entradilla, portada
   21:9 a todo el ancho (16:9 en el móvil), texto en Literata en una columna centrada de 820 px y botones a la derecha;
   tarjetas con la miniatura (tema y fecha dentro), título de dos líneas y descripción de cuatro. Las imágenes salen de

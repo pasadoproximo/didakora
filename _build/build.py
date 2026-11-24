@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "121"  # versión de didakora.css / didakora.js
+V = "122"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -162,16 +162,23 @@ _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
 PRIV_PUB = os.environ.get("DK_PRIVACIDAD") != "0"   # página de privacidad; DK_PRIVACIDAD=0 la esconde
 SES_PUB = os.environ.get("DK_SESION") != "0"   # «Elige tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
+# iconos del menú del móvil (panel abajo, diseño D elegido por Jorge el 24-11-2026)
+MENU_I = {"todas": '<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>',
+          "categorias": '<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>', "nuevas": '<path d="M12 4v16M4 12h16"/>',
+          "sesion": '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/>',
+          "actualidad": '<path d="M4 5h13v14H6a2 2 0 01-2-2zM17 9h3v8a2 2 0 01-2 2M8 9h5M8 13h5"/>', "sobre": '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>'}
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
     if SES_PUB: nav.append(("sesion", "Elige tu sesión", "/sesion/"))
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
-    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'>{t}</a>'.replace('>Elige tu sesión<', '><span class="nl">Elige tu sesión</span><span class="ns">Sesión</span><') for k, t, h in nav)
+    links = "".join(f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'><svg viewBox="0 0 24 24" aria-hidden="true">{MENU_I[k]}</svg>{t}</a>' for k, t, h in nav)
     return f'''<header class="top">
  <div class="bar">
   <a class="brand" href="{B}/" aria-label="didákora · inicio">{LOGO}</a>
-  <nav aria-label="Principal">{links}</nav>
+  <button class="mm-b" type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="o" d="M4 8h16M4 16h16"/><path class="x" d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="mm-v"></div>
+  <nav id="menu" aria-label="Principal">{links}</nav>
  </div>
 </header>'''
 # datos estructurados (JSON-LD, schema.org): no se ven; ayudan a Google y a las IA a entender cada página.
@@ -207,6 +214,7 @@ def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website
     return f'''<!doctype html>
 <html lang="es">
 <head>
+<script>document.documentElement.className="js"</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google-site-verification" content="Yc7dog5FgiijAysig5OLHqYJhraIem9FlrTZtTM2qGk" />
