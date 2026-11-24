@@ -655,7 +655,7 @@ def comparar():
   filas.forEach(function(f){{
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
    var r='<div class="cp-r'+(f[2]&&!ig?" dif":"")+'"><h3>'+f[0]+(f[2]?'<i>'+(ig?"Igual":"Distinto")+'</i>':"")+'</h3>'+(f[2]&&ig?'<div class="cp-c eq"><p>'+esc(v[0])+'</p></div>':T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+esc(t[f[1]])+'</p></div>'}}).join(""))+'</div>';
-   if(f[2]&&ig)eq+=r;else dif.push(r);
+   dif.push(r);
   }});
   if(T.some(function(t){{return t.x}})) dif.push('<div class="cp-r dif"><h3>Guía del INTEF</h3>'+T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+(t.x?"<b class=\\"cp-x\\">En rojo:</b> no la recomienda para el alumnado":"Sin aviso")+'</p></div>'}}).join("")+'</div>');
   dif[dif.length-1]=dif[dif.length-1].replace('class="cp-r','class="cp-r cp-ult');
