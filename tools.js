@@ -332,6 +332,14 @@ const TOOLS = [
     a:"Practica francés por niveles con vídeos y ejercicios de comprensión.",
     i:["Comprensión oral con un vídeo de su nivel","Test de nivel al empezar el curso","Repasar francés con ejercicios de su nivel"],
     c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"dwdeutsch", rev:"2026-11-24", s:"aula", cat:"idiomas", st:"nueva", n:"DW Learn German", url:"https://learngerman.dw.com/en/overview",
+    a:"Practica alemán por niveles con vídeos, audios y ejercicios interactivos.",
+    i:["Episodio de «Nicos Weg» con ejercicios","Comprensión oral con una noticia sencilla","Repasar vocabulario de su nivel"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"duolingo", rev:"2026-11-24", s:"aula", cat:"idiomas", st:"nueva", n:"Duolingo", url:"https://es.duolingo.com",
+    a:"Practica un idioma con lecciones cortas en forma de juego.",
+    i:["Calentar con una lección de vocabulario","Practicar en casa sin crear cuenta","Comparar cómo se dice algo en dos idiomas"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno", cta:"No necesita para empezar", datos:"Lleva anuncios y, con cuenta, el perfil es público por defecto: mejor usarlo sin registro y sin las funciones de IA" },
 
   { id:"forvo", rev:"2026-11-24", edad:"Desde 14 años", edadTxt:"18 años o 14 con permiso de la familia", edadUrl:"https://forvo.com/terminos-y-condiciones/", s:"aula", cat:"idiomas", st:"nueva", n:"Forvo", url:"https://forvo.com",
     a:"Escucha cómo pronuncian una palabra hablantes nativos de cada idioma.",
@@ -590,6 +598,8 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"dwdeutsch", txt:"Alemán por niveles con vídeos y ejercicios.", q:["alemán", "aprender alemán", "ejercicios de alemán"] },
+  { id:"duolingo", txt:"Lecciones cortas de idiomas en forma de juego.", q:["duolingo", "juego de idiomas", "lecciones de idiomas"] },
   { id:"tv5monde", txt:"Francés por niveles con vídeos y ejercicios.", q:["francés", "aprender francés", "ejercicios de francés"] },
   { id:"gtranslate", txt:"Traduce texto, imágenes, documentos y webs sin cuenta.", q:["traductor de google", "google translate", "traducir una imagen"] },
   { id:"apertium", txt:"Traductor libre, con catalán y gallego.", q:["traductor libre", "traducir al gallego", "traducir al catalán"] },
@@ -599,9 +609,7 @@ const RECIENTES = [
   { id:"leteens", txt:"Inglés por destrezas y niveles para adolescentes.", q:["inglés secundaria", "listening", "gramática inglesa"] },
   { id:"writeimprove", txt:"Corrección al momento de redacciones en inglés.", q:["writing", "corregir redacción en inglés", "redacción inglés"] },
   { id:"forvo", txt:"Palabras pronunciadas por hablantes nativos.", q:["pronunciación", "cómo se pronuncia", "pronunciar francés"] },
-  { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] },
-  { id:"tuxpaint", txt:"Dibujo con pinceles y sellos para los más pequeños.", q:["dibujar infantil", "programa de dibujo", "pintar"] },
-  { id:"musiclab", txt:"Experimentos de música en el navegador, sin cuenta.", q:["componer melodía", "song maker", "crear música"] }
+  { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] }
 ];
 
 const CHANGES = [
@@ -627,6 +635,6 @@ const AREAS = {
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
-  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
+  idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","dwdeutsch","duolingo","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

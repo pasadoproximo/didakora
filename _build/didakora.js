@@ -73,6 +73,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  const SUBJ={geogebra:'matematicas geometria',desmos:'matematicas',phet:'ciencias fisica quimica biologia matematicas',gizmos:'ciencias fisica quimica biologia matematicas',
   bodymaps:'ciencias biologia anatomia',anatomy3d:'ciencias biologia anatomia',vertebrados:'ciencias biologia',bolsa:'economia',
   tinkercad:PROG+' robotica arduino',scratch:PROG,snap:PROG,blockly:PROG,codeorg:PROG,appinventor:PROG,cospaces:PROG,coppelia:PROG+' robotica',thunkable:'tecnologia informatica',
+  dwdeutsch:'idiomas aleman lengua extranjera video comprension oral',duolingo:'idiomas lengua extranjera vocabulario',
   tv5monde:'idiomas frances lengua extranjera video comprension oral',gtranslate:'idiomas ingles frances aleman traductor traducir traduccion google translate imagen',apertium:'idiomas traductor traducir traduccion libre catalan gallego euskera software libre',deepl:'idiomas ingles frances aleman traductor traducir traduccion',dicta:'idiomas lengua ingles frances aleman dictado dictados ortografia escuchar',lekids:'ingles idiomas english primaria infantil canciones cuentos',leteens:'ingles idiomas english listening reading gramatica examen',writeimprove:'ingles idiomas english writing redaccion escribir corregir',forvo:'idiomas ingles frances aleman pronunciacion pronunciar acento',musescore:'musica',incredibox:'musica',musiclab:'musica componer melodia cancion',scratchjr:PROG+' infantil tableta tablet',gcompris:'infantil letras numeros colores logica juegos educativos',tuxpaint:'infantil dibujo dibujar pintar plastica',musictheory:'musica',librecad:'dibujo tecnico tecnologia'};
  const IDX={};
  const flat=s=>' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';
@@ -160,6 +161,34 @@ function cajaListado(){
 
 // al imprimir una ficha, las preguntas van abiertas
 addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').forEach(d=>{d.open=true}));
+
+// Mi caja: herramientas (h) y sesiones (s) guardadas en este navegador; /mi-caja/ las enseña y las comparte con ?h=…&s=…
+(()=>{const B=window.DK_BASE||'',K='dk-caja',$=i=>document.getElementById(i);
+ const lee=()=>{try{const d=JSON.parse(localStorage.getItem(K))||{};return {h:d.h||[],s:d.s||[]}}catch(e){return {h:[],s:[]}}};
+ const guarda=d=>{try{localStorage.setItem(K,JSON.stringify(d));return true}catch(e){return false}};
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const pill=()=>{const d=lee(),n=d.h.length+d.s.length;let p=document.querySelector('.mc-v');if(!n||$('mc')){if(p)p.remove();return}
+  if(!p){p=document.createElement('a');p.className='mc-v';p.href=B+'/mi-caja/';document.body.appendChild(p)}p.innerHTML='Mi caja <b>'+n+'</b>'};
+ document.querySelectorAll('[data-gc]').forEach(b=>{const [k,i]=b.dataset.gc.split(':');
+  const pinta=()=>{const si=lee()[k].includes(i);b.setAttribute('aria-pressed',si);b.textContent=si?'En mi caja':'Guardar en mi caja'};
+  b.hidden=false;pinta();b.addEventListener('click',()=>{const d=lee();d[k]=d[k].includes(i)?d[k].filter(x=>x!==i):[...d[k],i];if(guarda(d)){pinta();pill()}else b.textContent='Tu navegador no deja guardar'})});
+ pill();
+ const el=$('mc'),D=window.DK_CAJA;if(!el||!D)return;
+ const U=new URLSearchParams(location.search),val=(k,a)=>[...new Set(a)].filter(i=>Object.prototype.hasOwnProperty.call(D[k],i));
+ const q=k=>val(k,(U.get(k)||'').split(',')),comp={h:q('h'),s:q('s')};let ver=comp.h.length+comp.s.length>0;
+ function pinta(aviso){const m=lee(),d=ver?comp:{h:val('h',m.h),s:val('s',m.s)},n=d.h.length+d.s.length;
+  $('mc-t').textContent=ver?'Una caja compartida':'Mi caja';
+  if(!n){el.innerHTML='<p style="font-size:18px">Todavía no has guardado nada. Pulsa «Guardar en mi caja» en una herramienta o en una sesión.</p><p class="mc-a" style="margin-top:18px"><a class="btn solid" href="'+B+'/todas/">Ver herramientas</a><a class="btn line" href="'+B+'/sesion/">Elegir una sesión</a></p>';return}
+  const fila=(k,i)=>{const x=D[k][i];return '<li><span class="lg">'+(k==='s'?x[2]+'′':x[2]?'<img src="'+B+'/logos/'+i+'.png?v=5" alt="">':esc(x[0][0]))+'</span><div><a href="'+B+(k==='s'?'/sesion/':'/')+i+'/">'+esc(x[0])+'</a><p>'+esc(x[1])+'</p></div>'+(ver?'':'<button type="button" data-q="'+k+':'+i+'" aria-label="Quitar '+esc(x[0])+'">Quitar</button>')+'</li>'};
+  const blo=(k,t)=>d[k].length?'<h2 class="mc-h">'+t+'</h2><ul class="mc-l">'+d[k].map(i=>fila(k,i)).join('')+'</ul>':'';
+  el.innerHTML='<p class="mc-a">'+(ver?'<button type="button" class="btn solid" data-a="todo">Guardarlo en mi caja</button><a class="btn line" href="'+B+'/mi-caja/">Ver la mía</a>':'<button type="button" class="btn solid" data-a="copia">'+(aviso||'Copiar el enlace')+'</button><button type="button" class="btn line" data-a="vacia">Vaciar</button>')+'</p>'+blo('h','Herramientas')+blo('s','Sesiones')}
+ el.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.q){const [k,i]=b.dataset.q.split(':'),d=lee();d[k]=d[k].filter(x=>x!==i);guarda(d);pinta()}
+  else if(b.dataset.a==='copia'){const d=lee(),p=[];['h','s'].forEach(k=>{if(d[k].length)p.push(k+'='+d[k].join(','))});const u=location.origin+B+'/mi-caja/?'+p.join('&');try{await navigator.clipboard.writeText(u);pinta('Enlace copiado')}catch(x){history.replaceState(null,'','?'+p.join('&'));pinta('El enlace está en la barra de direcciones')}}
+  else if(b.dataset.a==='vacia'){if(b.dataset.ok){guarda({h:[],s:[]});pinta()}else{b.dataset.ok=1;b.textContent='¿Seguro? Pulsa otra vez'}}
+  else if(b.dataset.a==='todo'){const d=lee();if(guarda({h:[...new Set([...d.h,...comp.h])],s:[...new Set([...d.s,...comp.s])]})){ver=false;history.replaceState(null,'',location.pathname);pinta()}}});
+ pinta();
+})();
 
 // Agentation (anotar la página para Claude Code): solo en local
 if(["127.0.0.1","localhost"].includes(location.hostname))import((window.DK_BASE||"")+"/agentation-local.js").catch(()=>{});

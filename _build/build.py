@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "102"  # versión de didakora.css / didakora.js
+V = "104"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -159,7 +159,7 @@ LOGO = _svg_inline("didakora-logo-a.svg", "lockup")
 # la caja del logo del menú va en su propio grupo para poder animarla al pulsar
 _i = LOGO.index(">", LOGO.index("<g ")) + 1; _j = LOGO.index("</g>", _i)
 LOGO = LOGO[:_i] + '<g class="caja">' + LOGO[_i:_j] + "</g>" + LOGO[_j:]
-PRIV_PUB = os.environ.get("DK_PRIVACIDAD") == "1"   # página de privacidad: en espera de que Jorge la lea. DK_PRIVACIDAD=1 la genera
+PRIV_PUB = os.environ.get("DK_PRIVACIDAD") != "0"   # página de privacidad; DK_PRIVACIDAD=0 la esconde
 SES_PUB = os.environ.get("DK_SESION") != "0"   # «Elige tu sesión» en el menú y con bloque en la portada (Jorge, 23-11-2026); DK_SESION=0 la esconde
 def topbar(cur=""):
     nav = [("todas", "Todas", "/todas/"), ("categorias", "Categorías", "/categorias/"), ("nuevas", "Nuevas", "/nuevas/")]  # «Destacadas» fuera del menú (Jorge, 22-10-2026)
@@ -226,9 +226,8 @@ def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website
 {f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{WEB}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{B}/marca/icono-180.png">
 <meta name="theme-color" content="#9FB3FF">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<link rel="preload" href="{B}/letras/alegreyasans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{B}/letras/bricolagegrotesque-500-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{B}/didakora.css?v={V}">
 {GOATCOUNTER}
 {ld_html(ld)}</head>
@@ -355,21 +354,29 @@ def todas():
 
 # ---------------------------------------------------------------- privacidad
 def privacidad():
-    """lo que dicen las fuentes oficiales de cada servicio, abiertas el 24-11-2026: si la web cambia de contador, letras o alojamiento, hay que cambiar esto"""
-    a = lambda u, t: f'<a href="{u}" target="_blank" rel="noopener">{t}</a>'
-    S = [("Quién está detrás", f'Didákora es un proyecto personal de Jorge Delgado Aguilera. Para cualquier duda, escribe a {a("mailto:" + CORREO, CORREO)}.'),
-         ("Qué no hace esta web", "No pide registro, no tiene formularios ni publicidad y no pone cookies propias. Lo que buscas o eliges en sus páginas no se guarda."),
-         ("Las visitas", f'Se cuentan con GoatCounter, que no usa cookies ni guarda la dirección IP. Registra la página, la hora, de dónde llegas, el navegador, el sistema, el idioma, el ancho de la pantalla y el país, sin unirlos entre sí. Para no contarte dos veces, mantiene tu IP y tu navegador en memoria hasta ocho horas. {a("https://www.goatcounter.com/help/privacy", "Su política")}.'),
-         ("El alojamiento", f'La web está en GitHub Pages, que registra la dirección IP de quien la visita por seguridad. {a("https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages", "Más información")}.'),
-         ("Las letras", f'Se cargan desde Google Fonts. Google recibe tu dirección IP y los datos del navegador para enviarlas, no pone cookies y dice que no los usa para crear perfiles ni para publicidad. {a("https://developers.google.com/fonts/faq/privacy", "Más información")}.'),
-         ("Las herramientas enlazadas", "Cada una tiene sus condiciones. Antes de usarlas con alumnado, lee su política y lo que indique tu centro."),
-         ("Si me escribes", "Uso tu correo solo para responderte. Puedes pedirme que lo borre, verlo o corregirlo en la misma dirección. También puedes reclamar ante la " + a("https://www.aepd.es", "Agencia Española de Protección de Datos") + ".")]
+    """política de privacidad (_build/privacidad.html): si cambian el contador, el alojamiento o lo que guarda «Mi caja», hay que cambiarla"""
     body = f"""
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Privacidad", "")])}<h1>Privacidad</h1></div><p>Qué datos tuyos pasan por esta web y por dónde. Actualizado el 24 de noviembre de 2026.</p></div>
- <div class="pv">{"".join(f"<section><h2>{t}</h2><p>{x}</p></section>" for t, x in S)}</div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Privacidad", "")])}<h1>Política de privacidad</h1></div><p>Información sobre el tratamiento de datos personales en didakora.es, conforme al Reglamento (UE) 2016/679 y a la Ley Orgánica 3/2018.</p></div>
+ {open(os.path.join(H, "_build", "privacidad.html"), encoding="utf-8").read()}
 </main>"""
-    write("privacidad/index.html", head("Privacidad · Didákora", "Qué datos pasan por Didákora cuando la visitas: sin registro, sin publicidad y sin cookies propias.", "/privacidad/") + body + foot())
+    write("privacidad/index.html", head("Política de privacidad · Didákora", "Quién trata los datos en Didákora, cuáles, para qué, con qué base legal y qué derechos tienes.", "/privacidad/") + body + foot())
+
+# ---------------------------------------------------------------- Mi caja
+def boton_caja(k, i):
+    """«Guardar» en la ficha (k="h") y en la sesión (k="s"); lo maneja didakora.js y se guarda en el navegador de cada persona"""
+    return f'<button type="button" class="btn line gc" data-gc="{k}:{i}" aria-pressed="false" hidden>Guardar en mi caja</button>'
+def mi_caja():
+    from sesiones import SESIONES
+    D = {"h": {t["id"]: [split_name(t["n"])[0], lead(t), 1 if t["id"] in LOGOS else 0] for t in TOOLS}, "s": {x["id"]: [x["t"], x["r"], x["min"]] for x in SESIONES}}
+    body = f"""
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Mi caja", "")])}<h1 id="mc-t">Mi caja</h1></div><p id="mc-p">Las herramientas y sesiones que guardas, en este navegador y sin registro. Con el enlace las abres en otro equipo o las compartes.</p></div>
+ <div id="mc" aria-live="polite"></div>
+ <noscript><p>Mi caja necesita JavaScript.</p></noscript>
+</main>
+<script>window.DK_CAJA={json.dumps(D, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")}</script>"""
+    write("mi-caja/index.html", head("Mi caja: tus herramientas y sesiones guardadas · Didákora", "Guarda las herramientas y sesiones que usas en clase y llévalas a otro equipo con un enlace, sin registro.", "/mi-caja/").replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1) + body + foot())
 
 # ---------------------------------------------------------------- sobre mí
 def sobremi():
@@ -547,7 +554,7 @@ def sesion():
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Elige tu sesión", f"{B}/sesion/"), (x["t"], "")])}<h1>{esc(x["t"])}</h1></div><p>{esc(x["r"])}</p></div>
  <div class="se-g">
   <aside class="se-a"><dl><div><dt>Duración</dt><dd>{x["min"]} minutos</dd></div><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Ejemplo</dt><dd>{esc(x["ej"])}</dd></div></dl>
-   <div class="se-h">{hs}<a class="btn" href="{B}/pdf/{x["id"]}.pdf" target="_blank" rel="noopener" aria-label="Sesión en PDF">PDF</a></div></aside>
+   <div class="se-h">{hs}<a class="btn" href="{B}/pdf/{x["id"]}.pdf" target="_blank" rel="noopener" aria-label="Sesión en PDF">PDF</a></div>{boton_caja("s", x["id"])}</aside>
   <div><section class="se-p"><h2>Antes de empezar</h2><p>{esc(x["prep"])}</p></section>
    <section><h2 class="se-t">La sesión</h2><ol class="se-l">{li}</ol></section>
    <div class="se-x"><section><h2>Si falla el wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
@@ -591,6 +598,14 @@ def saber_mas(f):
                 f'<p class="fq-fu">Fuente: <a href="{esc(x["url"])}" rel="noopener" target="_blank">{esc(x["fuente"])}</a>, comprobado el {d}/{m}/{a}.</p></details>')
     return (f'\n <section class="sec faq" aria-labelledby="h-faq">{secth("", "Para saber más", "Lo que suelen preguntar los docentes antes de usarla en clase.", "h-faq")}'
             f'<div class="faq-l">{"".join(una(i, x) for i, x in enumerate(f["faq"]))}</div></section>')
+def en_sesiones(t):
+    """«Úsala en esta sesión»: las sesiones que llevan esta herramienta (las tres primeras)"""
+    if not SES_PUB: return ""
+    from sesiones import SESIONES, METAS
+    ss = [x for x in SESIONES if any(t["id"] in p[4].split() for p in x["pasos"])]
+    if not ss: return ""
+    c = "".join(f'<a class="sc" href="{B}/sesion/{x["id"]}/"><span class="sc-k">{x["min"]} min · {esc(dict(METAS)[x["o"]])}</span><b>{esc(x["t"])}</b><span class="sc-r">{esc(x["r"])}</span></a>' for x in ss[:3])
+    return f'\n <section class="sec en-s" aria-labelledby="h-ens">{secth("", "Úsala en esta sesión" if len(ss) == 1 else "Úsala en estas sesiones", "", "h-ens")}<div class="sg">{c}</div></section>'
 def fuente_q(f):
     # bajo «Qué es», lo que puede cambiar (nombre, cierre, precio) con su enlace oficial y el día en que se comprobó: fu en fichas.py
     fu = f.get("fu")
@@ -641,7 +656,7 @@ def ficha(t):
   <aside class="fb fa"><h2>Ficha rápida</h2><dl>{dl}</dl></aside>
   <section class="fb fu" aria-label="Para qué lo puedes usar"><ul>{usos}</ul></section>
  </div>
- <p class="go"><a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Ir a {esc(nm)} {ICO["ext"]}</a></p>{saber_mas(f)}
+ <p class="go"><a class="btn solid" href="{esc(t["url"])}" rel="noopener" target="_blank">Ir a {esc(nm)} {ICO["ext"]}</a>{boton_caja("h", t["id"])}</p>{en_sesiones(t)}{saber_mas(f)}
  <section class="sec alt" aria-labelledby="h-alt"><h2 id="h-alt">Herramientas alternativas</h2><div class="tcg">{"".join(card(o) for o in alts)}</div>
   <p class="more"><a class="btn solid" href="{B}/categorias/{c[0]}/">Ver todo {esc(c[1])} {ICO["arrow"]}</a>{alt_mas}</p></section>
 </main>'''
@@ -887,7 +902,7 @@ def pagina_post(p, path):
  <p class="more"><a class="btn solid" href="{B}/actualidad/">Toda la actualidad {ICO["arrow"]}</a><a class="btn line" href="{B}/todas/">Ver las herramientas {ICO["arrow"]}</a></p>
 </main>'''
     # el texto de los posts va en Literata (letra de lectura en pantalla); los títulos, en la de la marca
-    lectura = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">\n'
+    lectura = ''
     art = {"@type": "BlogPosting", "headline": bt_plano(p["titulo"]).rstrip("."), "description": bt_plano(p["entradilla"])[:300], "url": f"{WEB}{path}",
            "datePublished": p["fecha"][:10], "inLanguage": "es", "author": {"@id": PERSONA["@id"]}, "publisher": {"@id": PERSONA["@id"]}, "isPartOf": {"@id": SITIO["@id"]}}
     if (p.get("portada") or {}).get("src"): art["image"] = f'{WEB}{path}{p["portada"]["src"]}'
@@ -1013,7 +1028,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); PRIV_PUB and privacidad(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); PRIV_PUB and privacidad(); mi_caja(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")

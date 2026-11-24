@@ -84,24 +84,24 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
 - **Idiomas** (23-11-2026): apartado de «Explorar por materias» (`cat:"idiomas"` en `tools.js`) y materia en «Elige tu sesión». Nueve fichas (la de TV5MONDE, del 24-11-2026) y, del 23-11-2026: LearnEnglish Kids y Teens
   (British Council, con su logo), Write & Improve, Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (las cinco últimas, en verde en la guía del INTEF, sección
-  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo y Language Reactor.
+  «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Language Reactor.
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
   `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; diseño elegido por Jorge el 24-11-2026: una columna de color por herramienta, con el «Si…» de `ALTERNATIVAS` en grande (o qué hace, si no hay), solo los datos que cambian y debajo en qué coinciden),
   `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
   `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B, retirada el 24-11-2026). Entradas: tres tarjetas en la portada (`bloque_guias()`)
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
-- `/privacidad/` (24-11-2026, `privacidad()` en `build.py`): si cambian el contador, las letras o el alojamiento, hay que cambiarla.
+- `/privacidad/` (texto en `_build/privacidad.html`): si cambian el contador, el alojamiento o lo que guarda «Mi caja», hay que cambiarla.
+- **Mi caja** (`/mi-caja/`, 24-11-2026): herramientas y sesiones guardadas en el navegador (`dk-caja`) y compartidas con `?h=…&s=…`; botón en fichas y sesiones (`boton_caja()`).
+- Letras alojadas en `letras/` (OFL): la web no pide nada a Google. El correo de contacto se lee de la variable de entorno `DK_CORREO` (sin ella, el build se para).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
 ## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)
 
 - Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta. Logo: el de su aplicación oficial). RFI Français Facile, dudosa: su política dice que no
-  se dirige a menores sin autorización. Duolingo, pendiente de ver qué deja hacer sin registro (Duolingo for Schools cierra el 31-7-2027 y no admite
-  cuentas nuevas). Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
+  se dirige a menores sin autorización. Duolingo y DW Learn German, altas (Jorge comprobó que se usan sin cuenta). Italiano y portugués, sin candidato. Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
 - «Qué ha cambiado» (página con `CHANGES`): se probó el 24-11-2026 y Jorge la descartó. No volver a proponerla.
-- Ideas sin empezar: herramientas por área de la competencia digital docente, «Mi caja» y semáforo
-  de privacidad con la guía del INTEF.
+- Ideas sin empezar: herramientas por área de la competencia digital docente.
 
 ## Flujo
 
