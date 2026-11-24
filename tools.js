@@ -251,7 +251,7 @@ const TOOLS = [
     a:"Diseña en 3D, monta circuitos y programa con bloques en el navegador.",
     i:["Piezas para imprimir en 3D","Simular circuitos","Iniciarse en Arduino"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Clase del docente (sin correo)" },
-  { id:"wokwi", rev:"2026-11-16", edad:"Desde 13 años", edadTxt:"13 años según sus condiciones. Puede haber más límites en cada país", edadUrl:"https://wokwi.com/legal/terms", s:"aula", cat:"cienc", st:"nueva", n:"Wokwi", url:"https://wokwi.com",
+  { id:"wokwi", rev:"2026-11-24", edad:"Desde 13 años", edadTxt:"13 años según sus condiciones. Puede haber más límites en cada país", edadUrl:"https://wokwi.com/legal/terms", s:"aula", cat:"cienc", st:"nueva", n:"Wokwi", url:"https://wokwi.com",
     a:"Monta circuitos con placas como Arduino, ESP32 o Raspberry Pi Pico, los programa y los simula en el navegador.",
     i:["Lámpara automática con un sensor de luz","Estación meteorológica con pantalla LCD","Probar el código antes de usar la placa real"],
     c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador", cta:"No necesita para simular, cuenta para guardar",
