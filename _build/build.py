@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "84"  # versión de didakora.css / didakora.js
+V = "86"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -288,7 +288,7 @@ def bloque_sesion():
     li = "".join(f'<li class="ps-p {c}"><span class="ps-n">{k}</span><span class="ps-t"><b>{esc(t)}</b><small>{esc(d)}</small></span></li>' for k, (c, t, d) in enumerate(pasos, 1))
     return f'''<section class="sec ps" aria-labelledby="h-ses">
   <div class="ps-a"><span class="lab">Nuevo</span><h2 id="h-ses">Monta tu sesión</h2>
-   <p>Dime qué quieres hacer en clase, con qué etapa y con qué dispositivos. Te propongo los pasos justos, en su orden, con herramientas del catálogo.</p>
+   <p>Elige etapa, dispositivos y lo que buscas. Te enseño sesiones completas, con minutos, preparación y un plan sin wifi.</p>
    <p class="more"><a class="btn solid" href="{B}/sesion/">Montar una sesión {ICO["arrow"]}</a></p></div>
   <ol class="ps-l" aria-label="Ejemplo de sesión">{li}</ol>
  </section>'''
@@ -459,53 +459,80 @@ def momento(idea, t=None):
     """ini, des o fin; None = la idea no sirve para montar una sesión (tarea para casa, función de la herramienta…)"""
     c = SES.get(t["id"], {}).get(idea) if t else None
     return SES_M[c[0]] if c else "ini" if M_INI.search(idea) else "fin" if M_FIN.search(idea) else "des"
+from sesiones import SESIONES, METAS as METAS_S, MATERIAS as MATERIAS_S, APARATOS as APARATOS_S
 def aula(): return [t for t in TOOLS if t["s"] == "aula"]
 def sesion():
-    """«Monta tu sesión»: un árbol de preguntas (didakora.js, dkSesion) que acaba en una receta de sesión con los pasos que le convienen.
-    El árbol y las recetas están en _build/sesion_recetas.py; el reparto de las ideas, en _build/sesion_ideas.py."""
-    from sesion_ideas import RAMA, ETAPA, EXTRA
-    from sesion_recetas import RAMAS, METAS, RECETAS, FUENTES
-    ideas = [{"t": t["id"], "n": split_name(t["n"])[0], "l": t["id"] in LOGOS, "i": i, "m": momento(i, t), "o": objetivo(t, i), "k": RAMA.get(t["id"], {}).get(i, ""),
-              "e": "".join(t["et"]), "d": "p" if D_PROFE.search(t["disp"]) else "e" if D_EQUIPO.search(t["disp"]) else "a", "r": 0 if SIN_REG.search(t["cta"]) else 1,
-              "s": MATERIA.get(t["sub"], ""), "x": 1 if t.get("intef") else 0, "dt": t["disp"], "ct": t["cta"]} for t in aula() for i in t["i"] if momento(i, t)]
-    for x in ideas:   # etapas idea a idea: una idea pensada para Secundaria no sale en Infantil aunque la herramienta sí valga
-        e = ETAPA.get(x["t"], {}).get(x["i"])
-        if e is not None: x["e"] = "".join(c for c in x["e"] if c in e)
-    porid = {t["id"]: t for t in aula()}
-    for tid, ex in EXTRA.items():   # ideas solo de «Monta tu sesión» (no salen en la ficha): propuestas para las etapas sin idea propia
-        t = porid[tid]; base = next((x for x in ideas if x["t"] == tid), None)
-        for d in ex:
-            ideas.append({"t": tid, "n": split_name(t["n"])[0], "l": tid in LOGOS, "i": d["i"], "m": SES_M[d["c"][0]], "o": {"E": "exp", "K": "cre", "Q": "equ", "R": "rep", "V": "eva"}[d["c"][1]],
-                          "k": d.get("k", ""), "e": "".join(c for c in "".join(t["et"]) if c in d["e"]), "d": d.get("d") or ("p" if D_PROFE.search(t["disp"]) else "e" if D_EQUIPO.search(t["disp"]) else "a"),
-                          "r": 0 if SIN_REG.search(t["cta"]) else 1, "s": MATERIA.get(t["sub"], ""), "x": 1 if t.get("intef") else 0, "dt": t["disp"], "ct": t["cta"]})
-    ideas = [x for x in ideas if x["e"]]
-    sin = [(t["id"], i) for t in aula() for i in t["i"] if i not in SES.get(t["id"], {})]
-    if sin: print(f"· sesión: {len(sin)} ideas sin revisar en _build/sesion_ideas.py (repartidas por palabras): {sin[:3]}")
-    textos = {x["i"] for x in ideas}
-    for k, r in RECETAS.items():   # una idea citada en una receta que ya no exista (o esté marcada «no sirve») se avisa: el paso se quedaría sin ella
-        for p in r["pasos"]:
-            for i in p.get("ideas", []):
-                if i not in textos: print(f"· sesión: la receta «{k}» cita una idea que no está: {i}")
-    for o, (preg, ops) in RAMAS.items():   # cada opción del árbol tiene que llevar a alguna idea y a una receta
-        for v, lab in ops:
-            n = sum(1 for x in ideas if x["o"] == o and (x["s"] == v and x["m"] == "des" if o == "exp" else x["m"] == v if o == "eva" else x["k"] == v and x["m"] != "ini"))
-            if not n: print(f"· sesión: la opción «{lab}» de «{preg}» no tiene ninguna idea")
-            if f"{o}/{v}" not in RECETAS and o not in RECETAS: print(f"· sesión: falta la receta de «{o}/{v}»")
-    fu = "".join(f'<li><a href="{esc(u)}" rel="noopener" target="_blank">{esc(n)}</a>: {esc(d)}.</li>' for n, u, d in FUENTES)
-    body = f'''
+    """«Monta tu sesión»: /sesion/ filtra sesiones escritas (_build/sesiones.py) y cada una tiene su página, /sesion/<id>/."""
+    MET, MAT, APA = dict(METAS_S), dict(MATERIAS_S), dict(APARATOS_S)
+    def datos_s(x): return f'{x["min"]} min', " · ".join(ETN[e] for e in x["e"]), APA[x["d"]]
+    for x in SESIONES:
+        hs = [h for p in x["pasos"] for h in p[4].split()]
+        x["h"] = list(dict.fromkeys(hs))
+        assert sum(p[0] for p in x["pasos"]) == x["min"], f'sesión {x["id"]}: los minutos no suman {x["min"]}'
+        assert 1 <= len(x["h"]) <= 2, f'sesión {x["id"]}: {len(x["h"])} herramientas'
+        for h in x["h"]:
+            assert not BYID[h].get("intef"), f'sesión {x["id"]}: {h} está en rojo en la guía del INTEF'
+            assert all(e in BYID[h]["et"] for e in x["e"]), f'sesión {x["id"]}: {h} no es de las etapas {x["e"]}'
+        txt = " ".join([x["t"], x["r"], x["ej"], x["prep"], x["b"], x["otra"]] + [p[2] + " " + p[3] for p in x["pasos"]])
+        assert ";" not in txt and ", y " not in txt, f'sesión {x["id"]}: punto y coma o coma antes de «y»'
+    def chips(k, t, ops): return (f'<fieldset class="sf-g"><legend>{t}</legend>' + f'<button type="button" data-k="{k}" data-v="" aria-pressed="true">Todas</button>'.replace("Todas", {"d": "Todos", "o": "Todo"}.get(k, "Todas"))
+                                  + "".join(f'<button type="button" data-k="{k}" data-v="{v}" aria-pressed="false">{esc(n)}</button>' for v, n in ops) + "</fieldset>")
+    cards = ""
+    for x in SESIONES:
+        mi, et, ap = datos_s(x)
+        cards += (f'<a class="sc" href="{B}/sesion/{x["id"]}/" data-e="{x["e"]}" data-o="{x["o"]}" data-s="{" ".join(x["s"])}" data-d="{x["d"]}"><span class="sc-k">{mi} · {esc(MET[x["o"]])}</span>'
+                  f'<b>{esc(x["t"])}</b><span class="sc-r">{esc(x["r"])}</span><small>{esc(et)}<br>{esc(ap)}</small>'
+                  f'<span class="sc-h">{"".join(logo(BYID[h], 24) for h in x["h"])}<i>{esc(" y ".join(corto(h) for h in x["h"]))}</i></span></a>')
+    body = f"""
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Contesta unas pocas preguntas y te propongo una clase con herramientas del catálogo: los pasos justos, en su orden.</p></div>
- <section class="ar" id="ar" aria-live="polite"></section>
- <section class="ar-r" id="ar-r" hidden></section>
- <noscript><p class="count">Esta página necesita JavaScript. Mientras tanto, tienes <a href="{B}/todas/">todas las herramientas</a>.</p></noscript>
- <aside class="ar-b" aria-labelledby="h-base"><h2 id="h-base">En qué se basa</h2>
-  <p>Las ideas de actividad son las de cada ficha, repartidas una a una. El orden de los pasos sigue estos marcos:</p><ul>{fu}</ul>
-  <p>No todos los pasos llevan pantalla: la tecnología va donde aporta algo.</p></aside>
-</main>'''
-    datos = {"ideas": ideas, "metas": METAS, "ramas": RAMAS, "recetas": RECETAS}
-    datos_js = json.dumps(datos, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    write("sesion/index.html", head("Monta tu sesión · Didákora", "Contesta unas preguntas (qué quieres hacer, con qué etapa y con qué dispositivos) y Didákora te propone una clase paso a paso con herramientas digitales.", "/sesion/")
-          + body + foot(f'\n<script>window.dkS=dkSesion({datos_js})</script>'))
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime con quién y con qué cuentas. Te enseño sesiones completas, con sus minutos, lo que hay que preparar y un plan por si falla la wifi.</p></div>
+ <form class="sf" id="sf" onsubmit="return false">
+  {chips("e", "Etapa", [("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")])}
+  {chips("d", "Dispositivos", APARATOS_S)}
+  {chips("o", "Qué buscas", METAS_S)}
+  {chips("s", "Materia", MATERIAS_S)}
+ </form>
+ <p class="count" id="sn" aria-live="polite">{len(SESIONES)} sesiones</p>
+ <div class="sg" id="sg">{cards}</div>
+ <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" id="sz">Quitar los filtros</button></p>
+</main>
+<script>
+(function(){{
+ var st={{e:"",d:"",o:"",s:""}},C=[].slice.call(document.querySelectorAll(".sc")),Bt=[].slice.call(document.querySelectorAll("#sf button")),ORD="pea";
+ function cabe(c,f){{var x=c.dataset;return(!f.e||x.e.indexOf(f.e)>-1)&&(!f.o||x.o===f.o)&&(!f.d||ORD.indexOf(x.d)<=ORD.indexOf(f.d))&&(!f.s||(f.s==="*"?x.s.split(" ").indexOf("*")>-1:x.s.split(" ").some(function(m){{return m===f.s||m==="*"}})))}}
+ function n(f){{return C.filter(function(c){{return cabe(c,f)}}).length}}
+ function pinta(g){{var k=0;C.forEach(function(c){{var v=cabe(c,st);c.hidden=!v;if(v)k++}});
+  Bt.forEach(function(b){{var f=Object.assign({{}},st);f[b.dataset.k]=b.dataset.v;b.setAttribute("aria-pressed",String(st[b.dataset.k]===b.dataset.v));b.disabled=!n(f)}});
+  document.getElementById("sn").textContent=k===1?"1 sesión":k+" sesiones";document.getElementById("sv").hidden=k>0;
+  if(g){{var q=Object.keys(st).filter(function(x){{return st[x]}}).map(function(x){{return x+"="+encodeURIComponent(st[x])}}).join("&");try{{history.replaceState(null,"",q?"?"+q:location.pathname)}}catch(e){{}}}}}}
+ Bt.forEach(function(b){{b.addEventListener("click",function(){{st[b.dataset.k]=b.dataset.v;pinta(true)}})}});
+ document.getElementById("sz").addEventListener("click",function(){{for(var k in st)st[k]="";pinta(true)}});
+ new URLSearchParams(location.search).forEach(function(v,k){{if(k in st&&Bt.some(function(b){{return b.dataset.k===k&&b.dataset.v===v}}))st[k]=v}});
+ pinta(false);
+}})();
+</script>"""
+    write("sesion/index.html", head("Monta tu sesión: clases completas con herramientas digitales · Didákora", "Sesiones de Infantil, Primaria y Secundaria con sus minutos, lo que hay que preparar, las herramientas y un plan sin wifi.", "/sesion/", "sesion") + body + foot())
+    for x in SESIONES:
+        mi, et, ap = datos_s(x)
+        li = "".join(f'<li class="sp{"" if h else " sin"}"><span class="sp-m">{m}<small>min</small></span><div><span class="lab">{esc(g)}</span><h3>{esc(t)}</h3><p>{esc(d)}</p>'
+                     + "".join(f'<a class="sp-h" href="{B}/{k}/">{logo(BYID[k], 22)}{esc(corto(k))}</a>' for k in h.split()) + "</div></li>" for m, g, t, d, h in x["pasos"])
+        otras = [y for y in SESIONES if y is not x and set(y["e"]) & set(x["e"])]
+        otras.sort(key=lambda y: (-(len(set(y["s"]) & set(x["s"]))), y["o"] != x["o"]))
+        hs = "".join(f'<a class="sp-h" href="{B}/{h}/">{logo(BYID[h], 22)}{esc(corto(h))}</a>' for h in x["h"])
+        body = f"""
+<main class="pg se">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", f"{B}/sesion/"), (x["t"], "")])}<h1>{esc(x["t"])}</h1></div><p>{esc(x["r"])}</p></div>
+ <div class="se-g">
+  <aside class="se-a"><dl><div><dt>Duración</dt><dd>{x["min"]} minutos</dd></div><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Ejemplo</dt><dd>{esc(x["ej"])}</dd></div></dl>
+   <div class="se-h">{hs}</div><button type="button" class="btn solid" onclick="print()">Imprimir</button></aside>
+  <div><section class="se-p"><h2>Antes de empezar</h2><p>{esc(x["prep"])}</p></section>
+   <section><h2 class="se-t">La sesión</h2><ol class="se-l">{li}</ol></section>
+   <div class="se-x"><section><h2>Si falla la wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
+ </div>
+ <section class="se-o"><h2 class="se-t">Otras sesiones</h2><div class="sg">{"".join(f"""<a class="sc" href="{B}/sesion/{y["id"]}/"><span class="sc-k">{y["min"]} min · {esc(MET[y["o"]])}</span><b>{esc(y["t"])}</b><span class="sc-r">{esc(y["r"])}</span></a>""" for y in otras[:3])}</div></section>
+</main>"""
+        write(f'sesion/{x["id"]}/index.html', head(f'{x["t"]}: sesión de {x["min"]} minutos · Didákora', f'{x["r"]} Sesión de {x["min"]} minutos con {" y ".join(corto(h) for h in x["h"])}, paso a paso.', f'/sesion/{x["id"]}/', "sesion",
+              ld=[migas(("Inicio", "/"), ("Monta tu sesión", "/sesion/"), (x["t"], f'/sesion/{x["id"]}/'))]) + body + foot())
 
 # ---------------------------------------------------------------- fichas
 from fichas import F   # «Qué es», usos y (para docente y recursos) dispositivos y cuenta
@@ -907,7 +934,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")]
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")]
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
@@ -931,7 +958,7 @@ def llms():
          f"- [Todas las herramientas]({WEB}/todas/): listado completo con buscador y filtros por categoría y etapa",
          f"- [Sobre mí]({WEB}/sobre-mi/): quién hace Didákora y cómo se revisa",
          f"- [Portfolio de Jorge Delgado Aguilera]({SITE}/)"]
-    if SES_PUB: L.insert(len(L) - 2, f"- [Monta tu sesión]({WEB}/sesion/): unas preguntas (qué quieres hacer, etapa y dispositivos) y una propuesta de clase paso a paso con herramientas del catálogo")
+    if SES_PUB: L.insert(len(L) - 2, f"- [Monta tu sesión]({WEB}/sesion/): sesiones completas por etapa, dispositivos y materia, con minutos, preparación y plan sin wifi")
     if POSTS: L.append(f"- [Actualidad]({WEB}/actualidad/): noticias de educación digital para docentes")
     for c in CATS:
         L += ["", f"## {c[1]}", "", c[2], ""]

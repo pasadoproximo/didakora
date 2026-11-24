@@ -70,18 +70,11 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   Feed RSS 2.0 en `/rss.xml` (`rss()` en `build.py`, se regenera con el sitio), enlazado con `<link rel="alternate">` en
   la cabecera de todas las páginas mientras haya posts.
 - `_build/capturas.py` también captura cualquier página con `nombre=ruta` (p. ej. `boletin-1=boletin/1`).
-- **Monta tu sesión** (`/sesion/`, publicada el 23-11-2026 con el visto bueno de Jorge: en el menú («Monta tu sesión»; «Sesión» en pantallas estrechas) y con un bloque en la portada bajo las categorías, `bloque_sesion()`; `SES_PUB` en `build.py`, `DK_SESION=0` la esconde): un árbol de
-  preguntas que acaba en una sesión paso a paso con herramientas del catálogo. `sesion()` en `build.py` y `dkSesion` en `didakora.js`.
-  Tres archivos de datos: `_build/sesion_ideas.py` (cada idea `i` de las herramientas del alumnado con su momento, su meta y su rama, revisadas
-  una a una; «X» = no sirve para una sesión), `_build/sesion_recetas.py` (metas, segunda pregunta de cada meta y recetas: los pasos de cada
-  tipo de sesión, de 2 a 4, con pasos «sin pantalla»; arriba, las fuentes en que se basa) y los datos de siempre de `tools.js` (etapas,
-  dispositivos, cuenta, INTEF). El árbol solo pregunta lo que cambia el resultado, enseña cuántas ideas quedan, deja volver atrás, guarda las
-  respuestas en el enlace (`#o=…`) y recuerda las del aula en el navegador. Al añadir una herramienta del alumnado, añade sus ideas a
-  `sesion_ideas.py` (el build avisa de las que falten). Los textos de las recetas son una propuesta: Jorge los revisa.
-  Etapas idea a idea (`ETAPA` en `sesion_ideas.py`: una idea de Secundaria no sale en Infantil aunque la herramienta valga) e ideas solo de la sesión
-  para las etapas sin idea propia (`EXTRA`); los pasos sin pantalla tienen versión de Infantil (`inf` en `sesion_recetas.py`). Todo ello, propuestas por revisar.
-  **Tras tocar las ideas, las recetas o `dkSesion`: `node _build/probar_sesion.js`** (recorre todos los caminos del árbol y comprueba que cada
-  sesión cumple lo contestado, que no repite ideas y que los enlaces rotos no dan error).
+- **Monta tu sesión** (`/sesion/`, rehecha el 24-11-2026 tras la revisión de Fable; en local hasta el visto bueno de Jorge): filtros (etapa, dispositivos,
+  qué buscas y materia) sobre sesiones escritas en `_build/sesiones.py`, cada una con su página `/sesion/<id>/` (minutos, agrupamiento, preparación, plan
+  sin wifi e imprimir). El build se para si los minutos no suman, si hay más de dos herramientas, si alguna está en rojo en la guía del INTEF, si no vale
+  para la etapa o si hay punto y coma o coma antes de «y». Los textos son propuesta: Jorge los revisa. Prueba: `node _build/probar_sesion.js`.
+  Lo anterior (árbol de preguntas al azar: `dkSesion` en `didakora.js`, `sesion_ideas.py` y `sesion_recetas.py`) ya no se usa: se borra cuando Jorge apruebe esto.
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
@@ -90,7 +83,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
-  `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; diseño elegido por Jorge el 24-11-2026: una franja de color por herramienta, con el «Si…» de `ALTERNATIVAS` en grande (o qué hace, si no hay), solo los datos que cambian y debajo en qué coinciden),
+  `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; diseño elegido por Jorge el 24-11-2026: una columna de color por herramienta, con el «Si…» de `ALTERNATIVAS` en grande (o qué hace, si no hay), solo los datos que cambian y debajo en qué coinciden),
   `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
   `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B, retirada el 24-11-2026). Entradas: tres tarjetas en la portada (`bloque_guias()`)
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
@@ -98,7 +91,6 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 
 ## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)
 
-- Infantil en «Monta tu sesión»: las opciones sin ideas ya no salen como botón, se nombran debajo (24-11-2026). Primaria ya tiene debatir y organizar un proyecto.
 - Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta; sin logo: su web no deja descargarlo). RFI Français Facile, dudosa: su política dice que no
   se dirige a menores sin autorización. Duolingo, pendiente de ver qué deja hacer sin registro (Duolingo for Schools cierra el 31-7-2027 y no admite
   cuentas nuevas). Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
