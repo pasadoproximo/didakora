@@ -97,6 +97,40 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
+## Traspaso de la sesión en la nube (21 al 24-11-2026): revisar
+
+Trabajo hecho por Claude desde el móvil de Jorge, sin acceso a su equipo ni a `agentes/`. Todo está publicado en `main` salvo lo que se
+indica. Jorge aprobó cada bloque viendo capturas, pero **no ha leído los textos uno a uno**. Borra esta sección cuando esté revisada.
+
+Hecho y publicado:
+- Dominio propio didakora.es, SEO/GEO (migas, tarjeta al compartir, `og/<id>.png`) y fila «Compartir».
+- 16 altas (de 120 a 136): GCompris, Tux Paint, Chrome Music Lab y ScratchJr (Infantil y Primaria); LearnEnglish Kids y Teens, Write & Improve,
+  Forvo, DeepL, Dicta2.0, Traductor de Google y Apertium (Idiomas). Etapas ampliadas (`REPO_I`, `REPO_P`).
+- «Monta tu sesión» en el menú y la portada. Comparar, Alternativas y Colecciones (`_build/guias.py`).
+- Las altas no pasaron por `/ciclo`: no están en `agentes/estado.json` ni en `tareas.json`. Ponlo al día.
+
+Pendiente de revisar (textos escritos por Claude, ya a la vista del público):
+- `_build/sesion_recetas.py` (recetas y versiones `inf`) y `EXTRA` y `ETAPA` de `_build/sesion_ideas.py`.
+- `_build/guias.py`: cada «Mejor si…» y qué herramientas entran en cada colección.
+- «Cuenta: No necesita» en GCompris, Tux Paint, ScratchJr y LearnEnglish Kids: deducido, sus webs no lo dicen de forma expresa.
+- Logos recortados de capturas (64 px): `musiclab` (carita de Song Maker, no tiene logo propio), `scratchjr`, `writeimprove`, `dicta`, `apertium`;
+  `lekids` y `leteens` llevan el del British Council (Wikimedia Commons). Cámbialos si hay mejores.
+- La portada dice «Revisado a mano por Jorge»: solo será verdad cuando repase lo anterior.
+
+Sin hacer:
+- **Portfolio**: sigue diciendo «120 herramientas» (2 sitios en su `_build/build.py`, 3 en `_build/data.py`; en «Lo que puedo afirmar», además,
+  octubre → noviembre de 2026). Su CV enlaza aún a pasadoproximo.github.io/didakora. La ficha de Didákora no menciona lo nuevo; su vídeo enseña 120.
+- `/plan-b/`: Jorge no le ve utilidad. Lo útil pasó a la colección «Aula sin dispositivos». Decidir si se retira (`planb()`, `EN_PRUEBAS`).
+- En el móvil «Actualidad» salió del menú al entrar «Sesión» (caben tres enlaces). Jorge no ha decidido si lo cambia por «Sobre mí».
+- Infantil en «Monta tu sesión»: ocho opciones del árbol sin ideas. Primaria: dos (debatir y organizar un proyecto).
+- Idiomas sin añadir por no poder leer su fuente oficial: Duolingo (edad mínima; posible cierre de la versión para centros), Language Reactor y
+  TV5MONDE (francés no tiene herramienta propia).
+- NotebookLM: Google lo llama «Gemini Notebook» en anuncios de noviembre de 2026. Comprobar y actualizar la ficha (`fu`).
+- Actualidad: Jorge descartó un borrador sobre Google (Gemini apagado por defecto para el alumnado, anuncio del 3-11-2026). Sigue sin post nuevo.
+- Otras ideas de la investigación, sin empezar: «Qué ha cambiado» (con `CHANGES`), herramientas por área de la competencia digital docente,
+  «Mi caja» (guardar y compartir sin cuenta) y semáforo de privacidad con la guía del INTEF.
+- Documento y hoja de revisión que se pasaron a Jorge (recetas e ideas) están desfasados respecto al código: manda el código.
+
 ## Flujo
 
 1. `python _build/build.py` (`python` ya es Python 3.12 en este equipo; úsalo así, sin la ruta completa).
