@@ -485,7 +485,7 @@ def sesion():
                   f'<span class="sc-h">{"".join(logo(BYID[h], 24) for h in x["h"])}<i>{esc(" y ".join(corto(h) for h in x["h"]))}</i></span></a>')
     body = f"""
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime con quién y con qué cuentas. Te enseño sesiones completas, con sus minutos, lo que hay que preparar y un plan por si falla la wifi.</p></div>
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime con quién y con qué cuentas. Te enseño sesiones completas, con sus minutos, lo que hay que preparar y un plan por si falla el wifi.</p></div>
  <form class="sf" id="sf" onsubmit="return false">
   {chips("e", "Etapa", [("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")])}
   {chips("d", "Dispositivos", APARATOS_S)}
@@ -527,7 +527,7 @@ def sesion():
    <div class="se-h">{hs}</div><button type="button" class="btn solid" onclick="print()">Imprimir</button></aside>
   <div><section class="se-p"><h2>Antes de empezar</h2><p>{esc(x["prep"])}</p></section>
    <section><h2 class="se-t">La sesión</h2><ol class="se-l">{li}</ol></section>
-   <div class="se-x"><section><h2>Si falla la wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
+   <div class="se-x"><section><h2>Si falla el wifi</h2><p>{esc(x["b"])}</p></section><section><h2>Para otra clase</h2><p>{esc(x["otra"])}</p></section></div></div>
  </div>
  <section class="se-o"><h2 class="se-t">Otras sesiones</h2><div class="sg">{"".join(f"""<a class="sc" href="{B}/sesion/{y["id"]}/"><span class="sc-k">{y["min"]} min · {esc(MET[y["o"]])}</span><b>{esc(y["t"])}</b><span class="sc-r">{esc(y["r"])}</span></a>""" for y in otras[:3])}</div></section>
 </main>"""
