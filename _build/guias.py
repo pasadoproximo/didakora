@@ -63,7 +63,7 @@ COLECCIONES = [
  dict(slug="primer-dia-de-clase", t="Primer día de clase", s="Conocerse y romper el hielo",
       d="Para saber qué esperan del curso y que hablen todos, también quien no suele hacerlo.",
       items=[("mentimeter", "Responden de forma anónima y los resultados salen al momento."),
-             ("padlet", "Cada uno se presenta en un muro compartido."),
+             ("padlet", "Cada uno se presenta en un muro compartido, con el nombre de pila y sin fotos."),
              ("kahoot", "Un concurso corto para conocer la materia o al grupo."),
              ("classroomscreen", "Las normas y el tiempo, proyectados desde el primer día.")]),
  dict(slug="evaluar-sin-examen", t="Evaluar sin examen", s="Ver qué saben sin hacer una prueba",

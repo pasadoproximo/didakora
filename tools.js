@@ -333,7 +333,7 @@ const TOOLS = [
     i:["Comprensión oral con un vídeo de su nivel","Test de nivel al empezar el curso","Repasar francés con ejercicios de su nivel"],
     c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
 
-  { id:"forvo", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"Forvo", url:"https://forvo.com",
+  { id:"forvo", rev:"2026-11-24", edad:"Desde 14 años", edadTxt:"18 años o 14 con permiso de la familia", edadUrl:"https://forvo.com/terminos-y-condiciones/", s:"aula", cat:"idiomas", st:"nueva", n:"Forvo", url:"https://forvo.com",
     a:"Escucha cómo pronuncian una palabra hablantes nativos de cada idioma.",
     i:["Comprobar la pronunciación de una palabra","Comparar acentos de un mismo idioma","Preparar una lectura en voz alta"],
     c:"Toda la etapa", disp:"Uno por pareja o proyectado", cta:"No necesita" },

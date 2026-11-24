@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "86"  # versión de didakora.css / didakora.js
+V = "87"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -88,7 +88,7 @@ REPO_I = {"chatterpix","codeorg","educaplay","kahoot","plickers"}
 # altas del 23-11-2026 para Infantil (edades de la web oficial de cada una); las de SOLO_IP no son de Secundaria
 REPO_I |= {"gcompris","tuxpaint","musiclab","scratchjr"}; REPO_P |= {"gcompris","tuxpaint","musiclab","scratchjr"}
 # revisión de etapas del 23-11-2026 (Jorge): sin cuenta del alumnado o dirigidas por el docente, sin edad mínima y sin aviso del INTEF
-REPO_I |= {"lekids"}; REPO_P |= {"lekids","forvo","dicta"}   # altas de Idiomas del 23-11-2026 (LearnEnglish Kids: de 5 a 12 años según su web)
+REPO_I |= {"lekids"}; REPO_P |= {"lekids","dicta"}   # altas de Idiomas del 23-11-2026 (LearnEnglish Kids: de 5 a 12 años según su web)
 REPO_I |= {"wordwall","visitas","artsculture","earth","incredibox","stopmotion","bookcreator","vocaroo","padlet"}
 REPO_P |= {"wordwall","visitas","artsculture","earth","incredibox","wayground","ancientearth","vertebrados","kgeography","tinkercad","cospaces","immersive"}
 SOLO_IP = {"gcompris","tuxpaint","scratchjr","lekids"}
@@ -125,7 +125,7 @@ ICO = {"ext": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8
        "play": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>'}
 def icon(k): return f'<svg viewBox="0 0 24 24" aria-hidden="true">{IC[k]}</svg>'
 def logo(t, size=26): return (f'<img src="{B}/logos/{t["id"]}.png?v=3" alt="" width="{size}" height="{size}" loading="lazy">' if t["id"] in LOGOS
-                              else f'<b aria-hidden="true">{esc(t["n"][0])}</b>')
+                              else f'<b class="lg-f" aria-hidden="true">{esc(t["n"][0])}</b>')
 def split_name(n):
     m = re.match(r"^(.+?)\s*\((.+)\)$", n); return (m.group(1), m.group(2)) if m else (n, "")
 def lead(t): return t.get("a") if t["s"] == "aula" else t.get("p") if t["s"] == "docente" else t.get("d")
@@ -218,7 +218,7 @@ def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website
 <meta name="theme-color" content="#9FB3FF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
 <link rel="stylesheet" href="{B}/didakora.css?v={V}">
 {GOATCOUNTER}
 {ld_html(ld)}</head>
@@ -284,7 +284,7 @@ def etapas_html(fid, cls=""):
 # ---------------------------------------------------------------- portada
 def bloque_sesion():
     """portada: entrada a «Monta tu sesión», con una sesión de ejemplo en pequeño"""
-    pasos = [("voz", "Activa lo que ya saben", "Sin pantalla"), ("main", "La actividad de la clase", "Con una herramienta del catálogo"), ("", "Comprueba qué se llevan", "Un ticket de salida")]
+    pasos = [("voz", "Empieza por lo que ya saben", "Una pregunta, una votación o una hipótesis"), ("main", "La actividad de la clase", "Con una o dos herramientas del catálogo"), ("", "Comprueba qué se llevan", "Una frase, una regla o una segunda votación")]
     li = "".join(f'<li class="ps-p {c}"><span class="ps-n">{k}</span><span class="ps-t"><b>{esc(t)}</b><small>{esc(d)}</small></span></li>' for k, (c, t, d) in enumerate(pasos, 1))
     return f'''<section class="sec ps" aria-labelledby="h-ses">
   <div class="ps-a"><span class="lab">Nuevo</span><h2 id="h-ses">Monta tu sesión</h2>
@@ -659,7 +659,7 @@ def comparar():
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Comparar", "")])}<h1>Comparar herramientas</h1></div><p>Elige dos o tres y mira en qué se diferencian: qué hacen, qué dispositivos piden y qué cuenta necesitan.</p></div>
  <form class="cp-f" id="cp-f" onsubmit="return false">{sel}</form>
- <p class="cp-fr"><b>Las más comparadas</b>{frec}</p>
+ <p class="cp-fr"><b>Para empezar</b>{frec}</p>
  <section class="cp" id="cp" aria-live="polite" hidden></section>
  <noscript><p class="cp-v">El comparador necesita JavaScript. Mientras tanto, puedes abrir las fichas desde <a href="{B}/todas/">todas las herramientas</a>.</p></noscript>
 </main>
@@ -674,10 +674,10 @@ def comparar():
  function pinta(ids,empuja){{
   sels.forEach(function(s,i){{s.value=ids[i]||""}});
   if(empuja){{try{{history.replaceState(null,"",ids.length?"?c="+ids.join(","):location.pathname)}}catch(e){{}}}}
-  if(ids.length<2){{out.hidden=true;out.innerHTML="";return}}
+  if(ids.length<2){{out.hidden=!ids.length;out.innerHTML=ids.length?'<p class="cp-co">Elige otra distinta para compararla con '+esc(by[ids[0]].n)+'.</p>':"";return}}
   var T=ids.map(function(i){{return by[i]}});
   var filas=[["Para quién","p"],["Etapas","e"],["Dispositivos","d"],["Cuenta","c"],["Categoría","k"],["Guía del INTEF","g"]];
-  T.forEach(function(t){{t.g=t.x?"En rojo: no la recomienda para el alumnado":"Sin aviso"}});
+  T.forEach(function(t){{t.g=t.x?"En rojo: no la recomienda para el alumnado":"No está en rojo"}});
   var dif=[],com=[];
   filas.forEach(function(f){{
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
@@ -740,7 +740,7 @@ def colecciones():
         ld = [migas(("Inicio", "/"), ("Colecciones", "/colecciones/"), (c["t"], f'/colecciones/{c["slug"]}/')),
               {"@type": "ItemList", "name": c["t"], "itemListElement": [{"@type": "ListItem", "position": n + 1, "name": split_name(t["n"])[0], "url": f'{WEB}/{t["id"]}/'} for n, (t, x) in enumerate(ts)]}]
         write(f'colecciones/{c["slug"]}/index.html', head(f'{c["t"]}: herramientas para clase · Didákora', f'{c["d"]} {len(ts)} herramientas elegidas y por qué.', f'/colecciones/{c["slug"]}/', ld=ld) + body + foot())
-        cards += (f'<a class="co-c" href="{B}/colecciones/{c["slug"]}/"><i>{k:02d}</i><span class="co-t"><b>{esc(c["t"])}</b><small>{esc(c["s"])}</small></span>'
+        cards += (f'<a class="co-c" href="{B}/colecciones/{c["slug"]}/"><i aria-hidden="true">{k:02d}</i><span class="co-t"><b>{esc(c["t"])}</b><small>{esc(c["s"])}</small></span>'
                   f'<span class="co-g">{"".join(logo(t, 22) for t, x in ts[:5])}</span></a>')
     body = f'''
 <main class="pg">
