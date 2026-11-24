@@ -3511,7 +3511,7 @@
      [
       "Señala la recta sin nombrar sus partes.",
       "Explica el cambio con sus palabras: «más inclinada», «más arriba».",
-      "Explica el error de otra pareja con «pendiente» y «corte con el eje»."
+      "Explica el cambio con «pendiente» y «corte con el eje»."
      ]
     ]
    ]
@@ -3893,7 +3893,7 @@
      ]
     ],
     [
-     "Modela",
+     "Diseña y corrige",
      [
       "217",
       "Tecnología y Digitalización",
@@ -3901,23 +3901,9 @@
       "2.1"
      ],
      [
-      "La pieza no se parece al croquis.",
-      "Sigue el croquis pero falla una o dos condiciones.",
-      "La pieza cumple las cuatro condiciones del encargo."
-     ]
-    ],
-    [
-     "Revisa y corrige",
-     [
-      "217",
-      "Tecnología y Digitalización",
-      "única",
-      "2.1"
-     ],
-     [
-      "Marca todo como correcto sin medir.",
-      "Mide la pieza ajena pero no corrige la propia.",
-      "Mide, anota la medida encontrada y corrige su diseño."
+      "Modela a ojo y la pieza no sigue las medidas del croquis.",
+      "Sigue el croquis pero deja sin corregir lo que marca el control.",
+      "La pieza cumple las cuatro condiciones tras revisar el control."
      ]
     ]
    ]
@@ -4023,7 +4009,7 @@
       "2.2"
      ],
      [
-      "Responde al azar o deja preguntas sin hacer.",
+      "Deja preguntas sin hacer o falla también las de un paso.",
       "Resuelve las preguntas de un paso y falla las de dos.",
       "Resuelve con una estrategia que sabe nombrar."
      ]
@@ -4037,9 +4023,9 @@
       "6.2"
      ],
      [
-      "Dice el resultado sin contar cómo llega.",
-      "Cuenta los pasos si el compañero le pregunta.",
-      "Explica los pasos en orden y con las palabras del tema."
+      "Da solo el resultado, de palabra o en el cuaderno.",
+      "Cuenta o escribe los pasos si le preguntan.",
+      "Explica o escribe los pasos en orden con las palabras del tema."
      ]
     ],
     [
@@ -4310,8 +4296,8 @@
      ],
      [
       "Olvida el acuerdo al cambiar de actividad.",
-      "Lo cumple mientras el cartel está delante.",
-      "Lo cumple y se lo recuerda a un compañero."
+      "Lo cumple si le señalas el cartel.",
+      "Lo cumple en la actividad siguiente sin recordárselo."
      ]
     ]
    ]
