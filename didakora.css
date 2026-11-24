@@ -583,3 +583,5 @@ a.tag:hover{background:var(--coral3)}
  .co-g{flex-basis:100%;margin:0;padding:0 0 0 54px}.co-g img,.co-g .lg-f{width:28px;height:28px;padding:4px;border-radius:8px}
  .g3{grid-template-columns:1fr;gap:10px}.g3 a{padding:14px 50px 14px 16px;border-radius:18px}.g3 b{font-size:19px}
 }
+/* ordenador: en la tabla del comparador el texto va centrado en vertical dentro de cada celda */
+@media (min-width:641px){.cp-r:not(.cp-h) .cp-c{display:flex;align-items:center}.cp-r h3{display:flex;flex-direction:column;justify-content:center}}
