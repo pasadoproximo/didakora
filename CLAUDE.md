@@ -95,6 +95,8 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
 - `/privacidad/` (texto en `_build/privacidad.html`): si cambian el contador, el alojamiento o lo que guarda «Mi caja», hay que cambiarla.
 - **Mi caja** (`/mi-caja/`, 24-11-2026): herramientas y sesiones guardadas en el navegador (`dk-caja`) y compartidas con `?h=…&s=…`; botón en fichas y sesiones (`boton_caja()`).
+  Menú (Jorge, 24-11-2026): en ordenador, Herramientas · Elige tu sesión · Actualidad · Mi caja (con el número arriba a la derecha, sin icono) · Sobre mí.
+  En el móvil, el panel con todas las secciones y la casilla azul «Mi caja» con el número dentro de la caja, solo si hay algo guardado. No tocar el del móvil.
 - Letras alojadas en `letras/` (OFL): la web no pide nada a Google. El correo de contacto se lee de la variable de entorno `DK_CORREO` (sin ella, el build se para).
 - Altas del 24-11-2026: 12 (150 herramientas). **Educación Física** (`cat:"ef"`) es apartado de «Explorar por materias» y materia en «Elige tu sesión»; primera ficha, Kinovea.
 - «Qué es» ocupa 4 o 5 líneas en ordenador (340 a 430 caracteres, sin repetir la Ficha rápida, los usos ni «Para saber más»). Los usos van simétricos en su tarjeta. Sin apartado «Por ejemplo, en clase» (Jorge lo quitó).

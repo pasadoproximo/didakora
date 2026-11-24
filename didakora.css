@@ -618,13 +618,14 @@ a.tag:hover{background:var(--coral3)}
 @media print{.mm-b,.mm-v{display:none!important}}
 /* Mi caja en el móvil: casilla propia del menú y un punto en el botón */
 @media (max-width:840px){
- .bar nav .n-pc{display:none}
+ .bar nav .n-pc,.bar nav .cj-n{display:none}
  .js .bar nav a.mm-c{display:none}.js .bar nav a.mm-c.hay{display:grid;order:9;grid-column:1/-1;background:var(--navy);color:#fff}.js .bar nav a.mm-c .cj{width:42px;height:32px;stroke:none}.js .bar nav a.mm-c[aria-current="page"]{box-shadow:inset 0 0 0 2px var(--coral)}
  .js .bar nav .cj path{stroke:none}.js .bar nav .cj path:nth-of-type(1){fill:#9FB3FF}.js .bar nav .cj path:nth-of-type(2){fill:#FF8A6B}.js .bar nav .cj path:nth-of-type(3){fill:#fff}.js .bar nav .cj text{fill:var(--navy)}
  .js .mm-b.hay[aria-expanded="false"]::after{content:"";position:absolute;top:0;right:0;width:13px;height:13px;border-radius:50%;background:var(--coral);border:2px solid #fff}
 }
 @media (min-width:841px){.bar nav .n-mv,.bar nav a[data-k="categorias"],.bar nav a[data-k="nuevas"]{display:none}
- .bar nav a.mm-c{display:inline-flex;align-items:center;gap:8px}.bar nav a.mm-c .cj{display:block;width:27px;height:21px;margin-top:-3px}
+ .bar nav a.mm-c{position:relative}.bar nav a.mm-c .cj-h{display:none}.bar nav a.mm-c.hay{padding-right:24px}
+ .cj-n{position:absolute;top:2px;right:5px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:var(--coral);color:var(--navy);font:800 12px/18px var(--f-body);text-align:center}.cj-n:empty{display:none}
  .bar nav:has(a:is([data-k="categorias"],[data-k="nuevas"])[aria-current]) a[data-k="todas"]{background:var(--bg);font-weight:700}}
 /* repaso del 24-11-2026 */
 .hs,.ls{grid-template-columns:minmax(0,1fr)}.empty,.aprox{overflow-wrap:anywhere}.xa-n button{flex:none}.ft-pv{padding:6px 0}

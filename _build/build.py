@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "127"  # versión de didakora.css / didakora.js
+V = "128"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -173,7 +173,7 @@ def topbar(cur=""):
     if POSTS: nav.append(("actualidad", "Actualidad", "/actualidad/"))  # solo cuando ya hay algún post
     nav.append(("sobre", "Sobre mí", "/sobre-mi/"))
     # en ordenador (desde 841 px): Herramientas, Elige tu sesión, Actualidad, Mi caja y Sobre mí. En el móvil, el panel con todas (Jorge, 24-11-2026)
-    CAJA_A = f'<a data-k="caja" class="mm-c" href="{B}/mi-caja/"' + (' aria-current="page"' if cur == "caja" else "") + '><span class="cj-h"></span>Mi caja</a>'
+    CAJA_A = f'<a data-k="caja" class="mm-c" href="{B}/mi-caja/"' + (' aria-current="page"' if cur == "caja" else "") + '><span class="cj-h"></span>Mi caja<sup class="cj-n"></sup></a>'
     nom = lambda k, t: '<span class="n-pc">Herramientas</span><span class="n-mv">Todas</span>' if k == "todas" else t
     links = "".join((CAJA_A if k == "sobre" else "") + f'<a data-k="{k}" href="{B}{h}"' + (' class="cta"' if k == "sobre" else "") + (' aria-current="page"' if k == cur else "") + f'><svg viewBox="0 0 24 24" aria-hidden="true">{MENU_I[k]}</svg>{nom(k, t)}</a>' for k, t, h in nav)
     return f'''<header class="top">

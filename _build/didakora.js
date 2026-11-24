@@ -207,7 +207,7 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.faq details').for
  // la caja del logo con el número dentro: en la barra en ordenador y como casilla del menú en el móvil (Jorge, 24-11-2026)
  const cj=n=>'<svg class="cj" viewBox="2 11 44 34" aria-hidden="true"><path d="M3 13h17l4 8H7z" fill="#9FB3FF"/><path d="M45 13H28l-4 8h17z" fill="#FF8A6B"/><path d="M8 21h32v17a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5z" fill="#061033"/>'+(n?'<text x="24" y="37.6" text-anchor="middle"'+(n>99?' style="font-size:13px"':'')+'>'+(n>99?'99+':n)+'</text>':'<rect x="19" y="27" width="10" height="4" rx="2" fill="#9FB3FF"/>')+'</svg>';
  const pill=()=>{const d=lee(),n=d.h.length+d.s.length,p=document.querySelector('.mm-c'),mb=document.querySelector('.mm-b');
-  if(p){p.classList.toggle('hay',!!n);p.querySelector('.cj-h').innerHTML=cj(n);p.setAttribute('aria-label',n?'Mi caja, '+n+(n===1?' guardada':' guardadas'):'Mi caja')}
+  if(p){p.classList.toggle('hay',!!n);p.querySelector('.cj-h').innerHTML=cj(n);p.querySelector('.cj-n').textContent=n?(n>99?'99+':n):'';p.setAttribute('aria-label',n?'Mi caja, '+n+(n===1?' guardada':' guardadas'):'Mi caja')}
   if(mb)mb.classList.toggle('hay',!!n)};
  const pintas=[],otra=()=>{pill();pintas.forEach(f=>f())};addEventListener('pageshow',e=>{if(e.persisted)otra()});addEventListener('storage',e=>{if(e.key===K||e.key===null)otra()});
  document.querySelectorAll('[data-gc]').forEach(b=>{const [k,i]=b.dataset.gc.split(':');
