@@ -74,8 +74,11 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   (diseño A, elegido por Jorge), y ficha propia en `/sesion/<id>/` (minutos, agrupamiento, preparación, plan sin wifi e imprimir), que Jorge prefirió a la de la maqueta.
   Las sesiones se escriben en `_build/sesiones.py`. El build se para si los minutos no suman, si hay más de dos herramientas, si alguna está en rojo en la guía
   del INTEF, si no vale para la etapa o si hay punto y coma o coma antes de «y». Se escribe «el wifi».
-  Cada sesión tiene su PDF de dos páginas (`pdf/<id>.pdf`): lo imprime `_build/pdf.py` con Chrome desde el build (solo las que cambian) con los textos de `sesiones.py` y `_build/sesiones_doc.py`.
-  Diseño pedido por Jorge: aire, poco texto y nada apretado. Prueba: `node _build/probar_sesion.js`.
+  Cada sesión tiene su PDF (`pdf/<id>.pdf`, diseño A «tipográfica», elegido por Jorge el 24-11-2026): lo imprime `_build/pdf.py` con Chrome desde el build (solo las que cambian).
+  El desarrollo, la rúbrica y el dibujo están en `_build/sesiones_doc.json`. La rúbrica cita el criterio por su clave (decreto, área, curso y código) y el texto sale
+  de `_build/criterios_boe.json` (RD 95, 157, 217 y 243/2022, extraídos del BOE consolidado el 24-11-2026: los criterios sin número son los únicos de su competencia).
+  Nunca escribir a mano un criterio. Norma estatal, con aviso de consultar la comunidad. Sin dibujos de agrupamientos. Puntos en lugar de casillas.
+  Prueba: `node _build/probar_sesion.js`.
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
@@ -88,6 +91,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
   `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B, retirada el 24-11-2026). Entradas: tres tarjetas en la portada (`bloque_guias()`)
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.
+- `/privacidad/` (24-11-2026, `privacidad()` en `build.py`): si cambian el contador, las letras o el alojamiento, hay que cambiarla.
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
 ## Pendiente (repasado el 24-11-2026, tras el traspaso de la sesión en la nube)

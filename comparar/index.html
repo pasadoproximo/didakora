@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
-<link rel="stylesheet" href="/didakora.css?v=100">
+<link rel="stylesheet" href="/didakora.css?v=102">
 <script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -52,7 +52,7 @@
  var by={};D.forEach(function(t){by[t.id]=t});
  var sels=[].slice.call(document.querySelectorAll("#cp-f select")),out=document.getElementById("cp");
  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
- function lg(t,s){return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=4" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}
+ function lg(t,s){return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=5" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}
  function leer(){var m=/[?&]c=([a-z0-9,]+)/.exec(location.search),ids=m?m[1].split(","):[];return ids.filter(function(i,k){return by[i]&&ids.indexOf(i)===k}).slice(0,3)}
  function pinta(ids,empuja){
   sels.forEach(function(s,i){s.value=ids[i]||""});
@@ -66,7 +66,7 @@
    var v=T.map(function(t){return t[f[1]]}),ig=v.every(function(x){return x===v[0]});
    if(!ig)dif.push(f);else if(f[1]!=="g"||T[0].x)com.push(f[1]==="g"?'<b class="cp-x">Guía del INTEF, en rojo: no las recomienda para el alumnado</b>':esc(v[0]));
   });
-  var h='<div class="cp-l">'+T.map(function(t){
+  var h='<h2 class="sr">Comparación</h2><div class="cp-l">'+T.map(function(t){
    var si=[];T.forEach(function(a){var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)});
    return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.u)+'</p><p class="cp-sm">'+esc(t.q)+'</p>'+
     (dif.length?'<dl>'+dif.map(function(f){return '<div><dt>'+f[0]+'</dt><dd'+(f[1]==="g"&&t.x?' class="cp-x"':"")+'>'+esc(t[f[1]])+'</dd></div>'}).join("")+'</dl>':"")+'</article>'}).join("")+'</div>'+
@@ -83,10 +83,11 @@
 </aside>
 <footer class="ft">
  <p>Jorge Delgado Aguilera</p>
+ <a class="ft-pv" href="/privacidad/">Privacidad</a>
  <a class="ft-cc" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
 </footer>
 </div>
 <script>window.DK_BASE=""</script>
-<script src="/didakora.js?v=100"></script>
+<script src="/didakora.js?v=102"></script>
 </body>
 </html>

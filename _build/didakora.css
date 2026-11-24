@@ -569,3 +569,7 @@ a.tag:hover{background:var(--coral3)}
 @media (min-width:641px){.co-gr .co-c{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;min-height:0}.co-c .co-t{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}.co-c .co-g{align-self:end}}
 @media (min-width:701px) and (max-width:1000px){.cp-l .cp-si{font-size:16.5px}}
 @media (max-width:360px){.cp-l .cp-si{font-size:18.5px}}
+@media (max-width:360px){.hero .dd{flex-basis:100%}}
+@media (max-width:400px){.pc-fecha{display:none}}
+.ft-pv{margin-left:auto;margin-right:16px;color:inherit;font-weight:700;text-decoration:none}.ft-pv:hover{text-decoration:underline}
+.pv{display:grid;gap:26px;max-width:820px}.pv h2{font:800 22px/1.15 var(--f-disp);letter-spacing:-.02em;color:var(--navy);margin-bottom:6px}.pv p{font-size:18px;line-height:1.55;color:var(--body)}.pv a{color:var(--navy);font-weight:700}

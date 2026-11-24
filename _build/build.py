@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "100"  # versión de didakora.css / didakora.js
+V = "102"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -124,7 +124,7 @@ ICO = {"ext": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8
        "share": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg>',
        "play": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>'}
 def icon(k): return f'<svg viewBox="0 0 24 24" aria-hidden="true">{IC[k]}</svg>'
-def logo(t, size=26): return (f'<img src="{B}/logos/{t["id"]}.png?v=4" alt="" width="{size}" height="{size}" loading="lazy">' if t["id"] in LOGOS
+def logo(t, size=26): return (f'<img src="{B}/logos/{t["id"]}.png?v=5" alt="" width="{size}" height="{size}" loading="lazy">' if t["id"] in LOGOS
                               else f'<b class="lg-f" aria-hidden="true">{esc(t["n"][0])}</b>')
 def split_name(n):
     m = re.match(r"^(.+?)\s*\((.+)\)$", n); return (m.group(1), m.group(2)) if m else (n, "")
@@ -182,6 +182,14 @@ def ld_html(nodos):
     if not nodos: return ""
     g = json.dumps({"@context": "https://schema.org", "@graph": [SITIO, PERSONA] + nodos}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/ld+json">{g}</script>\n'
+def descripcion(q):
+    """descripción para buscadores: frases enteras de «Qué es», entre 70 y 160 letras. Si la primera es más larga, se corta en una palabra"""
+    fr = re.split(r"(?<=[.]) (?=[A-ZÁÉÍÓÚ¿«])", q); d = fr[0]
+    for x in fr[1:]:
+        if len(d) >= 110 or len(d) + len(x) + 1 > 160: break
+        d += " " + x
+    if len(d) < 70 and len(fr) > 1: d = q
+    return d if len(d) <= 165 else d[:158].rsplit(" ", 1)[0].rstrip(",:") + "…"
 def titulo_ficha(nm):
     # título para buscadores: lo que buscan los docentes («qué es», «para qué sirve en clase»); sin «!:» en Kahoot!
     return f'{nm}{" " if nm.endswith(("!", "?")) else ": "}{"Q" if nm.endswith(("!", "?")) else "q"}ué es y para qué sirve en clase · Didákora'
@@ -246,6 +254,7 @@ def foot(scripts=""):
 </aside>
 <footer class="ft">
  <p>Jorge Delgado Aguilera</p>
+ <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>
  <a class="ft-cc" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
 </footer>
 </div>
@@ -256,7 +265,7 @@ def foot(scripts=""):
 '''
 EN_PRUEBAS = set() if SES_PUB else {"sesion/index.html"}   # publicadas sin enlace y sin indexar hasta que Jorge las apruebe
 def write(rel, content):
-    if rel in EN_PRUEBAS: content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
+    if rel in EN_PRUEBAS or rel == "404.html": content = content.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
     p = os.path.join(H, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8", newline="\n").write(content)
 def crumbs(items):
@@ -342,6 +351,24 @@ def todas():
     write("todas/index.html", head("Todas las herramientas · Didákora", "Todas las herramientas de Didákora, con buscador y filtros por categoría y etapa.", "/todas/", "todas")
           + body + foot(f'\n<script src="{B}/tools.js?v={V}"></script>\n<script src="{B}/didakora-datos.js?v={V}"></script>\n<script>cajaListado()</script>'))
 
+# ---------------------------------------------------------------- privacidad
+def privacidad():
+    """lo que dicen las fuentes oficiales de cada servicio, abiertas el 24-11-2026: si la web cambia de contador, letras o alojamiento, hay que cambiar esto"""
+    a = lambda u, t: f'<a href="{u}" target="_blank" rel="noopener">{t}</a>'
+    S = [("Quién está detrás", f'Didákora es un proyecto personal de Jorge Delgado Aguilera. Para cualquier duda, escribe a {a("mailto:jorgedelagui@gmail.com", "jorgedelagui@gmail.com")}.'),
+         ("Qué no hace esta web", "No pide registro, no tiene formularios ni publicidad y no pone cookies propias. Lo que buscas o eliges en sus páginas no se guarda."),
+         ("Las visitas", f'Se cuentan con GoatCounter, que no usa cookies ni guarda la dirección IP. Registra la página, la hora, de dónde llegas, el navegador, el sistema, el idioma, el ancho de la pantalla y el país, sin unirlos entre sí. Para no contarte dos veces, mantiene tu IP y tu navegador en memoria hasta ocho horas. {a("https://www.goatcounter.com/help/privacy", "Su política")}.'),
+         ("El alojamiento", f'La web está en GitHub Pages, que registra la dirección IP de quien la visita por seguridad. {a("https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages", "Más información")}.'),
+         ("Las letras", f'Se cargan desde Google Fonts. Google recibe tu dirección IP y los datos del navegador para enviarlas, no pone cookies y dice que no los usa para crear perfiles ni para publicidad. {a("https://developers.google.com/fonts/faq/privacy", "Más información")}.'),
+         ("Las herramientas enlazadas", "Cada una tiene sus condiciones. Antes de usarlas con alumnado, lee su política y lo que indique tu centro."),
+         ("Si me escribes", "Uso tu correo solo para responderte. Puedes pedirme que lo borre, verlo o corregirlo en la misma dirección. También puedes reclamar ante la " + a("https://www.aepd.es", "Agencia Española de Protección de Datos") + ".")]
+    body = f"""
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Privacidad", "")])}<h1>Privacidad</h1></div><p>Qué datos tuyos pasan por esta web y por dónde. Actualizado el 24 de noviembre de 2026.</p></div>
+ <div class="pv">{"".join(f"<section><h2>{t}</h2><p>{x}</p></section>" for t, x in S)}</div>
+</main>"""
+    write("privacidad/index.html", head("Privacidad · Didákora", "Qué datos pasan por Didákora cuando la visitas: sin registro, sin publicidad y sin cookies propias.", "/privacidad/") + body + foot())
+
 # ---------------------------------------------------------------- sobre mí
 def sobremi():
     body = f'''
@@ -363,6 +390,7 @@ def destacadas():
     body = f'''
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Herramientas destacadas", "")])}<h1>Herramientas destacadas</h1></div><p>Las {len(DESTACADAS)} más versátiles para empezar a usar en clase.</p></div>
+ <h2 class="sr">Herramientas</h2>
  <div class="tcg c4">{"".join(card_dest(BYID[i]) for i in DESTACADAS)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
@@ -385,10 +413,11 @@ def nuevas():
     body = f'''
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Herramientas nuevas", "")])}<h1>Herramientas nuevas</h1></div><p>Las últimas {len(ns)} que han entrado en el catálogo, de la más reciente a la más antigua.</p></div>
+ <h2 class="sr">Herramientas</h2>
  <div class="tcg c4">{"".join(card_dest(t, x) for t, x in ns)}</div>
  <p class="more"><a class="btn solid" href="{B}/todas/">Ver todas las herramientas {ICO["arrow"]}</a></p>
 </main>'''
-    write("nuevas/index.html", head("Herramientas nuevas · Didákora", f"Las últimas herramientas digitales para docentes añadidas a Didákora.", "/nuevas/", "nuevas") + body + foot())
+    write("nuevas/index.html", head("Herramientas nuevas · Didákora", f"Las últimas herramientas digitales para docentes añadidas a Didákora, revisadas una a una.", "/nuevas/", "nuevas") + body + foot())
 
 # ---------------------------------------------------------------- categorías
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower().translate(str.maketrans("áéíóúñü", "aeiounu"))).strip("-")
@@ -621,7 +650,7 @@ def ficha(t):
     con_og = os.path.exists(os.path.join(H, "og", t["id"] + ".png"))
     if con_og: pagina["primaryImageOfPage"] = {"@type": "ImageObject", "url": f'{WEB}/og/{t["id"]}.png', "width": 1200, "height": 630}
     ld = [pagina, migas(("Inicio", "/"), (c[1], f"/categorias/{c[0]}/"), (nm, f'/{t["id"]}/'))] + ([{"@type": "FAQPage", "url": f'{WEB}/{t["id"]}/#h-faq', "mainEntity": [{"@type": "Question", "name": x["p"], "acceptedAnswer": {"@type": "Answer", "text": x["r"]}} for x in f["faq"]]}] if f.get("faq") else [])
-    write(f'{t["id"]}/index.html', head(titulo_ficha(nm), f["q"].split(". ")[0].rstrip(".") + ".", f'/{t["id"]}/', ld=ld,
+    write(f'{t["id"]}/index.html', head(titulo_ficha(nm), descripcion(f["q"]), f'/{t["id"]}/', ld=ld,
           img=f'{WEB}/og/{t["id"]}.png' if con_og else None, img_alt=f"{nm}: qué es y para qué sirve en clase. Ficha de Didákora" if con_og else "") + body + foot())
 
 
@@ -670,7 +699,7 @@ def comparar():
  var by={{}};D.forEach(function(t){{by[t.id]=t}});
  var sels=[].slice.call(document.querySelectorAll("#cp-f select")),out=document.getElementById("cp");
  function esc(s){{return String(s).replace(/[&<>"]/g,function(c){{return {{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}}[c]}})}}
- function lg(t,s){{return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=4" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}}
+ function lg(t,s){{return '<span class="lg">'+(t.l?'<img src="'+B+'/logos/'+t.id+'.png?v=5" alt="" width="'+s+'" height="'+s+'">':'<b>'+esc(t.n.charAt(0))+'</b>')+'</span>'}}
  function leer(){{var m=/[?&]c=([a-z0-9,]+)/.exec(location.search),ids=m?m[1].split(","):[];return ids.filter(function(i,k){{return by[i]&&ids.indexOf(i)===k}}).slice(0,3)}}
  function pinta(ids,empuja){{
   sels.forEach(function(s,i){{s.value=ids[i]||""}});
@@ -684,7 +713,7 @@ def comparar():
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
    if(!ig)dif.push(f);else if(f[1]!=="g"||T[0].x)com.push(f[1]==="g"?'<b class="cp-x">Guía del INTEF, en rojo: no las recomienda para el alumnado</b>':esc(v[0]));
   }});
-  var h='<div class="cp-l">'+T.map(function(t){{
+  var h='<h2 class="sr">Comparación</h2><div class="cp-l">'+T.map(function(t){{
    var si=[];T.forEach(function(a){{var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)}});
    return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.u)+'</p><p class="cp-sm">'+esc(t.q)+'</p>'+
     (dif.length?'<dl>'+dif.map(function(f){{return '<div><dt>'+f[0]+'</dt><dd'+(f[1]==="g"&&t.x?' class="cp-x"':"")+'>'+esc(t[f[1]])+'</dd></div>'}}).join("")+'</dl>':"")+'</article>'}}).join("")+'</div>'+
@@ -878,6 +907,7 @@ def actualidad():
     body = f'''
 <main class="pg">
  <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Actualidad", "")])}<h1>Actualidad</h1></div><p>Noticias de educación digital: herramientas, inteligencia artificial, lo que publican el Ministerio y la Junta de Andalucía e ideas para aprovecharlo en clase.</p></div>
+ <h2 class="sr">Noticias</h2>
  <div class="pcg">{"".join(post_card(p) for p in reversed(POSTS))}</div>
 </main>'''
     write("actualidad/index.html", head("Actualidad · Didákora", ACT_DESC, "/actualidad/", "actualidad") + body + foot())
@@ -935,7 +965,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")]
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", ""), ("/privacidad/", "")]
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
@@ -981,7 +1011,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); privacidad(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")
