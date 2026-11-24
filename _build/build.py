@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "88"  # versión de didakora.css / didakora.js
+V = "90"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -460,7 +460,7 @@ def sesion():
         mi, et, ap = datos_s(x); con = sum(p[0] for p in x["pasos"] if p[4])
         bar = "".join(f'<i class="{"on" if p[4] else "off"}" style="flex:{p[0]} 1 0"></i>' for p in x["pasos"])
         cards += (f'<article class="xa c{k % 3 + 1}" data-id="{x["id"]}" data-e="{x["e"]}" data-o="{x["o"]}" data-s="{" ".join(x["s"])}" data-d="{x["d"]}"{" hidden" if k > 2 else ""}><h3><span class="lg">{x["min"]}<small>min</small></span><a href="{B}/sesion/{x["id"]}/">{esc(x["t"])}</a></h3>'
-                  f'<p class="cp-si">{esc(x["r"])}<small>{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</small></p><div class="xbar" role="img" aria-label="{len(x["pasos"])} pasos, {con} de {x["min"]} minutos con la herramienta">{bar}</div>'
+                  f'<p class="cp-si">{esc(x["r"])}</p><p class="cp-sm">{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</p><div class="xbar" role="img" aria-label="{len(x["pasos"])} pasos, {con} de {x["min"]} minutos con la herramienta">{bar}</div>'
                   f'<dl><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Con</dt><dd class="xa-c">{"".join(f"<span>{logo(BYID[h], 20)}{esc(corto(h))}</span>" for h in x["h"])}</dd></div><div><dt>Pasos</dt><dd>{len(x["pasos"])}, con {con} min de pantalla</dd></div></dl>'
                   f'<span class="xgo">Ver la sesión {ICO["arrow"]}</span></article>')
         ix += f'<a href="{B}/sesion/{x["id"]}/" data-id="{x["id"]}">{esc(x["t"])}</a>'
@@ -676,7 +676,7 @@ def comparar():
   }});
   var h='<div class="cp-l">'+T.map(function(t){{
    var si=[];T.forEach(function(a){{var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)}});
-   return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.q)+(si[0]?'<small>'+esc(si.slice(1).concat(t.q).join(" "))+'</small>':"")+'</p>'+
+   return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.q)+'</p><p class="cp-sm">'+(si[0]?esc(si.slice(1).concat(t.q).join(" ")):"")+'</p>'+
     (dif.length?'<dl>'+dif.map(function(f){{return '<div><dt>'+f[0]+'</dt><dd'+(f[1]==="g"&&t.x?' class="cp-x"':"")+'>'+esc(t[f[1]])+'</dd></div>'}}).join("")+'</dl>':"")+'</article>'}}).join("")+'</div>'+
    (com.length?'<p class="cp-co"><b>Coinciden en:</b> '+com.join(" | ")+'</p>':"");
   out.innerHTML=h;out.hidden=false;
