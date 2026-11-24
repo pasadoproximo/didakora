@@ -73,7 +73,9 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - **Elige tu sesión** (`/sesion/`, antes «Monta tu sesión», rehecha el 24-11-2026): entrada con cuatro desplegables y las sesiones de tres en tres en columnas de color, como el comparador
   (diseño A, elegido por Jorge), y ficha propia en `/sesion/<id>/` (minutos, agrupamiento, preparación, plan sin wifi e imprimir), que Jorge prefirió a la de la maqueta.
   Las sesiones se escriben en `_build/sesiones.py`. El build se para si los minutos no suman, si hay más de dos herramientas, si alguna está en rojo en la guía
-  del INTEF, si no vale para la etapa o si hay punto y coma o coma antes de «y». Se escribe «el wifi». Prueba: `node _build/probar_sesion.js`.
+  del INTEF, si no vale para la etapa o si hay punto y coma o coma antes de «y». Se escribe «el wifi».
+  Cada sesión tiene su PDF de dos páginas (`pdf/<id>.pdf`): lo imprime `_build/pdf.py` con Chrome desde el build (solo las que cambian) con los textos de `sesiones.py` y `_build/sesiones_doc.py`.
+  Diseño pedido por Jorge: aire, poco texto y nada apretado. Prueba: `node _build/probar_sesion.js`.
 - Etapas (`etapas()` en `build.py`): revisadas el 23-11-2026 (Infantil 18 herramientas del alumnado, Primaria 41); las del alumnado son de Secundaria salvo las de `SOLO_IP` (GCompris, Tux Paint y ScratchJr, altas del 23-11-2026 para
   Infantil y Primaria); `REPO_I` y `REPO_P` dicen cuáles valen además para Infantil y Primaria. Las cuatro altas de Infantil (con Chrome Music Lab) están
   en verde en la guía de protección de datos del INTEF (versión 3.0, junio de 2026) y llevan su logo oficial.
