@@ -2,8 +2,9 @@
 // Comprueba cada combinación de filtros, que no haya páginas sin generar y que los pasos sumen los minutos anunciados.
 const fs = require('fs'), path = require('path'), R = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(R, 'sesion/index.html'), 'utf8'), fallos = [];
-const C = [...html.matchAll(/<a class="sc" href="[^"]*\/sesion\/([^/]+)\/" data-e="(\w+)" data-o="(\w+)" data-s="([^"]+)" data-d="(\w)"/g)].map(m => ({ id: m[1], e: m[2], o: m[3], s: m[4].split(' '), d: m[5] }));
-const v = k => [...html.matchAll(new RegExp(`data-k="${k}" data-v="([^"]+)"`, 'g'))].map(m => m[1]);
+const C = [...html.matchAll(/<article class="xa c\d" data-id="([^"]+)" data-e="(\w+)" data-o="(\w+)" data-s="([^"]+)" data-d="(\w)"/g)].map(m => ({ id: m[1], e: m[2], o: m[3], s: m[4].split(' '), d: m[5] }));
+const v = k => [...html.match(new RegExp(`<select data-k="${k}">(.*?)</select>`))[1].matchAll(/value="([^"]+)"/g)].map(m => m[1]);
+if (!C.length) fallos.push('no se ha leído ninguna sesión');
 let vacias = 0, total = 0;
 for (const e of v('e')) for (const d of v('d')) { const n = C.filter(c => c.e.includes(e) && 'pea'.indexOf(c.d) <= 'pea'.indexOf(d)).length; total++; if (!n) fallos.push(`sin sesiones: etapa ${e}, dispositivos ${d}`); }
 for (const e of v('e')) for (const d of v('d')) for (const s of v('s')) if (!C.some(c => c.e.includes(e) && 'pea'.indexOf(c.d) <= 'pea'.indexOf(d) && (c.s.includes(s) || c.s.includes('*')))) vacias++;

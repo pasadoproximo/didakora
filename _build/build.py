@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "87"  # versión de didakora.css / didakora.js
+V = "88"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -246,7 +246,7 @@ def foot(scripts=""):
 </aside>
 <footer class="ft">
  <p>Jorge Delgado Aguilera</p>
- <a class="ft-cc" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
+ <a class="ft-cc" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="license noopener" title="Textos con licencia Creative Commons BY-NC-SA 4.0">CC BY-NC-SA 4.0</a>
 </footer>
 </div>
 <script>window.DK_BASE="{B}"</script>
@@ -333,8 +333,9 @@ def todas():
   <div class="hs-r"><div class="hs-q">{ICO["search"]}<label class="sr" for="lq">Busca una herramienta</label><input id="lq" type="text" placeholder="Busca por nombre o por lo que necesitas hacer…" autocomplete="off" enterkeyhint="search"></div>
   {etapas_html("lnv", " l")}</div>
  </form>
- <div class="chips" id="lcats" role="group" aria-label="Categoría">{chips}</div>
+ <div class="chips desl" id="lcats" role="group" aria-label="Categoría">{chips}</div>
  <p class="count" id="lcount" aria-live="polite"></p>
+ <h2 class="sr">Herramientas</h2>
  <div class="tcg" id="lgrid"></div>
  <noscript><div class="tcg">{"".join(card(t) for t in TOOLS)}</div></noscript>
 </main>'''
@@ -437,30 +438,7 @@ def compartir(titulo, path, cls=""):
 # ---------------------------------------------------------------- Monta tu sesión y Plan B (22-11-2026, EN PRUEBAS: sin enlace en el menú)
 # Las dos salen solo de los datos de las herramientas del alumnado (Aula): sus ideas de actividad (`i`), dispositivos y cuenta.
 # No inventan nada: si una combinación no tiene ideas, la página lo dice.
-# Momento y objetivo de cada idea: `_build/sesion_ideas.py`, revisadas una a una; las reglas por palabras de aquí solo cubren una idea nueva.
-M_INI = re.compile(r"ideas previas|abrir|al empezar|para empezar|motivar|lluvia de ideas|introduc", re.I)
-M_FIN = re.compile(r"cerrar|cierre|repas|comprobar|examen|metacogn|evalua|ticket|resum|al final", re.I)
-D_EQUIPO = re.compile(r"pareja|equipo|proyectad|del profesor", re.I)     # vale con un dispositivo por pareja o por equipo
-D_PROFE = re.compile(r"proyectad|solo el móvil del profesor", re.I)       # vale solo con el del docente
-# el alumnado no crea cuenta: entra con un código o un enlace, o la cuenta solo la necesita el docente («Cuenta del docente para crear»).
-# «Cuenta Microsoft del centro» o «Cuenta de Google» cuentan como cuenta: sin ella no se puede usar.
-SIN_REG = re.compile(r"^no necesita|^código|^entra con el enlace|^solo para guardar|sin correo|código sin cuenta|del docente|^integrado|^extensión", re.I)
-MATERIA = {"Geografía e Historia": "gh", "Ciencias y Matemáticas": "cm", "Música y Arte": "ma", "Lectura y accesibilidad": "ll", "Idiomas": "id", "Programación y diseño 3D": "tp"}  # por apartado; el resto vale para cualquier materia
-# Objetivo de cada idea («¿Qué quieres hacer?»): primero por palabras y, si no, por la categoría de su herramienta (provisional, como el momento)
-O_PAL = [("rep", re.compile(r"repas|vocabulario|estudiar", re.I)), ("eva", re.compile(r"comprobar|evalua|examen|ticket|ideas previas|informe|autocorreg", re.I)),
-         ("equ", re.compile(r"equipo|cooperat|colabor|debate|lluvia de ideas|entre todos|compartid", re.I))]
-O_CAT = {"crear-y-presentar": "cre", "programacion-y-diseno-3d": "cre", "colaborar-y-organizar": "equ", "explorar-por-materias": "exp", "participar-y-repasar": "rep", "inteligencia-artificial": "exp"}
-from sesion_ideas import SES   # el reparto bueno, idea a idea (23-11-2026); lo de arriba solo cubre una idea que aún no esté ahí
-SES_M = {"I": "ini", "C": "des", "F": "fin", "X": None}; SES_O = {"E": "exp", "K": "cre", "Q": "equ", "R": "rep", "V": "eva"}
-def objetivo(t, idea):
-    c = SES.get(t["id"], {}).get(idea)
-    return SES_O[c[1]] if c else next((k for k, r in O_PAL if r.search(idea)), O_CAT[t["cs"]])
-def momento(idea, t=None):
-    """ini, des o fin; None = la idea no sirve para montar una sesión (tarea para casa, función de la herramienta…)"""
-    c = SES.get(t["id"], {}).get(idea) if t else None
-    return SES_M[c[0]] if c else "ini" if M_INI.search(idea) else "fin" if M_FIN.search(idea) else "des"
 from sesiones import SESIONES, METAS as METAS_S, MATERIAS as MATERIAS_S, APARATOS as APARATOS_S
-def aula(): return [t for t in TOOLS if t["s"] == "aula"]
 def sesion():
     """«Monta tu sesión»: /sesion/ filtra sesiones escritas (_build/sesiones.py) y cada una tiene su página, /sesion/<id>/."""
     MET, MAT, APA = dict(METAS_S), dict(MATERIAS_S), dict(APARATOS_S)
@@ -475,39 +453,52 @@ def sesion():
             assert all(e in BYID[h]["et"] for e in x["e"]), f'sesión {x["id"]}: {h} no es de las etapas {x["e"]}'
         txt = " ".join([x["t"], x["r"], x["ej"], x["prep"], x["b"], x["otra"]] + [p[2] + " " + p[3] for p in x["pasos"]])
         assert ";" not in txt and ", y " not in txt, f'sesión {x["id"]}: punto y coma o coma antes de «y»'
-    def chips(k, t, ops): return (f'<fieldset class="sf-g"><legend>{t}</legend>' + f'<button type="button" data-k="{k}" data-v="" aria-pressed="true">Todas</button>'.replace("Todas", {"d": "Todos", "o": "Todo"}.get(k, "Todas"))
-                                  + "".join(f'<button type="button" data-k="{k}" data-v="{v}" aria-pressed="false">{esc(n)}</button>' for v, n in ops) + "</fieldset>")
-    cards = ""
-    for x in SESIONES:
-        mi, et, ap = datos_s(x)
-        cards += (f'<a class="sc" href="{B}/sesion/{x["id"]}/" data-e="{x["e"]}" data-o="{x["o"]}" data-s="{" ".join(x["s"])}" data-d="{x["d"]}"><span class="sc-k">{mi} · {esc(MET[x["o"]])}</span>'
-                  f'<b>{esc(x["t"])}</b><span class="sc-r">{esc(x["r"])}</span><small>{esc(et)}<br>{esc(ap)}</small>'
-                  f'<span class="sc-h">{"".join(logo(BYID[h], 24) for h in x["h"])}<i>{esc(" y ".join(corto(h) for h in x["h"]))}</i></span></a>')
+    def minus(t): return (t[0].lower() + t[1:] if t[1].islower() else t) + ("" if t[-1] in "?!" else ".")
+    def filtro(k, t, nada, ops): return (f'<label class="cp-s"><span>{t}</span><select data-k="{k}"><option value="">{nada}</option>' + "".join(f'<option value="{v}">{esc(n)}</option>' for v, n in ops) + "</select></label>")
+    cards = ix = ""
+    for k, x in enumerate(SESIONES):
+        mi, et, ap = datos_s(x); con = sum(p[0] for p in x["pasos"] if p[4])
+        bar = "".join(f'<i class="{"on" if p[4] else "off"}" style="flex:{p[0]} 1 0"></i>' for p in x["pasos"])
+        cards += (f'<article class="xa c{k % 3 + 1}" data-id="{x["id"]}" data-e="{x["e"]}" data-o="{x["o"]}" data-s="{" ".join(x["s"])}" data-d="{x["d"]}"{" hidden" if k > 2 else ""}><h3><span class="lg">{x["min"]}<small>min</small></span><a href="{B}/sesion/{x["id"]}/">{esc(x["t"])}</a></h3>'
+                  f'<p class="cp-si">{esc(x["r"])}<small>{esc(MET[x["o"]])}. Por ejemplo: {esc(minus(x["ej"]))}</small></p><div class="xbar" role="img" aria-label="{len(x["pasos"])} pasos, {con} de {x["min"]} minutos con la herramienta">{bar}</div>'
+                  f'<dl><div><dt>Etapa</dt><dd>{esc(et)}</dd></div><div><dt>Hace falta</dt><dd>{esc(ap)}</dd></div><div><dt>Con</dt><dd class="xa-c">{"".join(f"<span>{logo(BYID[h], 20)}{esc(corto(h))}</span>" for h in x["h"])}</dd></div><div><dt>Pasos</dt><dd>{len(x["pasos"])}, con {con} min de pantalla</dd></div></dl>'
+                  f'<span class="xgo">Ver la sesión {ICO["arrow"]}</span></article>')
+        ix += f'<a href="{B}/sesion/{x["id"]}/" data-id="{x["id"]}">{esc(x["t"])}</a>'
     body = f"""
 <main class="pg">
- <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime con quién y con qué cuentas. Te enseño sesiones completas, con sus minutos, lo que hay que preparar y un plan por si falla el wifi.</p></div>
- <form class="sf" id="sf" onsubmit="return false">
-  {chips("e", "Etapa", [("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")])}
-  {chips("d", "Dispositivos", APARATOS_S)}
-  {chips("o", "Qué buscas", METAS_S)}
-  {chips("s", "Materia", MATERIAS_S)}
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Monta tu sesión", "")])}<h1>Monta tu sesión</h1></div><p>Dime etapa, dispositivos y qué buscas. Te enseño las sesiones de tres en tres, lado a lado, para que elijas comparando.</p></div>
+ <form class="cp-f xa-f" id="sf" onsubmit="return false">
+  {filtro("e", "Etapa", "Todas", [("I", "Infantil"), ("P", "Primaria"), ("S", "Secundaria y Bachillerato")])}
+  {filtro("d", "Dispositivos", "Los que haya", APARATOS_S)}
+  {filtro("o", "Qué buscas", "Todo", METAS_S)}
+  {filtro("s", "Materia", "Todas", MATERIAS_S)}
  </form>
- <p class="count" id="sn" aria-live="polite">{len(SESIONES)} sesiones</p>
- <div class="sg" id="sg">{cards}</div>
- <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" id="sz">Quitar los filtros</button></p>
+ <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
+ <h2 class="sr">Sesiones</h2>
+ <section class="cp-l xa-l n3" id="sg">{cards}</section>
+ <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" class="btn line" id="sz">Quitar los filtros</button></p>
+ <div class="xley" id="sy"><span>Con la herramienta</span><span class="off">Sin pantalla</span></div>
+ <p class="cp-fr xa-ix" id="sx"><b>Todas las que encajan</b>{ix}</p>
 </main>
 <script>
 (function(){{
- var st={{e:"",d:"",o:"",s:""}},C=[].slice.call(document.querySelectorAll(".sc")),Bt=[].slice.call(document.querySelectorAll("#sf button")),ORD="pea";
+ var $=function(i){{return document.getElementById(i)}},st={{e:"",d:"",o:"",s:""}},pg=0,ORD="pea";
+ var C=[].slice.call(document.querySelectorAll(".xa")),X=[].slice.call(document.querySelectorAll("#sx a")),Se=[].slice.call(document.querySelectorAll("#sf select"));
  function cabe(c,f){{var x=c.dataset;return(!f.e||x.e.indexOf(f.e)>-1)&&(!f.o||x.o===f.o)&&(!f.d||ORD.indexOf(x.d)<=ORD.indexOf(f.d))&&(!f.s||(f.s==="*"?x.s.split(" ").indexOf("*")>-1:x.s.split(" ").some(function(m){{return m===f.s||m==="*"}})))}}
  function n(f){{return C.filter(function(c){{return cabe(c,f)}}).length}}
- function pinta(g){{var k=0;C.forEach(function(c){{var v=cabe(c,st);c.hidden=!v;if(v)k++}});
-  Bt.forEach(function(b){{var f=Object.assign({{}},st);f[b.dataset.k]=b.dataset.v;b.setAttribute("aria-pressed",String(st[b.dataset.k]===b.dataset.v));b.disabled=!n(f)}});
-  document.getElementById("sn").textContent=k===1?"1 sesión":k+" sesiones";document.getElementById("sv").hidden=k>0;
-  if(g){{var q=Object.keys(st).filter(function(x){{return st[x]}}).map(function(x){{return x+"="+encodeURIComponent(st[x])}}).join("&");try{{history.replaceState(null,"",q?"?"+q:location.pathname)}}catch(e){{}}}}}}
- Bt.forEach(function(b){{b.addEventListener("click",function(){{st[b.dataset.k]=b.dataset.v;pinta(true)}})}});
- document.getElementById("sz").addEventListener("click",function(){{for(var k in st)st[k]="";pinta(true)}});
- new URLSearchParams(location.search).forEach(function(v,k){{if(k in st&&Bt.some(function(b){{return b.dataset.k===k&&b.dataset.v===v}}))st[k]=v}});
+ function pinta(g){{
+  var L=C.filter(function(c){{return cabe(c,st)}}),k=L.length,P=Math.ceil(k/3)||1;pg=(pg+P)%P;var V=L.slice(pg*3,pg*3+3);
+  C.forEach(function(c){{c.hidden=V.indexOf(c)<0}});V.forEach(function(c,i){{c.className="xa c"+(i+1)}});
+  X.forEach(function(a){{a.hidden=!L.some(function(c){{return c.dataset.id===a.dataset.id}});a.classList.toggle("ya",V.some(function(c){{return c.dataset.id===a.dataset.id}}))}});
+  Se.forEach(function(s){{var q=s.dataset.k;s.value=st[q];[].forEach.call(s.options,function(o){{var f=Object.assign({{}},st);f[q]=o.value;o.disabled=!n(f)}})}});
+  $("sg").className="cp-l xa-l n"+V.length;$("sg").hidden=$("sy").hidden=$("sx").hidden=!k;$("sv").hidden=k>0;
+  $("sn").textContent=k===1?"1 sesión":k+" sesiones";$("sr").textContent=k>3?"De la "+(pg*3+1)+" a la "+(pg*3+V.length):"";$("sa").hidden=$("sd").hidden=k<4;
+  if(g){{var q=Object.keys(st).filter(function(x){{return st[x]}}).map(function(x){{return x+"="+encodeURIComponent(st[x])}}).join("&");try{{history.replaceState(null,"",q?"?"+q:location.pathname)}}catch(e){{}}}}
+ }}
+ Se.forEach(function(s){{s.addEventListener("change",function(){{st[s.dataset.k]=s.value;pg=0;pinta(true)}})}});
+ $("sa").addEventListener("click",function(){{pg--;pinta()}});$("sd").addEventListener("click",function(){{pg++;pinta()}});
+ $("sz").addEventListener("click",function(){{for(var k in st)st[k]="";pinta(true)}});
+ new URLSearchParams(location.search).forEach(function(v,k){{if(k in st&&Se.some(function(s){{return s.dataset.k===k&&[].some.call(s.options,function(o){{return o.value===v}})}}))st[k]=v}});
  pinta(false);
 }})();
 </script>"""

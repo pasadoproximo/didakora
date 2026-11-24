@@ -4,7 +4,7 @@
 #   e = etapas (I, P, S) · o = qué se busca · s = materias · d = lo mínimo que hace falta en el aula (p: ordenador del docente y proyector,
 #   e: un dispositivo por pareja o equipo, a: uno por alumno) · pasos = (minutos, agrupamiento, título, qué se hace, herramienta o "")
 METAS = [("exp", "Explorar un tema"), ("cre", "Crear algo"), ("equ", "Debatir y organizarse"), ("rep", "Practicar y repasar"), ("eva", "Comprobar qué saben")]
-MATERIAS = [("le", "Lengua"), ("ma", "Matemáticas"), ("cn", "Ciencias"), ("gh", "Geografía e Historia"), ("id", "Idiomas"), ("mu", "Música y Arte"), ("tp", "Tecnología"), ("ef", "Educación Física"), ("tu", "Tutoría y Valores"), ("*", "Cualquier materia")]
+MATERIAS = [("le", "Lengua"), ("ma", "Matemáticas"), ("cn", "Ciencias"), ("gh", "Geografía e Historia"), ("id", "Idiomas"), ("mu", "Música y Arte"), ("tp", "Tecnología"), ("tu", "Tutoría y Valores"), ("*", "Cualquier materia")]
 APARATOS = [("p", "Solo mi ordenador y el proyector"), ("e", "Uno por pareja o equipo"), ("a", "Uno por alumno")]
 T, G, E, I = "Toda la clase", "Por parejas", "En equipos", "Individual"
 
@@ -171,12 +171,6 @@ SESIONES = [
          (12, G, "Lo aplican", "Un ejercicio o un caso corto con lo que acabáis de ver.", ""),
          (6, I, "La duda que queda", "Escriben en un papel lo más confuso. Empieza por ahí la próxima clase.", "")],
   b="Tarjetas A, B, C y D o una pizarra pequeña por pareja.", otra="Guarda las tres preguntas: sirven para abrir el repaso antes del examen."),
- dict(id="circuito-por-estaciones", t="Circuito por estaciones", e="PS", o="rep", s=["ef", "*"], d="p", min=50, r="Apuntan su marca en cuatro ejercicios y dicen cuál tienen que mejorar.", ej="Condición física o repaso por rincones",
-  prep="Monta cuatro estaciones con una tarjeta de instrucciones. Pon el temporizador de Classroomscreen con el sonido alto.",
-  pasos=[(8, T, "Calentamos y explicamos", "Recorred las estaciones. Un alumno muestra cada una.", ""),
-         (32, E, "Cuatro estaciones", "Seis minutos por estación y dos para cambiar y apuntar su marca en la tarjeta. El temporizador marca el ritmo.", "classroomscreen"),
-         (10, T, "Vuelta a la calma", "Estiran. Cada uno mira sus marcas y dice cuál quiere mejorar.", "")],
-  b="Cronómetro y silbato.", otra="En el aula, cuatro rincones de repaso con el mismo reparto."),
  dict(id="capas-de-musica", t="Capas de música", e="PS", o="cre", s=["mu"], d="e", min=50, r="Reconocen ritmo, efectos, melodía y voz y toman decisiones sobre una pieza.", ej="Textura musical",
   prep="Prueba Incredibox con auriculares o con turnos de sonido.",
   pasos=[(8, T, "Con el cuerpo", "Un grupo marca el pulso, otro un ritmo y otro una frase. Entran y salen a tu señal.", ""),
@@ -191,4 +185,18 @@ SESIONES = [
          (16, E, "Lo que necesitamos", "Cada equipo propone dos normas en positivo a partir de lo que ha salido.", ""),
          (12, T, "Tres acuerdos", "Votad a mano alzada y quedaos con tres. Se cuelgan y se revisan en un mes.", "")],
   b="Papeles anónimos en una caja.", otra="Repítela al empezar cada trimestre."),
+ dict(id="contar-con-las-manos-y-en-pantalla", t="Contar con las manos y en pantalla", e="I", o="rep", s=["ma"], d="p", min=35, r="Cuentan objetos y relacionan cada cantidad con su número.", ej="Los números del 1 al 5",
+  prep="Instala GCompris en tu ordenador y elige una actividad de contar. Prepara piezas pequeñas y tarjetas con los números.",
+  pasos=[(8, T, "Con cosas de verdad", "En la asamblea, cuentan piezas en voz alta tocándolas una a una. Repetid con palmadas.", ""),
+         (12, T, "En la pantalla", "Por turnos, sale uno de cada equipo. Antes de responder, todos enseñan la cantidad con los dedos.", "gcompris"),
+         (10, E, "Cada número, sus piezas", "Cada equipo reparte piezas junto a sus tarjetas. Cambian de sitio y cuentan las del equipo de al lado.", ""),
+         (5, T, "¿Cuántos somos?", "Di un número y se juntan en grupos de esa cantidad.", "")],
+  b="Todo con piezas y tarjetas, sin pantalla.", otra="Cambia la cantidad por formas o colores."),
+ dict(id="ticket-de-salida", t="Ticket de salida", e="PS", o="eva", s=["*"], d="p", min=20, r="Muestran qué se llevan de la clase y qué hay que repetir.", ej="El final de cualquier explicación",
+  prep="Prepara dos preguntas en Plickers, con números en lugar de nombres. Ten las tarjetas impresas e instala la aplicación en tu móvil: las tarjetas se leen con su cámara.",
+  pasos=[(4, I, "De memoria", "Con el libro cerrado, escriben en un papel dos cosas que han aprendido.", ""),
+         (6, I, "Dos preguntas", "Responden con la tarjeta. Mira el resultado sin decir todavía la respuesta.", "plickers"),
+         (6, G, "Convence a tu pareja", "Si hay muchos fallos, comentan su respuesta y vuelven a votar. Después, explica la correcta.", "plickers"),
+         (4, I, "Lo que me falta", "En el mismo papel escriben una duda. Recógelos: con ellos empieza la próxima clase.", "")],
+  b="Que respondan con los dedos, con los ojos cerrados.", otra="Repite las dos preguntas al empezar la clase siguiente."),
 ]
