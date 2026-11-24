@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "105"  # versión de didakora.css / didakora.js
+V = "106"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -245,6 +245,7 @@ CICO = {"mail": '<rect x="3" y="4" width="18" height="16" rx="3.5"/><path d="m4 
         "in": '<rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.5V16.5M8 7.6v.1M11.8 16.5v-6M11.8 13.2c0-1.7 1.1-2.8 2.5-2.8s2.3 1 2.3 2.8v3.3"/>',
         "ig": '<rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.3 6.7v.1"/>'}
 PIE_PRIV = (f' <a class="ft-pv" href="{B}/privacidad/">Privacidad</a>' + chr(10)) if PRIV_PUB else ""
+PIE_PRIV = f' <a class="ft-pv" href="{B}/semaforo/">Semáforo</a>' + chr(10) + PIE_PRIV.replace('class="ft-pv"', 'class="ft-pv s"')
 def foot(scripts=""):
     """bloque final de todas las páginas: invitación a proponer herramientas, centrada, con los contactos debajo"""
     cont = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto:") else ' rel="noopener" target="_blank"') +
@@ -613,6 +614,35 @@ def fuente_q(f):
     a, m, d = fu["fecha"].split("-")
     return (f'<p class="fq-fu">{esc(fu["t"])} (<a href="{esc(fu["url"])}" rel="noopener" target="_blank">{esc(fu.get("enlace", "anuncio oficial"))}</a>, '
             f'comprobado el {d}/{m}/{a}). Si cambia, lo anoto aquí.</p>')
+INTEF = json.load(open(os.path.join(H, "_build", "intef.json"), encoding="utf-8"))   # guía del INTEF v3.0 (junio de 2026), leída el 24-11-2026
+assert {t["id"] for t in TOOLS} <= set(INTEF["t"]), f'intef.json: faltan {[t["id"] for t in TOOLS if t["id"] not in INTEF["t"]]}'
+for t in TOOLS: assert bool(t.get("intef")) == any(u["c"] == "rojo" for u in INTEF["t"][t["id"]]["u"]), f'{t["id"]}: `intef` de tools.js y intef.json no coinciden'
+COL = {"verde": "Verde", "amarillo": "Amarillo", "rojo": "Rojo"}
+ROJO = {"ver": "No la recomienda para el alumnado, que sí puede ver lo del docente sin registrarse", "rojo": "No la recomienda para el alumnado"}
+def semaforo(t):
+    """fila «Guía del INTEF» de la Ficha rápida: un punto de color por uso y su condición"""
+    x = INTEF["t"][t["id"]]
+    li = "".join(f'<span class="sm"><i class="{u["c"]}" aria-hidden="true"></i><span><b>{COL[u["c"]]}.</b> {esc(ROJO[t["intef"]] if u["c"] == "rojo" else u["t"])}</span></span>' for u in x["u"])
+    return (li or '<span class="sm"><i aria-hidden="true"></i><span>No la analiza</span></span>') + (f'<small>{esc(x["n"])}</small>' if x["n"] else "") + f'<small><a href="{B}/semaforo/">Qué significa</a></small>'
+def sem_corto(t):
+    c = list(dict.fromkeys(u["c"] for u in INTEF["t"][t["id"]]["u"]))
+    return "No la analiza" if not c else "En rojo: no la recomienda para el alumnado" if "rojo" in c else "Verde o amarillo, según el uso" if len(c) > 1 else COL[c[0]]
+def pagina_semaforo():
+    G = INTEF["guia"]
+    def lista(f): return "".join(f'<a href="{B}/{t["id"]}/">{logo(t, 24)}{esc(split_name(t["n"])[0])}</a>' for t in sorted(TOOLS, key=lambda t: t["n"].lower()) if f([u["c"] for u in INTEF["t"][t["id"]]["u"]]))
+    B4 = [("verde", "Verde", "No trata datos personales, así que en principio se puede usar. En muchas, solo sin registro.", lambda c: c and set(c) == {"verde"}),
+          ("doble", "Verde o amarillo", "Cambia según el uso: normalmente verde sin registro y amarillo con cuenta.", lambda c: set(c) == {"verde", "amarillo"}),
+          ("amarillo", "Amarillo", "Trata datos personales cumpliendo la ley. En principio no se usa, salvo que se cumplan los requisitos que pide la guía.", lambda c: c and set(c) == {"amarillo"}),
+          ("rojo", "Rojo", "No cumple la normativa de protección de datos: no debería usarse con alumnado.", lambda c: "rojo" in c),
+          ("", "No la analiza", "La guía no la recoge. No significa que sea segura ni que no lo sea.", lambda c: not c)]
+    sec = "".join(f'<section class="sem-s"><div><h2><i class="{k}" aria-hidden="true"></i>{n}</h2><p>{d}</p></div><div class="sem-l">{lista(f)}</div></section>' for k, n, d, f in B4)
+    body = f"""
+<main class="pg">
+ <div class="pg-h"><div class="pg-t">{crumbs([("Inicio", f"{B}/"), ("Semáforo de privacidad", "")])}<h1>Semáforo de privacidad</h1></div><p>Lo que dice la guía de protección de datos del INTEF sobre las herramientas de Didákora.</p></div>
+ <div class="sem-p"><p>Los colores son de la <a href="{G["url"]}" target="_blank" rel="noopener">guía del INTEF</a> (versión {G["version"]}, junio de 2026), comprobada el 24 de noviembre de 2026. Es orientativa y no sustituye a tu centro: incluso en verde pide una evaluación previa y consultar a la Delegación de Protección de Datos.</p></div>
+ {sec}
+</main>"""
+    write("semaforo/index.html", head("Semáforo de privacidad: guía del INTEF y herramientas · Didákora", "Qué color da la guía de protección de datos del INTEF a cada herramienta de Didákora y en qué condiciones se puede usar.", "/semaforo/") + body + foot())
 def ficha(t):
     nm, alias = split_name(t["n"]); c = CAT[t["cs"]]; aula = t["s"] == "aula"; f = F[t["id"]]
     disp = t["disp"] if aula else f["disp"]; cta = t["cta"] if aula else f["cta"]
@@ -621,16 +651,13 @@ def ficha(t):
     if t.get("edad"): notas.append(f'Edad mínima: {esc(t["edadTxt"])} · <a href="{esc(t["edadUrl"])}" rel="noopener" target="_blank">condiciones</a>')
     elif aula and not OWN.search(t["cta"]) and not t.get("intef"): notas.append("Consulta la edad mínima en sus condiciones antes de crear cuentas.")
     if uses_ai(t): notas.append("Trabaja con IA: no introduzcas datos personales.")
-    # aviso de la guía de protección de datos del INTEF: punto rojo y explicación corta (intef: "rojo" o "ver")
-    if t.get("intef"): notas.insert(0, '<span class="intef"><i aria-hidden="true"></i><b>En rojo en la guía del INTEF</b>: no la recomienda para el alumnado'
-                                    + (', pero puede ver lo que crea el docente sin registrarse' if t["intef"] == "ver" else '') + '.</span>')
     if t.get("datos") and not re.match(r"(con|trabaja con|usa) la cuenta del centro", t["datos"], re.I): notas.append(esc(t["datos"]) + ".")
     et = " · ".join(ETN[e] for e in t["et"])
     rows = [("Categoría", f'<a class="tag" href="{B}/categorias/{c[0]}/">{icon(c[3])}{esc(c[1])}</a>'),
             ("Etapa", et + (f'<small>Recomendada: {esc(t["c"])}</small>' if aula and t["c"] != "Toda la etapa" else "")),
             ("Dispositivos", esc(disp)),
-            # con aviso del INTEF, la cuenta va en pequeño como las notas, y el aviso justo debajo
-            ("Cuenta", (f"<small>{esc(cta)}.</small>" if t.get("intef") else esc(cta)) + "".join(f"<small>{n}</small>" for n in notas)),
+            ("Cuenta", esc(cta) + "".join(f"<small>{n}</small>" for n in notas)),
+            ("Guía del INTEF", semaforo(t)),
             # última revisión de la ficha: `rev` («AAAA-MM-DD») en tools.js; sin él, la revisión general del catálogo
             ("Revisada", revisada(t.get("rev", REV)))]
     dl = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
@@ -687,7 +714,7 @@ def campos(t):
     return dict(id=t["id"], n=split_name(t["n"])[0], q=q, u=titular(t, q),
                 p="La usa el alumnado" if a else "La usa el docente" if t["s"] == "docente" else "Recurso para preparar clases",
                 e=" · ".join(ETN[e] for e in t["et"]), d=t["disp"] if a else f["disp"], c=t["cta"] if a else f["cta"],
-                x=1 if t.get("intef") else 0, l=1 if t["id"] in LOGOS else 0, k=CAT[t["cs"]][1])
+                x=1 if t.get("intef") else 0, g=sem_corto(t), l=1 if t["id"] in LOGOS else 0, k=CAT[t["cs"]][1])
 def g_tags(c): return f'<span><b>Cuenta:</b> {esc(c["c"][0].lower() + c["c"][1:])}</span><span><b>Dispositivos:</b> {esc(c["d"][0].lower() + c["d"][1:])}</span>' + ('<span class="r">En rojo en la guía del INTEF</span>' if c["x"] else "")
 NOM_CORTO = {"canva": "Canva", "classroom": "Classroom", "teams": "Teams", "gforms": "Google Forms", "msforms": "Microsoft Forms", "gtranslate": "Traductor de Google"}
 def corto(i): return NOM_CORTO.get(i) or split_name(BYID[i]["n"])[0]
@@ -724,11 +751,10 @@ def comparar():
   if(ids.length<2){{out.hidden=!ids.length;out.innerHTML=ids.length?'<p class="cp-co">Elige otra distinta para compararla con '+esc(by[ids[0]].n)+'.</p>':"";return}}
   var T=ids.map(function(i){{return by[i]}});
   var filas=[["Para quién","p"],["Etapas","e"],["Dispositivos","d"],["Cuenta","c"],["Categoría","k"],["Guía del INTEF","g"]];
-  T.forEach(function(t){{t.g=t.x?"En rojo: no la recomienda para el alumnado":"No está en rojo"}});
   var dif=[],com=[];
   filas.forEach(function(f){{
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
-   if(!ig)dif.push(f);else if(f[1]!=="g"||T[0].x)com.push(f[1]==="g"?'<b class="cp-x">Guía del INTEF, en rojo: no las recomienda para el alumnado</b>':esc(v[0]));
+   if(!ig)dif.push(f);else com.push(f[1]==="g"?(T[0].x?'<b class="cp-x">Guía del INTEF, en rojo: no las recomienda para el alumnado</b>':"Guía del INTEF: "+esc(v[0].toLowerCase())):esc(v[0]));
   }});
   var h='<h2 class="sr">Comparación</h2><div class="cp-l">'+T.map(function(t){{
    var si=[];T.forEach(function(a){{var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)}});
@@ -982,7 +1008,7 @@ def extras():
     rev = lambda t: t.get("rev", REV)
     ult_post = max((p["fecha"][:10] for p in POSTS), default="")
     ult = max([rev(t) for t in TOOLS] + [ult_post])
-    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", "")] + ([("/privacidad/", "")] if PRIV_PUB else [])
+    urls = ([(u, ult) for u in ["/", "/todas/", "/destacadas/", "/nuevas/", "/categorias/"] + (["/sesion/"] + [f'/sesion/{x["id"]}/' for x in SESIONES] if SES_PUB else []) + GUIAS_URL] + [("/sobre-mi/", ""), ("/semaforo/", "")] + ([("/privacidad/", "")] if PRIV_PUB else [])
             + [(f"/categorias/{c[0]}/", max(rev(t) for t in TOOLS if t["cs"] == c[0])) for c in CATS]
             + [(f'/{t["id"]}/', rev(t)) for t in TOOLS])
     if POSTS: urls += [("/actualidad/", ult_post)] + [(f"/actualidad/{post_slug(p)}/", p["fecha"][:10]) for p in POSTS]
@@ -1028,7 +1054,7 @@ if __name__ == "__main__":
         i = sys.argv.index("--vista"); vista(sys.argv[i + 1], sys.argv[i + 2]); sys.exit()
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.css"), os.path.join(H, "didakora.css"))
     shutil.copyfile(os.path.join(ROOT, "_build", "didakora.js"), os.path.join(H, "didakora.js"))
-    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); PRIV_PUB and privacidad(); mi_caja(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
+    datos(); portada(); todas(); destacadas(); nuevas(); categorias(); PRIV_PUB and privacidad(); mi_caja(); pagina_semaforo(); sobremi(); extras(); actualidad(); sesion(); comparar(); alternativas(); colecciones()
     import og   # imagen para compartir de cada ficha (og/<id>.png); sin Pillow se quedan las que hubiera
     n_og = og.genera([(t["id"], split_name(t["n"])[0], CAT[t["cs"]][1]) for t in TOOLS])
     print("· og: falta Pillow, no se han tocado las imágenes para compartir" if n_og is None else f"· og: {n_og} imágenes nuevas o cambiadas")

@@ -30,8 +30,10 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   «Usa la cuenta del centro» o «Trabaja con la cuenta del centro» (`build.py`, en `ficha()`). El aviso «Trabaja con IA: no
   introduzcas datos personales» solo sale en las del alumnado (Aula) cuya descripción habla de IA (`uses_ai`); las del
   docente no lo llevan salvo que lo diga su `datos`. Lo que está en rojo en la guía de protección de datos del INTEF va en
-  `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`: sale con un punto rojo
-  bajo la cuenta (que entonces va en pequeño, como las notas) y sustituye a «Consulta la edad mínima…».
+  `intef` (`"rojo"`, o `"ver"` si el alumnado puede ver lo del docente sin registrarse), no en `datos`, y excluye la herramienta de las sesiones.
+  La fila «Guía del INTEF» de la Ficha rápida, el comparador y `/semaforo/` salen de `_build/intef.json` (guía v3.0, leída el 24-11-2026: color y condición
+  de cada uso). Toda herramienta nueva necesita su entrada ahí, aunque sea `{"u": [], "n": ""}` (no la analiza): si falta o no casa con `intef`, el build se para.
+  El amarillo no es «con cuidado»: la guía parte de no usarla salvo requisitos.
   Si cambia esa lógica de `build.py`, actualiza estas líneas.
   La Ficha rápida acaba con «Revisada» (día, mes y año): `rev:"AAAA-MM-DD"` en la herramienta o, si no lo tiene, `REV` en `build.py`
   (la revisión general). El Administrador pone `rev` al dar de alta o cambiar una herramienta; comprobar el enlace no cuenta.

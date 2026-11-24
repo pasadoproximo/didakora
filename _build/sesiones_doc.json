@@ -3384,5 +3384,941 @@
    "rot": "El papel de salida",
    "svg": "<path d=\"M5.4 3h69.2a1.4 1.4 0 0 1 1.4 1.4V19a4 4 0 0 0 0 8v14.6a1.4 1.4 0 0 1-1.4 1.4H5.4a1.4 1.4 0 0 1-1.4-1.4V27a4 4 0 0 0 0-8V4.4a1.4 1.4 0 0 1 1.4-1.4z\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"11\" y=\"10.2\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">He aprendido</text><circle cx=\"13.6\" cy=\"15.6\" r=\"2.3\" fill=\"#9FB3FF\"/><text x=\"13.6\" y=\"16.82\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">1</text><path d=\"M18.4 16.5L68.4 16.5\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"13.6\" cy=\"22.2\" r=\"2.3\" fill=\"#9FB3FF\"/><text x=\"13.6\" y=\"23.42\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">2</text><path d=\"M18.4 23.1L68.4 23.1\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M11 27.4L69 27.4\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\" stroke-dasharray=\"1.2 1.4\"/><text x=\"11\" y=\"34\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Mi duda</text><path d=\"M11 39.4L68.4 39.4\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><rect x=\"86\" y=\"3\" width=\"15\" height=\"19\" rx=\"1.6\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"93.5\" y=\"16\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">A</text><rect x=\"103\" y=\"3\" width=\"15\" height=\"19\" rx=\"1.6\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"110.5\" y=\"16\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">B</text><rect x=\"86\" y=\"24\" width=\"15\" height=\"19\" rx=\"1.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"93.5\" y=\"37\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">C</text><rect x=\"103\" y=\"24\" width=\"15\" height=\"19\" rx=\"1.6\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"110.5\" y=\"37\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">D</text>"
   }
+ },
+ "copia-la-recta": {
+  "lead": "Cada pareja busca la fórmula de seis rectas dibujadas en papel y la comprueba en GeoGebra. Después inventa una recta para que otra pareja la descifre.",
+  "obj": [
+   "Pasar de la gráfica de una recta a su fórmula y al revés.",
+   "Explicar qué hace cada número de y = mx + n.",
+   "Comprobar una respuesta antes de darla por buena."
+  ],
+  "mat": [
+   "Un dispositivo por pareja con GeoGebra abierto",
+   "La hoja con las seis rectas, una por pareja",
+   "Papel cuadriculado y regla",
+   "Media hoja por pareja para el reto",
+   "Un papel pequeño por alumno para el final"
+  ],
+  "prep": [
+   "Dibuja seis rectas en una hoja cuadriculada con ejes. Marca en cada una dos puntos de coordenadas enteras.",
+   "Ordénalas de fácil a difícil: primero las que pasan por el origen y después las que cortan el eje más arriba o más abajo.",
+   "Abre la calculadora gráfica de GeoGebra en cada dispositivo. No pide cuenta y sin cuenta no guarda el trabajo.",
+   "Prueba tú una: escribe y = 2x + 1 y comprueba que la recta aparece al momento."
+  ],
+  "pasos": [
+   [
+    [
+     "Escribe y = 2x + 1 en la pizarra y pide una tabla con cuatro valores de x.",
+     "Cada pareja dibuja los puntos en papel cuadriculado y los une con la regla.",
+     "Pregunta por dónde corta la recta al eje vertical y cuánto sube cada vez que avanza una unidad."
+    ],
+    "¿Cuánto sube la recta cada vez que avanza uno?"
+   ],
+   [
+    [
+     "Reparte la hoja de las seis rectas y explica la norma: se escribe una fórmula, se mira y se apunta.",
+     "Cada pareja escribe su fórmula en GeoGebra y mira si la recta pasa por los dos puntos marcados.",
+     "Si no pasa, cambian un solo número cada vez y apuntan el intento en la hoja.",
+     "Pasa por las mesas y pregunta qué número han cambiado y qué le ha pasado a la recta."
+    ],
+    "Cambiad un solo número y mirad qué pasa."
+   ],
+   [
+    [
+     "Pide que bajen las pantallas. Solo vale la hoja de intentos.",
+     "Cada pareja escribe dos frases: qué hace el número que multiplica a la x y qué hace el que va solo.",
+     "Lee dos en voz alta y deja en la pizarra la versión que acepte la clase."
+    ],
+    "¿Qué número inclina la recta y cuál la sube?"
+   ],
+   [
+    [
+     "Cada pareja dibuja en media hoja una recta nueva que pase por dos puntos de coordenadas enteras.",
+     "Antes de pasarla, comprueba en GeoGebra que conoce su fórmula.",
+     "Se intercambian las hojas. La pareja que recibe escribe la fórmula en papel sin tocar la pantalla.",
+     "Solo entonces la comprueban. Si falla, las dos parejas buscan juntas el error."
+    ],
+    "Primero en papel. La pantalla, solo para comprobar."
+   ],
+   [
+    [
+     "Dibuja tres rectas en la pizarra con sus dos puntos marcados.",
+     "Cada alumno escribe las tres fórmulas en un papel, sin dispositivo y sin hablar.",
+     "Recoge los papeles: te dicen quién necesita otra vuelta con la pendiente."
+    ],
+    "Ahora tú, sin pantalla."
+   ]
+  ],
+  "bien": "La sesión ha salido bien si escriben la fórmula de una recta sin probarla antes.",
+  "obs": [
+   "Escribe la fórmula de una recta a partir de dos puntos.",
+   "Cambia un solo número cada vez y apunta el intento.",
+   "Dice qué hace la pendiente y qué hace el número que va solo.",
+   "Comprueba su respuesta antes de darla por buena."
+  ],
+  "div": [
+   "A quien se atasque, dale primero las rectas que pasan por el origen.",
+   "Quien acabe pronto prueba con pendientes negativas o con fracciones.",
+   "Si escribir la regla cuesta, que la digan y la escribes tú en la pizarra."
+  ],
+  "wifi": "Comprueban cada fórmula con una tabla de valores: calculan tres puntos y miran si caen en la recta de la hoja. Va más lento, así que quédate con cuatro rectas en lugar de seis.",
+  "otra": "Con parábolas en 4.º ESO: qué hace cada número de y = ax² + c. El orden no cambia: copiar la gráfica, escribir la regla, retar a otra pareja y responder sin pantalla.",
+  "rub": {
+   "curso": "2.º y 3.º de ESO, Matemáticas",
+   "nota": "Valora la hoja de intentos de cada pareja y el papel que entrega cada alumno al final.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Relaciona",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "7.1"
+     ],
+     [
+      "Prueba fórmulas al azar hasta que la recta coincide.",
+      "Acierta la fórmula tras varios intentos con un cambio cada vez.",
+      "Escribe la fórmula a partir de los dos puntos y la comprueba."
+     ]
+    ],
+    [
+     "Generaliza",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "3.1"
+     ],
+     [
+      "Describe un caso: «con el 3 sube más».",
+      "Dice qué hace uno de los dos números de la fórmula.",
+      "Dice qué hace cada número y lo comprueba con una recta nueva."
+     ]
+    ],
+    [
+     "Explica",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "8.1"
+     ],
+     [
+      "Señala la recta sin nombrar sus partes.",
+      "Explica el cambio con sus palabras: «más inclinada», «más arriba».",
+      "Explica el error de otra pareja con «pendiente» y «corte con el eje»."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Qué hace cada número",
+   "svg": "<rect x=\"6\" y=\"3\" width=\"40\" height=\"40\" rx=\"0\" fill=\"#fff\"/><path d=\"M11 3L11 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 8L46 8\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M16 3L16 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 13L46 13\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M21 3L21 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 18L46 18\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M26 3L26 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 23L46 23\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M31 3L31 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 28L46 28\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M36 3L36 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 33L46 33\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M41 3L41 43\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 38L46 38\" stroke=\"#DDE4F6\" stroke-width=\"0.35\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M16 3L16 43\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M6 33L46 33\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M8.5 43L28.5 3\" stroke=\"#061033\" stroke-width=\"1\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M16 28H21V18\" fill=\"none\" stroke=\"#FF8A6B\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-dasharray=\"1.4 1.2\"/><circle cx=\"16\" cy=\"28\" r=\"1.7\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.5\"/><circle cx=\"21\" cy=\"18\" r=\"1.7\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"18.5\" y=\"31.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.4\" fill=\"#061033\">1</text><text x=\"23.4\" y=\"24.2\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.4\" fill=\"#061033\">2</text><rect x=\"6\" y=\"3\" width=\"40\" height=\"40\" rx=\"0\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"60\" y=\"15.4\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">y =</text><rect x=\"76.5\" y=\"6.2\" width=\"9\" height=\"12\" rx=\"1.4\" fill=\"#FFE1D8\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"81\" y=\"15.4\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">2</text><text x=\"87.5\" y=\"15.4\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">x +</text><rect x=\"103.5\" y=\"6.2\" width=\"9\" height=\"12\" rx=\"1.4\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"108\" y=\"15.4\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#061033\">1</text><rect x=\"60\" y=\"24.2\" width=\"6\" height=\"6\" rx=\"1\" fill=\"#FFE1D8\" stroke=\"#061033\" stroke-width=\"0.45\"/><text x=\"63\" y=\"28.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">2</text><text x=\"69\" y=\"28.6\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4.1\" fill=\"#061033\">sube 2 cuando avanza 1</text><rect x=\"60\" y=\"33.8\" width=\"6\" height=\"6\" rx=\"1\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><text x=\"63\" y=\"38.2\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">1</text><text x=\"69\" y=\"38.2\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4.1\" fill=\"#061033\">corta el eje en el 1</text>"
+  }
+ },
+ "reflejos-con-datos": {
+  "lead": "La clase mide sus reflejos atrapando una regla y lleva los datos a GeoGebra. Después comprueba qué le hace un dato extremo a la media y a la mediana.",
+  "obj": [
+   "Recoger datos de un experimento y organizarlos.",
+   "Obtener un gráfico, la media y la mediana con GeoGebra.",
+   "Elegir la medida que mejor resume unos datos y decir por qué."
+  ],
+  "mat": [
+   "Un dispositivo por alumno con GeoGebra Clásico",
+   "Una regla de 30 cm por pareja",
+   "La pizarra para la lista de datos",
+   "Cuaderno para copiar los resultados"
+  ],
+  "prep": [
+   "Prueba en GeoGebra Clásico la hoja de cálculo y el análisis de una variable con diez datos inventados.",
+   "Sin cuenta, GeoGebra no guarda el trabajo. Avisa de que copien el gráfico y los resultados en el cuaderno.",
+   "Ensaya el experimento: la regla cuelga con el cero entre los dedos del otro, que no la toca.",
+   "Deja sitio en la pizarra para una lista de datos sin nombres."
+  ],
+  "pasos": [
+   [
+    [
+     "Enseña el experimento con un voluntario: sueltas la regla sin avisar y él la atrapa con dos dedos.",
+     "El dato es el centímetro por donde la ha cogido. Cuanto más bajo, más rápido.",
+     "Cada pareja hace tres intentos por persona y apunta los seis números.",
+     "Cada uno rodea su mejor marca."
+    ],
+    "La regla cae cuando quiera tu pareja, sin avisar."
+   ],
+   [
+    [
+     "Pide las mejores marcas en orden de mesa y escríbelas en la pizarra, sin nombres.",
+     "Pregunta antes de calcular nada: ¿cuál diríais que es el resultado normal de esta clase?",
+     "Apunta dos o tres respuestas al lado de la lista para volver a ellas."
+    ],
+    "¿Cuál es el resultado normal de esta clase?"
+   ],
+   [
+    [
+     "Cada alumno copia la lista en una columna de la hoja de cálculo de GeoGebra.",
+     "Con el análisis de una variable obtienen el gráfico, la media y la mediana.",
+     "Copian en el cuaderno un boceto del gráfico y los dos valores.",
+     "Comparad con lo que dijo la clase: ¿quién se acercó más?"
+    ],
+    "¿Se parece la media a lo que habíais dicho?"
+   ],
+   [
+    [
+     "Plantea el caso: llega alguien despistado y coge la regla en el 30.",
+     "Antes de tocar nada, cada uno escribe qué cambiará más: la media o la mediana.",
+     "Añaden el 30 a la lista y apuntan los valores nuevos junto a los de antes.",
+     "Pregunta a quien falló la predicción qué ha visto que no esperaba."
+    ],
+    "Antes de añadirlo: ¿qué cambiará más?"
+   ],
+   [
+    [
+     "Cada pareja escribe un titular de periódico sobre los reflejos de la clase con un solo número.",
+     "Debajo, una frase que explique por qué usan la media o la mediana.",
+     "Lee tres titulares y pide a la clase que elija el que menos engaña."
+    ],
+    "Un titular, un número y un porqué."
+   ]
+  ],
+  "bien": "La sesión ha salido bien si eligen media o mediana y lo justifican con el dato extremo.",
+  "obs": [
+   "Apunta sus datos con orden y sin inventar ninguno.",
+   "Obtiene el gráfico, la media y la mediana de la lista.",
+   "Predice el efecto del dato extremo antes de añadirlo.",
+   "Justifica qué medida resume mejor a la clase."
+  ],
+  "div": [
+   "Quien se pierda en GeoGebra puede seguir los pasos de un compañero en su pantalla.",
+   "A quien acabe pronto, pídele que quite el 30 y añada dos datos muy bajos.",
+   "Si atrapar la regla es difícil para alguien, que sea quien la suelta y anota."
+  ],
+  "wifi": "Hacen el recuento en una tabla, dibujan el diagrama de barras en papel cuadriculado y calculan la media y la mediana con calculadora. El dato extremo se añade igual y se vuelve a calcular.",
+  "otra": "Vale con cualquier dato que no sea personal: letras de una palabra, botes de un balón o tiradas de un dado. En 3.º ESO, añade el rango y compara dos grupos.",
+  "rub": {
+   "curso": "De 1.º a 3.º de ESO, Matemáticas",
+   "nota": "Valora el cuaderno de cada alumno y el titular que escribe cada pareja.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Representa",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "7.1"
+     ],
+     [
+      "Copia los datos pero no llega al gráfico.",
+      "Obtiene el gráfico y los valores siguiendo a un compañero.",
+      "Obtiene el gráfico, la media y la mediana y los copia con orden."
+     ]
+    ],
+    [
+     "Conjetura",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "3.1"
+     ],
+     [
+      "Añade el dato sin escribir antes qué cambiará.",
+      "Escribe qué cambiará pero no lo compara con el resultado.",
+      "Predice, compara los valores y explica la diferencia."
+     ]
+    ],
+    [
+     "Concluye",
+     [
+      "217",
+      "Matemáticas",
+      "Cursos de primero a tercero",
+      "8.1"
+     ],
+     [
+      "Escribe un titular sin ningún número.",
+      "Usa un número pero no dice por qué lo elige.",
+      "Elige media o mediana y lo justifica con el dato extremo."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Media y mediana",
+   "svg": "<text x=\"4\" y=\"7.8\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.1\" fill=\"#061033\">Antes</text><path d=\"M28 11L118 11\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M30 11L30 12.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M51 11L51 12.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M72 11L72 12.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M93 11L93 12.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M114 11L114 12.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"38.4\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"46.8\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"46.8\" cy=\"5.3\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"51\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"55.2\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"55.2\" cy=\"5.3\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"59.4\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"63.6\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"67.8\" cy=\"8.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><text x=\"28.5\" y=\"18.2\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Media 15,7</text><text x=\"60\" y=\"18.2\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Mediana 16</text><text x=\"4\" y=\"29.8\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.1\" fill=\"#061033\">Con el 30</text><path d=\"M28 33L118 33\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M30 33L30 34.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M51 33L51 34.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M72 33L72 34.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M93 33L93 34.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M114 33L114 34.2\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"38.4\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"46.8\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"46.8\" cy=\"27.3\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"51\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"55.2\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"55.2\" cy=\"27.3\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"59.4\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"63.6\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"67.8\" cy=\"30.8\" r=\"1.5\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.45\"/><circle cx=\"114\" cy=\"30.8\" r=\"1.5\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.45\"/><text x=\"114\" y=\"27.4\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">30</text><rect x=\"27\" y=\"36.1\" width=\"23.5\" height=\"5.6\" rx=\"1\" fill=\"#FFE1D8\"/><text x=\"28.5\" y=\"40.2\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Media 17,1</text><text x=\"60\" y=\"40.2\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Mediana 16</text>"
+  }
+ },
+ "revisar-de-oido": {
+  "lead": "Cada alumno escribe un borrador y lo revisa escuchándolo con el Lector inmersivo. Su pareja lo oye también y al final cada uno explica tres cambios.",
+  "obj": [
+   "Revisar un texto propio antes de darlo por acabado.",
+   "Detectar de oído frases largas, repeticiones y pausas que faltan.",
+   "Explicar por qué se cambia cada cosa."
+  ],
+  "mat": [
+   "Un dispositivo por alumno con Word o con Edge",
+   "Auriculares para cada alumno",
+   "La consigna del texto, escrita en la pizarra",
+   "Media hoja por alumno para las notas y los cambios"
+  ],
+  "prep": [
+   "Comprueba dónde se abre el Lector inmersivo en el Word de tu centro y que la voz lee en español.",
+   "Sin Word, vale un texto abierto en Edge: se selecciona, botón derecho y «Abrir en el Lector inmersivo».",
+   "Prepara un párrafo de cinco líneas con tres fallos: una idea que se repite, una frase sin puntos y dos faltas.",
+   "Escribe la consigna: tema, a quién se dirige y unas 120 palabras. Sin datos personales en el texto."
+  ],
+  "pasos": [
+   [
+    [
+     "Escribe tu párrafo con fallos en la pizarra y léelo en voz alta tal como está, sin pausas donde no hay puntos.",
+     "Pide que señalen qué no funciona y apúntalo en tres columnas: idea, frase y ortografía.",
+     "Di que hoy revisarán en ese orden y que el oído ayuda sobre todo con las frases."
+    ],
+    "¿Qué habéis notado al oírlo que no se veía?"
+   ],
+   [
+    [
+     "Da quince minutos para escribir el borrador de un tirón. Hoy no se corrige mientras se escribe.",
+     "Al acabar, lo abren en el Lector inmersivo y lo escuchan entero con auriculares.",
+     "En la segunda escucha paran y marcan en su hoja dónde la voz tropieza, se ahoga o repite una palabra.",
+     "No se arregla nada todavía: solo se marca."
+    ],
+    "Escucha tu texto como si fuera de otra persona."
+   ],
+   [
+    [
+     "Las parejas cambian de sitio. Cada uno oye el texto del otro con el Lector inmersivo, sin leer la pantalla.",
+     "Escribe en la hoja del autor la idea del texto en una frase y un momento en que se ha perdido.",
+     "Vuelven a su sitio y leen lo que les han dejado, sin discutirlo."
+    ],
+    "Di con una frase qué has entendido."
+   ],
+   [
+    [
+     "Cada uno arregla primero lo que marcó su pareja y después lo que marcó él.",
+     "Recuerda el orden: primero la idea, después las frases largas y las repeticiones. La ortografía, al final.",
+     "Antes de dar el texto por bueno, lo escuchan una vez más."
+    ],
+    "Si la voz se ahoga, falta un punto."
+   ],
+   [
+    [
+     "Cada alumno da la vuelta a su media hoja.",
+     "Escribe tres cambios que ha hecho con este esquema: qué había, qué he puesto y por qué.",
+     "Recoge las hojas. Con ellas sabrás qué fallo se repite más en el grupo."
+    ],
+    "Tres cambios y el porqué de cada uno."
+   ]
+  ],
+  "bien": "La sesión ha salido bien si el texto final es distinto del borrador y saben decir por qué.",
+  "obs": [
+   "Marca al menos tres lugares del borrador al escucharlo.",
+   "Resume en una frase el texto de su pareja.",
+   "Cambia frases y puntuación, no solo faltas sueltas.",
+   "Explica cada cambio con una razón."
+  ],
+  "div": [
+   "Baja la velocidad de la voz a quien le cueste seguir la lectura.",
+   "Quien escriba despacio puede revisar un texto más corto, de 80 palabras.",
+   "A quien acabe pronto, pídele que quite diez palabras sin perder ninguna idea."
+  ],
+  "wifi": "Escriben en papel y cada uno lee su borrador en voz baja a su pareja, que marca con un lápiz dónde tropieza la lectura. El resto no cambia: reescribir y explicar tres cambios.",
+  "otra": "En Bachillerato, añade una pasada con LanguageTool, sin registro y desde 16 años: el plan gratuito corrige hasta 2.000 caracteres por texto.",
+  "rub": {
+   "curso": "3.º y 4.º de ESO, Lengua Castellana y Literatura",
+   "nota": "Compara el borrador con el texto final y lee la hoja de los tres cambios.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Revisa",
+     [
+      "217",
+      "Lengua Castellana y Literatura",
+      "Cursos tercero y cuarto",
+      "5.1"
+     ],
+     [
+      "Entrega el borrador casi sin cambios.",
+      "Corrige lo que le marca su pareja y poco más.",
+      "Cambia frases y orden a partir de lo que oye y de su pareja."
+     ]
+    ],
+    [
+     "Mejora el texto",
+     [
+      "217",
+      "Lengua Castellana y Literatura",
+      "Cursos tercero y cuarto",
+      "5.2"
+     ],
+     [
+      "Deja frases sin puntos y palabras repetidas.",
+      "Arregla la puntuación pero mantiene repeticiones o faltas.",
+      "Parte las frases largas, evita repeticiones y corrige las faltas."
+     ]
+    ],
+    [
+     "Explica",
+     [
+      "217",
+      "Lengua Castellana y Literatura",
+      "Cursos tercero y cuarto",
+      "9.1"
+     ],
+     [
+      "Dice «sonaba mal» sin concretar más.",
+      "Describe el cambio pero no da la razón.",
+      "Da la razón con términos de lengua: sujeto, conector, coma."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Se nota al oírlo",
+   "svg": "<rect x=\"3\" y=\"3\" width=\"116\" height=\"18.4\" rx=\"1.6\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><rect x=\"3\" y=\"24.6\" width=\"116\" height=\"18.4\" rx=\"1.6\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"7\" y=\"10.2\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Borrador</text><path d=\"M7.4 14.2h1.8l2.4-2v6.8l-2.4-2h-1.8z\" fill=\"#061033\"/><path d=\"M13 13.8a2.6 2.6 0 0 1 0 3.6\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"31\" y=\"10.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4.3\" fill=\"#061033\">Llegamos tarde llovía mucho nadie abrió</text><path d=\"M31 16.2q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0\" fill=\"none\" stroke=\"#FF8A6B\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"7\" y=\"31.8\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Después</text><path d=\"M7.4 35.8h1.8l2.4-2v6.8l-2.4-2h-1.8z\" fill=\"#061033\"/><path d=\"M13 35.4a2.6 2.6 0 0 1 0 3.6\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"31\" y=\"32\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4.3\" fill=\"#061033\">Llegamos tarde. Llovía mucho y nadie abrió.</text><path d=\"M31 37.8q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0\" fill=\"none\" stroke=\"#9FB3FF\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M64 37.8q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0q1.5 -2.2 3 0q1.5 2.2 3 0\" fill=\"none\" stroke=\"#9FB3FF\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"61\" cy=\"37.8\" r=\"1.3\" fill=\"#FF8A6B\"/>"
+  }
+ },
+ "del-croquis-a-la-pieza": {
+  "lead": "Cada pareja diseña en Tinkercad una pieza que cumple cuatro condiciones de medida. Otra pareja la revisa como en un control de calidad antes de corregirla.",
+  "obj": [
+   "Dibujar un croquis con las medidas necesarias para fabricar.",
+   "Modelar en 3D una pieza a partir de su croquis.",
+   "Comprobar si un diseño cumple lo que se pedía."
+  ],
+  "mat": [
+   "Un dispositivo por pareja, mejor con ratón",
+   "El código de la clase de Tinkercad",
+   "Papel, lápiz y regla para el croquis",
+   "Las cuatro condiciones, escritas en la pizarra",
+   "Una hoja de control por pareja con las cuatro condiciones"
+  ],
+  "prep": [
+   "Crea una clase en Tinkercad y apunta el código. El alumnado entra con un apodo, sin correo.",
+   "Escribe las condiciones: 50 × 25 mm como máximo, 3 mm de grosor, agujero de 5 mm y un relieve de 1 mm.",
+   "Modela tú la pieza una vez para saber dónde se atascan: el agujero y el relieve.",
+   "Prepara la hoja de control: las cuatro condiciones y, al lado de cada una, «cumple» o «no cumple»."
+  ],
+  "pasos": [
+   [
+    [
+     "Enseña un llavero de verdad o dibújalo. Lee las cuatro condiciones de la pizarra.",
+     "Pregunta qué pasaría si el agujero queda pegado al borde o si el relieve no toca la base.",
+     "Aclara que hoy una pieza está bien si cumple las medidas, no si es bonita."
+    ],
+    "Una pieza está bien si cumple lo que se pidió."
+   ],
+   [
+    [
+     "Cada alumno dibuja su pieza en papel: una vista desde arriba y otra de lado.",
+     "Pide todas las medidas en milímetros, también la distancia del agujero al borde.",
+     "Pasa por las mesas y pregunta si otra persona podría fabricarla solo con ese dibujo."
+    ],
+    "¿Podría otra persona fabricarla con tu dibujo?"
+   ],
+   [
+    [
+     "Cada pareja elige uno de sus dos croquis y entra en la clase de Tinkercad con el código.",
+     "Uno maneja el ratón y el otro dicta las medidas del croquis. A los diez minutos cambian.",
+     "Orden recomendado: la base, el agujero y, al final, el relieve.",
+     "Si cambian una medida sobre la marcha, la corrigen también en el croquis."
+    ],
+    "Quien dicta manda: las medidas salen del croquis."
+   ],
+   [
+    [
+     "Las parejas cambian de sitio con la de al lado y se llevan la hoja de control.",
+     "Miden en pantalla la pieza ajena y marcan cada condición: cumple o no cumple.",
+     "Si no cumple, escriben la medida que han encontrado.",
+     "Dejan la hoja junto al teclado y no tocan el diseño."
+    ],
+    "Medid sin tocar nada: solo se apunta."
+   ],
+   [
+    [
+     "Cada pareja vuelve a su sitio y lee la hoja de control.",
+     "Corrigen en Tinkercad lo que no cumple y apuntan en el croquis la medida que han cambiado.",
+     "Pide a dos parejas que cuenten qué fallo tenían y cómo lo han arreglado."
+    ],
+    "¿Qué medida habéis cambiado y por qué?"
+   ]
+  ],
+  "bien": "La sesión ha salido bien si las piezas cumplen las cuatro condiciones tras la revisión.",
+  "obs": [
+   "Acota el croquis con todas las medidas que hacen falta.",
+   "Modela la pieza a partir del croquis y no a ojo.",
+   "Mide la pieza de otra pareja y anota lo que encuentra.",
+   "Corrige su diseño cuando la revisión señala un fallo."
+  ],
+  "div": [
+   "Quien se pierda en el espacio 3D puede empezar solo con la base y el agujero.",
+   "A quien acabe pronto, pídele bordes redondeados sin salirse de las medidas.",
+   "Si alguien no maneja bien el ratón, que sea quien dicta y comprueba las medidas."
+  ],
+  "wifi": "Hacen el croquis a escala 2:1 y construyen la pieza en cartón con regla y tijeras. El control de calidad es el mismo: otra pareja mide con la regla y marca qué condiciones cumple.",
+  "otra": "Si tenéis impresora 3D, imprimid dos piezas y medidlas con un calibre. Cambia el llavero por otra pieza con condiciones: un gancho, una ficha de juego o un marcapáginas.",
+  "rub": {
+   "curso": "De 1.º a 3.º de ESO (Tecnología y Digitalización)",
+   "nota": "Valora el croquis de cada alumno, la pieza de cada pareja y su hoja de control.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Acota",
+     [
+      "217",
+      "Tecnología y Digitalización",
+      "única",
+      "4.1"
+     ],
+     [
+      "Dibuja la pieza sin medidas o sin unidades.",
+      "Pone las medidas principales pero no sitúa el agujero.",
+      "Acota todo lo necesario para fabricar la pieza sin preguntar."
+     ]
+    ],
+    [
+     "Modela",
+     [
+      "217",
+      "Tecnología y Digitalización",
+      "única",
+      "2.1"
+     ],
+     [
+      "La pieza no se parece al croquis.",
+      "Sigue el croquis pero falla una o dos condiciones.",
+      "La pieza cumple las cuatro condiciones del encargo."
+     ]
+    ],
+    [
+     "Revisa y corrige",
+     [
+      "217",
+      "Tecnología y Digitalización",
+      "única",
+      "2.1"
+     ],
+     [
+      "Marca todo como correcto sin medir.",
+      "Mide la pieza ajena pero no corrige la propia.",
+      "Mide, anota la medida encontrada y corrige su diseño."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Del croquis a la pieza",
+   "svg": "<rect x=\"8\" y=\"6\" width=\"40\" height=\"20\" rx=\"2.4\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.7\"/><circle cx=\"14.5\" cy=\"16\" r=\"2.2\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.6\"/><text x=\"27\" y=\"17.6\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">ø 5</text><path d=\"M17.2 16H25.6\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M8 31L48 31\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M8 29.4L8 32.6\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M48 29.4L48 32.6\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><text x=\"28\" y=\"36.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">50</text><path d=\"M53 6L53 26\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M51.4 6L54.6 6\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M51.4 26L54.6 26\" stroke=\"#061033\" stroke-width=\"0.4\" stroke-linecap=\"round\" fill=\"none\"/><text x=\"55.6\" y=\"17.4\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">25</text><text x=\"28\" y=\"43\" text-anchor=\"middle\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">Croquis con medidas</text><path d=\"M64 16L69.92 16\" stroke=\"#FF8A6B\" stroke-width=\"0.9\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M72 16l-2.6 -1.61v3.22z\" fill=\"#FF8A6B\"/><path d=\"M78 21L108 9L118 15V18.2L88 30.2L78 24.2z\" fill=\"#061033\"/><path d=\"M78 21L108 9L118 15L88 27z\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"86.6\" cy=\"21.6\" rx=\"2.6\" ry=\"1.5\" transform=\"rotate(-21 86.6 21.6)\" fill=\"#061033\"/><path d=\"M96 19.4L104.5 16M97.6 21.6L109 17\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"98\" y=\"36.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">50 × 25 × 3 mm</text><text x=\"98\" y=\"43\" text-anchor=\"middle\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">La pieza en 3D</text>"
+  }
+ },
+ "cuestionario-y-mesas-de-expertos": {
+  "lead": "Cada alumno responde un cuestionario a su ritmo en Wayground. Las tres preguntas más falladas se convierten en mesas donde quienes las acertaron explican cómo se hacen.",
+  "obj": [
+   "Saber qué preguntas dominan y cuáles no.",
+   "Explicar a un compañero cómo se resuelve una pregunta.",
+   "Corregir un error propio y decir qué harán la próxima vez."
+  ],
+  "mat": [
+   "Un dispositivo por alumno",
+   "El cuestionario de Wayground y su código",
+   "Tu ordenador con el informe abierto",
+   "Tres carteles de mesa con el número de pregunta",
+   "Cuaderno y lápiz"
+  ],
+  "prep": [
+   "Prepara en Wayground un cuestionario de ocho preguntas, con tres de las que suelen fallar.",
+   "Compártelo con su código. Se unen sin cuenta: pide que entren con su número de lista y no con su nombre.",
+   "Localiza antes de clase el informe por pregunta para encontrarlo rápido.",
+   "Si alguien necesita apoyo para leer, enséñale la lectura en voz alta y dale auriculares."
+  ],
+  "pasos": [
+   [
+    [
+     "Reparte los dispositivos y escribe el código en la pizarra.",
+     "Recuerda que no es una carrera: cada uno avanza a su ritmo y no se pregunta al de al lado.",
+     "Quien termina apunta en su cuaderno las preguntas en las que ha dudado.",
+     "Mientras, abre el informe en tu ordenador."
+    ],
+    "No es una carrera: piensa cada pregunta."
+   ],
+   [
+    [
+     "Mira el informe por pregunta y elige las tres con más fallos.",
+     "Escríbelas en la pizarra y coloca un cartel en cada mesa.",
+     "Nombra por su número de lista a dos alumnos que acertaron cada una: son los expertos de esa mesa."
+    ],
+    "Estas tres nos han costado. Vamos a arreglarlas."
+   ],
+   [
+    [
+     "Los expertos se sientan en su mesa. El resto va primero a la mesa de una pregunta que falló.",
+     "Los expertos explican cómo se hace sin dar el resultado: lo resuelve en su cuaderno quien llega.",
+     "A los seis minutos, cambio de mesa. Quien no falló ninguna hace de experto de refuerzo.",
+     "Pasa por las mesas y escucha las explicaciones: te dicen quién lo entiende de verdad."
+    ],
+    "El experto explica el camino, no la respuesta."
+   ],
+   [
+    [
+     "Todos vuelven a su sitio con el cuaderno.",
+     "Cada uno escribe un fallo suyo, la respuesta correcta y una frase: «la próxima vez voy a…».",
+     "Quien no tuvo fallos escribe la explicación que mejor le ha funcionado en su mesa."
+    ],
+    "Escribe tu fallo y cómo lo vas a evitar."
+   ],
+   [
+    [
+     "Pregunta a mano alzada qué mesa ha tenido más visitas.",
+     "Pide a un experto de esa mesa que repita su explicación para todos.",
+     "Apunta esa pregunta: con ella empieza la próxima clase."
+    ],
+    "¿Qué mesa ha tenido más visitas?"
+   ]
+  ],
+  "bien": "La sesión ha salido bien si cada uno sale con un error corregido y explicado.",
+  "obs": [
+   "Responde sin ayuda y sin copiar.",
+   "Explica los pasos sin dar el resultado.",
+   "Resuelve en su cuaderno la pregunta que había fallado.",
+   "Escribe qué hará distinto la próxima vez."
+  ],
+  "div": [
+   "Activa la lectura en voz alta a quien le cueste leer las preguntas.",
+   "Quien acierte todo es experto de refuerzo o inventa una pregunta parecida.",
+   "A quien falle muchas, dile por cuál empezar y que vaya solo a dos mesas."
+  ],
+  "wifi": "Reparte el cuestionario en papel. Corregid en voz alta y, tras cada pregunta, levanta la mano quien la falló: las tres con más manos son las mesas. Los expertos salen de quienes no la levantaron.",
+  "otra": "Vale para cualquier materia. En Secundaria, pide a los expertos un ejemplo nuevo además de la explicación. Si guardas el informe, sabrás con qué abrir el repaso.",
+  "rub": {
+   "curso": "3.º y 4.º de Primaria, con Matemáticas como referencia",
+   "nota": "Mira el informe de cada alumno, escucha en las mesas y lee su error explicado.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Resuelve",
+     [
+      "157",
+      "Matemáticas",
+      "Segundo ciclo",
+      "2.2"
+     ],
+     [
+      "Responde al azar o deja preguntas sin hacer.",
+      "Resuelve las preguntas de un paso y falla las de dos.",
+      "Resuelve con una estrategia que sabe nombrar."
+     ]
+    ],
+    [
+     "Explica",
+     [
+      "157",
+      "Matemáticas",
+      "Segundo ciclo",
+      "6.2"
+     ],
+     [
+      "Dice el resultado sin contar cómo llega.",
+      "Cuenta los pasos si el compañero le pregunta.",
+      "Explica los pasos en orden y con las palabras del tema."
+     ]
+    ],
+    [
+     "Aprende del error",
+     [
+      "157",
+      "Matemáticas",
+      "Segundo ciclo",
+      "7.2"
+     ],
+     [
+      "Copia la respuesta correcta sin más.",
+      "Corrige el fallo pero no dice por qué se equivocó.",
+      "Dice por qué falló y qué hará la próxima vez."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Las tres más falladas",
+   "svg": "<rect x=\"48.4\" y=\"2.6\" width=\"8.8\" height=\"34.6\" rx=\"1.6\" fill=\"#FFE1D8\"/><rect x=\"82.6\" y=\"2.6\" width=\"8.8\" height=\"34.6\" rx=\"1.6\" fill=\"#FFE1D8\"/><rect x=\"105.4\" y=\"2.6\" width=\"8.8\" height=\"34.6\" rx=\"1.6\" fill=\"#FFE1D8\"/><text x=\"4\" y=\"7.6\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.5\" fill=\"#061033\">Pregunta</text><text x=\"30\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">1</text><text x=\"41.4\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">2</text><text x=\"52.8\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">3</text><text x=\"64.2\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">4</text><text x=\"75.6\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">5</text><text x=\"87\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">6</text><text x=\"98.4\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">7</text><text x=\"109.8\" y=\"7.7\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.8\" fill=\"#061033\">8</text><path d=\"M4 9.8L115 9.8\" stroke=\"#061033\" stroke-width=\"0.45\" stroke-linecap=\"round\" fill=\"none\"/><text x=\"4\" y=\"15.3\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">N.º 1</text><circle cx=\"30\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M28.9 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"41.4\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M40.3 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"52.8\" cy=\"14\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M51.9 13.1l1.8 1.8M53.7 13.1l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"64.2\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M63.1 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"75.6\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M74.5 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"87\" cy=\"14\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M86.1 13.1l1.8 1.8M87.9 13.1l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"98.4\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M97.3 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"109.8\" cy=\"14\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M108.7 14.1l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"4\" y=\"20.7\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">N.º 2</text><circle cx=\"30\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M28.9 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"41.4\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M40.3 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"52.8\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M51.7 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"64.2\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M63.1 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"75.6\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M74.5 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"87\" cy=\"19.4\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M86.1 18.5l1.8 1.8M87.9 18.5l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"98.4\" cy=\"19.4\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M97.3 19.5l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"109.8\" cy=\"19.4\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M108.9 18.5l1.8 1.8M110.7 18.5l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"4\" y=\"26.1\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">N.º 3</text><circle cx=\"30\" cy=\"24.8\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M29.1 23.9l1.8 1.8M30.9 23.9l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"41.4\" cy=\"24.8\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M40.3 24.9l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"52.8\" cy=\"24.8\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M51.9 23.9l1.8 1.8M53.7 23.9l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"64.2\" cy=\"24.8\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M63.1 24.9l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"75.6\" cy=\"24.8\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M74.5 24.9l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"87\" cy=\"24.8\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M85.9 24.9l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"98.4\" cy=\"24.8\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M97.3 24.9l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"109.8\" cy=\"24.8\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M108.9 23.9l1.8 1.8M110.7 23.9l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"4\" y=\"31.5\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">N.º 4</text><circle cx=\"30\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M28.9 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"41.4\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M40.3 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"52.8\" cy=\"30.2\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M51.9 29.3l1.8 1.8M53.7 29.3l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"64.2\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M63.1 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"75.6\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M74.5 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"87\" cy=\"30.2\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M86.1 29.3l1.8 1.8M87.9 29.3l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"98.4\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M97.3 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"109.8\" cy=\"30.2\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M108.7 30.3l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"4\" y=\"36.9\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"3.6\" fill=\"#061033\">N.º 5</text><circle cx=\"30\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M28.9 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"41.4\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M40.3 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"52.8\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M51.7 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"64.2\" cy=\"35.6\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M63.3 34.7l1.8 1.8M65.1 34.7l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"75.6\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M74.5 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"87\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M85.9 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"98.4\" cy=\"35.6\" r=\"1.9\" fill=\"#9FB3FF\"/><path d=\"M97.3 35.7l.8 .9 1.5-1.9\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"109.8\" cy=\"35.6\" r=\"1.9\" fill=\"#FF8A6B\"/><path d=\"M108.9 34.7l1.8 1.8M110.7 34.7l-1.8 1.8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"52.8\" y=\"42.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.7\" fill=\"#061033\">Mesa</text><text x=\"87\" y=\"42.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.7\" fill=\"#061033\">Mesa</text><text x=\"109.8\" y=\"42.6\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"3.7\" fill=\"#061033\">Mesa</text>"
+  }
+ },
+ "el-cole-desde-el-cielo": {
+  "lead": "La clase baja con Google Earth desde el globo hasta su colegio y descubre cómo se ven las cosas desde arriba. Después cada equipo construye el cole con bloques.",
+  "obj": [
+   "Distinguir cómo se ve un objeto de lado y desde arriba.",
+   "Reconocer el colegio y lo que tiene alrededor.",
+   "Usar «cerca», «lejos» y «al lado» al construir y al contar."
+  ],
+  "mat": [
+   "Ordenador y proyector",
+   "Google Earth, con el colegio ya localizado",
+   "Una caja y un vaso",
+   "Bloques de construcción para cada equipo",
+   "Una cartulina grande por equipo como suelo"
+  ],
+  "prep": [
+   "Busca el colegio en Google Earth y ensaya el vuelo desde el globo con tres paradas: el país, el pueblo y el cole.",
+   "No busques las casas del alumnado: quédate en el colegio y sus alrededores.",
+   "Elige dos o tres cosas fáciles de reconocer desde arriba: el patio, un parque o una calle ancha.",
+   "Reparte los bloques en cajas, una por equipo."
+  ],
+  "pasos": [
+   [
+    [
+     "En la asamblea, pon la caja y el vaso en el suelo, en el centro del corro.",
+     "Pide que los miren sentados y digan qué forma ven.",
+     "De uno en uno se ponen de pie junto a ellos y miran desde arriba: el vaso ahora es un círculo.",
+     "Dibuja en la pizarra las dos formas de cada objeto."
+    ],
+    "¿Qué forma tiene el vaso visto desde arriba?"
+   ],
+   [
+    [
+     "Proyecta el globo y di que vais a bajar como un pájaro hasta el cole.",
+     "Para en el país y en el pueblo. En cada parada pregunta qué ven y qué será cada color.",
+     "Al llegar al colegio, pide que salgan a señalar el patio, el tejado, la calle y los árboles.",
+     "Deja la imagen del cole fija en la pantalla."
+    ],
+    "Somos pájaros: ¿qué vemos desde aquí arriba?"
+   ],
+   [
+    [
+     "Reparte a cada equipo su cartulina y su caja de bloques.",
+     "Primero colocan el cole en el centro. Después añaden lo que tiene al lado mirando la pantalla.",
+     "Pasa por los equipos y pregunta qué es cada bloque y qué tiene cerca.",
+     "Si dudan, señala en la imagen proyectada el lugar que están construyendo."
+    ],
+    "Poned el cole y lo que tiene al lado."
+   ],
+   [
+    [
+     "Recorred las construcciones en fila, como una visita.",
+     "Cada equipo dice qué ha puesto cerca del cole y qué ha puesto lejos.",
+     "Para terminar, volved a la pantalla y subid despacio hasta ver el globo entero."
+    ],
+    "¿Qué está cerca del cole? ¿Qué está lejos?"
+   ]
+  ],
+  "bien": "La sesión ha salido bien si reconocen el patio desde arriba y colocan lo que tiene cerca.",
+  "obs": [
+   "Dice qué forma tiene un objeto visto desde arriba.",
+   "Señala el patio o el tejado en la imagen.",
+   "Coloca los bloques según lo que ve en la pantalla.",
+   "Usa «cerca», «lejos» o «al lado» al explicar."
+  ],
+  "div": [
+   "Quien no hable todavía puede señalar en la pantalla o en la construcción.",
+   "Con los de tres años, quédate en el patio y construid solo el cole.",
+   "A quien termine pronto, pídele el camino del cole al parque con bloques."
+  ],
+  "wifi": "Usa una foto aérea impresa del barrio o un plano sencillo dibujado por ti. Enséñala en la asamblea después de la caja y el vaso y déjala en la pizarra mientras construyen.",
+  "otra": "En Primaria, que dibujen el plano del patio visto desde arriba. También puedes volar al lugar de una salida antes de ir y buscarlo allí al llegar.",
+  "rub": {
+   "curso": "Segundo ciclo de Infantil (3 a 6 años)",
+   "nota": "Observa a cada niño mientras construye y cuando su equipo enseña el barrio.",
+   "niv": [
+    "Está empezando",
+    "Con ayuda",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Se orienta",
+     [
+      "95",
+      "Área 2. Descubrimiento y Exploración del Entorno",
+      "Segundo ciclo",
+      "1.3"
+     ],
+     [
+      "Coloca los bloques sin mirar la imagen.",
+      "Coloca el cole y algo más si le señalas dónde.",
+      "Coloca lo que hay al lado del cole como en la imagen."
+     ]
+    ],
+    [
+     "Describe",
+     [
+      "95",
+      "Área 3. Comunicación y Representación de la Realidad",
+      "Segundo ciclo",
+      "3.1"
+     ],
+     [
+      "Señala sin nombrar.",
+      "Nombra lo que ha construido.",
+      "Dice qué está cerca y qué está lejos del cole."
+     ]
+    ],
+    [
+     "Participa",
+     [
+      "95",
+      "Área 1. Crecimiento en Armonía",
+      "Segundo ciclo",
+      "4.1"
+     ],
+     [
+      "Mira cómo construyen los demás.",
+      "Coloca bloques cuando le animas.",
+      "Construye con su equipo y deja sitio a los demás."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "De lado y desde arriba",
+   "svg": "<path d=\"M6 33L54 33\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><rect x=\"13\" y=\"17\" width=\"26\" height=\"16\" rx=\"0\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.6\"/><path d=\"M10.5 17L26 6.5L41.5 17z\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"23\" y=\"24\" width=\"6\" height=\"9\" rx=\"0\" fill=\"#061033\"/><rect x=\"15.6\" y=\"20.4\" width=\"4.4\" height=\"4.4\" rx=\"0\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.45\"/><rect x=\"32\" y=\"20.4\" width=\"4.4\" height=\"4.4\" rx=\"0\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.45\"/><rect x=\"47.2\" y=\"25\" width=\"1.8\" height=\"8\" rx=\"0\" fill=\"#061033\"/><circle cx=\"48.1\" cy=\"21.6\" r=\"4.6\" fill=\"#061033\"/><text x=\"30\" y=\"41.4\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">De lado</text><path d=\"M59 19L64.92 19\" stroke=\"#FF8A6B\" stroke-width=\"0.9\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M67 19l-2.6 -1.61v3.22z\" fill=\"#FF8A6B\"/><rect x=\"71\" y=\"3.5\" width=\"47\" height=\"31\" rx=\"1.4\" fill=\"#fff\" stroke=\"#061033\" stroke-width=\"0.5\" stroke-dasharray=\"1.6 1.4\"/><rect x=\"76\" y=\"9\" width=\"26\" height=\"20\" rx=\"0\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.6\"/><path d=\"M76 19L102 19\" stroke=\"#061033\" stroke-width=\"0.6\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"110.6\" cy=\"19\" r=\"4.6\" fill=\"#061033\"/><text x=\"94.5\" y=\"41.4\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Desde arriba</text>"
+  }
+ },
+ "la-voz-de-cada-momento": {
+  "lead": "La clase practica tres voces y las ve subir y bajar en el medidor de ruido de Classroomscreen. Después acuerda qué voz toca en cada momento del día.",
+  "obj": [
+   "Distinguir tres volúmenes de voz y usarlos cuando se pide.",
+   "Decidir en grupo qué voz conviene a cada momento.",
+   "Bajar la voz al ver la señal acordada."
+  ],
+  "mat": [
+   "Ordenador con micrófono y proyector",
+   "Classroomscreen con el medidor de ruido",
+   "Cuatro tarjetas con momentos del día",
+   "Una cartulina con tres franjas, una por voz",
+   "Masilla o cinta para pegar las tarjetas"
+  ],
+  "prep": [
+   "Abre Classroomscreen, añade el medidor de ruido y da permiso al micrófono. No necesita cuenta para empezar.",
+   "Prueba el medidor con el aula vacía: habla bajo y fuerte para ver hasta dónde sube.",
+   "Dibuja cuatro tarjetas: el cuento, los rincones, la asamblea y el patio.",
+   "Divide la cartulina en tres franjas con un dibujo: un dedo en los labios, una hormiga y un león."
+  ],
+  "pasos": [
+   [
+    [
+     "En la asamblea, presenta las tres voces con el cuerpo: silencio con un dedo en los labios.",
+     "Voz de hormiga, agachados y hablando bajito al de al lado. Voz de león, de pie y fuerte.",
+     "Jugad a cambiar de voz a tu señal, cada vez más deprisa.",
+     "Terminad siempre en silencio."
+    ],
+    "¿Voz de hormiga o voz de león?"
+   ],
+   [
+    [
+     "Proyecta el medidor y deja que lo miren en silencio: casi no se mueve.",
+     "Probad la voz de hormiga y mirad hasta dónde llega. Después, la de león.",
+     "Pregunta con qué voz ha subido más y con cuál se puede escuchar un cuento.",
+     "Si alguien quiere, que hable solo y vea su voz en la pantalla."
+    ],
+    "Mirad: la voz se puede ver."
+   ],
+   [
+    [
+     "Enseña la tarjeta del cuento y pregunta a un equipo qué voz toca.",
+     "Toda la clase prueba esa voz unos segundos y miráis el medidor.",
+     "Repite con los rincones, la asamblea y el patio, con un equipo distinto cada vez.",
+     "Si un equipo propone otra voz, probad las dos y decidid entre todos."
+    ],
+    "¿Qué voz toca cuando contamos un cuento?"
+   ],
+   [
+    [
+     "Pega cada tarjeta en la franja de la voz que habéis acordado.",
+     "Acordad una señal para avisar cuando la voz suba: una mano en alto o una campanilla.",
+     "Ensayad la señal una vez y colgad el cartel a la altura de sus ojos."
+    ],
+    "Cuando veáis la señal, voz de hormiga."
+   ]
+  ],
+  "bien": "La sesión ha salido bien si cambian de voz a la señal y saben cuál toca en cada momento.",
+  "obs": [
+   "Cambia de voz cuando ve la señal.",
+   "Dice qué voz toca en un momento del día.",
+   "Mira el medidor y baja la voz cuando sube.",
+   "Respeta lo acordado en la actividad siguiente."
+  ],
+  "div": [
+   "A quien le molesten los ruidos fuertes, avísale antes de la voz de león.",
+   "Quien no hable todavía elige la voz señalando el dibujo de la franja.",
+   "Con los mayores, añade una cuarta voz: la de hablar para toda la clase."
+  ],
+  "wifi": "Haz tú de medidor con el brazo: sube cuando sube la voz y baja cuando baja. Después puede hacerlo un niño. Las tarjetas y el cartel se usan igual.",
+  "otra": "Deja el medidor a la vista en los rincones durante la primera semana. En Primaria, que el propio grupo fije el límite y revise el cartel al cabo de un mes.",
+  "rub": {
+   "curso": "Segundo ciclo de Infantil (3 a 6 años)",
+   "nota": "Observa a cada niño hoy y en los días siguientes. Es una guía de observación, sin calificación.",
+   "niv": [
+    "Está empezando",
+    "Con ayuda",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Regula la voz",
+     [
+      "95",
+      "Área 3. Comunicación y Representación de la Realidad",
+      "Segundo ciclo",
+      "1.2"
+     ],
+     [
+      "Usa la misma voz en todos los momentos.",
+      "Cambia de voz si se lo recuerdas.",
+      "Cambia de voz al ver la señal."
+     ]
+    ],
+    [
+     "Decide",
+     [
+      "95",
+      "Área 1. Crecimiento en Armonía",
+      "Segundo ciclo",
+      "4.3"
+     ],
+     [
+      "Repite lo que dicen los demás.",
+      "Propone una voz cuando le preguntas.",
+      "Propone una voz y dice por qué."
+     ]
+    ],
+    [
+     "Cumple el acuerdo",
+     [
+      "95",
+      "Área 1. Crecimiento en Armonía",
+      "Segundo ciclo",
+      "3.2"
+     ],
+     [
+      "Olvida el acuerdo al cambiar de actividad.",
+      "Lo cumple mientras el cartel está delante.",
+      "Lo cumple y se lo recuerda a un compañero."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Tres voces",
+   "svg": "<text x=\"4\" y=\"10.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Silencio</text><rect x=\"42\" y=\"6.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"6.4\" width=\"5.2\" height=\"5.2\" rx=\"2.6\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"10.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">El cuento</text><text x=\"4\" y=\"24.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Voz de hormiga</text><rect x=\"42\" y=\"20.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"20.4\" width=\"15\" height=\"5.2\" rx=\"2.6\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"24.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Los rincones</text><text x=\"4\" y=\"38.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Voz de león</text><rect x=\"42\" y=\"34.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"34.4\" width=\"41\" height=\"5.2\" rx=\"2.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"38.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">El patio</text>"
+  }
  }
 }

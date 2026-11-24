@@ -1,0 +1,1107 @@
+{
+"guia": {
+"titulo": "Orientaciones sobre el uso de herramientas digitales en el ámbito educativo desde la perspectiva de la protección de datos",
+"version": "3.0",
+"fecha": "Junio 2026",
+"url": "https://intef.es/wp-content/uploads/2026/07/Orientaciones_sobre_el_uso_de_herramientas_digital.pdf"
+},
+"t": {
+"kahoot": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Parte se usa de forma anónima con un código del docente",
+"p": 46
+}
+],
+"n": ""
+},
+"wayground": {
+"u": [],
+"n": ""
+},
+"wooclap": {
+"u": [
+{
+"c": "amarillo",
+"t": "Registro para crear. El alumnado participa de forma anónima con un código",
+"p": 24
+}
+],
+"n": ""
+},
+"mentimeter": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Parte se usa sin que el alumnado se registre ni dé datos",
+"p": 46
+}
+],
+"n": ""
+},
+"plickers": {
+"u": [
+{
+"c": "amarillo",
+"t": "Registro del docente. El alumnado usa las tarjetas sin registrarse",
+"p": 46
+}
+],
+"n": ""
+},
+"blooket": {
+"u": [],
+"n": ""
+},
+"wordwall": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 24
+}
+],
+"n": ""
+},
+"educaplay": {
+"u": [
+{
+"c": "amarillo",
+"t": "Con registro (quien crea la actividad)",
+"p": 20
+},
+{
+"c": "verde",
+"t": "Como invitado sin registro («Mis Invitados») y sin aportar datos personales",
+"p": 21
+}
+],
+"n": ""
+},
+"edpuzzle": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 199
+}
+],
+"n": ""
+},
+"nearpod": {
+"u": [],
+"n": ""
+},
+"decktoys": {
+"u": [],
+"n": ""
+},
+"gcompris": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 145
+}
+],
+"n": ""
+},
+"artsculture": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 26
+}
+],
+"n": ""
+},
+"visitas": {
+"u": [],
+"n": ""
+},
+"earth": {
+"u": [],
+"n": ""
+},
+"geacron": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 71
+}
+],
+"n": ""
+},
+"rah": {
+"u": [],
+"n": ""
+},
+"delmundo": {
+"u": [],
+"n": ""
+},
+"kgeography": {
+"u": [],
+"n": ""
+},
+"ancientearth": {
+"u": [],
+"n": ""
+},
+"canva": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 88
+}
+],
+"n": "La guía valora Canva en general, no la edición para Educación."
+},
+"genially": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 89
+}
+],
+"n": ""
+},
+"bookcreator": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 151
+}
+],
+"n": ""
+},
+"sway": {
+"u": [],
+"n": ""
+},
+"timetoast": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 138
+}
+],
+"n": ""
+},
+"storymap": {
+"u": [],
+"n": ""
+},
+"stopmotion": {
+"u": [],
+"n": ""
+},
+"chatterpix": {
+"u": [],
+"n": ""
+},
+"tuxpaint": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 87
+}
+],
+"n": ""
+},
+"capcut": {
+"u": [
+{
+"c": "verde",
+"t": "Versión sin registro",
+"p": 197
+},
+{
+"c": "amarillo",
+"t": "Versión con registro (asistida por IA)",
+"p": 197
+}
+],
+"n": ""
+},
+"clipchamp": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Solo si los vídeos se descargan directamente en el equipo",
+"p": 59
+},
+{
+"c": "amarillo",
+"t": "Texto a voz: registro. Solo si los vídeos se descargan en el equipo",
+"p": 68
+}
+],
+"n": ""
+},
+"vocaroo": {
+"u": [
+{
+"c": "amarillo",
+"t": "Sin registro, pero guarda la voz: hay que pedir a Vocaroo que borre las grabaciones",
+"p": 31
+}
+],
+"n": ""
+},
+"audacity": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 29
+}
+],
+"n": ""
+},
+"zencastr": {
+"u": [],
+"n": ""
+},
+"suno": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 100
+}
+],
+"n": ""
+},
+"padlet": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Parte se usa sin que el alumnado se registre ni dé datos",
+"p": 148
+}
+],
+"n": ""
+},
+"mindomo": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 141
+}
+],
+"n": ""
+},
+"stormboard": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 158
+}
+],
+"n": ""
+},
+"loop": {
+"u": [],
+"n": ""
+},
+"trello": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 155
+}
+],
+"n": ""
+},
+"kialo": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Los participantes pueden debatir de forma anónima",
+"p": 48
+}
+],
+"n": ""
+},
+"geogebra": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 144
+},
+{
+"c": "amarillo",
+"t": "Con registro",
+"p": 144
+}
+],
+"n": ""
+},
+"desmos": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 144
+}
+],
+"n": ""
+},
+"phet": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 36
+},
+{
+"c": "verde",
+"t": "Simulaciones de electricidad: sin registro y sin aportar datos personales",
+"p": 62
+}
+],
+"n": ""
+},
+"gizmos": {
+"u": [],
+"n": ""
+},
+"anatomy3d": {
+"u": [],
+"n": ""
+},
+"vertebrados": {
+"u": [],
+"n": ""
+},
+"bolsa": {
+"u": [],
+"n": ""
+},
+"tinkercad": {
+"u": [
+{
+"c": "amarillo",
+"t": "Tinkercad Circuits. Requiere registro",
+"p": 62
+},
+{
+"c": "amarillo",
+"t": "Bloques de código. Requiere registro",
+"p": 169
+},
+{
+"c": "amarillo",
+"t": "Diseño 3D. Requiere registro",
+"p": 177
+}
+],
+"n": ""
+},
+"wokwi": {
+"u": [],
+"n": ""
+},
+"scratch": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registrarse",
+"p": 166
+}
+],
+"n": ""
+},
+"scratchjr": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 166
+}
+],
+"n": "La guía valora su web, no la aplicación."
+},
+"snap": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 167
+}
+],
+"n": ""
+},
+"blockly": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 164
+}
+],
+"n": ""
+},
+"codeorg": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registrarse",
+"p": 164
+}
+],
+"n": ""
+},
+"appinventor": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la versión sin registro y sin aportar datos personales",
+"p": 167
+}
+],
+"n": "El acceso con cuenta de Google no está valorado."
+},
+"thunkable": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 129
+}
+],
+"n": ""
+},
+"cospaces": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 174
+}
+],
+"n": ""
+},
+"coppelia": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 167
+}
+],
+"n": ""
+},
+"musescore": {
+"u": [],
+"n": ""
+},
+"incredibox": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la demo en línea sin registro y sin aportar datos personales",
+"p": 149
+}
+],
+"n": ""
+},
+"musiclab": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registrarse y sin aportar datos personales",
+"p": 149
+}
+],
+"n": ""
+},
+"musictheory": {
+"u": [],
+"n": ""
+},
+"librecad": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 50
+}
+],
+"n": ""
+},
+"lekids": {
+"u": [],
+"n": ""
+},
+"leteens": {
+"u": [],
+"n": ""
+},
+"writeimprove": {
+"u": [],
+"n": ""
+},
+"tv5monde": {
+"u": [],
+"n": ""
+},
+"forvo": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 82
+}
+],
+"n": ""
+},
+"deepl": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 82
+}
+],
+"n": ""
+},
+"dicta": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro y sin aportar datos personales",
+"p": 136
+}
+],
+"n": ""
+},
+"gtranslate": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 82
+}
+],
+"n": ""
+},
+"apertium": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 81
+}
+],
+"n": ""
+},
+"schoolai": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 106
+}
+],
+"n": "La guía valora las herramientas para el docente."
+},
+"snorkl": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 195
+}
+],
+"n": ""
+},
+"immersive": {
+"u": [],
+"n": ""
+},
+"languagetool": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 83
+}
+],
+"n": ""
+},
+"readwrite": {
+"u": [],
+"n": ""
+},
+"gemini": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 111
+}
+],
+"n": ""
+},
+"notebooklm": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 128
+}
+],
+"n": ""
+},
+"copilot": {
+"u": [
+{
+"c": "verde",
+"t": "Versión sin registro y sin aportar datos personales",
+"p": 110
+},
+{
+"c": "amarillo",
+"t": "Versión con registro",
+"p": 110
+}
+],
+"n": "La guía valora el Copilot de consumo, no el de la cuenta del centro."
+},
+"chatgpt": {
+"u": [
+{
+"c": "verde",
+"t": "Versión sin registro y sin aportar datos personales",
+"p": 109
+},
+{
+"c": "amarillo",
+"t": "Versión con registro",
+"p": 109
+}
+],
+"n": ""
+},
+"claude": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 110
+}
+],
+"n": ""
+},
+"edugems": {
+"u": [],
+"n": ""
+},
+"magicschool": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 104
+}
+],
+"n": ""
+},
+"diffit": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 103
+}
+],
+"n": ""
+},
+"brisk": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 102
+}
+],
+"n": ""
+},
+"chatpdf": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro y sin aportar datos personales",
+"p": 123
+}
+],
+"n": ""
+},
+"lexica": {
+"u": [],
+"n": ""
+},
+"exelearning": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 21
+}
+],
+"n": ""
+},
+"gamma": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 159
+}
+],
+"n": ""
+},
+"fliki": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. Consulta previa a la Delegación de Protección de Datos",
+"p": 131
+}
+],
+"n": ""
+},
+"elevenlabs": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registro (textos de hasta 500 caracteres) y sin datos personales",
+"p": 68
+}
+],
+"n": ""
+},
+"loom": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 78
+}
+],
+"n": ""
+},
+"picsart": {
+"u": [],
+"n": ""
+},
+"classroom": {
+"u": [],
+"n": ""
+},
+"teams": {
+"u": [],
+"n": ""
+},
+"moodle": {
+"u": [],
+"n": ""
+},
+"additio": {
+"u": [],
+"n": ""
+},
+"idoceo": {
+"u": [],
+"n": ""
+},
+"classdojo": {
+"u": [],
+"n": ""
+},
+"classroomscreen": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registrarse",
+"p": 157
+}
+],
+"n": ""
+},
+"fastboard": {
+"u": [],
+"n": ""
+},
+"koalendar": {
+"u": [],
+"n": ""
+},
+"corubrics": {
+"u": [],
+"n": ""
+},
+"doctoform": {
+"u": [],
+"n": ""
+},
+"gforms": {
+"u": [],
+"n": ""
+},
+"msforms": {
+"u": [],
+"n": ""
+},
+"jotform": {
+"u": [
+{
+"c": "amarillo",
+"t": "Registro del docente. El alumnado responde sin registro con enlace o QR",
+"p": 46
+}
+],
+"n": ""
+},
+"learningpaths": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 134
+}
+],
+"n": ""
+},
+"badge": {
+"u": [],
+"n": ""
+},
+"symbaloo": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 44
+}
+],
+"n": ""
+},
+"pearltrees": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 44
+}
+],
+"n": ""
+},
+"feedly": {
+"u": [
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 43
+}
+],
+"n": ""
+},
+"wakelet": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 45
+}
+],
+"n": ""
+},
+"ilovepdf": {
+"u": [],
+"n": ""
+},
+"procomun": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registrarse",
+"p": 172
+},
+{
+"c": "verde",
+"t": "Banco de recursos multimedia: sin registro",
+"p": 191
+}
+],
+"n": ""
+},
+"readua": {
+"u": [],
+"n": ""
+},
+"edia": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 173
+}
+],
+"n": ""
+},
+"pixabay": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro",
+"p": 192
+},
+{
+"c": "amarillo",
+"t": "Con registro",
+"p": 192
+}
+],
+"n": ""
+},
+"magnific": {
+"u": [],
+"n": ""
+},
+"unsplash": {
+"u": [],
+"n": ""
+},
+"pexels": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro",
+"p": 183
+}
+],
+"n": ""
+},
+"wikicommons": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro",
+"p": 193
+}
+],
+"n": ""
+},
+"openverse": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro",
+"p": 183
+},
+{
+"c": "amarillo",
+"t": "Con registro (cuenta de WordPress)",
+"p": 183
+}
+],
+"n": ""
+},
+"europeana": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 192
+},
+{
+"c": "amarillo",
+"t": "Con registro",
+"p": 192
+}
+],
+"n": ""
+},
+"metmuseum": {
+"u": [],
+"n": ""
+},
+"flaticon": {
+"u": [
+{
+"c": "verde",
+"t": "Solo la opción sin registro",
+"p": 181
+}
+],
+"n": ""
+},
+"sketchfab": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 177
+}
+],
+"n": ""
+},
+"coolors": {
+"u": [],
+"n": ""
+},
+"intef": {
+"u": [],
+"n": ""
+},
+"educagob": {
+"u": [],
+"n": ""
+},
+"edu30": {
+"u": [],
+"n": ""
+},
+"profeprod": {
+"u": [],
+"n": ""
+},
+"rosaliarte": {
+"u": [],
+"n": ""
+},
+"academiaplay": {
+"u": [],
+"n": ""
+},
+"duolingo": {
+"u": [
+{
+"c": "verde",
+"t": "Solo sin registro y sin datos personales",
+"p": 0
+}
+],
+"n": ""
+},
+"dwdeutsch": {
+"u": [],
+"n": ""
+}
+}
+}
