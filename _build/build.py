@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "98"  # versión de didakora.css / didakora.js
+V = "99"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -473,9 +473,10 @@ def sesion():
   {filtro("o", "Qué buscas", "Todo", METAS_S)}
   {filtro("s", "Materia", "Todas", MATERIAS_S)}
  </form>
- <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><div class="xley" id="sy"><i></i>Con la herramienta<i class="off"></i>Sin pantalla</div><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
+ <div class="xa-n"><b id="sn" aria-live="polite">{len(SESIONES)} sesiones</b><span id="sr"></span><button type="button" id="sa" aria-label="Las tres anteriores">{ICO["arrow"]}</button><button type="button" id="sd" aria-label="Las tres siguientes">{ICO["arrow"]}</button></div>
  <h2 class="sr">Sesiones</h2>
  <section class="cp-l xa-l n3" id="sg">{cards}</section>
+ <div class="xley" id="sy"><i></i>Con la herramienta<i class="off"></i>Sin pantalla</div>
  <p class="sv" id="sv" hidden>No hay ninguna sesión con todo eso. <button type="button" class="btn line" id="sz">Quitar los filtros</button></p>
  <p class="cp-fr xa-ix" id="sx"><b>Todas las que encajan</b>{ix}</p>
 </main>
