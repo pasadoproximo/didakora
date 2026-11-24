@@ -90,7 +90,7 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   «Idiomas y revisión de textos»). Sin añadir por falta de fuente oficial comprobada: Duolingo, Language Reactor y TV5MONDE (su web está bloqueada desde la nube).
   Al dar de alta una herramienta se busca también su icono oficial (64×64 en `logos/`).
 - **Comparar, Alternativas y Colecciones** (24-11-2026, de la investigación de webs similares; datos en `_build/guias.py`, textos propuestos por revisar):
-  `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; en el móvil no hay columnas: un bloque por dato con una línea por herramienta),
+  `/comparar/` (`comparar()`: dos o tres herramientas lado a lado, se comparte con `?c=id,id`; diseño elegido por Jorge el 24-11-2026: una franja de color por herramienta, con el «Si…» de `ALTERNATIVAS` en grande (o qué hace, si no hay), solo los datos que cambian y debajo en qué coinciden),
   `/alternativas/` y `/alternativas/<id>/` (`ALTERNATIVAS`: «Mejor si…» de cada alternativa, que el comparador reutiliza en «Para decidir») y
   `/colecciones/` y `/colecciones/<slug>/` (`COLECCIONES`; «Aula sin dispositivos» recoge lo útil de Plan B, retirada el 24-11-2026). Entradas: tres tarjetas en la portada (`bloque_guias()`)
   y un botón junto a «Herramientas alternativas» de cada ficha. Cada «mejor si» sale de lo que ya dice la ficha: no añadir datos nuevos ahí.

@@ -20,7 +20,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "83"  # versión de didakora.css / didakora.js
+V = "84"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -623,7 +623,7 @@ def g_item(t, txt, extra=""):
             f'<p>{txt}</p><p class="g-tgs">{g_tags(c)}</p></div>{extra}</li>')
 def comparar():
     D = [campos(t) for t in TOOLS]
-    ms = {a: {b: "Mejor si " + x + "." for b, x in alts} for a, alts in ALTERNATIVAS.items()}
+    ms = {a: {b: "Si " + x + "." for b, x in alts} for a, alts in ALTERNATIVAS.items()}
     grupos = "".join(f'<optgroup label="{esc(c[1])}">' + "".join(f'<option value="{t["id"]}">{esc(split_name(t["n"])[0])}</option>' for t in TOOLS if t["cs"] == c[0]) + "</optgroup>" for c in CATS)
     sel = "".join(f'<label class="cp-s"><span>{lab}</span><select data-i="{i}"><option value="">{"Elige una herramienta" if i < 2 else "Añadir otra (opcional)"}</option>{grupos}</select></label>'
                   for i, lab in enumerate(("Primera", "Segunda", "Tercera")))
@@ -648,20 +648,19 @@ def comparar():
   sels.forEach(function(s,i){{s.value=ids[i]||""}});
   if(empuja){{try{{history.replaceState(null,"",ids.length?"?c="+ids.join(","):location.pathname)}}catch(e){{}}}}
   if(ids.length<2){{out.hidden=true;out.innerHTML="";return}}
-  var T=ids.map(function(i){{return by[i]}}),n=T.length;
-  var filas=[["Qué hace","q",0],["Para quién","p",1],["Etapas","e",1],["Dispositivos","d",1],["Cuenta","c",1],["Categoría","k",1]];
-  var h='<div class="cp-g n'+n+'"><div class="cp-r cp-h"><span></span>'+T.map(function(t){{return '<div class="cp-c">'+lg(t,34)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></div>'}}).join("")+'</div>';
-  var dif=[],eq="";
+  var T=ids.map(function(i){{return by[i]}});
+  var filas=[["Para quién","p"],["Etapas","e"],["Dispositivos","d"],["Cuenta","c"],["Categoría","k"],["Guía del INTEF","g"]];
+  T.forEach(function(t){{t.g=t.x?"En rojo: no la recomienda para el alumnado":"Sin aviso"}});
+  var dif=[],com=[];
   filas.forEach(function(f){{
    var v=T.map(function(t){{return t[f[1]]}}),ig=v.every(function(x){{return x===v[0]}});
-   var r='<div class="cp-r'+(f[2]&&!ig?" dif":"")+'"><h3>'+f[0]+(f[2]?'<i>'+(ig?"Igual":"Distinto")+'</i>':"")+'</h3>'+(f[2]&&ig?'<div class="cp-c eq"><p>'+esc(v[0])+'</p></div>':T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+esc(t[f[1]])+'</p></div>'}}).join(""))+'</div>';
-   dif.push(r);
+   if(!ig)dif.push(f);else if(f[1]!=="g"||T[0].x)com.push(f[1]==="g"?'<b class="cp-x">Guía del INTEF, en rojo: no las recomienda para el alumnado</b>':esc(v[0]));
   }});
-  if(T.some(function(t){{return t.x}})) dif.push('<div class="cp-r dif"><h3>Guía del INTEF</h3>'+T.map(function(t){{return '<div class="cp-c" data-n="'+esc(t.n)+'">'+lg(t,22)+'<p>'+(t.x?"<b class=\\"cp-x\\">En rojo:</b> no la recomienda para el alumnado":"Sin aviso")+'</p></div>'}}).join("")+'</div>');
-  dif[dif.length-1]=dif[dif.length-1].replace('class="cp-r','class="cp-r cp-ult');
-  h+=dif.join("")+(eq?'<div class="cp-eq"><b>En lo que coinciden</b>'+eq+'</div>':"")+'</div>';
-  var fr=[];T.forEach(function(a){{T.forEach(function(b){{if(a!==b&&MS[a.id]&&MS[a.id][b.id])fr.push('<li>'+lg(b,22)+'<span><b>'+esc(b.n)+'.</b> '+esc(MS[a.id][b.id])+'</span></li>')}})}});
-  if(fr.length) h+='<div class="cp-v"><h3>Para decidir</h3><ul>'+fr.filter(function(x,i){{return fr.indexOf(x)===i}}).join("")+'</ul></div>';
+  var h='<div class="cp-l">'+T.map(function(t){{
+   var si=[];T.forEach(function(a){{var x=a!==t&&MS[a.id]&&MS[a.id][t.id];if(x&&si.indexOf(x)<0)si.push(x)}});
+   return '<article><h3>'+lg(t,36)+'<a href="'+B+'/'+t.id+'/">'+esc(t.n)+'</a></h3><p class="cp-si">'+esc(si[0]||t.q)+(si[0]?'<small>'+esc(si.slice(1).concat(t.q).join(" "))+'</small>':"")+'</p>'+
+    (dif.length?'<dl>'+dif.map(function(f){{return '<div><dt>'+f[0]+'</dt><dd'+(f[1]==="g"&&t.x?' class="cp-x"':"")+'>'+esc(t[f[1]])+'</dd></div>'}}).join("")+'</dl>':"")+'</article>'}}).join("")+'</div>'+
+   (com.length?'<p class="cp-co"><b>Coinciden en:</b> '+com.join(" | ")+'</p>':"");
   out.innerHTML=h;out.hidden=false;
  }}
  sels.forEach(function(s){{s.addEventListener("change",function(){{var ids=[];sels.forEach(function(x){{if(x.value&&ids.indexOf(x.value)<0)ids.push(x.value)}});pinta(ids,true)}})}});
