@@ -73,7 +73,19 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
  const SUBJ={geogebra:'matematicas geometria',desmos:'matematicas',phet:'ciencias fisica quimica biologia matematicas',gizmos:'ciencias fisica quimica biologia matematicas',
   bodymaps:'ciencias biologia anatomia',anatomy3d:'ciencias biologia anatomia',vertebrados:'ciencias biologia',bolsa:'economia',
   tinkercad:PROG+' robotica arduino',scratch:PROG,snap:PROG,blockly:PROG,codeorg:PROG,appinventor:PROG,cospaces:PROG,coppelia:PROG+' robotica',thunkable:'tecnologia informatica',
-  dwdeutsch:'idiomas aleman lengua extranjera video comprension oral',duolingo:'idiomas lengua extranjera vocabulario',
+  stellarium:"astronomia planetario cielo estrellas constelaciones planetas sistema solar luna eclipse universo ciencias naturales fisica software libre",
+ learningmusic:"musica componer composicion ritmo melodia acordes escalas bajo produccion musical ableton",
+ krita:"plastica arte dibujo dibujar pintar pintura digital ilustracion comic animacion 2d bachillerato de artes software libre",
+ polypad:"matematicas manipulativos fracciones geometria poligonos tangram algebra probabilidad estadistica numeros recta numerica abaco regletas primaria mathigon",
+ phyphox:"fisica y quimica fisica tecnologia laboratorio experimentos sensores movil tableta acelerometro sonido luz presion medir datos",
+ kinovea:"educacion fisica deporte deportes movimiento biomecanica tecnica video camara lenta angulos trayectoria fisica cinematica",
+ arasaac:"pictogramas arasaac aractivities comunicacion aumentativa alternativa caa saac autismo tea atencion a la diversidad necesidades educativas especiales infantil horario visual calendario bingo domino dado recortable tablero imprimible",
+ atlasign:"atlas didactico ign geografia espana mapas interactivos relieve clima vegetacion agua rios poblacion migracion ciudades urbano agricultura industria servicios paisaje pau ebau selectividad glosario cartografia educa ign instituto geografico nacional",
+ makecode:"makecode microbit micro:bit placa programar programacion bloques javascript python simulador robotica sensores tecnologia digitalizacion pensamiento computacional microsoft electronica",
+ learningml:"learningml machine learning aprendizaje automatico inteligencia artificial ia entrenar modelo clasificar textos imagenes sonidos scratch datos sesgos tecnologia digitalizacion pensamiento computacional programacion",
+ cervantes:"biblioteca virtual miguel de cervantes literatura lengua castellana libros obras clasicos poesia teatro novela autores biografias lectura siglo de oro hemeroteca historia infantil juvenil catalan gallego",
+ bnescolar:"bnescolar bne biblioteca nacional de espana fuentes primarias historicas documentos hemeroteca secuencias didacticas talleres desafios videos historia lengua literatura patrimonio situaciones de aprendizaje",
+ dwdeutsch:'idiomas aleman lengua extranjera video comprension oral',duolingo:'idiomas lengua extranjera vocabulario',
   tv5monde:'idiomas frances lengua extranjera video comprension oral',gtranslate:'idiomas ingles frances aleman traductor traducir traduccion google translate imagen',apertium:'idiomas traductor traducir traduccion libre catalan gallego euskera software libre',deepl:'idiomas ingles frances aleman traductor traducir traduccion',dicta:'idiomas lengua ingles frances aleman dictado dictados ortografia escuchar',lekids:'ingles idiomas english primaria infantil canciones cuentos',leteens:'ingles idiomas english listening reading gramatica examen',writeimprove:'ingles idiomas english writing redaccion escribir corregir',forvo:'idiomas ingles frances aleman pronunciacion pronunciar acento',musescore:'musica',incredibox:'musica',musiclab:'musica componer melodia cancion',scratchjr:PROG+' infantil tableta tablet',gcompris:'infantil letras numeros colores logica juegos educativos',tuxpaint:'infantil dibujo dibujar pintar plastica',musictheory:'musica',librecad:'dibujo tecnico tecnologia'};
  const IDX={};
  const flat=s=>' '+s.replace(/[^a-z0-9ñ]+/g,' ')+' ';

@@ -21,7 +21,7 @@ WEB = "https://didakora.es" if not B else SITE + B  # dirección pública de Did
 # Contador de visitas de Jorge (GoatCounter, sin cookies; el mismo que el portfolio). No cuenta en local.
 # Las visitas se apuntan como «didakora.es/ruta» para no mezclarse con las del portfolio, que tienen las mismas rutas («/»).
 GOATCOUNTER = '<script>window.goatcounter={path:function(p){return location.host+p}}</script><script data-goatcounter="https://pasadoproximo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-V = "108"  # versión de didakora.css / didakora.js
+V = "109"  # versión de didakora.css / didakora.js
 
 d = json.loads(subprocess.check_output(["node", "-e",
     "const s=require('fs').readFileSync(process.argv[1],'utf8');const d=new Function(s+';return {SECTIONS,TOOLS,CHANGES,RECIENTES:typeof RECIENTES==`undefined`?[]:RECIENTES}')();process.stdout.write(JSON.stringify(d))",
@@ -66,7 +66,7 @@ CORTO = {"participar-y-repasar": "Cuestionarios y juegos", "crear-y-presentar": 
          "programacion-y-diseno-3d": "Bloques y diseño 3D", "inteligencia-artificial": "Asistentes para el aula",
          "evaluacion-y-seguimiento": "Formularios y rúbricas", "gestion-del-aula": "Rutinas, cuaderno y familias",
          "aulas-virtuales": "Classroom, Teams y Moodle", "bancos-de-recursos": "Recursos e imágenes libres"}
-PROG = {"scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","tinkercad","wokwi"}
+PROG = {"scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","tinkercad","wokwi","makecode"}
 LECT = {"immersive","languagetool","readwrite"}
 SUITES = {"classroom","teams","moodle"}
 def place(t):
@@ -76,7 +76,7 @@ def place(t):
     if i in SUITES: return ("aulas-virtuales", "Aulas virtuales")
     return {("aula","part"):("participar-y-repasar","Cuestionarios y juegos"), ("aula","geohis"):("explorar-por-materias","Geografía e Historia"),
             ("aula","crear"):("crear-y-presentar","Lo crea el alumnado"), ("aula","equipo"):("colaborar-y-organizar","Trabajar en equipo"),
-            ("aula","cienc"):("explorar-por-materias","Ciencias y Matemáticas"), ("aula","arte"):("explorar-por-materias","Música y Arte"), ("aula","idiomas"):("explorar-por-materias","Idiomas"),
+            ("aula","cienc"):("explorar-por-materias","Ciencias y Matemáticas"), ("aula","arte"):("explorar-por-materias","Música y Arte"), ("aula","idiomas"):("explorar-por-materias","Idiomas"), ("aula","ef"):("explorar-por-materias","Educación Física"),
             ("aula","ia"):("inteligencia-artificial","IA para el alumnado"), ("docente","ia"):("inteligencia-artificial","IA para preparar clase"),
             ("docente","crear"):("crear-y-presentar","Materiales del docente"), ("docente","gestion"):("gestion-del-aula","Gestión del aula"),
             ("docente","eval"):("evaluacion-y-seguimiento","Evaluar y motivar"), ("docente","org"):("colaborar-y-organizar","Organizar recursos"),
@@ -92,6 +92,7 @@ REPO_I |= {"gcompris","tuxpaint","musiclab","scratchjr"}; REPO_P |= {"gcompris",
 REPO_I |= {"lekids"}; REPO_P |= {"lekids","dicta"}   # altas de Idiomas del 23-11-2026 (LearnEnglish Kids: de 5 a 12 años según su web)
 REPO_I |= {"wordwall","visitas","artsculture","earth","incredibox","stopmotion","bookcreator","vocaroo","padlet"}
 REPO_P |= {"wordwall","visitas","artsculture","earth","incredibox","wayground","ancientearth","vertebrados","kgeography","tinkercad","cospaces","immersive"}
+REPO_P |= {"stellarium","polypad","makecode","learningml"}   # altas del 24-11-2026: sin cuenta, con curso recomendado en la ficha
 SOLO_IP = {"gcompris","tuxpaint","scratchjr","lekids"}
 def etapas(t):
     if t["s"] != "aula": return ["I", "P", "S"]  # herramientas del docente y recursos: para el profesorado de cualquier etapa

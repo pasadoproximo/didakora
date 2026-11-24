@@ -17,6 +17,7 @@ const SECTIONS = {
       cienc: "Ciencias, Matemáticas y Tecnología",
       arte: "Música y Arte",
       idiomas: "Idiomas",
+      ef: "Educación Física",
       ia: "IA y apoyo al aprendizaje"
     }
   },
@@ -127,6 +128,10 @@ const TOOLS = [
     a:"Gira un globo que muestra dónde estaban los continentes hace hasta 750 millones de años.",
     i:["Tectónica de placas","Formación del relieve peninsular","Situar tu ciudad en otra era geológica"],
     c:"Toda la etapa", disp:"Uno por pareja o proyectado", cta:"No necesita" },
+  { id:"atlasign", rev:"2026-11-24", s:"aula", cat:"geohis", st:"nueva", n:"Atlas Didáctico del IGN", url:"https://educativo.ign.es/atlas-didactico/",
+    a:"Estudia la geografía de España por temas, con mapas interactivos y actividades.",
+    i:["Estudiar el clima con mapas interactivos","Repasar términos con el glosario","Leer un mapa del relieve en parejas"],
+    c:"ESO y Bachillerato", disp:"Uno por pareja o proyectado", cta:"No necesita", coste:"Gratuito", datos:"Carga Google Analytics sin pedir permiso y parte de sus actividades abre Genially o Educaplay" },
 
   // --- Crear y presentar
   { id:"canva", rev:"2026-10-23", s:"aula", cat:"crear", st:"vigente", n:"Canva para Educación", url:"https://www.canva.com/education/",
@@ -293,6 +298,22 @@ const TOOLS = [
     a:"Simula robots y brazos robóticos y los programa en Python o Lua.",
     i:["Robótica sin robot físico","Programar un brazo articulado","Bachillerato tecnológico"],
     c:"4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita (versión educativa)" },
+  { id:"stellarium", rev:"2026-11-24", s:"aula", cat:"cienc", st:"nueva", n:"Stellarium", url:"https://stellarium.org/es/",
+    a:"Explora el cielo en un planetario en 3D, con estrellas, planetas y constelaciones.",
+    i:["Buscar los planetas visibles esta noche","Comparar constelaciones de varias culturas","Simular un eclipse paso a paso"],
+    c:"Desde 5.º de Primaria", disp:"Ordenador (se instala) o proyectado", cta:"No necesita" },
+  { id:"polypad", rev:"2026-11-24", s:"aula", cat:"cienc", st:"nueva", n:"Polypad", url:"https://polypad.amplify.com/es/p",
+    a:"Manipula fracciones, polígonos, fichas algebraicas y dados en un lienzo de matemáticas.",
+    i:["Comparar fracciones con barras y círculos","Construir mosaicos con polígonos","Lanzar dados y estudiar la probabilidad"],
+    c:"Primaria y ESO", disp:"Uno por alumno o pareja, o proyectado", cta:"No necesita: solo para guardar o compartir", datos:"Úsalo sin cuenta: crearla fuera del centro exige 13 años o la edad de consentimiento de cada país" },
+  { id:"phyphox", rev:"2026-11-24", s:"aula", cat:"cienc", st:"nueva", n:"phyphox", url:"https://phyphox.org/",
+    a:"Mide aceleración, sonido, luz o presión con los sensores del móvil o la tableta.",
+    i:["Medir la oscilación de un péndulo","Estudiar el efecto Doppler con el sonido","Analizar los datos en una hoja de cálculo"],
+    c:"Desde 3.º ESO", disp:"Un móvil o tableta por equipo (se instala)", cta:"No necesita", datos:"Algunos experimentos usan el micrófono o la ubicación: evita grabar voces y la ubicación del alumnado" },
+  { id:"makecode", rev:"2026-11-24", s:"aula", cat:"cienc", st:"nueva", n:"MakeCode micro:bit", url:"https://makecode.microbit.org/?lang=es-ES",
+    a:"Programa la placa micro:bit con bloques, JavaScript o Python y pruébalo en el simulador.",
+    i:["Programar un dado digital","Crear un corazón que late con luces","Medir la temperatura del aula"],
+    c:"Tercer ciclo de Primaria y ESO", disp:"Un ordenador por pareja", cta:"No necesita: sin iniciar sesión", coste:"Gratuito", datos:"Úsalo sin iniciar sesión y sin el botón «Explicar con IA»: aun así envía datos de uso a Microsoft" },
   // --- Música y Arte
   { id:"musescore", rev:"2026-10-23", s:"aula", cat:"arte", st:"vigente", n:"MuseScore", url:"https://musescore.org/es",
     a:"Escribe, edita y escucha partituras.",
@@ -314,6 +335,14 @@ const TOOLS = [
     a:"Hace dibujo técnico en 2D con un programa libre.",
     i:["Vistas de una pieza","Plano de un aula","Iniciarse en el diseño asistido"],
     c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita" },
+  { id:"learningmusic", rev:"2026-11-24", s:"aula", cat:"arte", st:"nueva", n:"Learning Music", url:"https://learningmusic.ableton.com/es/index.html",
+    a:"Aprende a componer con lecciones interactivas de ritmo, melodía, bajo y acordes.",
+    i:["Crear un ritmo y explicar su compás","Componer una melodía sobre unos acordes","Comparar el ritmo del rock y del house"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja (con auriculares)", cta:"No necesita", datos:"En el aviso de cookies, con menos de 16 años hay que pulsar «Cerrar» para no dar el consentimiento" },
+  { id:"krita", rev:"2026-11-24", s:"aula", cat:"arte", st:"nueva", n:"Krita", url:"https://krita.org/es/",
+    a:"Pinta, ilustra y anima en 2D con un programa libre de pintura digital.",
+    i:["Reinterpretar un cuadro por capas","Viñeta de cómic con sus bocadillos","Animación corta fotograma a fotograma"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita", coste:"Gratis desde su web. En las tiendas de Microsoft, Steam, Epic y Mac es de pago" },
 
   // --- IA y apoyo al aprendizaje
   { id:"lekids", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"LearnEnglish Kids", url:"https://learnenglishkids.britishcouncil.org",
@@ -361,6 +390,10 @@ const TOOLS = [
     a:"Traduce textos, documentos y páginas web con un traductor libre.",
     i:["Traducir un texto al gallego o al catalán","Buscar los fallos de una traducción automática","Comparar su traducción con la de otro traductor"],
     c:"ESO y Bachillerato", disp:"Uno por alumno o pareja", cta:"No necesita" },
+  { id:"kinovea", rev:"2026-11-24", s:"aula", cat:"ef", st:"nueva", n:"Kinovea", url:"https://www.kinovea.org",
+    a:"Analiza el movimiento en vídeos de deportistas: ralentiza, compara y mide ángulos.",
+    i:["Medir ángulos en un salto de altura","Comparar la técnica de dos velocistas","Seguir la trayectoria de un lanzamiento"],
+    c:"ESO y Bachillerato", disp:"Ordenador con Windows (se instala)", cta:"No necesita", datos:"Úsalo solo con vídeos de deportistas, nunca del alumnado: su imagen es un dato personal" },
   { id:"schoolai", rev:"2026-10-23", s:"aula", cat:"ia", st:"nueva", n:"SchoolAI", url:"https://schoolai.com",
     a:"Conversa con un tutor de IA que sigue las reglas y límites que pone el docente.",
     i:["Tutor para repasar un tema","Ticket de salida conversado","Ver en directo quién se atasca"],
@@ -383,6 +416,10 @@ const TOOLS = [
     a:"Usa lectura en voz alta, dictado, predicción de palabras y diccionario con imágenes.",
     i:["Dictado para quien tiene dificultades de escritura","Leer documentos en voz alta","Diccionario visual"],
     c:"Toda la etapa", disp:"Uno por alumno", cta:"Extensión del navegador" },
+  { id:"learningml", rev:"2026-11-24", s:"aula", cat:"ia", st:"nueva", n:"LearningML", url:"https://learningml.org/",
+    a:"Entrena un modelo con textos, imágenes, números o sonidos y úsalo en Scratch.",
+    i:["Clasificar textos en alegres y tristes","Reconocer dibujos hechos en clase","Ver qué pasa con pocos ejemplos"],
+    c:"Tercer ciclo de Primaria, ESO y Bachillerato", disp:"Un ordenador por pareja", cta:"No necesita", coste:"Gratuito", datos:"Carga Google Analytics sin pedir permiso: no uses fotos, voces ni datos personales del alumnado" },
 
   // ===================== DOCENTE =====================
   // --- IA para preparar clase
@@ -459,6 +496,8 @@ const TOOLS = [
     p:"Edita imágenes: recortes, fondos, textos y efectos.",
     i:["Imágenes para tus materiales","Portadas de unidades","Contenido para la cuenta del aula"],
     coste:"Plan gratuito", datos:"No publiques fotos del alumnado sin autorización" },
+  { id:"arasaac", rev:"2026-11-24", s:"docente", cat:"crear", st:"nueva", n:"ARASAAC", url:"https://arasaac.org",
+    p:"Busca pictogramas y crea con ARActivities tableros, horarios y juegos para imprimir.", coste:"Gratuito, sin fines comerciales", datos:"Úsala tú sin subir fotos del alumnado y cita siempre la autoría: carga Google Analytics sin pedir permiso" },
 
   // --- Gestionar el aula
   { id:"classroom", rev:"2026-10-23", s:"docente", cat:"gestion", st:"nueva", n:"Google Classroom", url:"https://classroom.google.com",
@@ -557,6 +596,8 @@ const TOOLS = [
     d:"Más de 250 situaciones de aprendizaje abiertas de la Junta de Andalucía, con guía docente y enfoque DUA." },
   { id:"edia", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"Proyecto EDIA (INTEF)", url:"https://cedec.intef.es/proyecto-edia/",
     d:"Situaciones de aprendizaje con plantillas, guías y rúbricas, desde Infantil hasta FP." },
+  { id:"bnescolar", rev:"2026-11-24", s:"recursos", cat:"sa", st:"nueva", n:"BNEscolar", url:"https://bnescolar.bne.es/",
+    d:"Reúne secuencias, talleres, desafíos y vídeos con fondos de la Biblioteca Nacional.", coste:"Gratuito", datos:"Carga Google Analytics antes de elegir en el aviso de cookies: no registres al alumnado en «Mi BNEscolar»" },
   { id:"pixabay", rev:"2026-10-23", s:"recursos", cat:"img", st:"vigente", n:"Pixabay", url:"https://pixabay.com/es/",
     d:"Imágenes, vídeos, ilustraciones y música libres de derechos." },
   { id:"magnific", rev:"2026-10-23", s:"recursos", cat:"img", st:"cambio", n:"Magnific (antes Freepik)", url:"https://www.magnific.com",
@@ -579,6 +620,8 @@ const TOOLS = [
     d:"Modelos 3D de monumentos, piezas de museo y objetos, con visor y realidad virtual." },
   { id:"coolors", rev:"2026-10-23", s:"recursos", cat:"img", st:"vigente", n:"Coolors", url:"https://coolors.co",
     d:"Generador de paletas de colores para diseñar materiales con coherencia." },
+  { id:"cervantes", rev:"2026-11-24", s:"recursos", cat:"img", st:"nueva", n:"Biblioteca Virtual Miguel de Cervantes", url:"https://www.cervantesvirtual.com/",
+    d:"Reúne obras, autores y portales de literatura, historia y lengua, de acceso libre.", coste:"Gratuito", datos:"Su portada carga Google Analytics y un módulo de Facebook antes de aceptar las cookies: mejor para preparar clase" },
   { id:"intef", rev:"2026-10-23", s:"recursos", cat:"form", st:"vigente", n:"INTEF", url:"https://intef.es",
     d:"Instituto Nacional de Tecnologías Educativas y de Formación del Profesorado: cursos, recursos y competencia digital." },
   { id:"educagob", rev:"2026-10-23", s:"recursos", cat:"form", st:"vigente", n:"Educagob", url:"https://educagob.educacionfpydeportes.gob.es",
@@ -598,18 +641,18 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
-  { id:"dwdeutsch", txt:"Alemán por niveles con vídeos y ejercicios.", q:["alemán", "aprender alemán", "ejercicios de alemán"] },
-  { id:"duolingo", txt:"Lecciones cortas de idiomas en forma de juego.", q:["duolingo", "juego de idiomas", "lecciones de idiomas"] },
-  { id:"tv5monde", txt:"Francés por niveles con vídeos y ejercicios.", q:["francés", "aprender francés", "ejercicios de francés"] },
-  { id:"gtranslate", txt:"Traduce texto, imágenes, documentos y webs sin cuenta.", q:["traductor de google", "google translate", "traducir una imagen"] },
-  { id:"apertium", txt:"Traductor libre, con catalán y gallego.", q:["traductor libre", "traducir al gallego", "traducir al catalán"] },
-  { id:"deepl", txt:"Traductor con IA que se usa sin cuenta.", q:["traductor", "traducir un texto", "traducción"] },
-  { id:"dicta", txt:"Dictados en seis idiomas que se corrigen solos.", q:["dictado", "dictados en inglés", "ortografía"] },
-  { id:"lekids", txt:"Juegos, canciones y cuentos para aprender inglés en Primaria.", q:["inglés primaria", "canciones en inglés", "cuentos en inglés"] },
-  { id:"leteens", txt:"Inglés por destrezas y niveles para adolescentes.", q:["inglés secundaria", "listening", "gramática inglesa"] },
-  { id:"writeimprove", txt:"Corrección al momento de redacciones en inglés.", q:["writing", "corregir redacción en inglés", "redacción inglés"] },
-  { id:"forvo", txt:"Palabras pronunciadas por hablantes nativos.", q:["pronunciación", "cómo se pronuncia", "pronunciar francés"] },
-  { id:"gcompris", txt:"Más de cien actividades para Infantil y Primaria.", q:["actividades infantil", "letras y números", "juegos educativos infantil"] }
+  { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] },
+  { id:"arasaac", txt:"Pictogramas y materiales para imprimir con ARActivities.", q:["pictogramas", "comunicación aumentativa", "horario visual", "tablero de comunicación"] },
+  { id:"stellarium", txt:"Un planetario en 3D para explorar el cielo.", q:["astronomía", "planetario", "constelaciones", "ver las estrellas"] },
+  { id:"polypad", txt:"Fracciones, polígonos y más manipulativos de matemáticas.", q:["fracciones", "manipulativos de matemáticas", "tangram", "manipulativos de matemáticas"] },
+  { id:"learningmusic", txt:"Lecciones interactivas para aprender a componer música.", q:["componer música", "aprender a componer", "ritmo y acordes"] },
+  { id:"bnescolar", txt:"Secuencias y talleres con fondos de la Biblioteca Nacional.", q:["biblioteca nacional", "fuentes históricas", "secuencias didácticas"] },
+  { id:"phyphox", txt:"Experimentos de física con los sensores del móvil.", q:["experimentos de física", "sensores del móvil", "laboratorio con el móvil"] },
+  { id:"krita", txt:"Pintura digital y animación con un programa libre.", q:["pintura digital", "ilustración digital", "programa para dibujar", "animación 2d"] },
+  { id:"makecode", txt:"Programa la placa micro:bit con bloques y simulador.", q:["microbit", "programar una placa", "robótica"] },
+  { id:"learningml", txt:"Entrena un modelo de IA y úsalo en Scratch.", q:["aprendizaje automático", "machine learning", "entrenar una ia"] },
+  { id:"atlasign", txt:"Geografía de España con mapas interactivos del IGN.", q:["geografía de España", "mapas interactivos", "glosario de geografía"] },
+  { id:"cervantes", txt:"Literatura, historia y lengua en una biblioteca gratuita.", q:["biblioteca virtual", "literatura española", "textos literarios"] }
 ];
 
 const CHANGES = [
@@ -631,10 +674,11 @@ const CHANGES = [
 // las generales (Kahoot, Canva…) sirven para cualquiera y no llevan materia. Una herramienta puede tener dos.
 // Revisado en octubre de 2026. Añadir aquí el id cuando una herramienta nueva sea específica de una materia.
 const AREAS = {
-  geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay"] },
-  ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados"] },
-  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad"] },
-  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay"] },
+  geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay","atlasign"] },
+  ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados","stellarium","polypad","phyphox"] },
+  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad","makecode","learningml"] },
+  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita"] },
   idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","dwdeutsch","duolingo","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
+  ef: { n:"Educación Física", ids:["kinovea"] },
   econ: { n:"Economía", ids:["bolsa"] }
 };

@@ -4306,5 +4306,139 @@
    "rot": "Tres voces",
    "svg": "<text x=\"4\" y=\"10.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Silencio</text><rect x=\"42\" y=\"6.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"6.4\" width=\"5.2\" height=\"5.2\" rx=\"2.6\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"10.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">El cuento</text><text x=\"4\" y=\"24.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Voz de hormiga</text><rect x=\"42\" y=\"20.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"20.4\" width=\"15\" height=\"5.2\" rx=\"2.6\" fill=\"#9FB3FF\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"24.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">Los rincones</text><text x=\"4\" y=\"38.5\" text-anchor=\"start\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.2\" fill=\"#061033\">Voz de león</text><rect x=\"42\" y=\"34.4\" width=\"44\" height=\"5.2\" rx=\"2.6\" fill=\"#DDE4F6\" stroke=\"#061033\" stroke-width=\"0.5\"/><rect x=\"42\" y=\"34.4\" width=\"41\" height=\"5.2\" rx=\"2.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\"0.5\"/><text x=\"91\" y=\"38.4\" text-anchor=\"start\" font-family=\"Alegreya Sans,sans-serif\" font-weight=\"700\" font-size=\"4\" fill=\"#061033\">El patio</text>"
   }
+ },
+ "un-salto-a-camara-lenta": {
+  "lead": "La clase salta, mira un salto parado en tres momentos y decide qué cambiar. Después prueba cada cambio en tríos.",
+  "obj": [
+   "Reconocer qué hace el cuerpo en cada momento del salto.",
+   "Probar un cambio y ver si funciona.",
+   "Dar a un compañero una pista que le sirva."
+  ],
+  "mat": [
+   "Ordenador con Windows, Kinovea y proyector",
+   "Un vídeo corto guardado en el ordenador",
+   "Una ficha y un lápiz por trío",
+   "Cinta métrica y línea de salto por grupo",
+   "Suelo que no resbale"
+  ],
+  "prep": [
+   "Instala Kinovea y abre el vídeo una vez para comprobar que se ve.",
+   "Elige un vídeo con permiso de uso: en Pexels o Pixabay los hay. Nunca del alumnado.",
+   "Haz una ficha con tres casillas: impulso, vuelo y caída. Deja sitio para las marcas."
+  ],
+  "pasos": [
+   [
+    [
+     "Dirige el calentamiento de piernas y tobillos.",
+     "Cada uno hace dos saltos a pies juntos desde la línea.",
+     "Apuntan su mejor marca. No se lee en voz alta."
+    ],
+    "Este salto es vuestro punto de partida."
+   ],
+   [
+    [
+     "Pon el vídeo una vez a velocidad normal y pregunta qué han visto.",
+     "Ponlo despacio y páralo en el impulso, el vuelo y la caída.",
+     "En cada pausa, pregunta por brazos, rodillas y pies.",
+     "Pregunta qué más se podría medir y qué problema habría si grabáramos a alguien."
+    ],
+    "¿Qué hacen los brazos justo antes de saltar?"
+   ],
+   [
+    [
+     "Reparte la clase en tríos y una ficha por trío.",
+     "Escriben una pista corta para cada momento del salto.",
+     "Revisa que cada pista se pueda ver: «brazos atrás» y no «hazlo mejor»."
+    ],
+    "Una pista que se pueda ver desde fuera."
+   ],
+   [
+    [
+     "Uno salta, otro mira y otro apunta. Cambian cada dos saltos.",
+     "Quien mira da una sola pista antes del siguiente salto.",
+     "Quien salta cambia solo eso y vuelven a medir.",
+     "Deja un descanso entre saltos y para a quien note molestias."
+    ],
+    "Un cambio cada vez. Así sabréis qué ayuda."
+   ],
+   [
+    [
+     "Cada trío cuenta el cambio que más ha ayudado y en qué lo nota.",
+     "Apunta en la pizarra los tres que más se repiten.",
+     "Cada uno escribe el suyo para el próximo día."
+    ],
+    "¿Qué cambio os ha ayudado más?"
+   ]
+  ],
+  "bien": "La sesión ha salido bien si explican qué cambio han hecho y qué ha pasado.",
+  "obs": [
+   "Señala el impulso, el vuelo y la caída en el vídeo.",
+   "Cambia una sola cosa y lo comprueba.",
+   "Da pistas con respeto y que se pueden ver."
+  ],
+  "div": [
+   "Quien no pueda saltar hace de observador o mide, con la misma ficha.",
+   "Pon las pistas con dibujo para quien lea con dificultad.",
+   "Cada uno se compara con su propia marca y con nadie más."
+  ],
+  "wifi": "Kinovea no necesita Internet si está instalado y el vídeo guardado. Si falla el ordenador, dibuja los tres momentos en la pizarra o haz tú el gesto despacio.",
+  "otra": "Cambia el salto por un lanzamiento o una salida de velocidad. En 3.º y 4.º de ESO, que cada trío decida qué mirar y lleve su propio registro.",
+  "rub": {
+   "curso": "1.º y 2.º de ESO, Educación Física",
+   "nota": "Mira la ficha de cada trío y cómo se hablan. No valora la distancia.",
+   "niv": [
+    "Está empezando",
+    "En proceso",
+    "Lo consigue"
+   ],
+   "filas": [
+    [
+     "Explora",
+     [
+      "217",
+      "Educación Física",
+      "Cursos primero y segundo",
+      "1.6"
+     ],
+     [
+      "Mira el vídeo sin decir qué permite ver.",
+      "Dice qué se ve mejor despacio.",
+      "Dice para qué sirve y qué riesgo tiene grabar a alguien."
+     ]
+    ],
+    [
+     "Ajusta",
+     [
+      "217",
+      "Educación Física",
+      "Cursos primero y segundo",
+      "2.3"
+     ],
+     [
+      "Repite el salto igual.",
+      "Cambia algo cuando se lo dicen.",
+      "Prueba un cambio y explica qué efecto tiene."
+     ]
+    ],
+    [
+     "Colabora",
+     [
+      "217",
+      "Educación Física",
+      "Cursos primero y segundo",
+      "3.2"
+     ],
+     [
+      "Se queda en un solo papel.",
+      "Cambia de papel cuando se lo recuerdan.",
+      "Cumple los tres papeles y da pistas que se pueden ver."
+     ]
+    ]
+   ]
+  },
+  "dib": {
+   "rot": "Tres momentos",
+   "svg": "<rect x=\"1\" y=\"1\" width=\"36\" height=\"34\" rx=\"2.5\" fill=\"#DDE4F6\"/><path d=\"M4 31H34\" stroke=\"#061033\" stroke-width=\".7\"/><path d=\"M20 12 L15 21\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M15 21 L22 24 L18 30.5 L22 30.5\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M19 14 L12 13\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"22\" cy=\"9\" r=\"2.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\".7\"/><text x=\"19\" y=\"42\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.4\" fill=\"#061033\">Impulso</text><rect x=\"43\" y=\"1\" width=\"36\" height=\"34\" rx=\"2.5\" fill=\"#DDE4F6\"/><path d=\"M46 31H76\" stroke=\"#061033\" stroke-width=\".7\"/><path d=\"M58 11 L59 20\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M59 20 L67 18 L71 23\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M58 13 L65 8\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"58\" cy=\"8\" r=\"2.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\".7\"/><text x=\"61\" y=\"42\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.4\" fill=\"#061033\">Vuelo</text><rect x=\"85\" y=\"1\" width=\"36\" height=\"34\" rx=\"2.5\" fill=\"#DDE4F6\"/><path d=\"M88 31H118\" stroke=\"#061033\" stroke-width=\".7\"/><path d=\"M102 14 L96 23\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M96 23 L104 22 L107 30.5 L111 30.5\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M101 16 L109 17\" fill=\"none\" stroke=\"#061033\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"104\" cy=\"11\" r=\"2.6\" fill=\"#FF8A6B\" stroke=\"#061033\" stroke-width=\".7\"/><text x=\"103\" y=\"42\" text-anchor=\"middle\" font-family=\"Bricolage Grotesque,sans-serif\" font-weight=\"700\" font-size=\"4.4\" fill=\"#061033\">Caída</text><path d=\"M38.5 18h3M80.500 18h3\" stroke=\"#FF8A6B\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>"
+  }
  }
 }

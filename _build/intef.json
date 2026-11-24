@@ -1102,6 +1102,96 @@
 "dwdeutsch": {
 "u": [],
 "n": ""
+},
+"stellarium": {
+"u": [
+{
+"c": "verde",
+"t": "Programa de escritorio, sin registro",
+"p": 28
+}
+],
+"n": ""
+},
+"learningmusic": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 149
+}
+],
+"n": ""
+},
+"krita": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 50
+}
+],
+"n": ""
+},
+"polypad": {
+"u": [],
+"n": ""
+},
+"phyphox": {
+"u": [],
+"n": ""
+},
+"kinovea": {
+"u": [],
+"n": ""
+},
+"arasaac": {
+"u": [],
+"n": ""
+},
+"atlasign": {
+"u": [
+{
+"c": "verde",
+"t": "Educa IGN, el portal de recursos educativos del IGN, sin registro",
+"p": 71
+}
+],
+"n": "La guía valora el portal Educa IGN, no el Atlas en particular."
+},
+"makecode": {
+"u": [
+{
+"c": "verde",
+"t": "Únicamente con la opción sin registro",
+"p": 168
+}
+],
+"n": ""
+},
+"learningml": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro y sin aportar ningún dato personal",
+"p": 127
+}
+],
+"n": ""
+},
+"cervantes": {
+"u": [],
+"n": ""
+},
+"bnescolar": {
+"u": [
+{
+"c": "verde",
+"t": "Buscador BNEscolar, sin registro",
+"p": 192
+}
+],
+"n": "La guía valora el buscador, no el resto de la web."
 }
 }
 }

@@ -4,7 +4,7 @@
 #   e = etapas (I, P, S) · o = qué se busca · s = materias · d = lo mínimo que hace falta en el aula (p: ordenador del docente y proyector,
 #   e: un dispositivo por pareja o equipo, a: uno por alumno) · pasos = (minutos, agrupamiento, título, qué se hace, herramienta o "")
 METAS = [("exp", "Explorar un tema"), ("cre", "Crear algo"), ("equ", "Debatir y organizarse"), ("rep", "Practicar y repasar"), ("eva", "Comprobar qué saben")]
-MATERIAS = [("le", "Lengua"), ("ma", "Matemáticas"), ("cn", "Ciencias"), ("gh", "Geografía e Historia"), ("id", "Idiomas"), ("mu", "Música y Arte"), ("tp", "Tecnología"), ("tu", "Tutoría y Valores"), ("*", "Cualquier materia")]
+MATERIAS = [("le", "Lengua"), ("ma", "Matemáticas"), ("cn", "Ciencias"), ("gh", "Geografía e Historia"), ("id", "Idiomas"), ("mu", "Música y Arte"), ("tp", "Tecnología"), ("ef", "Educación Física"), ("tu", "Tutoría y Valores"), ("*", "Cualquier materia")]
 APARATOS = [("p", "Solo mi ordenador y el proyector"), ("e", "Uno por pareja o equipo"), ("a", "Uno por alumno")]
 T, G, E, I = "Toda la clase", "Por parejas", "En equipos", "Individual"
 
@@ -253,4 +253,12 @@ SESIONES = [
          (10, T, "¿Qué voz toca?", "Enseña una tarjeta cada vez. Cada equipo propone una voz, la prueba toda la clase y lo comprobáis en el medidor.", "classroomscreen"),
          (5, T, "Nuestro cartel", "Pegad cada tarjeta en su franja. Acordad una señal para avisar cuando la voz suba.", "")],
   b="Haz tú de medidor con el brazo: sube cuando sube la voz.", otra="Deja el medidor a la vista en los rincones durante la primera semana."),
+ dict(id="un-salto-a-camara-lenta", t="Un salto a cámara lenta", e="S", o="exp", s=["ef"], d="p", min=55, r="Mejoran un salto mirando cómo se hace.", ej="Salto de longitud a pies juntos, 1.º y 2.º ESO",
+  prep="Instala Kinovea en un ordenador con Windows. Guarda un vídeo corto de una deportista que salte, con permiso de uso. Prepara una ficha por trío y marca las líneas de salto.",
+  pasos=[(10, T, "Saltamos sin más", "Tras calentar, cada uno hace dos saltos a pies juntos y apunta el mejor en su ficha.", ""),
+         (12, T, "A cámara lenta", "Proyecta el vídeo despacio y páralo en tres momentos: impulso, vuelo y caída. ¿Qué hacen los brazos, las rodillas y los pies?", "kinovea"),
+         (6, E, "Qué vamos a mirar", "Cada trío escribe una pista para cada momento del salto.", ""),
+         (20, E, "Salta, mira y apunta", "Uno salta, otro mira y otro apunta. Cambian cada dos saltos y prueban un cambio cada vez. Nadie se graba.", ""),
+         (7, T, "Qué ha cambiado", "Cada trío cuenta qué cambio ha ayudado más y cómo lo sabe.", "")],
+  b="Dibuja los tres momentos en la pizarra o haz tú el gesto despacio.", otra="Cambia el salto por un lanzamiento o una salida de velocidad."),
 ]
