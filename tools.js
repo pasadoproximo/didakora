@@ -102,6 +102,10 @@ const TOOLS = [
     a:"Juega por equipos a un tablero de preguntas por categorías que el docente proyecta.",
     i:["Repaso por equipos antes del examen","Concurso de fin de trimestre","Preguntas por categorías de una unidad"],
     c:"Toda la etapa", disp:"Ninguno: se proyecta desde el ordenador del docente", cta:"No necesita, tampoco el docente", coste:"Gratuito. Pago único para más funciones" },
+  { id:"typingclub", rev:"2026-11-26", edad:"Desde 13 años", edadTxt:"13 años para una cuenta propia. Por debajo, solo con la edición para centros", edadUrl:"https://www.edclub.com/terms", s:"aula", cat:"part", st:"nueva", n:"TypingClub", url:"https://www.edclub.com/es/library/el-mundo-de-la-mecanografía",
+    a:"Aprende mecanografía con lecciones guiadas, en un curso en español con teclado español.",
+    i:["Practicar la posición de los dedos","Mejorar la velocidad antes de un trabajo escrito","Rutina corta al empezar la clase de informática"],
+    c:"Toda la etapa", disp:"Ordenador con teclado", cta:"No necesita para practicar. Para guardar el progreso, cuenta del centro", coste:"Gratuito con anuncios. Plan Pro de pago para centros", datos:"Lleva anuncios personalizados de Google, también en el plan gratuito para centros" },
   { id:"cerebriti", rev:"2026-11-26", edad:"Desde 14 años", edadTxt:"14 años para registrarse. Para jugar no hace falta cuenta", edadUrl:"https://www.cerebriti.com/informacion/terminos-y-condiciones/", s:"aula", cat:"part", st:"nueva", n:"Cerebriti", url:"https://www.cerebriti.com",
     a:"Juega a juegos educativos de todas las materias: tests, mapas mudos, parejas o rankings.",
     i:["Localizar lugares en un mapa mudo","Reto de preguntas al acabar el tema","Actividad para quien termina antes"],
@@ -204,6 +208,10 @@ const TOOLS = [
     a:"Edita vídeo en el navegador y graba pantalla y cámara a la vez.",
     i:["Vídeo de un proyecto con la cuenta del centro","Explicar un tema grabando la pantalla","Montaje sencillo sin instalar nada"],
     c:"Toda la etapa", disp:"Ordenador por equipo", cta:"Cuenta Microsoft del centro" },
+  { id:"shotcut", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"Shotcut", url:"https://shotcut.org",
+    a:"Edita vídeo con un programa libre que no necesita internet ni cuenta.",
+    i:["Montaje de un trabajo en vídeo","Recortar y unir grabaciones","Añadir texto y voz en off"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala o en versión portable)", cta:"No necesita", coste:"Gratuito y libre" },
   { id:"kdenlive", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"Kdenlive", url:"https://kdenlive.org/es/",
     a:"Monta vídeos con varias pistas, efectos, transiciones, títulos y subtítulos en un programa libre.",
     i:["Documental breve de un proyecto","Noticiario histórico con títulos","Vídeo de una salida con subtítulos"],
@@ -536,6 +544,10 @@ const TOOLS = [
   { id:"arasaac", rev:"2026-11-24", s:"docente", cat:"crear", st:"nueva", n:"ARASAAC", url:"https://arasaac.org",
     p:"Busca pictogramas y crea con ARActivities tableros, horarios y juegos para imprimir.", coste:"Gratuito, sin fines comerciales", datos:"Úsala tú sin subir fotos del alumnado y cita siempre la autoría: carga Google Analytics sin pedir permiso" },
 
+  { id:"calibre", rev:"2026-11-26", s:"docente", cat:"crear", st:"nueva", n:"Calibre", url:"https://calibre-ebook.com/es",
+    p:"Organiza libros electrónicos y convierte documentos a EPUB para leerlos en cualquier lector.",
+    i:["Pasar unos apuntes de Word a EPUB","Biblioteca de lecturas libres para la clase","Enviar libros a los lectores del aula"],
+    coste:"Gratuito y libre" },
   // --- Gestionar el aula
   { id:"classroom", rev:"2026-10-23", s:"docente", cat:"gestion", st:"nueva", n:"Google Classroom", url:"https://classroom.google.com",
     p:"Aula virtual de Google: tareas, materiales, calificaciones y avisos.",
@@ -591,6 +603,10 @@ const TOOLS = [
     p:"Cuestionarios y encuestas integrados con Teams.",
     i:["Cuestionario dentro de una tarea de Teams","Repaso con retroalimentación","Recogida de datos de un proyecto"],
     coste:"Incluido en Microsoft 365", datos:"Con la cuenta del centro" },
+  { id:"rubistar", rev:"2026-11-26", s:"docente", cat:"eval", st:"nueva", n:"RubiStar", url:"https://rubistar.4teachers.org/index.php?skin=es&lang=es",
+    p:"Crea rúbricas a partir de plantillas por áreas, con criterios ya redactados que se adaptan.",
+    i:["Rúbrica para una exposición oral","Rúbrica de un trabajo escrito","Adaptar una rúbrica de otro docente"],
+    coste:"Gratuito para centros públicos", datos:"Incluso sin cuenta pide nombre y código postal: la guía del INTEF solo la acepta sin registro y sin datos personales" },
   { id:"jotform", rev:"2026-10-23", s:"docente", cat:"eval", st:"vigente", n:"Jotform", url:"https://www.jotform.com",
     p:"Formularios y cuestionarios con muchos tipos de campo y plantillas.",
     i:["Rúbrica en formulario","Formulario de inscripción","Encuesta de satisfacción"],
@@ -683,6 +699,10 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"rubistar", txt:"Rúbricas con plantillas por áreas.", q:["rúbrica", "crear rúbricas", "plantillas de rúbricas"] },
+  { id:"calibre", txt:"Convierte documentos a EPUB y organiza libros electrónicos.", q:["libros electrónicos", "convertir a epub", "epub"] },
+  { id:"shotcut", txt:"Otro editor de vídeo libre, sin internet ni cuenta.", q:["editor de vídeo", "editar vídeo sin internet", "vídeo libre"] },
+  { id:"typingclub", txt:"Mecanografía con un curso en español.", q:["mecanografía", "aprender a teclear", "teclado"] },
   { id:"vibecoding", txt:"Apps hechas con IA por docentes, con semáforo de privacidad.", q:["aplicaciones hechas con ia", "repositorio de aplicaciones", "vibe coding"] },
   { id:"musopen", txt:"Partituras y música clásica libres de derechos.", q:["partituras gratis", "música clásica", "música libre de derechos"] },
   { id:"mindmup", txt:"Mapas mentales sin crear cuenta.", q:["mapa mental", "mapa mental sin registro", "lluvia de ideas"] },
@@ -690,11 +710,7 @@ const RECIENTES = [
   { id:"gimp", txt:"Retoque de fotos con un programa libre.", q:["retocar fotos", "editar imágenes", "editar fotos"] },
   { id:"cerebriti", txt:"Juegos educativos de todas las materias, sin registro.", q:["juegos educativos", "mapa mudo", "jugar sin registrarse"] },
   { id:"jeopardylabs", txt:"Un tablero de preguntas para jugar por equipos.", q:["jeopardy", "concurso por equipos", "tablero de preguntas"] },
-  { id:"quizlet", txt:"Tarjetas de repaso y juegos por equipos.", q:["tarjetas de estudio", "flashcards", "memorizar vocabulario"] },
-  { id:"socrative", txt:"Cuestionarios que se corrigen solos, sin concurso.", q:["cuestionario que se corrige solo", "evaluación rápida", "informe por alumno"] },
-  { id:"minecraftedu", txt:"Mundos de Minecraft para aprender jugando.", q:["minecraft", "videojuego educativo", "construir en equipo"] },
-  { id:"falstad", txt:"Simula circuitos eléctricos en el navegador.", q:["simular circuitos", "ley de ohm", "circuito eléctrico", "corriente eléctrica"] },
-  { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] }
+  { id:"quizlet", txt:"Tarjetas de repaso y juegos por equipos.", q:["tarjetas de estudio", "flashcards", "memorizar vocabulario"] }
 ];
 
 const CHANGES = [

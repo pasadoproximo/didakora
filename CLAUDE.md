@@ -100,14 +100,14 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - Letras alojadas en `letras/` (OFL): la web no pide nada a Google. El correo de contacto se lee de la variable de entorno `DK_CORREO` (sin ella, el build se para).
 - Altas del 24-11-2026: 12 (150 herramientas). **Educación Física** (`cat:"ef"`) es apartado de «Explorar por materias» y materia en «Elige tu sesión»; primera ficha, Kinovea.
 - Altas del 26-11-2026: 6 (156 herramientas), de revisar listas de gamificación de Educación 3.0 e Ingenioteka: Socrative, Quizlet, JeopardyLabs y Cerebriti
-  (Participar y repasar), Minecraft Education (Crear, de pago con licencia del centro) y Falstad (Ciencias, en verde en la guía del INTEF). JeopardyLabs no tiene logo
-  oficial de más de 16 px: va sin logo. Colección nueva «Jugar para repasar». Descartadas: Gimkit, AhaSlides, Bubbl.us, Popplet y MyClassGame (rojo en la guía),
+  (Participar y repasar), Minecraft Education (Crear, de pago con licencia del centro) y Falstad (Ciencias, en verde en la guía del INTEF). Colección nueva «Jugar para repasar». Descartadas: Gimkit, AhaSlides, Bubbl.us, Popplet y MyClassGame (rojo en la guía),
   Infogram (18 años o permiso familiar, cuenta por alumno y proyectos públicos en Google), CodeCombat (casi todo de pago), ThingLink (solo prueba de 30 días),
-  Poll Everywhere, Brainscape, EasyEDA, Pear Deck y ClassPoint (repiten lo que hay). TypingClub, pendiente de Jorge (anuncios de AdSense en el plan escolar gratuito).
+  Poll Everywhere, Brainscape, EasyEDA, Pear Deck y ClassPoint (repiten lo que hay). TypingClub entra con el aviso de anuncios (Jorge, 26-11-2026).
   Después, del directorio de herramientas de Juan José de Haro (herramientas.tiddlyhost.com) cruzado con la guía del INTEF: Kdenlive y GIMP (verdes, 158 herramientas).
   También MindMup (probado en el navegador: sin cuenta el mapa es temporal y se exporta), Musopen (`intef:"ver"`: partituras en verde, música en rojo. Su web bloquea a los robots: se leyó con Chrome)
   y el Repositorio de Vibe Coding Educativo (Recursos, enlazado con texto propio, sin copiar sus fichas). 161 herramientas.
-  Shotcut, RubiStar y Calibre también salen en verde en esa guía.
+  Después, Shotcut, RubiStar (logo: su nombre con la estrella, no hay icono cuadrado) y Calibre, todas en verde, y TypingClub con el aviso de anuncios (decisión de Jorge). 165 herramientas.
+  JeopardyLabs ya tiene logo: el átomo recortado de la cabecera de su web.
 - «Qué es» ocupa 4 o 5 líneas en ordenador (340 a 430 caracteres, sin repetir la Ficha rápida, los usos ni «Para saber más»). Los usos van simétricos en su tarjeta. Sin apartado «Por ejemplo, en clase» (Jorge lo quitó).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
@@ -116,7 +116,8 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
 - Idiomas (24-11-2026): TV5MONDE, alta (Jorge comprobó que los ejercicios no piden cuenta. Logo: el de su aplicación oficial). RFI Français Facile, dudosa: su política dice que no
   se dirige a menores sin autorización. Duolingo y DW Learn German, altas (Jorge comprobó que se usan sin cuenta). Italiano y portugués, sin candidato. Language Reactor, no: la extensión envía el correo de Chrome y no hay edad mínima publicada.
 - «Qué ha cambiado» (página con `CHANGES`): se probó el 24-11-2026 y Jorge la descartó. No volver a proponerla.
-- Ideas sin empezar: herramientas por área de la competencia digital docente.
+- Canal de Telegram propio de Didákora: aparcado hasta que haya público que pida las novedades (Jorge, 26-11-2026). Si se hace automático, haría falta un RSS de fichas nuevas.
+- Descartada (26-11-2026): herramientas por área de la competencia digital docente.
 
 ## Flujo
 

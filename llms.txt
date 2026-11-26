@@ -2,7 +2,7 @@
 
 > Catálogo de herramientas digitales para docentes de Infantil, Primaria, Secundaria y Bachillerato en España. Cada ficha explica qué es la herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.
 
-Herramientas: 161. Última revisión: noviembre de 2026.
+Herramientas: 165. Última revisión: noviembre de 2026.
 
 ## Páginas principales
 
@@ -30,6 +30,7 @@ Cuestionarios, juegos y concursos para participar en clase y repasar.
 - [Socrative](https://didakora.es/socrative/): Socrative sirve para lanzar cuestionarios y preguntas rápidas que se corrigen solos.
 - [Quizlet](https://didakora.es/quizlet/): Quizlet sirve para estudiar con unidades de tarjetas: un término por un lado y su definición o una imagen por el otro.
 - [JeopardyLabs](https://didakora.es/jeopardylabs/): JeopardyLabs sirve para crear un tablero de preguntas por categorías al estilo del concurso Jeopardy.
+- [TypingClub](https://didakora.es/typingclub/): TypingClub es una plataforma para aprender mecanografía con lecciones guiadas, de la posición de los dedos a la escritura de textos.
 - [Cerebriti](https://didakora.es/cerebriti/): Cerebriti es una plataforma española de juegos educativos que crea su propia comunidad de usuarios.
 - [GCompris](https://didakora.es/gcompris/): GCompris es un programa con más de cien actividades educativas para niños de 2 a 10 años: letras, números, colores, el reloj o la lógica.
 
@@ -50,6 +51,7 @@ Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente
 - [Tux Paint](https://didakora.es/tuxpaint/): Tux Paint es un programa de dibujo libre y gratuito para niños de 3 a 12 años.
 - [CapCut](https://didakora.es/capcut/): CapCut es un editor de vídeo para móvil y ordenador con plantillas, efectos y subtítulos automáticos.
 - [Clipchamp](https://didakora.es/clipchamp/): Clipchamp es el editor de vídeo de Microsoft.
+- [Shotcut](https://didakora.es/shotcut/): Shotcut es un editor de vídeo libre para Windows, macOS y Linux.
 - [Kdenlive](https://didakora.es/kdenlive/): Kdenlive es el editor de vídeo libre de la comunidad KDE.
 - [Vocaroo](https://didakora.es/vocaroo/): Vocaroo es la forma más sencilla de grabar un audio: se pulsa un botón, se graba con el micrófono y se obtiene un enlace para compartirlo.
 - [Audacity](https://didakora.es/audacity/): Audacity es un programa libre y gratuito para grabar y editar audio.
@@ -62,6 +64,7 @@ Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente
 - [Loom](https://didakora.es/loom/): Loom graba a la vez la pantalla del ordenador y la cámara y comparte el vídeo con un enlace al instante.
 - [PicsArt](https://didakora.es/picsart/): PicsArt es un editor de imágenes para móvil y web.
 - [ARASAAC](https://didakora.es/arasaac/): ARASAAC es el centro aragonés de comunicación aumentativa y alternativa, del Gobierno de Aragón.
+- [Calibre](https://didakora.es/calibre/): Calibre es un programa libre para gestionar libros electrónicos.
 
 ## Colaborar y organizar
 
@@ -171,6 +174,7 @@ Formularios, rúbricas, itinerarios e insignias.
 - [Doc to Form Quiz Maker](https://didakora.es/doctoform/): Doc to Form Quiz Maker es un complemento gratuito de Google Docs.
 - [Google Forms](https://didakora.es/gforms/): Google Forms sirve para crear cuestionarios, exámenes que se corrigen solos y encuestas.
 - [Microsoft Forms](https://didakora.es/msforms/): Microsoft Forms permite crear cuestionarios y encuestas que se corrigen solos.
+- [RubiStar](https://didakora.es/rubistar/): RubiStar es una herramienta veterana para crear rúbricas, de la Universidad de Kansas.
 - [Jotform](https://didakora.es/jotform/): Jotform es un creador de formularios con muchos tipos de campo y plantillas.
 - [Symbaloo Learning Paths](https://didakora.es/learningpaths/): Learning Paths es una función de Symbaloo que convierte un webmix en un itinerario de aprendizaje.
 - [Open Badge Designer](https://didakora.es/badge/): Open Badge Designer es una herramienta gratuita para diseñar insignias digitales.
