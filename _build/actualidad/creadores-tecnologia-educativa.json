@@ -1,0 +1,102 @@
+{
+  "slug": "creadores-tecnologia-educativa",
+  "titulo": "10 creadores de tecnología educativa para seguir.",
+  "fecha": "2026-11-26",
+  "numero": 11,
+  "etiqueta": "Herramientas",
+  "entradilla": "Docentes y proyectos que enseñan, gratis y paso a paso, a usar herramientas digitales en el aula. Son de distintas etapas, materias y lenguas, elegidos con los mismos criterios que las fichas de Didákora.",
+  "miniatura": {"src": "img/miniatura.jpg"},
+  "portada": {
+    "src": "img/portada.jpg",
+    "alt": "Una docente coloca una cámara sobre un trípode para grabar una clase, con un cuaderno en la mano y un portátil al lado.",
+    "credito": "Foto: Alena Darmel · Licencia de Pexels, modificada",
+    "url_credito": "https://www.pexels.com/photo/woman-setting-up-a-camera-for-recording-9040615/"
+  },
+  "bloques": [
+    {
+      "tipo": "texto",
+      "etiqueta": "Antes de empezar",
+      "titulo": "Cómo los hemos elegido",
+      "texto": "No es una lista de los más seguidos. Hemos buscado en listas de medios educativos, premios, directorios de recursos y blogs de docentes. De ahí nos hemos quedado con quien cumple cinco cosas.\n\nPublica en español o en una lengua cooficial. Ha publicado algo en 2026. Enseña a usar algo, no solo opina. Su contenido es gratis, aunque además venda cursos o libros. Y no hace publicidad encubierta.\n\nNadie paga por salir aquí. Si alguien vende algo, lo decimos."
+    },
+    {
+      "tipo": "lista",
+      "etiqueta": "Para seguir",
+      "titulo": "Los 10 creadores",
+      "items": [
+        {
+          "titulo": "Juan José de Haro (Bilateria)",
+          "texto": "Doctor en Biología y profesor durante más de 30 años. Escribe guías sobre IA, eXeLearning y software libre. En noviembre comparó las cuatro formas de usar la IA, del chat a la consola. También explicó cuáles se pueden usar en España. Coordina el repositorio de Vibe Coding Educativo. Su nivel es alto para quien empieza.",
+          "url": "https://educacion.bilateria.org/",
+          "ficha": null
+        },
+        {
+          "titulo": "Fernando Posada (canalTIC)",
+          "texto": "Maestro y coordinador TIC en un centro de Primaria. Explica paso a paso cómo crear recursos con IA y aplicaciones web para Infantil y Primaria. También reúne ideas en su dossier «Vibecoding en el aula». Ofrece talleres de formación.",
+          "url": "https://canaltic.com/blog/",
+          "ficha": null
+        },
+        {
+          "titulo": "César Poyatos (profes.tv)",
+          "texto": "Recursos interactivos y guías para docentes de todas las etapas, con instrucciones listas para usar con la IA. Dos ejemplos de octubre son sus «Skills de IA para docentes» y su guía del DUA con ejemplos. Su libro de 2026 aparece en la portada de la web.",
+          "url": "https://profes.tv/",
+          "ficha": null
+        },
+        {
+          "titulo": "José Luis Miralles Bono (El pulpo en el vaso)",
+          "texto": "Profesor de Música en Secundaria y conservatorio. Escribe sobre IA y música con mirada crítica, como en su entrada sobre PromptDJ en el aula. También comparte aplicaciones propias que se abren en el navegador. Sus textos son largos.",
+          "url": "https://elpulpoenelvaso.jlmirall.es/",
+          "ficha": null
+        },
+        {
+          "titulo": "Antonio Carlos Arjona Lama",
+          "texto": "Robótica y pensamiento computacional para Infantil y Primaria en su web de EducaMadrid. Sus propuestas traen materiales y tapetes para imprimir, como «Talebot se va de vacaciones», para 4 años, o un mando de consola hecho con cartón y Makey Makey. Hacen falta robots, que son de pago.",
+          "url": "https://www.educa2.madrid.org/web/antonio.arjona/home",
+          "ficha": null
+        },
+        {
+          "titulo": "Programamos",
+          "texto": "Asociación sin ánimo de lucro que acerca la programación y la IA a Secundaria, Bachillerato y FP. En octubre presentó Glass Parrot, una herramienta libre para entender cómo genera texto una IA. Uno de sus programas está financiado por Google.org. Lo dice abiertamente.",
+          "url": "https://programamos.es/",
+          "ficha": null
+        },
+        {
+          "titulo": "EdTrainer Tv (Luis Alfonso Ruiz)",
+          "texto": "Tutoriales en vídeo de Google Classroom, Gemini y otras IA para docentes. Cita las fuentes oficiales y avisa de los fallos que conviene vigilar. Casi todo es de Google, así que depende de lo que tenga activado tu centro. Ofrece formación para centros y asesoría de pago.",
+          "url": "https://www.youtube.com/@EdTrainerTv",
+          "ficha": null
+        },
+        {
+          "titulo": "Samuel Soriano (Sasogu)",
+          "texto": "Herramientas libres para Primaria explicadas en valenciano. Por ejemplo, Breu, para acortar enlaces y hacer códigos QR, o un entorno de programación por bloques para los más pequeños. Algunas están en fase de pruebas. Ofrece formación para centros.",
+          "url": "https://edutictac.es/blog/sasogu/",
+          "ficha": null
+        },
+        {
+          "titulo": "STEAM Thinking (Marcos Sarabia)",
+          "texto": "Proyectos de robótica con micro:bit para Primaria, en castellano y en catalán, como un minigolf o cuatro proyectos para empezar. Hace falta la placa. Ojo con su web, que invita a dar de alta al alumnado. Esa parte no la recomendamos.",
+          "url": "https://www.youtube.com/@steamthinkingroboticaeduca",
+          "ficha": null
+        },
+        {
+          "titulo": "Aula Abierta de ARASAAC",
+          "texto": "El espacio de formación de ARASAAC, del Gobierno de Aragón. Explica paso a paso sus herramientas de pictogramas, como ARActivities, para preparar materiales accesibles en cualquier etapa.",
+          "url": "https://aulaabierta.arasaac.org/",
+          "ficha": "arasaac"
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "etiqueta": "En otras lenguas",
+      "titulo": "En catalán, valenciano y gallego",
+      "texto": "Samuel Soriano publica en valenciano y STEAM Thinking tiene vídeos en catalán. En gallego, Luis Vilela Acuña, maestro de Educación Física, hace aplicaciones libres con vibe coding, como «Atlas en xogo», un juego de mapas.\n\nEn euskera no hemos encontrado a nadie que cumpla los criterios. Si conoces a alguien, cuéntanoslo."
+    }
+  ],
+  "fuentes": [
+    {"nombre": "Ayuda para Maestros · 13 webs y blogs de docentes para docentes", "url": "https://www.ayudaparamaestros.com/2026/03/13-webs-y-blogs-de-docentes-para.html"},
+    {"nombre": "Diario de IA Educativa · Semana del repositorio", "url": "https://diarioiaeducativa.github.io/2026-11-06/semana-del-repositorio.html"},
+    {"nombre": "Diario de IA Educativa · Atlas en xogo", "url": "https://diarioiaeducativa.github.io/2026-11-13/atlas-en-xogo.html"},
+    {"nombre": "EDUmind · Luis Vilela Acuña", "url": "https://edumind.es/es"}
+  ]
+}
