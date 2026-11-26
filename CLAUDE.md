@@ -105,7 +105,8 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   Poll Everywhere, Brainscape, EasyEDA, Pear Deck y ClassPoint (repiten lo que hay). TypingClub entra con el aviso de anuncios (Jorge, 26-11-2026).
   Después, del directorio de herramientas de Juan José de Haro (herramientas.tiddlyhost.com) cruzado con la guía del INTEF: Kdenlive y GIMP (verdes, 158 herramientas).
   También MindMup (probado en el navegador: sin cuenta el mapa es temporal y se exporta), Musopen (`intef:"ver"`: partituras en verde, música en rojo. Su web bloquea a los robots: se leyó con Chrome)
-  y el Repositorio de Vibe Coding Educativo (Recursos, enlazado con texto propio, sin copiar sus fichas). 161 herramientas.
+  y el Repositorio de recursos educativos digitales, antes de Vibe Coding Educativo (Recursos, enlazado con texto propio, sin copiar sus fichas.
+  Nombre y guía del INTEF corregidos el 26-11-2026 tras avisar su autor: verde, p. 194, como «Repositorio de aplicaciones educativas»). 161 herramientas.
   Después, Shotcut, RubiStar (logo: su nombre con la estrella, no hay icono cuadrado) y Calibre, todas en verde, y TypingClub con el aviso de anuncios (decisión de Jorge). 165 herramientas.
   JeopardyLabs ya tiene logo: el átomo recortado de la cabecera de su web.
 - «Qué es» ocupa 4 o 5 líneas en ordenador (340 a 430 caracteres, sin repetir la Ficha rápida, los usos ni «Para saber más»). Los usos van simétricos en su tarjeta. Sin apartado «Por ejemplo, en clase» (Jorge lo quitó).

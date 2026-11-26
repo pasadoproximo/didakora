@@ -645,7 +645,7 @@ const TOOLS = [
   // ===================== RECURSOS =====================
   { id:"procomun", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"Procomún", url:"https://procomun.intef.es",
     d:"Repositorio de recursos educativos abiertos del Ministerio y las comunidades autónomas." },
-  { id:"vibecoding", rev:"2026-11-26", s:"recursos", cat:"sa", st:"nueva", n:"Repositorio de Vibe Coding Educativo", url:"https://vibe-coding-educativo.github.io/app_edu/",
+  { id:"vibecoding", rev:"2026-11-26", s:"recursos", cat:"sa", st:"nueva", n:"Repositorio de recursos educativos digitales (antes Repositorio de Vibe Coding Educativo)", url:"https://vibe-coding-educativo.github.io/app_edu/",
     d:"Aplicaciones, juegos y simuladores hechos con IA por docentes, cada uno con su semáforo de privacidad.", coste:"Gratuito" },
   { id:"readua", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"REA/DUA Andalucía", url:"https://edea.juntadeandalucia.es/bancorecursos/",
     d:"Más de 250 situaciones de aprendizaje abiertas de la Junta de Andalucía, con guía docente y enfoque DUA." },

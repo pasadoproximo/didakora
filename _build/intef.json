@@ -1304,8 +1304,14 @@
 "n": "El rojo es para el banco de música, que pide registro."
 },
 "vibecoding": {
-"u": [],
-"n": ""
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 194
+}
+],
+"n": "La guía lo recoge con su nombre anterior, «Repositorio de aplicaciones educativas»."
 },
 "typingclub": {
 "u": [],

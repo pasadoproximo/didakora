@@ -203,7 +203,7 @@ Plataformas para organizar el curso, las tareas y las entregas.
 Situaciones de aprendizaje, formación, imágenes y recursos abiertos.
 
 - [Procomún](https://didakora.es/procomun/): Procomún es el repositorio de recursos educativos abiertos del Ministerio de Educación y las comunidades autónomas.
-- [Repositorio de Vibe Coding Educativo](https://didakora.es/vibecoding/): Es un repositorio de aplicaciones, juegos, simuladores y asistentes creados por docentes de la comunidad Vibe Coding Educativo, casi siempre con ayuda de la IA.
+- [Repositorio de recursos educativos digitales](https://didakora.es/vibecoding/): Es un repositorio de aplicaciones, juegos, simuladores y asistentes creados por docentes de la comunidad Vibe Coding Educativo, casi siempre con ayuda de la IA.
 - [REA/DUA Andalucía](https://didakora.es/readua/): El banco de Recursos Educativos Abiertos de la Junta de Andalucía ofrece situaciones de aprendizaje completas, con guía docente y enfoque de Diseño Universal para el Aprendizaje (DUA).
 - [Proyecto EDIA](https://didakora.es/edia/): El Proyecto EDIA, del CEDEC (INTEF), ofrece situaciones de aprendizaje abiertas con plantillas, guías y rúbricas, desde Infantil hasta Formación Profesional.
 - [BNEscolar](https://didakora.es/bnescolar/): BNEscolar es la propuesta de la Biblioteca Nacional de España para llevar su patrimonio al aula.
