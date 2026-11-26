@@ -1277,6 +1277,35 @@
 }
 ],
 "n": ""
+},
+"mindmup": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro y sin aportar datos personales",
+"p": 142
+}
+],
+"n": ""
+},
+"musopen": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro, solo para descargar partituras",
+"p": 187
+},
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 187
+}
+],
+"n": "El rojo es para el banco de música, que pide registro."
+},
+"vibecoding": {
+"u": [],
+"n": ""
 }
 }
 }

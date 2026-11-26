@@ -105,7 +105,8 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   Infogram (18 años o permiso familiar, cuenta por alumno y proyectos públicos en Google), CodeCombat (casi todo de pago), ThingLink (solo prueba de 30 días),
   Poll Everywhere, Brainscape, EasyEDA, Pear Deck y ClassPoint (repiten lo que hay). TypingClub, pendiente de Jorge (anuncios de AdSense en el plan escolar gratuito).
   Después, del directorio de herramientas de Juan José de Haro (herramientas.tiddlyhost.com) cruzado con la guía del INTEF: Kdenlive y GIMP (verdes, 158 herramientas).
-  En espera: MindMup (no consta qué se hace sin cuenta, solo en inglés) y Musopen (la web bloquea a los robots: fuentes solo en caché, sin logo grande. Partituras en verde, música en rojo).
+  También MindMup (probado en el navegador: sin cuenta el mapa es temporal y se exporta), Musopen (`intef:"ver"`: partituras en verde, música en rojo. Su web bloquea a los robots: se leyó con Chrome)
+  y el Repositorio de Vibe Coding Educativo (Recursos, enlazado con texto propio, sin copiar sus fichas). 161 herramientas.
   Shotcut, RubiStar y Calibre también salen en verde en esa guía.
 - «Qué es» ocupa 4 o 5 líneas en ordenador (340 a 430 caracteres, sin repetir la Ficha rápida, los usos ni «Para saber más»). Los usos van simétricos en su tarjeta. Sin apartado «Por ejemplo, en clase» (Jorge lo quitó).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).

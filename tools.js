@@ -151,6 +151,10 @@ const TOOLS = [
     c:"ESO y Bachillerato", disp:"Uno por pareja o proyectado", cta:"No necesita", coste:"Gratuito", datos:"Carga Google Analytics sin pedir permiso y parte de sus actividades abre Genially o Educaplay" },
 
   // --- Crear y presentar
+  { id:"mindmup", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"MindMup", url:"https://www.mindmup.com",
+    a:"Hace mapas mentales en el navegador sin crear cuenta y los exporta al terminar.",
+    i:["Esquema de una unidad","Lluvia de ideas antes de escribir","Resumen visual para estudiar"],
+    c:"Toda la etapa", disp:"Uno por alumno o pareja (ordenador)", cta:"No necesita: sin cuenta, el mapa es temporal", coste:"Plan gratuito con límites", datos:"Úsalo sin cuenta y sin poner datos personales en el mapa" },
   { id:"minecraftedu", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"Minecraft Education", url:"https://education.minecraft.net/es-es",
     a:"Explora y construye en mundos de Minecraft preparados para aprender, solo o con su clase.",
     i:["Recorrer una civilización antigua","Construir un edificio histórico en equipo","Resolver un desafío como «Misterio maya»"],
@@ -625,6 +629,8 @@ const TOOLS = [
   // ===================== RECURSOS =====================
   { id:"procomun", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"Procomún", url:"https://procomun.intef.es",
     d:"Repositorio de recursos educativos abiertos del Ministerio y las comunidades autónomas." },
+  { id:"vibecoding", rev:"2026-11-26", s:"recursos", cat:"sa", st:"nueva", n:"Repositorio de Vibe Coding Educativo", url:"https://vibe-coding-educativo.github.io/app_edu/",
+    d:"Aplicaciones, juegos y simuladores hechos con IA por docentes, cada uno con su semáforo de privacidad.", coste:"Gratuito" },
   { id:"readua", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"REA/DUA Andalucía", url:"https://edea.juntadeandalucia.es/bancorecursos/",
     d:"Más de 250 situaciones de aprendizaje abiertas de la Junta de Andalucía, con guía docente y enfoque DUA." },
   { id:"edia", rev:"2026-10-23", s:"recursos", cat:"sa", st:"vigente", n:"Proyecto EDIA (INTEF)", url:"https://cedec.intef.es/proyecto-edia/",
@@ -633,6 +639,9 @@ const TOOLS = [
     d:"Reúne secuencias, talleres, desafíos y vídeos con fondos de la Biblioteca Nacional.", coste:"Gratuito", datos:"Carga Google Analytics antes de elegir en el aviso de cookies: no registres al alumnado en «Mi BNEscolar»" },
   { id:"pixabay", rev:"2026-11-24", edad:"Desde 13 años", edadTxt:"13 años o la edad mínima para consentir en cada país", edadUrl:"https://pixabay.com/service/terms/", s:"recursos", cat:"img", st:"vigente", n:"Pixabay", url:"https://pixabay.com/es/",
     d:"Imágenes, vídeos, ilustraciones y música libres de derechos." },
+  { id:"musopen", rev:"2026-11-26", edad:"Desde 13 años", edadTxt:"13 años para registrarse. Para descargar partituras no hace falta cuenta", edadUrl:"https://musopen.org/privacy/", s:"recursos", cat:"img", st:"nueva", n:"Musopen", url:"https://musopen.org/es/",
+    d:"Partituras y grabaciones de música clásica libres de derechos, de una organización sin ánimo de lucro.", coste:"Gratuito. Cuenta de pago para descargas ilimitadas",
+    intef:"ver" },
   { id:"magnific", rev:"2026-10-23", s:"recursos", cat:"img", st:"cambio", n:"Magnific (antes Freepik)", url:"https://www.magnific.com",
     d:"La antigua Freepik, que en 2026 cambió de nombre y se centra en la IA. Mantiene su biblioteca de ilustraciones, vectores e imágenes, con una parte gratuita." },
   { id:"unsplash", rev:"2026-11-24", edad:"Desde 13 años", edadTxt:"más de 13 años", edadUrl:"https://unsplash.com/terms", s:"recursos", cat:"img", st:"nueva", n:"Unsplash", url:"https://unsplash.com",
@@ -674,6 +683,9 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"vibecoding", txt:"Apps hechas con IA por docentes, con semáforo de privacidad.", q:["aplicaciones hechas con ia", "repositorio de aplicaciones", "vibe coding"] },
+  { id:"musopen", txt:"Partituras y música clásica libres de derechos.", q:["partituras gratis", "música clásica", "música libre de derechos"] },
+  { id:"mindmup", txt:"Mapas mentales sin crear cuenta.", q:["mapa mental", "mapa mental sin registro", "lluvia de ideas"] },
   { id:"kdenlive", txt:"Editor de vídeo libre, con títulos y subtítulos.", q:["editar vídeo", "editor de vídeo gratis", "montar vídeo", "subtítulos"] },
   { id:"gimp", txt:"Retoque de fotos con un programa libre.", q:["retocar fotos", "editar imágenes", "editar fotos"] },
   { id:"cerebriti", txt:"Juegos educativos de todas las materias, sin registro.", q:["juegos educativos", "mapa mudo", "jugar sin registrarse"] },
@@ -682,10 +694,7 @@ const RECIENTES = [
   { id:"socrative", txt:"Cuestionarios que se corrigen solos, sin concurso.", q:["cuestionario que se corrige solo", "evaluación rápida", "informe por alumno"] },
   { id:"minecraftedu", txt:"Mundos de Minecraft para aprender jugando.", q:["minecraft", "videojuego educativo", "construir en equipo"] },
   { id:"falstad", txt:"Simula circuitos eléctricos en el navegador.", q:["simular circuitos", "ley de ohm", "circuito eléctrico", "corriente eléctrica"] },
-  { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] },
-  { id:"arasaac", txt:"Pictogramas y materiales para imprimir con ARActivities.", q:["pictogramas", "comunicación aumentativa", "horario visual", "tablero de comunicación"] },
-  { id:"stellarium", txt:"Un planetario en 3D para explorar el cielo.", q:["astronomía", "planetario", "constelaciones", "ver las estrellas"] },
-  { id:"polypad", txt:"Fracciones, polígonos y más manipulativos de matemáticas.", q:["fracciones", "manipulativos de matemáticas", "tangram", "manipulativos de matemáticas"] }
+  { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] }
 ];
 
 const CHANGES = [
@@ -710,7 +719,7 @@ const AREAS = {
   geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay","atlasign","minecraftedu"] },
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados","stellarium","polypad","phyphox","falstad"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad","makecode","learningml","falstad"] },
-  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita","gimp"] },
+  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita","gimp","musopen"] },
   idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","dwdeutsch","duolingo","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   ef: { n:"Educación Física", ids:["kinovea"] },
   econ: { n:"Economía", ids:["bolsa"] }

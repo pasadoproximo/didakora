@@ -2,7 +2,7 @@
 
 > Catálogo de herramientas digitales para docentes de Infantil, Primaria, Secundaria y Bachillerato en España. Cada ficha explica qué es la herramienta, para qué sirve en clase, en qué dispositivos funciona, si pide cuenta y la edad mínima cuando sus condiciones la indican. La hace Jorge Delgado Aguilera, profesor de Geografía e Historia y diseñador de materiales educativos digitales. Un equipo de agentes de IA le propone cambios y él los comprueba antes de publicarlos.
 
-Herramientas: 158. Última revisión: noviembre de 2026.
+Herramientas: 161. Última revisión: noviembre de 2026.
 
 ## Páginas principales
 
@@ -37,6 +37,7 @@ Cuestionarios, juegos y concursos para participar en clase y repasar.
 
 Presentaciones, vídeo, audio, cómic y publicaciones del alumnado y del docente.
 
+- [MindMup](https://didakora.es/mindmup/): MindMup sirve para hacer mapas mentales en el navegador.
 - [Minecraft Education](https://didakora.es/minecraftedu/): Minecraft Education es la edición educativa del videojuego de construcción.
 - [Canva para Educación](https://didakora.es/canva/): Canva es una herramienta de diseño gráfico con miles de plantillas.
 - [Genially](https://didakora.es/genially/): Genially sirve para crear contenidos interactivos: presentaciones, infografías, imágenes con puntos que se pueden pulsar, juegos y escape rooms.
@@ -198,10 +199,12 @@ Plataformas para organizar el curso, las tareas y las entregas.
 Situaciones de aprendizaje, formación, imágenes y recursos abiertos.
 
 - [Procomún](https://didakora.es/procomun/): Procomún es el repositorio de recursos educativos abiertos del Ministerio de Educación y las comunidades autónomas.
+- [Repositorio de Vibe Coding Educativo](https://didakora.es/vibecoding/): Es un repositorio de aplicaciones, juegos, simuladores y asistentes creados por docentes de la comunidad Vibe Coding Educativo, casi siempre con ayuda de la IA.
 - [REA/DUA Andalucía](https://didakora.es/readua/): El banco de Recursos Educativos Abiertos de la Junta de Andalucía ofrece situaciones de aprendizaje completas, con guía docente y enfoque de Diseño Universal para el Aprendizaje (DUA).
 - [Proyecto EDIA](https://didakora.es/edia/): El Proyecto EDIA, del CEDEC (INTEF), ofrece situaciones de aprendizaje abiertas con plantillas, guías y rúbricas, desde Infantil hasta Formación Profesional.
 - [BNEscolar](https://didakora.es/bnescolar/): BNEscolar es la propuesta de la Biblioteca Nacional de España para llevar su patrimonio al aula.
 - [Pixabay](https://didakora.es/pixabay/): Pixabay es un banco de imágenes, ilustraciones, vídeos y música que se pueden usar gratis, también en materiales educativos, sin necesidad de citar al autor.
+- [Musopen](https://didakora.es/musopen/): Musopen es una organización sin ánimo de lucro que ofrece grabaciones, partituras y materiales de música clásica sin restricciones de derechos.
 - [Magnific](https://didakora.es/magnific/): Magnific es el nuevo nombre de Freepik desde 2026.
 - [Unsplash](https://didakora.es/unsplash/): Unsplash es un banco de fotografías de alta calidad que se pueden usar gratis, también en materiales educativos, sin pedir permiso.
 - [Pexels](https://didakora.es/pexels/): Pexels ofrece fotos y vídeos gratuitos de buena calidad, muy útiles para presentaciones y montajes de vídeo del alumnado.
