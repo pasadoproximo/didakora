@@ -1257,6 +1257,26 @@
 }
 ],
 "n": ""
+},
+"kdenlive": {
+"u": [
+{
+"c": "verde",
+"t": "Programa de escritorio, sin registro",
+"p": 61
+}
+],
+"n": ""
+},
+"gimp": {
+"u": [
+{
+"c": "verde",
+"t": "Programa de escritorio, sin registro",
+"p": 87
+}
+],
+"n": ""
 }
 }
 }

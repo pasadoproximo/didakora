@@ -200,6 +200,10 @@ const TOOLS = [
     a:"Edita vídeo en el navegador y graba pantalla y cámara a la vez.",
     i:["Vídeo de un proyecto con la cuenta del centro","Explicar un tema grabando la pantalla","Montaje sencillo sin instalar nada"],
     c:"Toda la etapa", disp:"Ordenador por equipo", cta:"Cuenta Microsoft del centro" },
+  { id:"kdenlive", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"Kdenlive", url:"https://kdenlive.org/es/",
+    a:"Monta vídeos con varias pistas, efectos, transiciones, títulos y subtítulos en un programa libre.",
+    i:["Documental breve de un proyecto","Noticiario histórico con títulos","Vídeo de una salida con subtítulos"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala o en versión portable)", cta:"No necesita", coste:"Gratuito y libre" },
   { id:"vocaroo", rev:"2026-10-23", s:"aula", cat:"crear", st:"vigente", n:"Vocaroo", url:"https://vocaroo.com",
     a:"Graba un audio en el navegador y obtiene un enlace para compartirlo.",
     i:["Lectura en voz alta","Explicación oral de un mapa","Respuesta de audio a una pregunta"],
@@ -368,6 +372,10 @@ const TOOLS = [
     a:"Pinta, ilustra y anima en 2D con un programa libre de pintura digital.",
     i:["Reinterpretar un cuadro por capas","Viñeta de cómic con sus bocadillos","Animación corta fotograma a fotograma"],
     c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita", coste:"Gratis desde su web. En las tiendas de Microsoft, Steam, Epic y Mac es de pago" },
+  { id:"gimp", rev:"2026-11-26", s:"aula", cat:"arte", st:"nueva", n:"GIMP", url:"https://www.gimp.org",
+    a:"Edita y retoca fotos e imágenes y crea montajes por capas con un programa libre.",
+    i:["Restaurar una fotografía antigua","Montaje para un cartel","Recortar y ajustar imágenes para un trabajo"],
+    c:"3.º, 4.º ESO y Bachillerato", disp:"Ordenador (se instala)", cta:"No necesita", coste:"Gratuito y libre" },
 
   // --- IA y apoyo al aprendizaje
   { id:"lekids", rev:"2026-11-23", s:"aula", cat:"idiomas", st:"nueva", n:"LearnEnglish Kids", url:"https://learnenglishkids.britishcouncil.org",
@@ -666,6 +674,8 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"kdenlive", txt:"Editor de vídeo libre, con títulos y subtítulos.", q:["editar vídeo", "editor de vídeo gratis", "montar vídeo", "subtítulos"] },
+  { id:"gimp", txt:"Retoque de fotos con un programa libre.", q:["retocar fotos", "editar imágenes", "editar fotos"] },
   { id:"cerebriti", txt:"Juegos educativos de todas las materias, sin registro.", q:["juegos educativos", "mapa mudo", "jugar sin registrarse"] },
   { id:"jeopardylabs", txt:"Un tablero de preguntas para jugar por equipos.", q:["jeopardy", "concurso por equipos", "tablero de preguntas"] },
   { id:"quizlet", txt:"Tarjetas de repaso y juegos por equipos.", q:["tarjetas de estudio", "flashcards", "memorizar vocabulario"] },
@@ -675,9 +685,7 @@ const RECIENTES = [
   { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] },
   { id:"arasaac", txt:"Pictogramas y materiales para imprimir con ARActivities.", q:["pictogramas", "comunicación aumentativa", "horario visual", "tablero de comunicación"] },
   { id:"stellarium", txt:"Un planetario en 3D para explorar el cielo.", q:["astronomía", "planetario", "constelaciones", "ver las estrellas"] },
-  { id:"polypad", txt:"Fracciones, polígonos y más manipulativos de matemáticas.", q:["fracciones", "manipulativos de matemáticas", "tangram", "manipulativos de matemáticas"] },
-  { id:"learningmusic", txt:"Lecciones interactivas para aprender a componer música.", q:["componer música", "aprender a componer", "ritmo y acordes"] },
-  { id:"bnescolar", txt:"Secuencias y talleres con fondos de la Biblioteca Nacional.", q:["biblioteca nacional", "fuentes históricas", "secuencias didácticas"] }
+  { id:"polypad", txt:"Fracciones, polígonos y más manipulativos de matemáticas.", q:["fracciones", "manipulativos de matemáticas", "tangram", "manipulativos de matemáticas"] }
 ];
 
 const CHANGES = [
@@ -702,7 +710,7 @@ const AREAS = {
   geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay","atlasign","minecraftedu"] },
   ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados","stellarium","polypad","phyphox","falstad"] },
   tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad","makecode","learningml","falstad"] },
-  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita"] },
+  arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita","gimp"] },
   idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","dwdeutsch","duolingo","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   ef: { n:"Educación Física", ids:["kinovea"] },
   econ: { n:"Economía", ids:["bolsa"] }
