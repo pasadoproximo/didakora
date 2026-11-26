@@ -173,7 +173,7 @@ monasterio siguen sin poder publicar. Sin tareas programadas, servicios externos
   En el texto (títulos de pestaña incluidos), con mayúscula: «Didákora» (Jorge, 23-10-2026).
 - Tipografías: Bricolage Grotesque (títulos) y Alegreya Sans (texto).
 - Iconos (26-11-2026): `marca/icono-180.png` (apple-touch) y `marca/icono-192.png` (el que suele coger Google) van con fondo blanco y el símbolo centrado al 62 %,
-  porque con fondo cielo desaparecía la solapa cielo. `favicon.ico` en la raíz, hecho a mano como `robots.txt`. `didakora-avatar.png` (redes) sigue con fondo cielo.
+  porque con fondo cielo desaparecía la solapa cielo. `favicon.ico` en la raíz, hecho a mano como `robots.txt`. `didakora-avatar.png` (redes) mantiene el fondo cielo con la solapa y el asa en blanco (`didakora-simbolo-cielo.svg`), como la pieza de redes.
 
 ## Normas de contenido
 
