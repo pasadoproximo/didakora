@@ -90,6 +90,23 @@ const TOOLS = [
     a:"Avanza por un recorrido de actividades que se desbloquean en orden o elige su propio camino.",
     i:["Itinerario de repaso por niveles","Unidad gamificada con retos","Atender a distintos ritmos en el mismo grupo"],
     c:"ESO", disp:"Uno por alumno", cta:"Código de clase" },
+  { id:"socrative", rev:"2026-11-26", s:"aula", cat:"part", st:"nueva", n:"Socrative", url:"https://www.socrative.com",
+    a:"Responde cuestionarios que se corrigen solos mientras el docente ve los resultados de cada uno al momento.",
+    i:["Prueba corta al final de la unidad","Pregunta rápida para cerrar la clase","Comprobar ideas previas antes de empezar"],
+    c:"Toda la etapa", disp:"Uno por alumno", cta:"No necesita: entra con el nombre de la sala", coste:"Plan gratuito con límites", datos:"Con menores, el centro necesita antes el consentimiento de las familias" },
+  { id:"quizlet", rev:"2026-11-26", edad:"Desde 13 años", edadTxt:"13 años según sus condiciones. Puede haber más límites en cada país", edadUrl:"https://quizlet.com/tos?locale=es-ES", s:"aula", cat:"part", st:"nueva", n:"Quizlet", url:"https://quizlet.com/es",
+    a:"Estudia con tarjetas, preguntas de práctica y juegos, o compite por equipos en Quizlet Live.",
+    i:["Repasar vocabulario con tarjetas","Concurso por equipos con Quizlet Live","Practicar antes de un examen"],
+    c:"Toda la etapa", disp:"Uno por alumno", cta:"No necesita para Quizlet Live: entra con un código", coste:"Plan gratuito con límites", datos:"Lleva anuncios y usa datos para publicidad: mejor jugar a Quizlet Live sin crear cuentas del alumnado" },
+  { id:"jeopardylabs", rev:"2026-11-26", s:"aula", cat:"part", st:"nueva", n:"JeopardyLabs", url:"https://jeopardylabs.com",
+    a:"Juega por equipos a un tablero de preguntas por categorías que el docente proyecta.",
+    i:["Repaso por equipos antes del examen","Concurso de fin de trimestre","Preguntas por categorías de una unidad"],
+    c:"Toda la etapa", disp:"Ninguno: se proyecta desde el ordenador del docente", cta:"No necesita, tampoco el docente", coste:"Gratuito. Pago único para más funciones" },
+  { id:"cerebriti", rev:"2026-11-26", edad:"Desde 14 años", edadTxt:"14 años para registrarse. Para jugar no hace falta cuenta", edadUrl:"https://www.cerebriti.com/informacion/terminos-y-condiciones/", s:"aula", cat:"part", st:"nueva", n:"Cerebriti", url:"https://www.cerebriti.com",
+    a:"Juega a juegos educativos de todas las materias: tests, mapas mudos, parejas o rankings.",
+    i:["Localizar lugares en un mapa mudo","Reto de preguntas al acabar el tema","Actividad para quien termina antes"],
+    c:"Toda la etapa", disp:"Uno por alumno o pareja", cta:"No necesita para jugar", coste:"Gratuito",
+    intef:"ver" },
 
   // --- Explorar Geografía e Historia
   { id:"gcompris", rev:"2026-11-23", s:"aula", cat:"part", st:"nueva", n:"GCompris", url:"https://gcompris.net/index-es.html",
@@ -134,6 +151,10 @@ const TOOLS = [
     c:"ESO y Bachillerato", disp:"Uno por pareja o proyectado", cta:"No necesita", coste:"Gratuito", datos:"Carga Google Analytics sin pedir permiso y parte de sus actividades abre Genially o Educaplay" },
 
   // --- Crear y presentar
+  { id:"minecraftedu", rev:"2026-11-26", s:"aula", cat:"crear", st:"nueva", n:"Minecraft Education", url:"https://education.minecraft.net/es-es",
+    a:"Explora y construye en mundos de Minecraft preparados para aprender, solo o con su clase.",
+    i:["Recorrer una civilización antigua","Construir un edificio histórico en equipo","Resolver un desafío como «Misterio maya»"],
+    c:"Toda la etapa", disp:"Uno por alumno (se instala en ordenador, tableta o Chromebook)", cta:"Cuenta de Microsoft 365 del centro", coste:"De pago: licencia del centro, unos 5 dólares por alumno al año", datos:"El centro debe recabar antes el consentimiento de las familias" },
   { id:"canva", rev:"2026-10-23", s:"aula", cat:"crear", st:"vigente", n:"Canva para Educación", url:"https://www.canva.com/education/",
     a:"Diseña infografías, pósteres, presentaciones y vídeos con plantillas.",
     i:["Infografía de un periodo histórico","Póster de un proyecto","Presentación en grupo"],
@@ -314,6 +335,10 @@ const TOOLS = [
     a:"Programa la placa micro:bit con bloques, JavaScript o Python y pruébalo en el simulador.",
     i:["Programar un dado digital","Crear un corazón que late con luces","Medir la temperatura del aula"],
     c:"Tercer ciclo de Primaria y ESO", disp:"Un ordenador por pareja", cta:"No necesita: sin iniciar sesión", coste:"Gratuito", datos:"Úsalo sin iniciar sesión y sin el botón «Explicar con IA»: aun así envía datos de uso a Microsoft" },
+  { id:"falstad", rev:"2026-11-26", s:"aula", cat:"cienc", st:"nueva", n:"Falstad", url:"https://www.falstad.com/circuit/circuitjs.html?lang=es",
+    a:"Monta circuitos eléctricos en el navegador y ve cómo circula la corriente al momento.",
+    i:["Comprobar la ley de Ohm","Comparar circuitos en serie y en paralelo","Ver cómo se carga un condensador"],
+    c:"ESO y Bachillerato", disp:"Uno por alumno o pareja (ordenador)", cta:"No necesita", coste:"Gratuito y libre" },
   // --- Música y Arte
   { id:"musescore", rev:"2026-10-23", s:"aula", cat:"arte", st:"vigente", n:"MuseScore", url:"https://musescore.org/es",
     a:"Escribe, edita y escucha partituras.",
@@ -641,18 +666,18 @@ const TOOLS = [
 // herramienta, se pone la primera con un texto corto, como el de las destacadas; en q van 2 a 4 búsquedas típicas de un docente
 // (probar_buscador.js comprueba que salga entre las 5 primeras). Como mucho 12: se quita la última.
 const RECIENTES = [
+  { id:"cerebriti", txt:"Juegos educativos de todas las materias, sin registro.", q:["juegos educativos", "mapa mudo", "jugar sin registrarse"] },
+  { id:"jeopardylabs", txt:"Un tablero de preguntas para jugar por equipos.", q:["jeopardy", "concurso por equipos", "tablero de preguntas"] },
+  { id:"quizlet", txt:"Tarjetas de repaso y juegos por equipos.", q:["tarjetas de estudio", "flashcards", "memorizar vocabulario"] },
+  { id:"socrative", txt:"Cuestionarios que se corrigen solos, sin concurso.", q:["cuestionario que se corrige solo", "evaluación rápida", "informe por alumno"] },
+  { id:"minecraftedu", txt:"Mundos de Minecraft para aprender jugando.", q:["minecraft", "videojuego educativo", "construir en equipo"] },
+  { id:"falstad", txt:"Simula circuitos eléctricos en el navegador.", q:["simular circuitos", "ley de ohm", "circuito eléctrico", "corriente eléctrica"] },
   { id:"kinovea", txt:"Análisis del movimiento en vídeos de deportistas.", q:["analizar movimiento", "educación física", "técnica deportiva", "vídeo a cámara lenta"] },
   { id:"arasaac", txt:"Pictogramas y materiales para imprimir con ARActivities.", q:["pictogramas", "comunicación aumentativa", "horario visual", "tablero de comunicación"] },
   { id:"stellarium", txt:"Un planetario en 3D para explorar el cielo.", q:["astronomía", "planetario", "constelaciones", "ver las estrellas"] },
   { id:"polypad", txt:"Fracciones, polígonos y más manipulativos de matemáticas.", q:["fracciones", "manipulativos de matemáticas", "tangram", "manipulativos de matemáticas"] },
   { id:"learningmusic", txt:"Lecciones interactivas para aprender a componer música.", q:["componer música", "aprender a componer", "ritmo y acordes"] },
-  { id:"bnescolar", txt:"Secuencias y talleres con fondos de la Biblioteca Nacional.", q:["biblioteca nacional", "fuentes históricas", "secuencias didácticas"] },
-  { id:"phyphox", txt:"Experimentos de física con los sensores del móvil.", q:["experimentos de física", "sensores del móvil", "laboratorio con el móvil"] },
-  { id:"krita", txt:"Pintura digital y animación con un programa libre.", q:["pintura digital", "ilustración digital", "programa para dibujar", "animación 2d"] },
-  { id:"makecode", txt:"Programa la placa micro:bit con bloques y simulador.", q:["microbit", "programar una placa", "robótica"] },
-  { id:"learningml", txt:"Entrena un modelo de IA y úsalo en Scratch.", q:["aprendizaje automático", "machine learning", "entrenar una ia"] },
-  { id:"atlasign", txt:"Geografía de España con mapas interactivos del IGN.", q:["geografía de España", "mapas interactivos", "glosario de geografía"] },
-  { id:"cervantes", txt:"Literatura, historia y lengua en una biblioteca gratuita.", q:["biblioteca virtual", "literatura española", "textos literarios"] }
+  { id:"bnescolar", txt:"Secuencias y talleres con fondos de la Biblioteca Nacional.", q:["biblioteca nacional", "fuentes históricas", "secuencias didácticas"] }
 ];
 
 const CHANGES = [
@@ -674,9 +699,9 @@ const CHANGES = [
 // las generales (Kahoot, Canva…) sirven para cualquiera y no llevan materia. Una herramienta puede tener dos.
 // Revisado en octubre de 2026. Añadir aquí el id cuando una herramienta nueva sea específica de una materia.
 const AREAS = {
-  geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay","atlasign"] },
-  ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados","stellarium","polypad","phyphox"] },
-  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad","makecode","learningml"] },
+  geohis: { n:"Geografía e Historia", ids:["artsculture","visitas","earth","geacron","rah","delmundo","kgeography","ancientearth","europeana","sketchfab","academiaplay","atlasign","minecraftedu"] },
+  ciencias: { n:"Ciencias y Matemáticas", ids:["geogebra","desmos","phet","gizmos","anatomy3d","vertebrados","stellarium","polypad","phyphox","falstad"] },
+  tecno: { n:"Tecnología y Programación", ids:["tinkercad","wokwi","scratch","scratchjr","snap","blockly","codeorg","appinventor","thunkable","cospaces","coppelia","librecad","makecode","learningml","falstad"] },
   arte: { n:"Música y Arte", ids:["musescore","incredibox","musiclab","musictheory","suno","artsculture","visitas","europeana","sketchfab","academiaplay","learningmusic","krita"] },
   idiomas: { n:"Idiomas", ids:["lekids","leteens","writeimprove","tv5monde","dwdeutsch","duolingo","forvo","deepl","dicta","gtranslate","apertium","languagetool","immersive"] },
   ef: { n:"Educación Física", ids:["kinovea"] },

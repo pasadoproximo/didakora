@@ -70,7 +70,7 @@ function dkMotor(TOOLS,SECTIONS,CAJA){
   presentacion:['diapositivas','exposicion'],diapositivas:['presentacion'],cronologia:['linea del tiempo','eje cronologico'],
   equipo:['colaborar','colaborativo','cooperativo'],colaborar:['equipo','colaborativo','cooperativo'],programar:['informatica'],
   gratis:['gratuito','gratuita','sin coste','libre'],gratuito:['gratis','gratuita','sin coste','libre'],
-  gamificacion:['juego','jugar','concurso','gamificado'],juego:['jugar','concurso','gamificado'],
+  gamificacion:['juego','jugar','concurso','gamificado'],flashcards:['tarjetas'],flashcard:['tarjetas'],ohm:['circuito','electrico'],juego:['jugar','concurso','gamificado'],
   dislexia:['lectura en voz alta','dificultades de lectura','dificultades de escritura','accesibilidad'],accesibilidad:['lectura en voz alta','dictado','dificultades'],familia:['familias'],mural:['muro','tablon'],muro:['mural','tablon'],
   gamificar:['juego','concurso','puntos','jugar','gamificado','gamificacion'],interactivo:['preguntas','interactiva','responde'],
   cooperativo:['cooperativa','cooperativas','equipo','colaborar'],cooperativa:['cooperativo','equipo','colaborar'],trabajo:['trabajar'],

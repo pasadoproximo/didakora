@@ -1192,6 +1192,71 @@
 }
 ],
 "n": "La guía valora el buscador, no el resto de la web."
+},
+"cerebriti": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro, solo para jugar",
+"p": 66
+},
+{
+"c": "rojo",
+"t": "No debería usarse. El docente, a título individual. El alumnado no",
+"p": 66
+}
+],
+"n": ""
+},
+"jeopardylabs": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 23
+}
+],
+"n": ""
+},
+"quizlet": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro. El alumnado entra con enlace y código, sin registrarse",
+"p": 24
+}
+],
+"n": ""
+},
+"socrative": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro del docente",
+"p": 48
+}
+],
+"n": ""
+},
+"minecraftedu": {
+"u": [
+{
+"c": "amarillo",
+"t": "Requiere registro",
+"p": 68
+}
+],
+"n": ""
+},
+"falstad": {
+"u": [
+{
+"c": "verde",
+"t": "Sin registro",
+"p": 62
+}
+],
+"n": ""
 }
 }
 }

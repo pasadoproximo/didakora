@@ -99,6 +99,11 @@ La antigua dirección pasadoproximo.github.io/didakora/ redirige sola al dominio
   En el móvil, el panel con todas las secciones y la casilla azul «Mi caja» con el número dentro de la caja, solo si hay algo guardado. No tocar el del móvil.
 - Letras alojadas en `letras/` (OFL): la web no pide nada a Google. El correo de contacto se lee de la variable de entorno `DK_CORREO` (sin ella, el build se para).
 - Altas del 24-11-2026: 12 (150 herramientas). **Educación Física** (`cat:"ef"`) es apartado de «Explorar por materias» y materia en «Elige tu sesión»; primera ficha, Kinovea.
+- Altas del 26-11-2026: 6 (156 herramientas), de revisar listas de gamificación de Educación 3.0 e Ingenioteka: Socrative, Quizlet, JeopardyLabs y Cerebriti
+  (Participar y repasar), Minecraft Education (Crear, de pago con licencia del centro) y Falstad (Ciencias, en verde en la guía del INTEF). JeopardyLabs no tiene logo
+  oficial de más de 16 px: va sin logo. Colección nueva «Jugar para repasar». Descartadas: Gimkit, AhaSlides, Bubbl.us, Popplet y MyClassGame (rojo en la guía),
+  Infogram (18 años o permiso familiar, cuenta por alumno y proyectos públicos en Google), CodeCombat (casi todo de pago), ThingLink (solo prueba de 30 días),
+  Poll Everywhere, Brainscape, EasyEDA, Pear Deck y ClassPoint (repiten lo que hay). TypingClub, pendiente de Jorge (anuncios de AdSense en el plan escolar gratuito).
 - «Qué es» ocupa 4 o 5 líneas en ordenador (340 a 430 caracteres, sin repetir la Ficha rápida, los usos ni «Para saber más»). Los usos van simétricos en su tarjeta. Sin apartado «Por ejemplo, en clase» (Jorge lo quitó).
 - `propuestas/` → maquetas de paleta y logo, solo en local (no se sube: está en `.gitignore`).
 
