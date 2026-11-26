@@ -236,6 +236,7 @@ def head(title, desc, path, cur="", ld=None, img=None, img_alt="", tipo="website
 <meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="{WEB}{path}">
 {f'<link rel="alternate" type="application/rss+xml" title="Actualidad · Didákora" href="{WEB}/rss.xml">' + chr(10) if POSTS else ""}<link rel="icon" href="{B}/marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{B}/marca/icono-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{B}/marca/icono-180.png">
 <meta name="theme-color" content="#9FB3FF">
 <link rel="preload" href="{B}/letras/alegreyasans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
